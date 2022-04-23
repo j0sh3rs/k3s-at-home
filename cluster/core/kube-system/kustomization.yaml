@@ -4,7 +4,6 @@ resources:
   - namespace.yaml
   - coredns-nodecache
   - descheduler
-  - intel-gpu-plugin
   - kured
   - node-feature-discovery
   - reloader
