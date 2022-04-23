@@ -8,13 +8,13 @@
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
-    "github>auricom/home-cluster//.github/renovate/autoMerge",
-    "github>auricom/home-cluster//.github/renovate/labels",
-    "github>auricom/home-cluster//.github/renovate/semanticCommits"
+    "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge",
+    "github>j0sh3rs/k3s-at-home//.github/renovate/labels",
+    "github>j0sh3rs/k3s-at-home//.github/renovate/semanticCommits"
   ],
   "platform": "github",
   "username": "feisar-bot[bot]",
-  "repositories": ["auricom/home-cluster"],
+  "repositories": ["j0sh3rs/k3s-at-home"],
   "onboarding": false,
   "requireConfig": false,
   "gitAuthor": "feisar-bot <27022259+feisar-bot[bot]@users.noreply.github.com>",
