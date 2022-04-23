@@ -6,3 +6,6 @@ resources:
   - k8s-at-home.yaml
   - kubernetes-sigs-descheduler-charts.yaml
   - node-feature-discovery.yaml
+  - metallb.yaml
+  - nfs-subdir-external-provisioner.yaml
+  - datadog.yaml
