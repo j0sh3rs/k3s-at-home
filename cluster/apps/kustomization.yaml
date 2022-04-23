@@ -3,7 +3,5 @@ kind: Kustomization
 resources:
   #  - data
   # - home-automation
-  - kasten-io
-  # - monitoring
   # - networking
   - secret-reflector
