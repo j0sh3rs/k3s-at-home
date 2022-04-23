@@ -4,6 +4,5 @@ resources:
   - namespace.yaml
   - coredns-nodecache
   - descheduler
-  - kured
   - node-feature-discovery
   - reloader
