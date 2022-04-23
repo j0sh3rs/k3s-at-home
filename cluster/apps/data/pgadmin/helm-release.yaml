@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pgadmin
+  namespace: data
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://helm.runix.net
+      chart: pgadmin4
+      version: 1.9.9
+      sourceRef:
+        kind: HelmRepository
+        name: runix-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    env:
+      email: ${SECRET_PGADMIN_EMAIL}
+      password: ${SECRET_PGADMIN_PASSWORD}
+
+    strategy:
+      type: Recreate
+
+    persistentVolume:
+      enabled: true
+      existingClaim: pgadmin-config
+
+    ingress:
+      enabled: true
+      annotations:
+        # traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        # traefik.ingress.kubernetes.io/router.middlewares: networking-buffering-medium@kubernetescrd
+      hosts:
+        - host: "pgadmin.${SECRET_CLUSTER_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - "pgadmin.${SECRET_CLUSTER_DOMAIN}"
+          secretName: "${SECRET_CLUSTER_CERTIFICATE_DEFAULT}"
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              kind: Ingress
+              name: pgadmin-pgadmin4
+            patch:
+              - op: add
+                path: /spec/ingressClassName
+                value: nginx
