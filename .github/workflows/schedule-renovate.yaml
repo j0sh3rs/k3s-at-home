@@ -21,7 +21,7 @@ on: # yamllint disable-line rule:truthy
       - ".github/renovate/**.json"
 
 env:
-  LOG_LEVEL: info
+  LOG_LEVEL: debug
   DRY_RUN: false
 
 jobs:
