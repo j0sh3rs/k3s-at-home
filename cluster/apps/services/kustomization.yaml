@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  # - freshrss
+  - jobs
+  - nitter
+  # - pgadmin
+  # - pgbackups
+  # - postgresql-kube
+  # - recipes
+  - redis
+  # - vaultwarden
+  # - vikunja
