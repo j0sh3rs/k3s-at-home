@@ -5,11 +5,11 @@ resources:
   - namespace.yaml
   # - freshrss
   - jobs
-  - nitter
+  # - nitter
   # - pgadmin
   # - pgbackups
   # - postgresql-kube
   # - recipes
-  - redis
+  # - redis
   # - vaultwarden
   # - vikunja
