@@ -23,8 +23,6 @@ spec:
       tag: 14.2.0
       pullPolicy: IfNotPresent
     postgresqlUsername: postgres
-    auth:
-      existingSecret: "cluster-secrets"
     primary:
       persistence:
         storageClass: nfs-client
