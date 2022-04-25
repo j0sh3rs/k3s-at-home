@@ -25,7 +25,6 @@ spec:
     postgresqlUsername: postgres
     auth:
       existingSecret: "cluster-secrets"
-      existingSecretPasswordKey: PGADMIN_PASSWORD
     primary:
       persistence:
         storageClass: nfs-client
