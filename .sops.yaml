@@ -1,3 +1,3 @@
 creation_rules:
   - encrypted_regex: ^(data|stringData)$
-    age: age1helqcqsh9464r8chnwc2fzj8uv7vr5ntnsft0tn45v2xtz0hpfwq98cmsg
+    pgp: E9D0BEFACF7AC7BB7E4A4A57D4D0739EB0833238
