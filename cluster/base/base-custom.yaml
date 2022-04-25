@@ -2,13 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: core
+  name: base-custom
   namespace: flux-system
 spec:
   interval: 10m0s
-  dependsOn:
-    - name: base-custom
-  path: ./cluster/core
+  path: ./cluster/base-custom
   prune: true
   sourceRef:
     kind: GitRepository
@@ -17,10 +15,3 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  postBuild:
-    substitute: {}
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-settings
-      - kind: Secret
-        name: cluster-secrets
