@@ -5,5 +5,5 @@ metadata:
   namespace: flux-system
   name: cluster-settings
 data:
-  CLUSTER_LB_UNIFI: 192.168.35.1
-  LOCAL_LAN: 192.168.35.0/24
+  NFS_HOST_IP: 192.168.35.5
+  NFS_SUBPATH: /volume1/k3s/pods
