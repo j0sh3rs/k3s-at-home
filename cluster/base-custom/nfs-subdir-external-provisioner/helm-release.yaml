@@ -20,7 +20,6 @@ spec:
     nfs:
       server: ${NFS_HOST_IP}
       path: ${NFS_SUBPATH}
-      mountOptions:
       volumeName: nfs-subdir-external-provisioner-root
       # Reclaim policy for the main nfs volume
       reclaimPolicy: Retain
