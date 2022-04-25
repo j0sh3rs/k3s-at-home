@@ -22,7 +22,9 @@ spec:
       repository: bitnami/postgresql
       tag: 14.2.0
       pullPolicy: IfNotPresent
-    postgresqlUsername: postgres
+    auth:
+      username: pg
+      existingSecret: ${POSTGRES_PASSWORD}
     primary:
       persistence:
         storageClass: nfs-client
