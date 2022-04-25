@@ -6,8 +6,6 @@ metadata:
   namespace: services
 spec:
   interval: 10m0s
-  dependsOn:
-    - name: core
   path: ./cluster/apps
   prune: true
   sourceRef:
