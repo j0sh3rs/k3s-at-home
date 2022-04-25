@@ -23,6 +23,10 @@ spec:
       password: ${SECRET_REDIS_PASSWORD}
 
     master:
+      persistence:
+        storageClass: nfs-client
+        accessModes:
+          - ReadWriteMany
       service:
         annotations:
           prometheus.io/probe: "true"
