@@ -20,7 +20,8 @@ spec:
     architecture: standalone
 
     auth:
-      password: ${SECRET_REDIS_PASSWORD}
+      existingSecret: "cluster-secrets"
+      existingSecretPasswordKey: REDIS_PASSWORD
 
     master:
       persistence:

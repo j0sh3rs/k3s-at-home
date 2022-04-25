@@ -5,7 +5,7 @@ resources:
   - bitnami-charts.yaml
   - k8s-at-home.yaml
   - kubernetes-sigs-descheduler-charts.yaml
-  - node-feature-discovery.yaml
+  - kubernetes-reflector.yaml
   - metallb.yaml
   - nfs-subdir-external-provisioner.yaml
   - datadog.yaml
