@@ -26,11 +26,12 @@ spec:
     auth:
       existingSecret: "cluster-secrets"
       existingSecretPasswordKey: PGADMIN_PASSWORD
-    persistence:
-      storageClass: nfs-client
-      accessModes:
-        - ReadWriteMany
-      size: 50Gi
+    primary:
+      persistence:
+        storageClass: nfs-client
+        accessModes:
+          - ReadWriteMany
+        size: 50Gi
     commonAnnotations:
       prometheus.io/probe: "true"
       prometheus.io/protocol: "tcp"
