@@ -18,8 +18,8 @@ spec:
       interval: 5m
   values:
     nfs:
-      server: ${NFS_HOST_IP}
-      path: ${NFS_SUBPATH}
+      server: 192.168.35.5
+      path: /volume1/k3s/pods
       volumeName: nfs-subdir-external-provisioner-root
       # Reclaim policy for the main nfs volume
       reclaimPolicy: Retain
