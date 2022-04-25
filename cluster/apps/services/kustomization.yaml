@@ -10,6 +10,6 @@ resources:
   # - pgbackups
   # - postgresql-kube
   # - recipes
-  # - redis
+  - redis
   # - vaultwarden
   # - vikunja
