@@ -23,8 +23,7 @@ spec:
       tag: 14.2.0
       pullPolicy: IfNotPresent
     auth:
-      username: pg
-      existingSecret: ${POSTGRES_PASSWORD}
+      existingSecret: postgres-secrets
     primary:
       persistence:
         storageClass: nfs-client
