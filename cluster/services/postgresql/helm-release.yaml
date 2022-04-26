@@ -23,7 +23,7 @@ spec:
       tag: 14.2.0
       pullPolicy: IfNotPresent
     auth:
-      postgresPassword: $${SECRET_POSTGRES_PASSWORD}
+      postgresPassword: $SECRET_POSTGRES_PASSWORD
     primary:
       persistence:
         size: 20Gi
