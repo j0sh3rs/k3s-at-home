@@ -5,12 +5,12 @@ resources:
   - namespace.yaml
   - secrets
   - postgresql
+  - redis
   # - freshrss
   # - jobs
   # - nitter
   # - pgadmin
   # - pgbackups
   # - recipes
-  # - redis
   # - vaultwarden
   # - vikunja

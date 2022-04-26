@@ -18,8 +18,6 @@ spec:
       interval: 5m
   values:
     architecture: standalone
-    auth:
-      password: ${SECRET_REDIS_PASSWORD}
     master:
       service:
         annotations:
@@ -32,3 +30,8 @@ spec:
         annotations:
           prometheus.io/probe: "true"
           prometheus.io/protocol: tcp
+  valuesFrom:
+    - kind: Secret
+      name: cluster-secrets
+      valuesKey: SECRET_REDIS_PASSWORD
+      targetPath: auth.password
