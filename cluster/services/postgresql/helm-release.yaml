@@ -32,4 +32,4 @@ spec:
     - kind: Secret
       name: cluster-secrets
       valuesKey: SECRET_POSTGRES_PASSWORD
-      targetPath: auth.postgresPassword
+      targetPath: global.postgresql.auth.postgresPassword
