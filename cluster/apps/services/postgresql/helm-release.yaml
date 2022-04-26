@@ -21,9 +21,9 @@ spec:
       registry: docker.io
       repository: bitnami/postgresql
       tag: 14.2.0
-      pullPolicy: IfNotPresentkubec
+      pullPolicy: Always
     auth:
-      existingSecret: cluster-secrets
+      postgresPassword: ${POSTGRES_PASSWORD}
     primary:
       persistence:
         storageClass: nfs-client
