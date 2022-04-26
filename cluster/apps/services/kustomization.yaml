@@ -8,8 +8,8 @@ resources:
   # - nitter
   # - pgadmin
   # - pgbackups
-  - postgresql
+  # - postgresql
   # - recipes
-  - redis
+  # - redis
   # - vaultwarden
   # - vikunja
