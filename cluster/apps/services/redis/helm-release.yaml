@@ -18,10 +18,8 @@ spec:
       interval: 5m
   values:
     architecture: standalone
-
     auth:
       password: ${REDIS_PASSWORD}
-
     master:
       persistence:
         storageClass: nfs-client
@@ -31,7 +29,6 @@ spec:
         annotations:
           prometheus.io/probe: "true"
           prometheus.io/protocol: tcp
-
     replica:
       persistence:
         enabled: false
