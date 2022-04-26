@@ -8,7 +8,6 @@ resources:
   - redis
   # - freshrss
   # - jobs
-  # - nitter
   # - pgadmin
   # - pgbackups
   # - recipes
