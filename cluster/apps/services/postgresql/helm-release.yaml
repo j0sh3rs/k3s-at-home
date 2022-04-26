@@ -22,6 +22,7 @@ spec:
       repository: bitnami/postgresql
       tag: 14.2.0
       pullPolicy: Always
+      debug: true
     auth:
       postgresPassword: ${POSTGRES_PASSWORD}
     primary:
