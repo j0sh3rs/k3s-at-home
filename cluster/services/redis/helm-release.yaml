@@ -34,4 +34,4 @@ spec:
     - kind: Secret
       name: cluster-secrets
       valuesKey: SECRET_REDIS_PASSWORD
-      targetPath: auth.password
+      targetPath: global.redis.password

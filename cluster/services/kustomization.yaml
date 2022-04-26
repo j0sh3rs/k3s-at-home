@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - secrets
   - postgresql
-  # - redis
+  - redis
   # - freshrss
   # - jobs
   # - nitter
