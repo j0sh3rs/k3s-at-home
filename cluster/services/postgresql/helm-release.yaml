@@ -5,7 +5,7 @@ metadata:
   name: postgres
   namespace: services
 spec:
-  interval: 5m
+  interval: 1m
   chart:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
