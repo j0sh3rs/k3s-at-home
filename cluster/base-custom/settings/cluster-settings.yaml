@@ -7,3 +7,4 @@ metadata:
 data:
   NFS_HOST_IP: 192.168.35.5
   NFS_SUBPATH: /volume1/k3s/pods
+  NFS_BACKUPS_SUBPATH: /volume1/k3s/backups
