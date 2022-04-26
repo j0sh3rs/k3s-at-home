@@ -29,7 +29,7 @@ spec:
         storageClass: nfs-client
         accessModes:
           - ReadWriteMany
-        size: 50Gi
+        size: 100Gi
     commonAnnotations:
       prometheus.io/probe: "true"
       prometheus.io/protocol: "tcp"
