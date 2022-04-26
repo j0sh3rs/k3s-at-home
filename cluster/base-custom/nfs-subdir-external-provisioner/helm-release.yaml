@@ -22,21 +22,17 @@ spec:
       path: /volume1/k3s/pods
       volumeName: nfs-subdir-external-provisioner-root
       # Reclaim policy for the main nfs volume
-      reclaimPolicy: Retain
-
+      reclaimPolicy: Delete
     # For creating the StorageClass automatically:
     storageClass:
       # Set StorageClass as the default StorageClass
       # Ignored if storageClass.create is false
-      defaultClass: true
-
+      defaultClass: false
       # Set access mode - ReadWriteOnce, ReadOnlyMany or ReadWriteMany
       accessModes: ReadWriteMany
-
     leaderElection:
       # When set to false leader election will be disabled
       enabled: true
-
     resources:
       limits:
         cpu: 200m
