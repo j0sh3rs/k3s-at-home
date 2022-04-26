@@ -19,8 +19,7 @@ spec:
   values:
     architecture: standalone
     auth:
-      enabled: false
-      sentinel: false
+      password: ${REDIS_PASSWORD}
     master:
       service:
         annotations:
