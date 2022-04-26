@@ -22,11 +22,14 @@ spec:
       repository: bitnami/postgresql
       tag: 14.2.0
       pullPolicy: IfNotPresent
-    auth:
-      postgresPassword: $SECRET_POSTGRES_PASSWORD
     primary:
       persistence:
         size: 20Gi
     commonAnnotations:
       prometheus.io/probe: "true"
       prometheus.io/protocol: "tcp"
+  valuesFrom:
+    - kind: Secret
+      name: cluster-secrets
+      valuesKey: SECRET_POSTGRES_PASSWORD
+      targetPath: auth.postgresPassword

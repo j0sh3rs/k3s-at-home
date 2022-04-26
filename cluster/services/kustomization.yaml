@@ -4,12 +4,12 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secrets
+  - postgresql
   # - freshrss
   # - jobs
   # - nitter
   # - pgadmin
   # - pgbackups
-  # - postgresql
   # - recipes
   # - redis
   # - vaultwarden
