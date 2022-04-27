@@ -5,8 +5,8 @@ resources:
   - namespace.yaml
   - secrets
   - postgresql
-  - redis
-  - blocky
+  # - redis
+  # - blocky
   # - freshrss
   # - jobs
   # - pgadmin
