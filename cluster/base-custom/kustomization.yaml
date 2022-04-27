@@ -4,5 +4,5 @@ resources:
   - namespace.yaml
   - charts
   - secrets
-  # - nfs-subdir-external-provisioner
+  - nfs-subdir-external-provisioner
   - settings
