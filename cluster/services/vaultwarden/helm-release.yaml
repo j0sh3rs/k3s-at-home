@@ -34,3 +34,4 @@ spec:
     - kind: Secret
       name: cluster-secrets
       valuesKey: VAULTWARDEN_ENV
+      targetPath: values.yaml
