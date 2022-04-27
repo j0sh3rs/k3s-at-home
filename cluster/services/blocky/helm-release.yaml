@@ -21,9 +21,8 @@ spec:
       replicas: 3
     env:
       TZ: America/New_York
-    metrics:
-      enabled: true
-
+    # metrics:
+    #   enabled: true
     config: |
       upstream:
         default:
