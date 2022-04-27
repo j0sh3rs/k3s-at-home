@@ -6,6 +6,7 @@ resources:
   - secrets
   - postgresql
   - redis
+  - blocky
   # - freshrss
   # - jobs
   # - pgadmin

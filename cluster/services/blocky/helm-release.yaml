@@ -1,0 +1,84 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: blocky
+  namespace: services
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: blocky
+      version: 10.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    controller:
+      replicas: 3
+    env:
+      TZ: America/New_York
+    metrics:
+      enabled: true
+
+    config: |
+      upstream:
+        default:
+          - https://1.1.1.1/dns-query
+          - https://1.0.0.1/dns-query
+      blocking:
+        blackLists:
+          ads:
+            - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+            - http://sysctl.org/cameleon/hosts
+            - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+            - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+            - https://blocklist.site/app/dl/phishing
+            - https://v.firebog.net/hosts/AdguardDNS.txt
+            - https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/torrent-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/fraud-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/phishing-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/tracking-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/abuse-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/drugs-nl.txt
+            - https://blocklistproject.github.io/Lists/alt-version/gambling-nl.txt
+            - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
+            - https://dbl.oisd.nl/
+            - https://www.github.developerdan.com/hosts/lists/tracking-aggressive-extended.txt
+            - https://www.github.developerdan.com/hosts/lists/dating-services-extended.txt
+            - https://www.github.developerdan.com/hosts/lists/hate-and-junk-extended.txt
+            - https://www.github.developerdan.com/hosts/lists/amp-hosts-extended.txt
+            - |
+              config.samsungads.com
+              gpm.samsungqbe.com
+              log-config.samsungacr.com
+              samsung.com
+              samsungacr.com
+              samsungads.com
+              samsungcloudsolution.com
+              samsungcloudsolution.net
+              samsungotn.net
+              scs.samsungqbe.com
+              lcprd1.samsungcloudsolution.net
+        clientGroupsBlock:
+          default:
+            - ads
+        refreshPeriod: 120m
+      prometheus:
+        enable: true
+        path: /metrics
+      httpPort: 4000
+      redis:
+        address: redis-master:6379
+        database: 3
+        required: true
+      bootstrapDns: tcp+udp:1.1.1.1
+      caching:
+        minTime: 5m
+        maxTime: 30m
+        prefetching: true
