@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secrets
-  # - postgresql
-  # - redis
+  - postgresql
+  - redis
   # - freshrss
   # - jobs
   # - pgadmin
