@@ -29,7 +29,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingCLaim: vaultwarden-data
+        existingClaim: vaultwarden-data
   valuesFrom:
     - kind: Secret
       name: cluster-secrets
