@@ -18,11 +18,9 @@ spec:
       interval: 5m
   values:
     architecture: standalone
-    # auth:
-    #   enabeled: false
-    #   sentinel: false
-      # existingSecret: cluster-secrets
-      # existingSecretPasswordKey: SECRET_REDIS_PASSWORD
+    auth:
+      existingSecret: cluster-secrets
+      existingSecretPasswordKey: SECRET_REDIS_PASSWORD
     master:
       nodeSelector:
         kubernetes.io/arch: amd64
