@@ -96,8 +96,7 @@ spec:
       redis:
         address: redis-master:6379
         database: 3
-        required: true
-        password: ''
+        required: false
       bootstrapDns: tcp+udp:1.1.1.1
       caching:
         minTime: 5m
