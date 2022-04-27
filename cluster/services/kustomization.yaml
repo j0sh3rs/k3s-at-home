@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - postgresql
   - redis
+  - vaultwarden
   # - blocky
   # - freshrss
   # - jobs
