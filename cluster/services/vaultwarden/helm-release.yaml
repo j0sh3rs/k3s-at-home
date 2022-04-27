@@ -21,25 +21,6 @@ spec:
       repository: vaultwarden/server
       tag: 1.24.0
       pullPolicy: IfNotPresent
-    env:
-      DOMAIN: "https://vault.${SECRET_CLUSTER_DOMAIN}"
-      ADMIN_TOKEN: ${SECRET_VAULTWARDEN_ADMIN_TOKEN}
-      DATABASE_URL: ${SECRET_VAULTWARDEN_DB_URL}
-      TZ: "Europe/Paris"
-      DATA_FOLDER: "data"
-      SIGNUPS_ALLOWED: "false"
-      WEBSOCKET_ENABLED: "true"
-      SMTP_HOST: smtp.fastmail.com
-      SMTP_FROM: vaultwarden@${SECRET_CLUSTER_DOMAIN_ROOT}
-      SMTP_FROM_NAME: vaultwarden
-      SMTP_PORT: 587
-      SMTP_SSL: "true"
-      SMTP_USERNAME: ${SECRET_SMTP_USERNAME}
-      SMTP_PASSWORD: ${SECRET_VAULTWARDEN_SMTP_PASSWORD}
-    persistence:
-      config:
-        enabled: true
-        existingClaim: vaultwarden-data
     service:
       main:
         annotations:
