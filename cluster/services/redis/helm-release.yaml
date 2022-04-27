@@ -31,10 +31,6 @@ spec:
     replica:
       nodeSelector:
         kubernetes.io/arch: amd64
-      replicaCount: 1
-      autoscaling:
-        enabled: true
-        maxReplicas: 3
       service:
         annotations:
           prometheus.io/probe: "true"
