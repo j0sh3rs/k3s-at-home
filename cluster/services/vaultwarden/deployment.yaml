@@ -33,7 +33,7 @@ spec:
             - mountPath: /data
               name: vaultwarden-claim0
             - mountPath: /.env
-              name: .env
+              name: env_file
               readOnly: true
       hostname: vaultwarden
       restartPolicy: Always
@@ -41,6 +41,6 @@ spec:
         - name: vaultwarden-claim0
           persistentVolumeClaim:
             claimName: vaultwarden-claim0
-        - name: .env
+        - name: env_file
           secret:
             secretName: vaultwarden-secrets
