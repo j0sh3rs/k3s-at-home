@@ -17,6 +17,18 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    env:
+      WEBSOCKET_ENABLED: "true"
+      DATABASE_URL: ${VAULTWARDEN_DB_URL}
+      ENABLE_DB_WAL: "false"
+      SIGNUPS_ALLOWED: "false"
+      SIGNUPS_VERIFY: "true"
+      DOMAIN: ${VAULTWARDEN_DOMAIN}
+      ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
+      HIBP_API_KEY: ${VAULTWARDEN_HIBP_API_KEY}
+      YUBICO_CLIENT_ID: ${VAULTWARDEN_YUBICO_CLIENT_ID}
+      YUBICO_SECRET_KEY: ${VAULTWARDEN_YUBICO_SECRET_KEY}
+      TZ: "America/New_York"
     image:
       repository: vaultwarden/server
       tag: 1.24.0
@@ -30,6 +42,3 @@ spec:
       config:
         enabled: true
         existingClaim: vaultwarden-data
-  envFrom:
-    - secretRef:
-      name: vaultwarden_env
