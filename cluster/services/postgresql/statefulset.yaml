@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-stateful-set
+  namespace: services
+  labels:
+    name: postgres-stateful-set
+spec:
+  replicas: 1
+  serviceName: postgres
+  updateStrategy:
+    rollingUpdate: {}
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          envFrom:
+            - secretRef:
+              name: postgres_secrets
+          ports:
+            - name: postgres
+              containerPort: 5432
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: postgres-claim0
+              mountPath: /var/lib/postgresql
+              readOnly: false
+      volumes:
+        - name: postgres-claim0
+          persistentVolumeClaim:
+            claimName: postgres-claim0
