@@ -36,7 +36,7 @@ spec:
             - mountPath: /data
               name: vaultwarden-claim0
       hostname: vaultwarden
-      restartPolicy: OnFailure
+      restartPolicy: Always
       volumes:
         - name: vaultwarden-claim0
           persistentVolumeClaim:
