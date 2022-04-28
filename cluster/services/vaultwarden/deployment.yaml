@@ -20,8 +20,10 @@ spec:
         - image: vaultwarden/server:latest
           name: vaultwarden
           ports:
-            - containerPort: 80
-            - containerPort: 3012
+            - name: http
+              containerPort: 80
+            - name: websocket
+              containerPort: 3012
           resources:
             limits:
               cpu: 2
@@ -73,7 +75,6 @@ spec:
                 secretKeyRef:
                   key: YUBICO_SECRET_KEY
                   name: vaultwarden-secrets
-      hostname: vaultwarden
       restartPolicy: Always
       volumes:
         - name: vaultwarden-claim0
