@@ -32,15 +32,65 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: vaultwarden-claim0
-            - mountPath: /.env
-              name: envfile
-              readOnly: true
+          env:
+            - name: ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: ADMIN_TOKEN
+                  name: vaultwarden-secrets
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: DATABASE_URL
+                  name: vaultwarden-secrets
+            - name: DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  key: DOMAIN
+                  name: vaultwarden-secrets
+            - name: ENABLE_DB_WAL
+              valueFrom:
+                secretKeyRef:
+                  key: ENABLE_DB_WAL
+                  name: vaultwarden-secrets
+            - name: HIBP_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: HIBP_API_KEY
+                  name: vaultwarden-secrets
+            - name: SIGNUPS_ALLOWED
+              valueFrom:
+                secretKeyRef:
+                  key: SIGNUPS_ALLOWED
+                  name: vaultwarden-secrets
+            - name: SIGNUPS_DOMAINS_WHITELIST
+              valueFrom:
+                secretKeyRef:
+                  key: SIGNUPS_DOMAINS_WHITELIST
+                  name: vaultwarden-secrets
+            - name: SIGNUPS_VERIFY
+              valueFrom:
+                secretKeyRef:
+                  key: SIGNUPS_VERIFY
+                  name: vaultwarden-secrets
+            - name: WEBSOCKET_ENABLED
+              valueFrom:
+                secretKeyRef:
+                  key: WEBSOCKET_ENABLED
+                  name: vaultwarden-secrets
+            - name: YUBICO_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: YUBICO_CLIENT_ID
+                  name: vaultwarden-secrets
+            - name: YUBICO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: YUBICO_SECRET_KEY
+                  name: vaultwarden-secrets
       hostname: vaultwarden
       restartPolicy: Always
       volumes:
         - name: vaultwarden-claim0
           persistentVolumeClaim:
             claimName: vaultwarden-claim0
-        - name: envfile
-          secret:
-            secretName: vaultwarden-secrets
