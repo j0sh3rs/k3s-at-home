@@ -29,8 +29,8 @@ spec:
     persistence:
       config:
         enabled: true
-        existingCLaim: vaultwarden-data
-  valuesFrom:
-    - kind: Secret
-      name: cluster-secrets
-      valuesKey: VAULTWARDEN_ENV
+        existingClaim: vaultwarden-data
+  # valuesFrom:
+  #   - kind: Secret
+  #     name: cluster-secrets
+  #     valuesKey: VAULTWARDEN_ENV
