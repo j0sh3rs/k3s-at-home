@@ -94,9 +94,9 @@ spec:
         path: /metrics
       httpPort: 4000
       redis:
-        address: redis-master:6379
+        address: redis:6379
         database: 3
-        required: false
+        required: true
       bootstrapDns: tcp+udp:1.1.1.1
       caching:
         minTime: 5m
