@@ -22,12 +22,15 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres
+          image: postgres:14-alpine
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
-          envFrom:
-            - secretRef:
-              name: postgres_secrets
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: SECRET_POSTGRES_PASSWORD
           ports:
             - name: postgres
               containerPort: 5432
