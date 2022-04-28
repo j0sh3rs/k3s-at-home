@@ -4,9 +4,6 @@ kind: StatefulSet
 metadata:
   name: postgres
   namespace: services
-  labels:
-    name: postgres
-    app: postgres
 spec:
   replicas: 1
   serviceName: postgres
