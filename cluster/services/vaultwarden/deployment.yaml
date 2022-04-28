@@ -51,23 +51,23 @@ spec:
                   key: DOMAIN
                   name: vaultwarden-secrets
             - name: ENABLE_DB_WAL
-              value: false
+              value: 'false'
             - name: HIBP_API_KEY
               valueFrom:
                 secretKeyRef:
                   key: HIBP_API_KEY
                   name: vaultwarden-secrets
             - name: SIGNUPS_ALLOWED
-              value: false
+              value: 'false'
             - name: SIGNUPS_DOMAINS_WHITELIST
               valueFrom:
                 secretKeyRef:
                   key: SIGNUPS_DOMAINS_WHITELIST
                   name: vaultwarden-secrets
             - name: SIGNUPS_VERIFY
-              value: true
+              value: 'true'
             - name: WEBSOCKET_ENABLED
-              value: true
+              value: 'true'
             - name: YUBICO_CLIENT_ID
               valueFrom:
                 secretKeyRef:
