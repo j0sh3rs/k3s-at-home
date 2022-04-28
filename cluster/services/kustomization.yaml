@@ -6,7 +6,7 @@ resources:
   - postgresql
   - redis
   - blocky
-  - vaultwarden
+  # - vaultwarden
   # - freshrss
   # - jobs
   # - pgadmin
