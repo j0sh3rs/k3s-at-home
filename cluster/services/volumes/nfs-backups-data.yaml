@@ -19,8 +19,8 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: "${NFS_HOST_IP}"
-    path: "${NFS_BACKUPS_SUBPATH}"
+    server: "192.168.35.5"
+    path: "/volume1/k3s/backups/services"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
