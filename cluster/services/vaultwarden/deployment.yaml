@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vaultwarden
+  name: vaultwarden
+  namespace: services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+      labels:
+        app: vaultwarden
+    spec:
+      containers:
+        - envFrom:
+            - secretRef:
+                name: vaultwarden-secrets
+          image: vaultwarden/server:latest
+          name: vaultwarden
+          ports:
+            - containerPort: 80
+            - containerPort: 3012
+          resources:
+            limits:
+              cpu: 2
+              memory: 4Gi
+          volumeMounts:
+            - mountPath: /data
+              name: vaultwarden-claim0
+      hostname: vaultwarden
+      restartPolicy: OnFailure
+      volumes:
+        - name: vaultwarden-claim0
+          persistentVolumeClaim:
+            claimName: vaultwarden-claim0
