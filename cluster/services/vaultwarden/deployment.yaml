@@ -20,10 +20,7 @@ spec:
         app: vaultwarden
     spec:
       containers:
-        - envFrom:
-            - secretRef:
-                name: vaultwarden-secrets
-          image: vaultwarden/server:latest
+        - image: vaultwarden/server:latest
           name: vaultwarden
           ports:
             - containerPort: 80
@@ -35,9 +32,15 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: vaultwarden-claim0
+            - mountPath: /.env
+              name: .env
+              readOnly: true
       hostname: vaultwarden
       restartPolicy: Always
       volumes:
         - name: vaultwarden-claim0
           persistentVolumeClaim:
             claimName: vaultwarden-claim0
+        - name: .env
+          secret:
+            secretName: vaultwarden-secrets
