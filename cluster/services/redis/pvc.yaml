@@ -5,6 +5,8 @@ metadata:
   name: redis-claim0
   namespace: services
 spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
