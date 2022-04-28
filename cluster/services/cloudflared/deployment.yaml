@@ -38,3 +38,5 @@ spec:
             failureThreshold: 1
             initialDelaySeconds: 10
             periodSeconds: 10
+          nodeSelector:
+            kubernetes.io/arch: "amd64"
