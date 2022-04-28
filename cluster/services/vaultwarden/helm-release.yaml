@@ -30,7 +30,6 @@ spec:
       config:
         enabled: true
         existingClaim: vaultwarden-data
-  # valuesFrom:
-  #   - kind: Secret
-  #     name: cluster-secrets
-  #     valuesKey: VAULTWARDEN_ENV
+  envFrom:
+    - secretRef:
+      name: vaultwarden_env
