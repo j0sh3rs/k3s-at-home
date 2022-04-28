@@ -2,10 +2,11 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres-stateful-set
+  name: postgres
   namespace: services
   labels:
-    name: postgres-stateful-set
+    name: postgres
+    app: postgres
 spec:
   replicas: 1
   serviceName: postgres
