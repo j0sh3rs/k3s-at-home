@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: invidious
+      namespace: services
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: invidious
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          labels:
+            app: invidious
+            name: invidious
+        spec:
+          containers:
+            - env:
+                - name: INVIDIOUS_CONFIG_FILE
+                  value: /app/config.yml
+              image: quay.io/invidious/invidious:latest
+              livenessProbe:
+                exec:
+                  command:
+                    - wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/comments/jNQXAC9IVRw || exit 1
+                failureThreshold: 2
+                periodSeconds: 30
+                timeoutSeconds: 5
+              name: invidious
+              resources:
+                limits:
+                  cpu: 1500m
+                  memory: 4Gi
+              volumeMounts:
+                - mountPath: /app/config.yml
+                  name: invidious-secrets
+                  subpath: config.yml
+                  readOnly: true
+          hostname: invidious
+          restartPolicy: Always
+          volumes:
+            - name: invidious-secrets
+              secret:
+                secretName: invidious-secrets
+                readOnly: true
