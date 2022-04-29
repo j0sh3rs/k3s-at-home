@@ -21,9 +21,9 @@ spec:
             - tunnel
             - --metrics
             - 0.0.0.0:3333
+            - run
             - --token
             - "${TUNNEL_TOKEN}"
-            - run
           env:
             - name: TUNNEL_TOKEN
               valueFrom:
