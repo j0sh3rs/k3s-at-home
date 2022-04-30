@@ -4,7 +4,7 @@
 
 ## My home Kubernetes cluster :sailboat:
 
-... managed with Flux and Renovate :robot:
+... managed with Flux and Renovate, encrypted with Age :robot:
 
 <br/>
 <br/>
@@ -23,27 +23,6 @@ flux bootstrap github \
   --path=cluster \
   --personal \
   --network-policy=false
-```
-
-## SOPS secret from GPG key
-
-```bash
-gpg \
-  --export-secret-keys \
-  --armor <GPG_KEY_ID> | \
-  kubectl create secret generic sops-gpg \
-  --namespace=flux-system \
-  --from-file=sops.asc=/dev/stdin
-```
-
-## Encrypt kubernetes resources with sops binary
-
-```bash
-sops \
-  --encrypt \
-  --pgp=<GPG_KEY_ID> \
-  --encrypted-regex '^(data|stringData)$' \
-  --in-place <FILE_PATH>
 ```
 
 ## Install pre-commit hooks
