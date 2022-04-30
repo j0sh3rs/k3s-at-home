@@ -105,6 +105,8 @@ spec:
           effect: NoSchedule
       containers:
         - name: coredns-nodecache
+          nodeSelector:
+            kubernetes.io/arch: "amd64"
           image: contentful/coredns-nodecache:latest
           resources:
             limits:
