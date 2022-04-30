@@ -17,10 +17,17 @@ spec:
         app: invidious
         name: invidious
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - env:
             - name: INVIDIOUS_CONFIG_FILE
-              value: /app/config.yml
+              valueFrom:
+                secretRef:
+                  key: INVIDIOUS_CONFIG
+                  name: invidious-secrets
           image: quay.io/invidious/invidious:latest
           livenessProbe:
             exec:
@@ -29,6 +36,10 @@ spec:
             failureThreshold: 2
             periodSeconds: 30
             timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: 3000
+              path: /
           name: invidious
           resources:
             limits:
