@@ -45,10 +45,5 @@ spec:
             limits:
               cpu: 1500m
               memory: 4Gi
-          volumeMounts:
-            - mountPath: /app/
-              name: invidious-secrets
-              subpath: config.yml
-              readOnly: true
       hostname: invidious
       restartPolicy: Always
