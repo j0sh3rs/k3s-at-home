@@ -52,8 +52,3 @@ spec:
               readOnly: true
       hostname: invidious
       restartPolicy: Always
-      volumes:
-        - name: invidious-secrets
-          secret:
-            secretName: invidious-secrets
-            readOnly: true
