@@ -24,6 +24,7 @@ spec:
         operator: In
         values:
           - "amd64"
+          - "arm64"
   serviceAccountName: system-upgrade
   tolerations:
     - key: "node-role.kubernetes.io/control-plane"
