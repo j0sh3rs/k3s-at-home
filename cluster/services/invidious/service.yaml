@@ -9,6 +9,6 @@ spec:
     app: redis
   type: ClusterIP
   ports:
-    - name: 3000
+    - name: web
       port: 3000
       targetPort: 3000
