@@ -9,7 +9,7 @@ resources:
   - vaultwarden
   - cloudflared
   - whoogle
-  # - invidious
+  - invidious
   # - freshrss
   # - jobs
   # - pgadmin
