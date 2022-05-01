@@ -8,3 +8,4 @@ resources:
   - metallb.yaml
   - nfs-subdir-external-provisioner.yaml
   - datadog.yaml
+  - stakater-charts.yaml
