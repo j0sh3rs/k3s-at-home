@@ -1,46 +1,124 @@
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: whoogle
+  namespace: services
+  labels:
+    app.kubernetes.io/name: whoogle
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoogle
+  namespace: services
+  labels:
+    app.kubernetes.io/name: whoogle
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: whoogle
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: whoogle
   namespace: services
+  labels:
+    app.kubernetes.io/name: whoogle
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: whoogle
-  strategy:
-    type: Recreate
+      app.kubernetes.io/name: whoogle
   template:
     metadata:
       labels:
-        app: whoogle
-        name: whoogle
+        app.kubernetes.io/name: whoogle
     spec:
+      serviceAccountName: whoogle
       securityContext:
-        capabilities:
-          drop:
-            - ALL
-        readOnlyRootFilesystem: true
+        {}
       containers:
-        - image: benbusby/whoogle-search
+        - name: whoogle
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsUser: 0
+          image: "benbusby/whoogle-search:0.7.2"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: HTTPS_ONLY
+              value: "0"
+            - name: TZ
+              value: "America/New_York"
+            - name: WHOOGLE_ALT_RD
+              value: "reddit.bth.wtf"
+            - name: WHOOGLE_ALT_TW
+              value: "twitter.bth.wtf"
+            - name: WHOOGLE_ALT_YT
+              value: "yt.bth.wtf"
+            - name: WHOOGLE_CONFIG_ALTS
+              value: "1"
+            - name: WHOOGLE_CONFIG_COUNTRY
+              value: "countryUS"
+            - name: WHOOGLE_CONFIG_DISABLE
+              value: "1"
+            - name: WHOOGLE_CONFIG_NEW_TAB
+              value: "0"
+            - name: WHOOGLE_CONFIG_SAFE
+              value: "0"
+            - name: WHOOGLE_CONFIG_THEME
+              value: "dark"
+            - name: WHOOGLE_CONFIG_TOR
+              value: "0"
+            - name: WHOOGLE_CONFIG_URL
+              value: "https://bth.wtf/"
+            - name: WHOOGLE_CONFIG_VIEW_IMAGE
+              value: "1"
+            - name: WHOOGLE_RESULTS_PER_PAGE
+              value: "25"
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
           livenessProbe:
-            exec:
-              command:
-                - wget -nv --tries=1 --spider http://127.0.0.1:5000/healthz || exit 1
-            failureThreshold: 2
-            periodSeconds: 30
-            timeoutSeconds: 5
+            httpGet:
+              path: /
+              port: http
           readinessProbe:
             httpGet:
-              port: 5000
               path: /
-          name: whoogle
-          envFrom:
-            - secretRef:
-                name: whoogle-secrets
+              port: http
           resources:
-            limits:
-              cpu: 1500m
-              memory: 4Gi
-      restartPolicy: Always
+            {}
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: whoogle
+  namespace: services
+  labels:
+    app.kubernetes.io/name: whoogle
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: whoogle
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 80
