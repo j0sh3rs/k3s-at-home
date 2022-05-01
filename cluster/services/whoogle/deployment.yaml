@@ -17,12 +17,17 @@ spec:
         app: whoogle
         name: whoogle
     spec:
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
       containers:
         - image: benbusby/whoogle-search
           livenessProbe:
             exec:
               command:
-                - wget -nv --tries=1 --spider http://127.0.0.1:5000/ || exit 1
+                - wget -nv --tries=1 --spider http://127.0.0.1:5000/healthz || exit 1
             failureThreshold: 2
             periodSeconds: 30
             timeoutSeconds: 5
