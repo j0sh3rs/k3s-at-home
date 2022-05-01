@@ -36,14 +36,14 @@ spec:
       WHOOGLE_CONFIG_VIEW_IMAGE: "1"
       WHOOGLE_CONFIG_URL: https://bth.wtf/
       WHOOGLE_RESULTS_PER_PAGE: "25"
-  autoscaling:
-    enabled: true
-    target: whoogle
-    minReplicas: 1
-    maxReplicas: 5
-    targetCPUUtilizationPercentage: 80
-    targetMemoryUtilizationPercentage: 80
-  resources:
-    limits:
-      cpu: 500m
-      memory: 2Gi
+    autoscaling:
+      enabled: true
+      target: whoogle
+      minReplicas: 1
+      maxReplicas: 5
+      targetCPUUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
+    resources:
+      limits:
+        cpu: 500m
+        memory: 2Gi
