@@ -2,25 +2,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: invidious
+  name: invidious-server
   namespace: services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: invidious
+      app: invidious-server
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: invidious
-        name: invidious
+        app: invidious-server
+        name: invidious-server
     spec:
-      # securityContext:
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   fsGroup: 1000
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - env:
             - name: INVIDIOUS_CONFIG

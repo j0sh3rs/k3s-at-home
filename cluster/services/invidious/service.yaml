@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: invidious
+  name: invidious-server
   namespace: services
 spec:
   selector:
-    app: redis
+    app: invidious-server
   type: ClusterIP
   ports:
     - name: web
