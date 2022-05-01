@@ -8,6 +8,7 @@ resources:
   - blocky
   - vaultwarden
   - cloudflared
+  - whoogle
   # - invidious
   # - freshrss
   # - jobs
