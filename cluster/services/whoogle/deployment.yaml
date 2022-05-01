@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoogle
+  namespace: services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoogle
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: whoogle
+        name: whoogle
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - image: benbusby/whoogle-search
+          livenessProbe:
+            exec:
+              command:
+                - wget -nv --tries=1 --spider http://127.0.0.1:5000/ || exit 1
+            failureThreshold: 2
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: 5000
+              path: /
+          name: whoogle
+          envFrom:
+            - secretRef:
+                name: whoogle-secrets
+          resources:
+            limits:
+              cpu: 1500m
+              memory: 4Gi
+      restartPolicy: Always
