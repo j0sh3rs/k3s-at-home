@@ -33,4 +33,4 @@ jobs:
           GITHUB_TOKEN: "${{ steps.generate-token.outputs.token }}"
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           YAML_CONFIG_FILE: .yamllint.yaml
-          KUBERNETES_KUBEVAL_OPTIONS: --ignore-missing-schemas
+          KUBERNETES_KUBEVAL_OPTIONS: --ignore-missing-schemas -v 1.23.6
