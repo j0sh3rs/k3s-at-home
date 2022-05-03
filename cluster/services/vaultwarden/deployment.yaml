@@ -78,6 +78,31 @@ spec:
                 secretKeyRef:
                   key: YUBICO_SECRET_KEY
                   name: vaultwarden-secrets
+            - name: SMTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: SMTP_HOST
+                  name: vaultwarden-secrets
+            - name: SMTP_FROM
+              valueFrom:
+                secretKeyRef:
+                  key: SMTP_FROM
+                  name: vaultwarden-secrets
+            - name: SMTP_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: SMTP_PORT
+                  name: vaultwarden-secrets
+            - name: SMTP_SSL
+              valueFrom:
+                secretKeyRef:
+                  key: SMTP_SSL
+                  name: vaultwarden-secrets
+            - name: SMTP_EXPLICIT_TLS
+              valueFrom:
+                secretKeyRef:
+                  key: SMTP_EXPLICIT_TLS
+                  name: vaultwarden-secrets
       restartPolicy: Always
       volumes:
         - name: vaultwarden-claim0
