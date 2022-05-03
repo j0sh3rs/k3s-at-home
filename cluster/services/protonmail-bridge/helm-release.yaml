@@ -17,8 +17,26 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    controller:
+      strategy: RollingUpdate
+      rollingUpdate:
+        unavailable: 1
+        surge: 2
     image:
       tag: build
       pullPolicy: Always
     env:
       TZ: America/New_York
+    persistence:
+      config:
+        enabled: true
+        mountPath: /root
+        storageClass: nfs-client
+        accessMode: ReadWriteMany
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 200m
+        memory: 128Mi

@@ -10,7 +10,7 @@ resources:
   - cloudflared
   - whoogle
   - invidious
-  - protonmail-bridge
+  # - protonmail-bridge
   # - pgadmin
   # - pgbackups
   # - vikunja
