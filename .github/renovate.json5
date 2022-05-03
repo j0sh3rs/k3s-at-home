@@ -82,16 +82,6 @@
       ],
       "commitMessageExtra": "to {{newVersion}}"
     },
-    // custom versioning
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>.*)$",
-      "matchPackageNames": [
-        "blakeblackshear/frigate"
-      ]
-    },
     {
       "matchDatasources": [
         "github-tags",
