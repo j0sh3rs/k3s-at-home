@@ -1,5 +1,4 @@
 {
-  "enabled": true,
   "extends": [
     ":enableRenovate",
     "config:base",
@@ -9,6 +8,7 @@
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
+    "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge",
     "github>j0sh3rs/k3s-at-home//.github/renovate/labels",
     "github>j0sh3rs/k3s-at-home//.github/renovate/semanticCommits"
   ],
@@ -17,7 +17,6 @@
   "repositories": ["j0sh3rs/k3s-at-home"],
   "onboarding": false,
   "requireConfig": false,
-  "automerge": true,
   "gitAuthor": "Barrybot <github@beholdtheurricane.com>",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": [
