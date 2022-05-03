@@ -100,16 +100,16 @@ spec:
                 secretKeyRef:
                   key: SMTP_SSL
                   name: vaultwarden-secrets
-            - name: SMTP_EXPLICIT_TLS
-              valueFrom:
-                secretKeyRef:
-                  key: SMTP_EXPLICIT_TLS
-                  name: vaultwarden-secrets
-            - name: SMTP_SECURITY
-              valueFrom:
-                secretKeyRef:
-                  key: SMTP_SECURITY
-                  name: vaultwarden-secrets
+            # - name: SMTP_EXPLICIT_TLS
+            #   valueFrom:
+            #     secretKeyRef:
+            #       key: SMTP_EXPLICIT_TLS
+            #       name: vaultwarden-secrets
+            # - name: SMTP_SECURITY
+            #   valueFrom:
+            #     secretKeyRef:
+            #       key: SMTP_SECURITY
+            #       name: vaultwarden-secrets
             - name: SMTP_USERNAME
               valueFrom:
                 secretKeyRef:
