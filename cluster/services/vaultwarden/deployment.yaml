@@ -5,12 +5,14 @@ metadata:
   name: vaultwarden
   namespace: services
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: vaultwarden
   strategy:
     type: RollingUpdate
+    maxUnavailable: 1
+    maxSurge: 3
   template:
     metadata:
       labels:
