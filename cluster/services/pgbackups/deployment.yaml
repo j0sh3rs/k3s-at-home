@@ -24,7 +24,7 @@ spec:
           image: prodrigestivill/postgres-backup-local:14
           env:
             - name: POSTGRES_HOST
-              value: postgresql.services.svc.cluster.local.
+              value: postgres.services.svc.cluster.local.
             - name: POSTGRES_DB
               value: postgres,vaultwarden
             - name: POSTGRES_USER
