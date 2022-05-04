@@ -19,23 +19,18 @@ spec:
         app.kubernetes.io/instance: pgbackups
         app.kubernetes.io/name: pgbackups
     spec:
-      imagePullSecrets:
-        - name: regcred
       containers:
         - name: pgbackups
           image: prodrigestivill/postgres-backup-local:14
-          #image: registry.${SECRET_CLUSTER_DOMAIN}/homelab/postgres-backup-local:1.0.0
           env:
             - name: POSTGRES_HOST
-              value: postgresql-kube.data.svc.cluster.local.
+              value: postgresql.services.svc.cluster.local.
             - name: POSTGRES_DB
-              value: authelia,drone,freshrss,gitea,hass,healthchecks,joplin,lychee,postgres,recipes,sharry,vaultwarden,vikunja,wallabag
+              value: postgres,vaultwarden
             - name: POSTGRES_USER
               value: postgres
-            - name: POSTGRES_PASSWORD
-              value: ${SECRET_POSTGRESQL_KUBE_POSTGRES_PASSWORD}
             - name: POSTGRES_EXTRA_OPTS
-              value: "-Z9 --schema=public --blobs"
+              value: "-Z9 --blobs"
             - name: SCHEDULE
               value: "@daily"
             - name: BACKUP_KEEP_DAYS
@@ -43,15 +38,21 @@ spec:
             - name: BACKUP_KEEP_WEEKS
               value: "4"
             - name: BACKUP_KEEP_MONTHS
-              value: "3"
-            - name: HEALTHCHECK_PORT
-              value: "8080"
-            - name: POST_BACKUP_HOOK
-              value: "curl -m 10 --retry 5 http://healthchecks.monitoring.svc.cluster.local.:8000/ping/c88641a5-12f2-4f32-ab9c-5a7d122a229e"
+              value: "2"
+            - name: TZ
+              value: "America/New_York"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: postgres-secrets
           resources:
             requests:
               cpu: 150m
               memory: 256Mi
+            limits:
+              cpu: 2
+              memory: 4G
           ports:
             - containerPort: 8080
           volumeMounts:

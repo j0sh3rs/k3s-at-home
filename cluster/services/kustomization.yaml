@@ -11,6 +11,6 @@ resources:
   - whoogle
   - invidious
   - protonmail-bridge
+  - pgbackups
   # - pgadmin
-  # - pgbackups
   # - vikunja
