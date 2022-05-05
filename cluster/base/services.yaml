@@ -7,9 +7,10 @@ metadata:
 spec:
   interval: 5m0s
   dependsOn:
-    - name: core
+    - name: base-custom
   path: ./cluster/services
-  prune: true
+  prune: false
+  wait: true
   validation: client
   sourceRef:
     kind: GitRepository
