@@ -104,11 +104,11 @@ spec:
                 name: vikunja-secrets
           - name: VIKUNJA_AUTH_OPENID_ENABLED
             value: "false"
-          - name: VIKUNJA_AUTH_OPENID_PROVIDERS
-            valueFrom:
-              secretKeyRef:
-                key: VIKUNJA_AUTH_OPENID_PROVIDERS
-                name: vikunja-secrets
+          # - name: VIKUNJA_AUTH_OPENID_PROVIDERS
+          #   valueFrom:
+          #     secretKeyRef:
+          #       key: VIKUNJA_AUTH_OPENID_PROVIDERS
+          #       name: vikunja-secrets
         volumeMounts:
           - name: files
             mountPath: /app/vikunja/files
