@@ -12,6 +12,6 @@ resources:
   - invidious
   - protonmail-bridge
   - pgbackups
-  - foundry
   - pgadmin
+  # - foundry
   # - vikunja
