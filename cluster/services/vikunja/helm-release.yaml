@@ -34,8 +34,10 @@ spec:
       config:
         enabled: true
         type: secret
-        subPath: config
+        name: config
         existingClaim: vikunja-secrets
+        mountPath: /app/vikunja/
+        subPath: config.yml
     service:
       main:
         port:
