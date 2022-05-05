@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    env:
+      email: j0sh3rs
     image:
       tag: latest
     service:
