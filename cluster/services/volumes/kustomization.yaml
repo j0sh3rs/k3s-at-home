@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - nfs-backups-data.yaml
   - vaultwarden-data.yaml
-  - foundry-storage.yaml
+  # - foundry-storage.yaml
