@@ -10,7 +10,6 @@ spec:
     - name: base-custom
   path: ./cluster/services
   prune: false
-  wait: true
   validation: client
   sourceRef:
     kind: GitRepository
