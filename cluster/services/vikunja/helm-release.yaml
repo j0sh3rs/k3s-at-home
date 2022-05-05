@@ -56,6 +56,59 @@ spec:
               secretKeyRef:
                 key: POSTGRES_PASSWORD
                 name: vikunja-secrets
+          - name: VIKUNJA_REDIS_ENABLED
+            value: 1
+          - name: VIKUNJA_REDIS_HOST
+            value: 'redis:6379'
+          - name: VIKUNJA_REDIS_DB
+            value: 1
+          - name: VIKUNJA_CACHE_ENABLED
+            value: 1
+          - name: VIKUNJA_CACHE_TYPE
+            value: redis
+          - name: VIKUNJA_METRICS_ENABLED
+            value: true
+          - name: VIKUNJA_SERVICE_FRONTENDURL
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_SERVICE_FRONTENDURL
+                name: vikunja-secrets
+          - name: VIKUNJA_SERVICE_TIMEZONE
+            value: "America/New_York"
+          - name: VIKUNJA_MAILER_ENABLED
+            value: true
+          - name: VIKUNJA_MAILER_HOST
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_MAILER_HOST
+                name: vikunja-secrets
+          - name: VIKUNJA_MAILER_PORT
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_MAILER_PORT
+                name: vikunja-secrets
+          - name: VIKUNJA_MAILER_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_MAILER_USERNAME
+                name: vikunja-secrets
+          - name: VIKUNJA_MAILER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_MAILER_PASSWORD
+                name: vikunja-secrets
+          - name: VIKUNJA_MAILER_FROMEMAIL
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_MAILER_FROMEMAIL
+                name: vikunja-secrets
+          - name: VIKUNJA_AUTH_OPENID_ENABLED
+            value: false
+          - name: VIKUNJA_AUTH_OPENID_PROVIDERS
+            valueFrom:
+              secretKeyRef:
+                key: VIKUNJA_AUTH_OPENID_PROVIDERS
+                name: vikunja-secrets
         volumeMounts:
           - name: files
             mountPath: /app/vikunja/files
