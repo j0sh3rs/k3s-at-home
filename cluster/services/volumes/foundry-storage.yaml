@@ -1,0 +1,36 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: foundry-storage
+provisioner: nfs
+reclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: foundry-storage
+  namespace: services
+spec:
+  storageClassName: foundry-storage
+  capacity:
+    storage: 1Mi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: "192.168.35.5"
+    path: "/volume1/k3s/volumes/foundry"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: foundry-storage
+  namespace: services
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: foundry-storage
+  resources:
+    requests:
+      storage: 1Mi
