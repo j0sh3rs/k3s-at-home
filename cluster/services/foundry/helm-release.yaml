@@ -1,0 +1,39 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: foundry
+  namespace: services
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: foundryvtt
+      version: 3.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: felddy/foundryvtt
+      tag: 9.251.0
+      pullPolicy: Always
+
+    persistence:
+      files:
+        enabled: true
+        existingClaim: foundry-storage
+        mountpath: /data
+
+    env:
+      TZ: "America/New_York"
+      FOUNDRY_HOSTNAME: "rpg.bth.wtf"
+      FOUNDRY_MINIFY_STATIC_FILES: "true"
+      TIMEZONE: "America/New_York"
+      CONTAINER_CACHE: "/data"
+
+    nodeSelector:
+      kubernetes.io/arch: "amd64"
