@@ -34,6 +34,8 @@ spec:
       FOUNDRY_MINIFY_STATIC_FILES: "true"
       TIMEZONE: "America/New_York"
       CONTAINER_CACHE: "/data"
+      FOUNDRY_UID: "421"
+      FOUNDRY_GID: "421"
 
     nodeSelector:
       kubernetes.io/arch: "amd64"
