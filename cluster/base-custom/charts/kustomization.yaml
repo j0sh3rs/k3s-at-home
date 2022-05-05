@@ -9,3 +9,4 @@ resources:
   - nfs-subdir-external-provisioner.yaml
   - datadog.yaml
   - stakater-charts.yaml
+  - runix-charts.yaml
