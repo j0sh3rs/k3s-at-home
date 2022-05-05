@@ -67,7 +67,7 @@ spec:
           - name: VIKUNJA_CACHE_TYPE
             value: redis
           - name: VIKUNJA_METRICS_ENABLED
-            value: true
+            value: "true"
           - name: VIKUNJA_SERVICE_FRONTENDURL
             valueFrom:
               secretKeyRef:
@@ -76,7 +76,7 @@ spec:
           - name: VIKUNJA_SERVICE_TIMEZONE
             value: "America/New_York"
           - name: VIKUNJA_MAILER_ENABLED
-            value: true
+            value: "true"
           - name: VIKUNJA_MAILER_HOST
             valueFrom:
               secretKeyRef:
@@ -103,7 +103,7 @@ spec:
                 key: VIKUNJA_MAILER_FROMEMAIL
                 name: vikunja-secrets
           - name: VIKUNJA_AUTH_OPENID_ENABLED
-            value: false
+            value: "false"
           - name: VIKUNJA_AUTH_OPENID_PROVIDERS
             valueFrom:
               secretKeyRef:
