@@ -5,7 +5,7 @@ resources:
   - volumes
   - postgresql
   - redis
-  - blocky
+  # - blocky
   - vaultwarden
   - cloudflared
   - whoogle
