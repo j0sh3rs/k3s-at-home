@@ -21,21 +21,20 @@ spec:
       repository: felddy/foundryvtt
       tag: 9.269.0
       pullPolicy: Always
-
     persistence:
       data:
         enabled: true
         existingClaim: foundry-storage
         mountpath: /data
-
+      cache:
+        enabled: true
+        existingClaim: foundry-cache
+        mountpath: /cache
     env:
       TZ: "America/New_York"
       FOUNDRY_HOSTNAME: "rpg.bth.wtf"
       FOUNDRY_MINIFY_STATIC_FILES: "true"
       TIMEZONE: "America/New_York"
-      CONTAINER_CACHE: "/data"
-      FOUNDRY_UID: "421"
-      FOUNDRY_GID: "421"
-
+      CONTAINER_CACHE: "/cache"
     nodeSelector:
       kubernetes.io/arch: "amd64"
