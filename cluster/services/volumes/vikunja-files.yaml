@@ -4,12 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: vikunja-files
   namespace: services
-  labels:
-    kasten-io/backup: "true"
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: rook-ceph-block
+    - ReadWriteMany
+  storageClassName: nfs-client
   resources:
     requests:
-      storage: 1Gi
+      storage: 1Mi
