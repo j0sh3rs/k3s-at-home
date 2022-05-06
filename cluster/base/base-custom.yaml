@@ -5,10 +5,9 @@ metadata:
   name: base-custom
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   path: ./cluster/base-custom
   prune: false
-  validation: client
   sourceRef:
     kind: GitRepository
     name: flux-system
