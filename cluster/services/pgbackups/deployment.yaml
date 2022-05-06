@@ -25,6 +25,8 @@ spec:
           env:
             - name: POSTGRES_HOST
               value: postgres.services.svc.cluster.local.
+            - name: POSTGRES_DB
+              value: postgres,vaultwarden
             - name: POSTGRES_CLUSTER
               value: "TRUE"
             - name: POSTGRES_USER
