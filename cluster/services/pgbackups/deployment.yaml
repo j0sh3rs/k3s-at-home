@@ -26,7 +26,7 @@ spec:
             - name: POSTGRES_HOST
               value: postgres.services.svc.cluster.local.
             - name: POSTGRES_CLUSTER
-              value: true
+              value: "TRUE"
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PORT
