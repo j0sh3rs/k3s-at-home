@@ -34,7 +34,7 @@ spec:
             - name: POSTGRES_PORT
               value: '5432'
             - name: POSTGRES_EXTRA_OPTS
-              value: "-Z9 --blobs"
+              value: ""
             - name: SCHEDULE
               value: "@daily"
             - name: BACKUP_KEEP_DAYS
