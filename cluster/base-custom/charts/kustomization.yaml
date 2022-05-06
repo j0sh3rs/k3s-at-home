@@ -10,3 +10,4 @@ resources:
   - datadog.yaml
   - stakater-charts.yaml
   - runix-charts.yaml
+  - prometheus-community-charts.yaml
