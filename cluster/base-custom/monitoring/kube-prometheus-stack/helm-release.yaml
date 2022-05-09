@@ -25,6 +25,7 @@ spec:
       retries: 5
   values:
     alertmanager:
+      enabled: false
       config:
         global:
           resolve_timeout: 5m
