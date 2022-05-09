@@ -86,10 +86,6 @@ spec:
             targetLabel: instance
     grafana:
       defaultDashboardsTimezone: "America/New_York"
-      admin:
-        existingSecret: "grafana-secrets"
-        userKey: USERNAME
-        passwordKey: PASSWORD
       dashboards:
         default:
           flux-cluster:
@@ -142,9 +138,6 @@ spec:
           # type: alertmanager
           access: proxy
           url: http://alertmanager-operated:9093/
-      grafana.ini:
-        feature_toggles:
-          enable: ngalert
       ingress:
         enabled: false
     kubeEtcd:
