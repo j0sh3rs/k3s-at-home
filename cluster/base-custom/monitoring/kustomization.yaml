@@ -6,5 +6,5 @@ resources:
   - botkube
   - healthchecks
   # - kube-prometheus-stack
-  # - thanos
+  - thanos
   # - uptime-kuma

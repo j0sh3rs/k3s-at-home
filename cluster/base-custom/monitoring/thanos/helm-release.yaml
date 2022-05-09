@@ -25,15 +25,6 @@ spec:
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
-      ingress:
-        enabled: true
-        hostname: "thanos.${SECRET_CLUSTER_DOMAIN}"
-        annotations:
-          nginx.ingress.kubernetes.io/auth-url: "http://authelia.networking.svc.cluster.local/api/verify"
-          nginx.ingress.kubernetes.io/auth-signin: "https://login.${SECRET_CLUSTER_DOMAIN}"
-          # traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          # traefik.ingress.kubernetes.io/router.middlewares: networking-forward-auth@kubernetescrd
-        tls: true
     queryFrontend:
       enabled: false
     bucketweb:
@@ -51,22 +42,4 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    objstoreConfig: |-
-      type: s3
-      config:
-        bucket: thanos
-        endpoint: ${SECRET_MINIO_ENDPOINT}
-        access_key: "${SECRET_MINIO_ACCESS_KEY}"
-        secret_key: "${SECRET_MINIO_SECRET_KEY}"
-        insecure: false
-
-  postRenderers:
-    - kustomize:
-        patchesJson6902:
-          - target:
-              kind: Ingress
-              name: thanos-query
-            patch:
-              - op: add
-                path: /spec/ingressClassName
-                value: nginx
+    existingObjstoreSecret: "thanos-secrets"

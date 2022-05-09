@@ -26,8 +26,7 @@
   "ignorePaths": [
     "cluster/base/",
     "**/backup-job.yaml",
-    "**/trash-updater-job.yaml",
-    "**/travelstories/**"
+    "**/trash-updater-job.yaml"
   ],
   // set up renovate managers
   "docker-compose": {
@@ -81,6 +80,15 @@
         "docker"
       ],
       "commitMessageExtra": "to {{newVersion}}"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "versioning": "regex:^version-v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
+      "matchPackageNames": [
+        "ghcr.io/linuxserver/healthchecks"
+      ]
     },
     {
       "matchDatasources": [

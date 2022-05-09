@@ -2,9 +2,13 @@
 
 <img align="left" width="144px" height="144px" src="https://camo.githubusercontent.com/5b298bf6b0596795602bd771c5bddbb963e83e0f/68747470733a2f2f692e696d6775722e636f6d2f7031527a586a512e706e67"/>
 
-## My home Kubernetes cluster :sailboat:
+## My home Kubernetes cluster :muscle:
 
 ... managed with Flux and Renovate, encrypted with Age :robot:
+
+This repo is shamelessly stolen and modified from the great work that [Auricom](https://github.com/auricom/home-cluster) has done on his homelab.
+
+Modified to my needs, updated to use Age instead of PGP, and using cloudflared instead of nginx for ingress.
 
 <br/>
 <br/>
