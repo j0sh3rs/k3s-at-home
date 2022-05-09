@@ -190,7 +190,7 @@ spec:
           image: quay.io/thanos/thanos:v0.26.0
           version: v0.25.2
           objectStorageConfig:
-            name: thanos-objstore-secret
+            name: thanos-secrets
             key: objstore.yml
         additionalScrapeConfigs:
           # - job_name: "opnsense"
