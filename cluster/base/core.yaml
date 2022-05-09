@@ -9,7 +9,7 @@ spec:
   dependsOn:
     - name: base-custom
   path: ./cluster/core
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system

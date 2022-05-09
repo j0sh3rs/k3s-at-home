@@ -3,8 +3,13 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - blackbox-exporter
+<<<<<<< HEAD
   # - botkube
   # - healthchecks
+=======
+  - botkube
+  - healthchecks
+>>>>>>> 6d94c14 (Healthchecks and tuning)
   # - kube-prometheus-stack
   # - thanos
   # - uptime-kuma
