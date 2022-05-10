@@ -39,7 +39,6 @@ spec:
     serviceMonitor:
       enabled: true
       defaults:
-        additionalRelabeling: []
         labels:
           release: prometheus
         interval: 2m
