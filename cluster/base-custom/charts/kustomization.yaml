@@ -11,3 +11,4 @@ resources:
   - stakater-charts.yaml
   - runix-charts.yaml
   - prometheus-community-charts.yaml
+  - rook-ceph.yaml
