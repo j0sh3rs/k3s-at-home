@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 10m0s
   path: ./cluster/base-custom
-  wait: true
   prune: true
   sourceRef:
     kind: GitRepository
