@@ -18,7 +18,6 @@ spec:
       interval: 5m
   values:
     allowIcmp: true
-
     config:
       modules:
         icmp:
@@ -40,6 +39,7 @@ spec:
     serviceMonitor:
       enabled: true
       defaults:
+        additionalRelabeling: []
         labels:
           release: prometheus
         interval: 2m
@@ -48,7 +48,7 @@ spec:
         - name: synology
           url: "192.168.35.5"
           module: icmp
-        - name: rpi01
+        - name: rpi
           url: "192.168.35.8"
           module: icmp
         - name: mbp
