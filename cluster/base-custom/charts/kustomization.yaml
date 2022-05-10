@@ -12,3 +12,4 @@ resources:
   - runix-charts.yaml
   - prometheus-community-charts.yaml
   - rook-ceph.yaml
+  - vmware-tanzu.yaml
