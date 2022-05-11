@@ -5,3 +5,4 @@ resources:
   - flux-system
   - system-upgrade
   - rook-ceph
+  - longhorn
