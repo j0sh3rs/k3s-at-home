@@ -84,61 +84,62 @@ spec:
               - node
             targetLabel: instance
     grafana:
-      defaultDashboardsTimezone: "America/New_York"
-      dashboards:
-        default:
-          flux-cluster:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
-            datasource: Prometheus
-          flux-control-plane:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
-            datasource: Prometheus
-      deploymentStrategy:
-        type: Recreate
-      persistence:
-        enabled: false
-      envFromSecret: "grafana-secrets"
-      plugins:
-        - natel-discrete-panel
-        - pr0ps-trackmap-panel
-        - grafana-piechart-panel
-        - vonage-status-panel
-        - grafana-worldmap-panel
-        - grafana-clock-panel
-        - camptocamp-prometheus-alertmanager-datasource
-        - cloudflare-app
-      dashboardProviders:
-        dashboardproviders.yaml:
-          apiVersion: 1
-          providers:
-            - name: "default"
-              orgId: 1
-              folder: ""
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/default
-      sidecar:
-        datasources:
-          enabled: true
-          defaultDatasourceEnabled: false
-        dashboards:
-          enabled: true
-          searchNamespace: ALL
-      additionalDataSources:
-        - name: Prometheus
-          type: prometheus
-          access: proxy
-          url: http://thanos-query:9090/
-          isDefault: true
-        - name: Alertmanager
-          type: camptocamp-prometheus-alertmanager-datasource
-          # type: alertmanager
-          access: proxy
-          url: http://alertmanager-operated:9093/
-      ingress:
-        enabled: false
+      enabled: false
+    #   defaultDashboardsTimezone: "America/New_York"
+    #   dashboards:
+    #     default:
+    #       flux-cluster:
+    #         url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+    #         datasource: Prometheus
+    #       flux-control-plane:
+    #         url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+    #         datasource: Prometheus
+    #   deploymentStrategy:
+    #     type: Recreate
+    #   persistence:
+    #     enabled: false
+    #   envFromSecret: "grafana-secrets"
+    #   plugins:
+    #     - natel-discrete-panel
+    #     - pr0ps-trackmap-panel
+    #     - grafana-piechart-panel
+    #     - vonage-status-panel
+    #     - grafana-worldmap-panel
+    #     - grafana-clock-panel
+    #     - camptocamp-prometheus-alertmanager-datasource
+    #     - cloudflare-app
+    #   dashboardProviders:
+    #     dashboardproviders.yaml:
+    #       apiVersion: 1
+    #       providers:
+    #         - name: "default"
+    #           orgId: 1
+    #           folder: ""
+    #           type: file
+    #           disableDeletion: false
+    #           editable: true
+    #           options:
+    #             path: /var/lib/grafana/dashboards/default
+    #   sidecar:
+    #     datasources:
+    #       enabled: true
+    #       defaultDatasourceEnabled: false
+    #     dashboards:
+    #       enabled: true
+    #       searchNamespace: ALL
+    #   additionalDataSources:
+    #     - name: Prometheus
+    #       type: prometheus
+    #       access: proxy
+    #       url: http://thanos-query:9090/
+    #       isDefault: true
+    #     - name: Alertmanager
+    #       type: camptocamp-prometheus-alertmanager-datasource
+    #       # type: alertmanager
+    #       access: proxy
+    #       url: http://alertmanager-operated:9093/
+    #   ingress:
+    #     enabled: false
     kubeEtcd:
       enabled: false
     kubeControllerManager:
