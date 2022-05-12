@@ -7,7 +7,6 @@ resources:
   - kubernetes-sigs-descheduler-charts.yaml
   - metallb.yaml
   - nfs-subdir-external-provisioner.yaml
-  - datadog.yaml
   - stakater-charts.yaml
   - runix-charts.yaml
   - prometheus-community-charts.yaml
