@@ -142,8 +142,8 @@ spec:
           url: http://alertmanager-operated:9093/
       ingress:
         enabled: false
-      service:
-        type: LoadBalancer
+      # service:
+      #   type: LoadBalancer
     kubeEtcd:
       enabled: false
     kubeControllerManager:
