@@ -6,7 +6,7 @@ resources:
   - postgresql
   - redis
   - blocky
-  # - vaultwarden
+  - vaultwarden
   - cloudflared
   - whoogle
   - invidious
