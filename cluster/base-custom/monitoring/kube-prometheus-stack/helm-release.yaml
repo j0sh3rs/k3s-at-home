@@ -39,9 +39,12 @@ spec:
       alertmanagerSpec:
         replicas: 2
         podAntiAffinity: hard
+        nodeSelector:
+          kubernetes.io/arch: "amd64"
         storage:
           volumeClaimTemplate:
             spec:
+              storageClassName: longhorn
               resources:
                 requests:
                   storage: 10Gi
@@ -160,6 +163,8 @@ spec:
             memory: 6000Mi
         replicas: 2
         replicaExternalLabelName: "replica"
+        nodeSelector:
+          kubernetes.io/arch: "amd64"
         podAntiAffinity: hard
         ruleSelector: {}
         ruleNamespaceSelector: {}
