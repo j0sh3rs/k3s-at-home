@@ -12,7 +12,7 @@ resources:
   - invidious
   - protonmail-bridge
   - pgbackups
-  - pgadmin
+  # - pgadmin
   # - velero
   # - vikunja
   # - foundry
