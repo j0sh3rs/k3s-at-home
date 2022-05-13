@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    global:
+      storageClass: longhorn
     query:
       enabled: true
       nodeSelector:
@@ -37,18 +39,54 @@ spec:
     queryFrontend:
       enabled: false
     bucketweb:
+      nodeSelector:
+        kubernetes.io/arch: "amd64"
       enabled: true
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 400m
+        limits:
+          memory: 2Gi
+          cpu: 2
     compactor:
+      nodeSelector:
+        kubernetes.io/arch: "amd64"
       enabled: true
       strategyType: Recreate
       persistence:
         storageClass: longhorn
         size: 30Gi
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 400m
+        limits:
+          memory: 2Gi
+          cpu: 2
     storegateway:
+      nodeSelector:
+        kubernetes.io/arch: "amd64"
       enabled: true
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 400m
+        limits:
+          memory: 2Gi
+          cpu: 2
     ruler:
       enabled: false
     metrics:
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 400m
+        limits:
+          memory: 2Gi
+          cpu: 2
+      nodeSelector:
+        kubernetes.io/arch: "amd64"
       enabled: true
       serviceMonitor:
         enabled: true
