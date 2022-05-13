@@ -125,7 +125,7 @@ spec:
       sidecar:
         datasources:
           enabled: true
-          defaultDatasourceEnabled: false
+          defaultDatasourceEnabled: true
         dashboards:
           enabled: true
           searchNamespace: ALL
@@ -142,8 +142,6 @@ spec:
           url: http://alertmanager-operated:9093/
       ingress:
         enabled: false
-      # service:
-      #   type: LoadBalancer
     kubeEtcd:
       enabled: false
     kubeControllerManager:
@@ -209,43 +207,6 @@ spec:
           #     - targets: ["${LOCAL_LAN_TRUENAS_REMOTE}:9273"]
           #       labels:
           #         app: "truenas-remote"
-          # Example scrape config for probing ingresses via the Blackbox Exporter.
-          #
-          # The relabeling allows the actual ingress scrape endpoint to be configured
-          # via the following annotations:
-          #
-          # * `prometheus.io/probe`: Only probe ingresses that have a value of `true`
-          # - job_name: "kubernetes-ingresses"
-          #   metrics_path: /probe
-          #   scrape_interval: 60s
-          #   params:
-          #     module: [http_2xx]
-          #   kubernetes_sd_configs:
-          #     - role: ingress
-          #   relabel_configs:
-          #     - source_labels:
-          #         [__meta_kubernetes_ingress_annotation_prometheus_io_probe]
-          #       action: keep
-          #       regex: true
-          #     - source_labels:
-          #         [
-          #           __meta_kubernetes_ingress_scheme,
-          #           __address__,
-          #           __meta_kubernetes_ingress_path,
-          #         ]
-          #       regex: (.+);(.+);(.+)
-          #       replacement: ${1}://${2}${3}
-          #       target_label: __param_target
-          #     - target_label: __address__
-          #       replacement: blackbox-exporter-prometheus-blackbox-exporter:9115
-          #     - source_labels: [__param_target]
-          #       target_label: instance
-          #     - action: labelmap
-          #       regex: __meta_kubernetes_ingress_label_(.+)
-          #     - source_labels: [__meta_kubernetes_namespace]
-          #       target_label: kubernetes_namespace
-          #     - source_labels: [__meta_kubernetes_ingress_name]
-          #       target_label: kubernetes_name
           - job_name: "kubernetes-services-http"
             metrics_path: /probe
             scrape_interval: 60s
