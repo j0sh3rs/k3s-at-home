@@ -19,12 +19,21 @@ spec:
   values:
     query:
       enabled: true
-      replicaCount: 2
+      nodeSelector:
+        kubernetes.io/arch: "amd64"
+      replicaCount: 1
       replicaLabels:
         - replica
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 400m
+        limits:
+          memory: 2Gi
+          cpu: 2
     queryFrontend:
       enabled: false
     bucketweb:
