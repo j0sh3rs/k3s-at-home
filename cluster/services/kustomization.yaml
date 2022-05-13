@@ -9,7 +9,7 @@ resources:
   # - vaultwarden
   - cloudflared
   - whoogle
-  - invidious
+  # - invidious
   - protonmail-bridge
   - pgbackups
   - pgadmin
