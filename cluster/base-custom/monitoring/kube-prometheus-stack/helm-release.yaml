@@ -184,7 +184,6 @@ spec:
                   storage: 10Gi
         thanos:
           image: quay.io/thanos/thanos:v0.26.0
-          version: v0.26.0
           objectStorageConfig:
             name: thanos-secrets
             key: objstore.yml
