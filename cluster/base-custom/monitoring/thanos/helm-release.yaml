@@ -33,6 +33,7 @@ spec:
       enabled: true
       strategyType: Recreate
       persistence:
+        storageClass: longhorn
         size: 30Gi
     storegateway:
       enabled: true
