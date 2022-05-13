@@ -125,21 +125,21 @@ spec:
       sidecar:
         datasources:
           enabled: true
-          defaultDatasourceEnabled: false
+          defaultDatasourceEnabled: true
         dashboards:
           enabled: true
           searchNamespace: ALL
-      additionalDataSources:
-        - name: Prometheus
-          type: prometheus
-          access: proxy
-          url: http://thanos-query:9090/
-          isDefault: true
-        - name: Alertmanager
-          type: camptocamp-prometheus-alertmanager-datasource
-          # type: alertmanager
-          access: proxy
-          url: http://alertmanager-operated:9093/
+      # additionalDataSources:
+      #   - name: Prometheus
+      #     type: prometheus
+      #     access: proxy
+      #     url: http://thanos-query:9090/
+      #     isDefault: false
+      #   - name: Alertmanager
+      #     type: camptocamp-prometheus-alertmanager-datasource
+      #     # type: alertmanager
+      #     access: proxy
+      #     url: http://alertmanager-operated:9093/
       ingress:
         enabled: false
     kubeEtcd:
