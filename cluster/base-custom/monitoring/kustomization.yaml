@@ -5,5 +5,5 @@ resources:
   - blackbox-exporter
   - botkube
   - healthchecks
-  - kube-prometheus-stack
-  - thanos
+  # - kube-prometheus-stack
+  #  thanos
