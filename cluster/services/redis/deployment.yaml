@@ -30,7 +30,7 @@ spec:
             exec:
               command:
                 - redis-cli ping | grep PONG
-          args: ["--appendonly", "yes"]
+          # args: ["--appendonly", "yes"]
           resources:
             limits:
               cpu: 500m
