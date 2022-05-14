@@ -87,7 +87,7 @@ spec:
               - node
             targetLabel: instance
     grafana:
-      enabled: false
+      enabled: true
       defaultDashboardsTimezone: "America/New_York"
       dashboards:
         default:
