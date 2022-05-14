@@ -13,3 +13,4 @@ resources:
   - rook-ceph.yaml
   - vmware-tanzu.yaml
   - longhorn.yaml
+  - node-feature-discovery.yaml
