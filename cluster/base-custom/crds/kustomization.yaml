@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - external-snapshotter
   - kube-prometheus-stack
-  # - rook-ceph
