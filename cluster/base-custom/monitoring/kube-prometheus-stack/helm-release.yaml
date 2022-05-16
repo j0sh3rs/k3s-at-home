@@ -127,7 +127,7 @@ spec:
                 path: /var/lib/grafana/dashboards/default
       sidecar:
         datasources:
-          enabled: true
+          enabled: false
           defaultDatasourceEnabled: false
         dashboards:
           enabled: true

@@ -7,3 +7,4 @@ resources:
   - healthchecks
   - kube-prometheus-stack
   - thanos
+  - unifi-poller
