@@ -45,4 +45,4 @@ spec:
           memory: 512Mi
       envFrom:
         - secretRef:
-          name: grafana-secrets
+            name: grafana-secrets
