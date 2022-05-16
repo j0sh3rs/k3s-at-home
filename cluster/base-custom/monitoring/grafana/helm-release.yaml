@@ -22,11 +22,11 @@ spec:
         tag: 4.4.1-debian-10-r6
       resources:
         limits:
+          cpu: 300m
+          memory: 512Mi
+        requests:
           cpu: 100m
           memory: 128Mi
-        requests:
-          cpu: 300m
-          memory: 256Mi
       prometheus:
         serviceMonitor:
           enabled: true
