@@ -5,6 +5,6 @@ resources:
   - blackbox-exporter
   - botkube
   - healthchecks
-  # - kube-prometheus-stack
+  - kube-prometheus-stack
   - thanos
   - unifi-poller
