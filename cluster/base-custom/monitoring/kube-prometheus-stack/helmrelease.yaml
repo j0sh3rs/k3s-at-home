@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -8,7 +7,6 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       version: 35.2.0
       sourceRef:
@@ -16,97 +14,77 @@ spec:
         name: prometheus-community-charts
         namespace: flux-system
       interval: 5m
-
   install:
     createNamespace: true
     remediation:
       retries: 5
-
   upgrade:
     remediation:
       retries: 5
-
   values:
     fullnameOverride: prometheus
-
     alertmanager:
-      config:
-        global:
-          slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
-          resolve_timeout: 5m
-        receivers:
+      receivers:
         - name: 'null'
-        - name: 'discord'
-          slack_configs:
-          - channel: '#prometheus'
-            icon_url: https://avatars3.githubusercontent.com/u/3380462
-            username: 'Prometheus'
-            send_resolved: true
-            title: |-
-              [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ if ne .CommonAnnotations.summary ""}}{{ .CommonAnnotations.summary }}{{ else }}{{ .CommonLabels.alertname }}{{ end }}
-            text: >-
-              {{ range .Alerts -}}
-                **Alert:** {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-              **Description:** {{ if ne .Annotations.description ""}}{{ .Annotations.description }}{{else}}N/A{{ end }}
-              **Details:**
-                {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
-                {{ end }}
-              {{ end }}
-        route:
-          group_by: ['alertname', 'job']
-          group_wait: 30s
-          group_interval: 5m
-          repeat_interval: 6h
-          receiver: 'discord'
-          routes:
-          - receiver: 'null'
-            match:
-              alertname: Watchdog
-          - receiver: 'discord'
-            match_re:
-              severity: critical|warning|error
-            continue: true
-        inhibit_rules:
+      inhibit_rules:
         - source_match:
-            severity: 'critical'
+            severity: critical
           target_match:
-            severity: 'warning'
-          equal: ['alertname', 'namespace']
+            severity: warning
+          equal:
+            - alertname
+            - namespace
       alertmanagerSpec:
+        replicas: 1
+        nodeSelector:
+          kubernetes.io/arch: amd64
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: "longhorn"
+              storageClassName: longhorn
               resources:
                 requests:
-                  storage: 1Gi
-
+                  storage: 10Gi
+    prometheusOperator:
+      createCustomResource: true
+      prometheusConfigReloader:
+        resources:
+          requests:
+            cpu: 150m
+            memory: 50Mi
+          limits:
+            cpu: 300m
+            memory: 50Mi
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
-
     grafana:
-      # enabled: false
-      # forceDeployDashboards: true
-      # sidecar:
-      #   dashboards:
-      #     multicluster:
-      #       etcd:
-      #         enabled: true
       enabled: true
-      defaultDashboardsTimezone: "America/New_York"
+      defaultDashboardsTimezone: America/New_York
       dashboards:
         default:
           flux-cluster:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+            url: >-
+              https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
             datasource: Prometheus
           flux-control-plane:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+            url: >-
+              https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
             datasource: Prometheus
       deploymentStrategy:
         type: Recreate
       persistence:
         enabled: false
-      envFromSecret: "grafana-secrets"
+      envFromSecret: grafana-secrets
       image:
         tag: 8.5.2
       plugins:
@@ -118,18 +96,18 @@ spec:
         - grafana-clock-panel
         - camptocamp-prometheus-alertmanager-datasource
         - cloudflare-app
-      # dashboardProviders:
-      #   dashboardproviders.yaml:
-      #     apiVersion: 1
-      #     providers:
-      #       - name: "default"
-      #         orgId: 1
-      #         folder: ""
-      #         type: file
-      #         disableDeletion: false
-      #         editable: true
-      #         options:
-      #           path: /var/lib/grafana/dashboards/default
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+            - name: default
+              orgId: 1
+              folder: ''
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/default
       sidecar:
         datasources:
           enabled: true
@@ -141,16 +119,14 @@ spec:
         - name: Prometheus
           type: prometheus
           access: proxy
-          url: http://thanos-query:9090/
+          url: 'http://thanos-query:9090/'
           isDefault: true
         - name: Alertmanager
           type: camptocamp-prometheus-alertmanager-datasource
-          # type: alertmanager
           access: proxy
-          url: http://alertmanager-operated:9093/
+          url: 'http://alertmanager-operated:9093/'
       ingress:
         enabled: false
-
     kubelet:
       enabled: true
       serviceMonitor:
@@ -159,10 +135,8 @@ spec:
             sourceLabels:
               - node
             targetLabel: instance
-
     kubeApiServer:
       enabled: true
-
     kubeControllerManager:
       enabled: true
       endpoints:
@@ -175,7 +149,6 @@ spec:
         enabled: true
         https: true
         insecureSkipVerify: true
-
     kubeScheduler:
       enabled: true
       endpoints:
@@ -188,26 +161,23 @@ spec:
         enabled: true
         https: true
         insecureSkipVerify: true
-
     kubeProxy:
       enabled: true
       endpoints:
         - 192.168.35.8
-
     kubeEtcd:
       enabled: false
-
-    prometheusOperator:
-      prometheusConfigReloader:
-        resources:
-          requests:
-            cpu: 100m
-            memory: 50Mi
-          limits:
-            memory: 100Mi
-
     prometheus-node-exporter:
+      enabled: true
       fullnameOverride: node-exporter
+      serviceMonitor:
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
       prometheus:
         monitor:
           enabled: true
@@ -218,7 +188,6 @@ spec:
               sourceLabels:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
-
     prometheus:
       resources:
         requests:
@@ -226,32 +195,5 @@ spec:
           cpu: 250m
         limits:
           memory: 2048Mi
-
       thanosService:
         enabled: true
-
-      prometheusSpec:
-        replicas: 1
-        replicaExternalLabelName: "replica"
-        ruleSelectorNilUsesHelmValues: false
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
-        probeSelectorNilUsesHelmValues: false
-        retention: 6h
-        enableAdminAPI: true
-        walCompression: true
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: longhorn
-              resources:
-                requests:
-                  storage: 10Gi
-
-        thanos:
-          image: quay.io/thanos/thanos:v0.26.0
-          # renovate: datasource=docker depName=quay.io/thanos/thanos
-          version: "v0.26.0"
-          objectStorageConfig:
-            name: thanos-secrets
-            key: objstore.yml
