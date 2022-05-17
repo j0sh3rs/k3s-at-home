@@ -10,7 +10,7 @@ resources:
   - stakater-charts.yaml
   - runix-charts.yaml
   - prometheus-community-charts.yaml
-  - rook-ceph.yaml
   - vmware-tanzu.yaml
   - longhorn.yaml
   - node-feature-discovery.yaml
+  - grafana-charts.yaml
