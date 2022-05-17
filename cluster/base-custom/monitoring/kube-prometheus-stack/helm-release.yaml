@@ -159,10 +159,7 @@ spec:
           access: proxy
           url: 'http://thanos-query:9090/'
           isDefault: true
-        - name: Alertmanager
-          type: camptocamp-prometheus-alertmanager-datasource
-          access: proxy
-          url: 'http://alertmanager-operated:9093/'
+          editable: true
       ingress:
         enabled: false
     prometheus-node-exporter:
