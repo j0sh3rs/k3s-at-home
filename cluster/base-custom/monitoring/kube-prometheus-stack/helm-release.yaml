@@ -91,6 +91,8 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.8
+        - 192.168.35.4
+        - 192.168.35.6
       service:
         enabled: true
         port: 10257
@@ -103,6 +105,8 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.8
+        - 192.168.35.4
+        - 192.168.35.6
       service:
         enabled: true
         port: 10259
@@ -115,8 +119,10 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.8
+        - 192.168.35.4
+        - 192.168.35.6
     kubeEtcd:
-      enabled: false
+      enabled: true
     grafana:
       enabled: true
       defaultDashboardsTimezone: America/New_York
@@ -222,6 +228,13 @@ spec:
             name: thanos-secrets
             key: objstore.yml
         additionalScrapeConfigs:
+          - job_name: "unifi-poller"
+            scrape_interval: 60s
+            metrics_path: "/metrics"
+            static_configs:
+              - targets: ["unifi-poller:9130"]
+                labels:
+                  app: "unifi"
           - job_name: kubernetes-services-http
             metrics_path: /probe
             scrape_interval: 60s
