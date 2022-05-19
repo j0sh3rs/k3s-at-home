@@ -33,10 +33,8 @@ spec:
       config:
         enabled: true
         type: secret
-        name: config
+        name: vikunja-config
         existingClaim: vikunja-secrets
-        mountPath: /app/vikunja/
-        subPath: config.yml
     service:
       main:
         port:
@@ -51,9 +49,9 @@ spec:
         volumeMounts:
           - name: files
             mountPath: /app/vikunja/files
-          - name: config
-            mountPath: /app/vikunja
-            subPath: config.yml
+          - name: vikunja-config
+            mountPath: /etc/vikunja/config.yml
+            subPath: Vikunja.yml
             readOnly: true
       - name: frontend
         image: vikunja/frontend:0.18.2
