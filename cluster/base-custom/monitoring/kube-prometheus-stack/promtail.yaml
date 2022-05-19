@@ -19,7 +19,7 @@ spec:
   values:
     fullnameOverride: promtail
     initContainer:
-      enabled: true
+      enabled: false
     resources:
      limits:
        cpu: 400m
