@@ -13,4 +13,4 @@ resources:
   - pgbackups
   - foundry
   - pgadmin
-  - vikunja
+  # - vikunja

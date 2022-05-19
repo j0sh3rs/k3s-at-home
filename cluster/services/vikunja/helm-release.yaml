@@ -25,7 +25,6 @@ spec:
       enabled: false
     caddy:
       noTls: true
-
     persistence:
       files:
         enabled: true
