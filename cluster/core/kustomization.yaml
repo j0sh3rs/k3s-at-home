@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - kube-system
   - flux-system
-  - system-upgrade
+  # - system-upgrade
   - longhorn
