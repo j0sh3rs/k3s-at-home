@@ -30,10 +30,10 @@ spec:
         enabled: true
         existingClaim: vikunja-files
         mountpath: /app/vikunja/files
-      vikuna-secrets:
+      config:
         enabled: true
         type: secret
-        name: vikunja-secrets
+        name: vikunja-config
         existingClaim: vikunja-secrets
     service:
       main:
