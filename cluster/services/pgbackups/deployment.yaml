@@ -24,13 +24,13 @@ spec:
           image: prodrigestivill/postgres-backup-local:14
           env:
             - name: POSTGRES_HOST
-              value: postgres.services.svc.cluster.local.
+              value: 192.168.35.5
             - name: POSTGRES_DB
-              value: postgres,vaultwarden,grafana
+              value: postgres,vaultwarden,grafana,healthchecks
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PORT
-              value: '5432'
+              value: '35432'
             - name: POSTGRES_EXTRA_OPTS
               value: "-Z9 --schema=public --blobs"
             - name: SCHEDULE
