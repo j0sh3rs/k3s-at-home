@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: felddy/foundryvtt
-      tag: 9.269.0
+      tag: latest
       pullPolicy: Always
     persistence:
       data:
