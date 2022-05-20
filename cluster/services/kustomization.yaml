@@ -5,11 +5,11 @@ resources:
   - volumes
   - redis
   - blocky
-  # - vaultwarden
+  - vaultwarden
   - cloudflared
   - whoogle
   - invidious
-  # - protonmail-bridge
+  - protonmail-bridge
   - pgbackups
   - foundry
   # - pgadmin
