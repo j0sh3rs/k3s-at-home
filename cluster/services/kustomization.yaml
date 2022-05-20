@@ -12,5 +12,5 @@ resources:
   - protonmail-bridge
   - pgbackups
   - foundry
-  # - pgadmin
-  # - vikunja
+  - pgadmin
+  - vikunja
