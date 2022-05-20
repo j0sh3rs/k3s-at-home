@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - metallb
-  - coredns-nodecache
-  - reloader
-  - node-feature-discovery
-  - intel-gpu-plugin
+  # - coredns-nodecache
+  # - reloader
+  # - node-feature-discovery
+  # - intel-gpu-plugin
   # - descheduler
