@@ -17,8 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    global:
-      storageClass: longhorn
+    # global:
+      # storageClass: longhorn
     query:
       enabled: true
       nodeSelector:
@@ -55,7 +55,7 @@ spec:
       enabled: true
       strategyType: Recreate
       persistence:
-        storageClass: longhorn
+        # storageClass: longhorn
         size: 30Gi
       resources:
         requests:
