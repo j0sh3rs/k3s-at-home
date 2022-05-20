@@ -4,4 +4,4 @@ resources:
   - kube-system
   - flux-system
   # - system-upgrade
-  - longhorn
+  # - longhorn
