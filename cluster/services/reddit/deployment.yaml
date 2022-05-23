@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reddit
+  namespace: services
+  labels:
+    app: reddit
+    release: alpha
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: reddit
+    release: alpha
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: reddit
+ namespace: services
+ labels:
+   app: reddit
+   release: alpha
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: reddit
+     release: alpha
+ template:
+   metadata:
+     namespace: services
+     labels:
+       app: reddit
+       release: alpha
+   spec:
+     securityContext:
+       runAsUser: 1000
+       runAsGroup: 1000
+       fsGroup: 1000
+     containers:
+     - name: reddit
+       image: "spikecodes/libreddit:latest"
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8080
+       securityContext:
+         allowPrivilegeEscalation: false
+         capabilities:
+           drop:
+           - ALL
+       readinessProbe:
+         httpGet:
+           port: 8080
+           path: /settings
+       livenessProbe:
+         httpGet:
+           port: 8080
+           path: /settings
+         initialDelaySeconds: 15
+         periodSeconds: 300
+     restartPolicy: Always
