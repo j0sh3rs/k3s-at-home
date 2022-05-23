@@ -26,6 +26,8 @@ spec:
       data:
         enabled: true
         size: 50g
+        accessMode: ReadWriteOnce
       server:
         enabled: true
         size: 20g
+        accessMode: ReadWriteOnce
