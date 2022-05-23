@@ -25,9 +25,9 @@ spec:
     persistence:
       data:
         enabled: true
-        size: 50g
+        size: 50Gi
         accessMode: ReadWriteOnce
       server:
         enabled: true
-        size: 20g
+        size: 20Gi
         accessMode: ReadWriteOnce
