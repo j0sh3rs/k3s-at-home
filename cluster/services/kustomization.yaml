@@ -13,6 +13,5 @@ resources:
   - pgbackups
   - foundry
   - reddit
-  - sdtd
   # - pgadmin
   # - vikunja
