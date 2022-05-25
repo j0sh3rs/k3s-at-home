@@ -5,6 +5,9 @@ kind: Service
 metadata:
   name: unifi-poller
   namespace: monitoring
+  annotations:
+    prometheus.io/port: "9130"
+    prometheus.io/scrape: "true"
 spec:
   type: ClusterIP
   ports:
