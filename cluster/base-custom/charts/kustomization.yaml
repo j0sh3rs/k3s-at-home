@@ -11,6 +11,7 @@ resources:
   - runix-charts.yaml
   - prometheus-community-charts.yaml
   - vmware-tanzu.yaml
-  # - longhorn.yaml
   - node-feature-discovery.yaml
   - grafana-charts.yaml
+  - rook-ceph-charts.yaml
+  - kasten-charts.yaml
