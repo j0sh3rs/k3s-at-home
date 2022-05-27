@@ -4,5 +4,3 @@ resources:
   - kube-system
   - flux-system
   # - system-upgrade
-  # - rook-ceph
-  # - kasten-io
