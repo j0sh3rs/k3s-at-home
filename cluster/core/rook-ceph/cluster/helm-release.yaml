@@ -20,15 +20,6 @@ spec:
   values:
     monitoring:
       enabled: true
-    ingress:
-      dashboard:
-        ingressClassName: "nginx"
-        host:
-          name: "rook.${SECRET_CLUSTER_DOMAIN}"
-          path: "/"
-        tls:
-          - hosts:
-              - "rook.${SECRET_CLUSTER_DOMAIN}"
     cephClusterSpec:
       mgr:
         count: 1
@@ -37,20 +28,10 @@ spec:
         urlPrefix: /
         ssl: false
       storage:
-        useAllNodes: false
+        useAllNodes: true
         useAllDevices: false
         config:
           osdsPerDevice: "1"
-        nodes:
-          - name: "k3s-worker1"
-            devices:
-              - name: "nvme0n1"
-          - name: "k3s-worker2"
-            devices:
-              - name: "nvme0n1"
-          - name: "k3s-worker3"
-            devices:
-              - name: "nvme0n1"
       resources:
         mgr:
           limits:
