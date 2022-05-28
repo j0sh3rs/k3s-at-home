@@ -14,3 +14,4 @@ resources:
   - node-feature-discovery.yaml
   - grafana-charts.yaml
   - longhorn.yaml
+  - kasten-charts.yaml

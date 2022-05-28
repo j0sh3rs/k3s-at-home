@@ -13,5 +13,6 @@ resources:
   - pgbackups
   - foundry
   - reddit
+  - kasten-io
   # - pgadmin
   # - vikunja
