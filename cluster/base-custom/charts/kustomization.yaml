@@ -15,4 +15,4 @@ resources:
   - grafana-charts.yaml
   - longhorn.yaml
   - kasten-charts.yaml
-  - weaveworks-kured-charts
+  - weaveworks-kured-charts.yaml
