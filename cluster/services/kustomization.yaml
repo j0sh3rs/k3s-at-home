@@ -15,4 +15,4 @@ resources:
   - reddit
   # - kasten-io
   # - pgadmin
-  # - vikunja
+  - vikunja
