@@ -7,4 +7,5 @@ resources:
   - reloader
   - node-feature-discovery
   - intel-gpu-plugin
+  - kured
   # - descheduler
