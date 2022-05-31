@@ -5,7 +5,7 @@ resources:
   - metallb
   # - coredns-nodecache
   - reloader
-  - node-feature-discovery
-  - intel-gpu-plugin
+  # - node-feature-discovery
+  # - intel-gpu-plugin
   - kured
   # - descheduler
