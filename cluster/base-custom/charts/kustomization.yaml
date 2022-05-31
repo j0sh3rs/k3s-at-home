@@ -16,3 +16,4 @@ resources:
   - longhorn.yaml
   - kasten-charts.yaml
   - weaveworks-kured-charts.yaml
+  - datadog.yaml
