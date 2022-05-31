@@ -64,3 +64,5 @@ spec:
          initialDelaySeconds: 15
          periodSeconds: 300
      restartPolicy: Always
+     nodeSelector:
+       kubernetes.io/arch: amd64
