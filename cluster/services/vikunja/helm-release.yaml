@@ -50,8 +50,15 @@ spec:
           - name: files
             mountPath: /app/vikunja/files
           - name: vikunja-config
-            mountPath: /etc/vikunja/config.yml
-            subPath: Vikunja.yml
+            mountPath: /etc/vikunja
+            subPath: config.yml
             readOnly: true
+        volumes:
+          - name: vikunja-config
+            secret:
+              secretName: vikunja-config
+              items:
+                - key: Vikunja.yaml
+                  path: config.yml
       - name: frontend
         image: vikunja/frontend:0.18.2
