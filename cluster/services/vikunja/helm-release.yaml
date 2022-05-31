@@ -49,7 +49,7 @@ spec:
         volumeMounts:
           - name: files
             mountPath: /app/vikunja/files
-          - name: vikunja-secrets
+          - name: vikunja-config
             mountPath: /etc/vikunja/config.yml
             subPath: Vikunja.yml
             readOnly: true
