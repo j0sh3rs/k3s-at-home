@@ -34,7 +34,7 @@ spec:
         enabled: true
         type: secret
         name: vikunja-config
-        # existingClaim: vikunja-config
+        existingClaim: vikunja-config
 
     service:
       main:
