@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - blackbox-exporter
-  # - botkube
+  - botkube
   # - healthchecks
   # - kube-prometheus-stack
   # - thanos
