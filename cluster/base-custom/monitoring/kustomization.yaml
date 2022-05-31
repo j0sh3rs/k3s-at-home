@@ -5,8 +5,8 @@ resources:
   - blackbox-exporter
   # - botkube
   # - healthchecks
-  - kube-prometheus-stack
-  - thanos
-  - unifi-poller
-  - loki-stack
-    # - uptime-kuma
+  # - kube-prometheus-stack
+  # - thanos
+  # - unifi-poller
+  # - loki-stack
+  # - uptime-kuma
