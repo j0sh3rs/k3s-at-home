@@ -36,6 +36,7 @@ spec:
         existingClaim: vikunja-config
         subPath: Vikunja.yml
         readOnly: true
+        name: vikunja-config
         mountPath: /etc/vikunja/config.yml
 
     service:
