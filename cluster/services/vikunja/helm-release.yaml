@@ -33,6 +33,7 @@ spec:
       config:
         enabled: true
         type: secret
+        name: vikunja-config
 
     service:
       main:
