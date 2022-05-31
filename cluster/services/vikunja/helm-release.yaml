@@ -30,11 +30,11 @@ spec:
         enabled: true
         existingClaim: vikunja-files
         mountpath: /app/vikunja/files
-      config:
-        enabled: true
-        type: secret
-        name: vikunja-config
-        existingClaim: vikunja-config
+      # config:
+      #   enabled: true
+      #   type: secret
+      #   name: vikunja-config
+      #   existingClaim: vikunja-config
 
     service:
       main:
@@ -50,7 +50,7 @@ spec:
         volumeMounts:
           - name: files
             mountPath: /app/vikunja/files
-          - name: vikunja-config
+          - name: config
             mountPath: /etc/vikunja/config.yml
             subPath: Vikunja.yml
             readOnly: true
