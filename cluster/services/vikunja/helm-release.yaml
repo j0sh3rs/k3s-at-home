@@ -31,7 +31,7 @@ spec:
         type: configMap
         existingClaim: vikunja-api-config
         readOnly: true
-        # subPath: config.yml
+        subPath: Vikunja.yaml
         mountPoint: /etc/vikunja/
         name: vikunja-api-config
 
@@ -48,8 +48,8 @@ spec:
         image: vikunja/api:0.18.1
         volumeMounts:
           - name: vikunja-api-config
-            mountPath: /etc/vikunja
-            subPath: Vikunja.yml
+            mountPath: /etc/vikunja/config.yml
+            # subPath: Vikunja.yml
             readOnly: true
       - name: frontend
         image: vikunja/frontend:0.18.2
