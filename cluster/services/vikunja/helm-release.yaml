@@ -29,6 +29,7 @@ spec:
       files:
         enabled: true
         mountpath: /app/vikunja/files
+        accessMode: ReadWriteMany
       vikunja-api-config:
         enabled: true
         type: configMap
