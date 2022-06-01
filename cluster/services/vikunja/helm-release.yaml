@@ -32,7 +32,7 @@ spec:
         mountpath: /app/vikunja/files
       apiConfig:
         enabled: true
-        type: ConfigMap
+        type: configMap
         existingClaim: vikunja-api-config
         readOnly: true
         name: vikunja-api-config
