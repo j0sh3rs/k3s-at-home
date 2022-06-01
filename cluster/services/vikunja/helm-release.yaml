@@ -26,10 +26,6 @@ spec:
     caddy:
       noTls: true
     persistence:
-      files:
-        enabled: true
-        mountpath: /app/vikunja/files
-        accessMode: ReadWriteMany
       vikunja-api-config:
         enabled: true
         type: configMap
@@ -49,8 +45,6 @@ spec:
       - name: api
         image: vikunja/api:0.18.1
         volumeMounts:
-          - name: files
-            mountPath: /app/vikunja/files
           - name: vikunja-api-config
             mountPath: /etc/vikunja/config.yml
             subPath: Vikunja.yml
