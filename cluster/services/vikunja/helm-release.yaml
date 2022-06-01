@@ -34,7 +34,6 @@ spec:
         enabled: true
         type: ConfigMap
         existingClaim: vikunja-config
-        subPath: Vikunja.yml
         readOnly: true
         name: vikunja-config
 
