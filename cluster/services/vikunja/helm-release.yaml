@@ -31,6 +31,7 @@ spec:
         type: configMap
         existingClaim: vikunja-api-config
         readOnly: true
+        subPath: Vikunja.yml
         name: vikunja-api-config
 
     service:
