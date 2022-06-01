@@ -30,7 +30,7 @@ spec:
         enabled: true
         existingClaim: vikunja-files
         mountpath: /app/vikunja/files
-      apiConfig:
+      vikunja-api-config:
         enabled: true
         type: configMap
         existingClaim: vikunja-api-config
