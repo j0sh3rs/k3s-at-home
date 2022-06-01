@@ -30,12 +30,12 @@ spec:
         enabled: true
         existingClaim: vikunja-files
         mountpath: /app/vikunja/files
-      # vikunja-api-config:
-      #   enabled: true
-      #   type: configMap
-      #   existingClaim: vikunja-api-config
-      #   readOnly: true
-      #   name: vikunja-api-config
+      vikunja-api-config:
+        enabled: true
+        type: configMap
+        existingClaim: vikunja-api-config
+        readOnly: true
+        name: vikunja-api-config
 
     service:
       main:
