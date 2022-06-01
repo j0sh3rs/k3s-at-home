@@ -28,7 +28,6 @@ spec:
     persistence:
       files:
         enabled: true
-        existingClaim: vikunja-files
         mountpath: /app/vikunja/files
       vikunja-api-config:
         enabled: true

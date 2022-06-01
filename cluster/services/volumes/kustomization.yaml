@@ -4,4 +4,4 @@ resources:
   - nfs-backups-data.yaml
   - vaultwarden-data.yaml
   - foundry-storage.yaml
-  - vikunja-files.yaml
+  # - vikunja-files.yaml
