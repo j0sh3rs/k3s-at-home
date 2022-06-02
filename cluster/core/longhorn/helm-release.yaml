@@ -25,3 +25,6 @@ spec:
       defaultDataLocality: best-effort
     defaultSettings:
       replicaAutoBalance: best-effort
+      defaultDataLocality: best-effort
+      backupTarget: s3://longhorn@us-east-1/
+      backupTargetCredentialSecret: longhorn-secrets
