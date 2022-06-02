@@ -4,6 +4,5 @@ resources:
   - namespaces.yaml
   - charts
   - nfs-subdir-external-provisioner
-  - settings
   - crds
   - monitoring

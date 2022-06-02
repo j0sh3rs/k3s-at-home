@@ -11,7 +11,8 @@
         "requiredStatusChecks": null,
         "matchUpdateTypes": [
           "minor",
-          "patch"
+          "patch",
+          "major"
         ]
       }
     ]
