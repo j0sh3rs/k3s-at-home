@@ -5,4 +5,4 @@ resources:
   - flux-system
   - longhorn
   # - kasten-io
-  # - system-upgrade
+  - system-upgrade
