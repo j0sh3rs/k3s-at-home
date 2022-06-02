@@ -6,7 +6,7 @@ resources:
   - botkube
   # - healthchecks
   - kube-prometheus-stack
-  - thanos
+  # - thanos
   - unifi-poller
   # - datadog
   - loki-stack

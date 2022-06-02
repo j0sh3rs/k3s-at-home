@@ -57,6 +57,7 @@ spec:
       persistence:
         storageClass: longhorn
         size: 30Gi
+        accessModes: ReadWriteMany
       resources:
         requests:
           memory: 512Mi
