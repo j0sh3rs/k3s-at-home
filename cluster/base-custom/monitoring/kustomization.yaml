@@ -4,10 +4,11 @@ resources:
   - namespace.yaml
   - blackbox-exporter
   - botkube
-  # - healthchecks
+  - alertmanager-discord
   - kube-prometheus-stack
   - thanos
   - unifi-poller
-  # - datadog
   - loki-stack
   # - uptime-kuma
+  # - datadog
+  # - healthchecks
