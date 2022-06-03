@@ -53,7 +53,7 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: longhorn
-              accessMode: ReadWriteMany
+              accessModes: ["ReadWriteMany"]
               resources:
                 requests:
                   storage: 10Gi
@@ -225,7 +225,7 @@ spec:
           volumeClaimTemplate:
             spec:
              storageClassName: longhorn
-             accessMode: ["ReadWriteMany"]
+             accessModes: ["ReadWriteMany"]
              resources:
                requests:
                  storage: 10Gi
