@@ -70,6 +70,11 @@ spec:
       nodeSelector:
         kubernetes.io/arch: "amd64"
       enabled: true
+      persistence:
+        storageClass: longhorn
+        accessModes:
+          - ReadWriteMany
+        size: 20Gi
       resources:
         requests:
           memory: 512Mi
