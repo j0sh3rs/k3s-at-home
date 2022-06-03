@@ -7,6 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       version: 35.5.1
       sourceRef:
@@ -26,8 +27,16 @@ spec:
       config:
         global:
           resolve_timeout: 5m
+        route:
+          group_by: ['alertname']
+          group_wait: 20s
+          group_interval: 5m
+          repeat_interval: 3h 
+          receiver: discord_webhook
         receivers:
-          - name: 'null'
+          - name: 'discord_webhook'
+            webhook_configs:
+            - url: 'http://alertmanager-discord:9094'
         inhibit_rules:
           - source_matchers:
               - severity = "critical"
