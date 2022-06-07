@@ -17,3 +17,4 @@ resources:
   - kasten-charts.yaml
   - weaveworks-kured-charts.yaml
   - datadog.yaml
+  - stackgres.yaml
