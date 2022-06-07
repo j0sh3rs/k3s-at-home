@@ -97,7 +97,7 @@
       "matchDatasources": [
         "docker"
       ],
-      "commitMessageExtra": "to {{newVersion}}"
+      "commitMessageExtra": "to {{newVersion}}",
       "matchPackageNames": [
         "benbusby/whoogle-search"
       ]
