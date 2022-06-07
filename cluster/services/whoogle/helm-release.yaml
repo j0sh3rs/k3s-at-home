@@ -18,7 +18,8 @@ spec:
       interval: 5m
   values:
     image:
-      tag: 0.7.2
+      # renovate: datasource=docker
+      tag: 0.7.3
       pullPolicy: Always
     env:
       TZ: America/New_York
