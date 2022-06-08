@@ -16,7 +16,8 @@ spec:
         name: nvidia
         namespace: flux-system
       interval: 5m
-  createNamespace: true
+  install:
+    createNamespace: true
   values:
     compatWithCPUManager: true
     resources:
