@@ -17,4 +17,5 @@ resources:
   - kasten-charts.yaml
   - weaveworks-kured-charts.yaml
   - datadog.yaml
+  - nvidia.yaml
   # - stackgres.yaml
