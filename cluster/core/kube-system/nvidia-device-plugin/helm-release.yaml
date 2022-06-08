@@ -39,11 +39,12 @@ spec:
         sources:
           pci:
             deviceClassWhitelist:
+            - "01"
             - "02"
             - "0200"
             - "0207"
-            - "0300"
-            - "0302"
+            - "03"
+            - "0400"
             deviceLabelFields:
             - vendor
           usb:
