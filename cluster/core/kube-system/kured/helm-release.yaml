@@ -20,7 +20,7 @@ spec:
     updateStrategy: RollingUpdate
     image:
       repository: quay.io/paulfantom/kured
-      tag: v1.9.2
+      tag: 1.9.2
     configuration:
       startTime: "2:00"
       endTime: "5:00"
