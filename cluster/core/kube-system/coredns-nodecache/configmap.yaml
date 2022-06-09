@@ -20,7 +20,7 @@ data:
         template IN AAAA {
           rcode NOERROR
         }
-        forward . 10.96.0.10 { # Kube-DNS IP
+        forward . 10.43.0.10 { # Kube-DNS IP
           force_tcp
         }
         prometheus :9253
@@ -81,7 +81,7 @@ data:
         template IN AAAA {
           rcode NOERROR
         }
-        forward . 10.96.0.10 { # Kube-DNS IP
+        forward . 10.43.0.10 { # Kube-DNS IP
           force_tcp
         }
         prometheus :9254
