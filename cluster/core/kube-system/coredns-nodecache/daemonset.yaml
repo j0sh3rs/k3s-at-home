@@ -75,6 +75,8 @@ spec:
             items:
               - key: Corefile
                 path: Corefile
+      nodeSelector:
+        kubernetes.io/arch: amd64
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -145,3 +147,5 @@ spec:
             items:
               - key: Corefile
                 path: Corefile
+      nodeSelector:
+        kubernetes.io/arch: amd64
