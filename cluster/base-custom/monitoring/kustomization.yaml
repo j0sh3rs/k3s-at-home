@@ -3,10 +3,10 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - blackbox-exporter
-  - botkube
+  # - botkube
   - alertmanager-discord
-  - kube-prometheus-stack
-  - thanos
+  # - kube-prometheus-stack
+  # - thanos
   - unifi-poller
   - loki-stack
   # - uptime-kuma
