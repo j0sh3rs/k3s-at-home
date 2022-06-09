@@ -26,13 +26,13 @@ spec:
               containerPort: 80
             - name: websocket
               containerPort: 3012
-          # resources:
-          #   limits:
-          #     memory: "2048Mi"
-          #     cpu: 2
-          #   requests:
-          #     cpu: 500m
-          #     memory: 512Mi
+          resources:
+            limits:
+              memory: "2048Mi"
+              cpu: 2
+            requests:
+              cpu: 500m
+              memory: 512Mi
           volumeMounts:
             - mountPath: /data
               name: vaultwarden-claim0
