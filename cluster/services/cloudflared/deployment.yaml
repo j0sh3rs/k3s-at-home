@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: cloudflared
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -28,6 +28,13 @@ spec:
                 secretKeyRef:
                   name: cloudflared-secrets
                   key: TUNNEL_TOKEN
+          resources:
+            requests:
+              cpu: 150m
+              memory: 256Mi
+            limits:
+              cpu: 2
+              memory: 4G
           livenessProbe:
             httpGet:
               # Cloudflared has a /ready endpoint which returns 200 if and only if
