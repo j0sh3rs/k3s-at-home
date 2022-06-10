@@ -7,4 +7,4 @@ resources:
   - crds
   - monitoring
   - secrets-store-csi-driver
-  - vault
+  # - vault
