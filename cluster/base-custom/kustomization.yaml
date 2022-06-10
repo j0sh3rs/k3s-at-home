@@ -6,3 +6,4 @@ resources:
   - nfs-subdir-external-provisioner
   - crds
   - monitoring
+  - secrets-store-csi-driver

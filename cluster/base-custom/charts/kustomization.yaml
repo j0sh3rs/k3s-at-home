@@ -16,6 +16,6 @@ resources:
   - longhorn.yaml
   - kasten-charts.yaml
   - weaveworks-kured-charts.yaml
-  - datadog.yaml
+  - secrets-store-csi-driver.yaml
   - nvidia.yaml
-  # - stackgres.yaml
+  - hashi-charts.yaml
