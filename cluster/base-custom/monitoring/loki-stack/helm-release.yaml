@@ -19,7 +19,7 @@ spec:
   values:
     config:
       existingSecret: loki-secrets
-    replicas: 1
+    replicas: 2
     resources:
       limits:
         cpu: 500m
