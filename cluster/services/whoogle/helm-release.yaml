@@ -20,7 +20,7 @@ spec:
     controller:
       strategy: RollingUpdate
       rollingUpdate:
-        unavailable: 1
+        unavailable: 0
         surge: 2
     image:
       # renovate: datasource=docker
