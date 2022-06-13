@@ -28,7 +28,7 @@ spec:
         raft:
           enabled: true
       dataStorage:
-        storageClass: longhorn
+        storageClass: nfs-client
         accessMode: ReadWriteMany
     csi:
       enabled: true
