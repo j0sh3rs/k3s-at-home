@@ -19,7 +19,7 @@ spec:
   values:
     image:
       # renovate: datasource=docker
-      tag: 0.7.3
+      tag: 0.7.4
       pullPolicy: Always
     env:
       TZ: America/New_York
