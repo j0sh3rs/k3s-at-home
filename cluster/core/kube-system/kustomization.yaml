@@ -8,5 +8,5 @@ resources:
   # - node-feature-discovery
   # - intel-gpu-plugin
   - kured
-  - nvidia-device-plugin
+  # - nvidia-device-plugin
   - descheduler
