@@ -71,7 +71,7 @@ spec:
         kubernetes.io/arch: "amd64"
       enabled: true
       persistence:
-        storageClass: nfs-client
+        # storageClass: nfs-client
         accessModes:
           - ReadWriteMany
         size: 20Gi
