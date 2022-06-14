@@ -23,6 +23,7 @@ spec:
     remediation:
       retries: 5
   values:
+    nameOverride: prometheus
     alertmanager:
       config:
         global:
