@@ -6,9 +6,9 @@ resources:
   # - botkube
   - alertmanager-discord
   # - kube-prometheus-stack
-  - thanos
+  # - thanos
   - unifi-poller
-  - loki-stack
+  # - loki-stack
   # - uptime-kuma
   # - datadog
   # - healthchecks
