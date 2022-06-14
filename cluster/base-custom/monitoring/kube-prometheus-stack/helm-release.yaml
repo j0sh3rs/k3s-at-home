@@ -102,6 +102,7 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
+        - 192.168.35.4
       service:
         enabled: true
         port: 10257
@@ -115,6 +116,7 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
+        - 192.168.35.4
       service:
         enabled: true
         port: 10259
@@ -128,6 +130,7 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
+        - 192.168.35.4
     kubeEtcd:
       enabled: true
     grafana:
@@ -149,7 +152,7 @@ spec:
         enabled: false
       envFromSecret: grafana-secrets
       image:
-        tag: 8.5.2
+        tag: 9.0.0
       plugins:
         - natel-discrete-panel
         - pr0ps-trackmap-panel
@@ -212,8 +215,6 @@ spec:
             memory: 2048Mi
         replicas: 1
         replicaExternalLabelName: replica
-        # nodeSelector:
-        #   kubernetes.io/arch: amd64
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
@@ -230,7 +231,7 @@ spec:
                requests:
                  storage: 10Gi
         thanos:
-          image: 'quay.io/thanos/thanos:v0.26.0'
+          image: 'quay.io/thanos/thanos'
           version: v0.26.0
           objectStorageConfig:
             name: thanos-secrets
