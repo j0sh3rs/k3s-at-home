@@ -21,7 +21,8 @@ spec:
       - secretRef:
           name: unifi-poller-secrets
     image:
-      repository: "golift/unifi-poller:latest"
+      repository: "golift/unifi-poller"
+      tag: latest
       pullPolicy: Always
     influxdb:
       enabled: true
