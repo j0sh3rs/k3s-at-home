@@ -1,0 +1,44 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vikunja
+  namespace: services
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: unifi-poller
+      version: 10.3.3
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    envFrom:
+      - secretRef:
+          name: unifi-poller-secrets
+    image:
+      repository: "golift/unifi-poller:latest"
+      pullPolicy: Always
+    influxdb:
+      enabled: true
+      persistence:
+        enabled: true
+        storageClass: longhorn
+    metrics:
+      enabled: true
+      prometheusRule:
+        enabled: true
+        rules:
+          - alert: UnifiPollerAbsent
+            annotations:
+              description: Unifi Poller has disappeared from Prometheus service discovery.
+              summary: Unifi Poller is down.
+            expr: |
+              absent(up{job=~".*unifi-poller.*"} == 1)
+            for: 5m
+            labels:
+              severity: critical

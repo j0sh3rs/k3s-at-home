@@ -238,13 +238,6 @@ spec:
             name: thanos-secrets
             key: objstore.yml
         additionalScrapeConfigs:
-          - job_name: "unifi-poller"
-            scrape_interval: 60s
-            kubernetes_sd_configs:
-              - role: service
-                namespaces:
-                  names:
-                    - monitoring
           - job_name: kubernetes-services-http
             metrics_path: /probe
             scrape_interval: 60s
