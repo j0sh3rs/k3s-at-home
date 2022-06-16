@@ -5,13 +5,13 @@ resources:
   - volumes
   - redis
   - blocky
-    # - vaultwarden
+  - vaultwarden
   - cloudflared
   - whoogle
   - invidious
   - protonmail-bridge
   - pgbackups
-    # - foundry
+  - foundry
   - reddit
   # - vikunja
   # - pgadmin
