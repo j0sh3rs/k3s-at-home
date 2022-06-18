@@ -26,7 +26,7 @@ spec:
             - name: POSTGRES_HOST
               value: 192.168.35.5
             - name: POSTGRES_DB
-              value: postgres,vaultwarden,grafana
+              value: postgres,vaultwarden,grafana,kubernetes
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PORT
@@ -43,10 +43,6 @@ spec:
               value: "2"
             - name: TZ
               value: "America/New_York"
-            - name: HEALTHCHECK_PORT
-              value: '8080'
-            - name: POST_BACKUP_HOOK
-              value: "curl -m 10 --retry 5 http://healthchecks.monitoring.svc.cluster.local:8000/ping/a2276168-05bf-49bf-8353-9a5f03956061"
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:

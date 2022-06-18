@@ -6,8 +6,8 @@ metadata:
   namespace: services
 spec:
   accessModes:
-    - ReadWriteOnce
-  # storageClassName: longhorn
+    - ReadWriteMany
+  storageClassName: longhorn
   resources:
     requests:
       storage: 10Gi
