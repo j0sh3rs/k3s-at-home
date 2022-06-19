@@ -5,10 +5,10 @@ resources:
   - blackbox-exporter
   - botkube
   - alertmanager-discord
-  - kube-prometheus-stack
-  - thanos
-  - unifi-poller
-  - loki-stack
+  # - kube-prometheus-stack
+  # - thanos
+  # - unifi-poller
+  # - loki-stack
   # - uptime-kuma
   # - datadog
   # - healthchecks
