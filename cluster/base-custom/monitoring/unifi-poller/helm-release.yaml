@@ -26,6 +26,8 @@ spec:
       pullPolicy: Always
     influxdb:
       enabled: true
+      nodeSelector:
+        kubernetes.io/arch: amd64
       persistence:
         enabled: true
         storageClass: longhorn
