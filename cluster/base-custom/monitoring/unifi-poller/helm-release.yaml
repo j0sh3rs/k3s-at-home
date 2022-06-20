@@ -25,15 +25,15 @@ spec:
       tag: latest
       pullPolicy: Always
     influxdb:
-      enabled: true
-      influxdb:
-        nodeSelector:
-          kubernetes.io/arch: amd64
-      persistence:
-        enabled: true
-        storageClass: longhorn
-        accessModes:
-          - ReadWriteMany
+      enabled: false
+      # influxdb:
+      #   nodeSelector:
+      #     kubernetes.io/arch: amd64
+      # persistence:
+      #   enabled: true
+      #   storageClass: longhorn
+      #   accessModes:
+      #     - ReadWriteMany
     metrics:
       enabled: true
       prometheusRule:
