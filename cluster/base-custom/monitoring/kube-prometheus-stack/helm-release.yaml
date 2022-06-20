@@ -226,7 +226,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-             storageClassName: longhorn
+             storageClassName: nfs-common
              accessModes: ["ReadWriteMany"]
              resources:
                requests:
