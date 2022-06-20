@@ -226,7 +226,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-             storageClassName: nfs-common
+             storageClassName: nfs-client
              accessModes: ["ReadWriteMany"]
              resources:
                requests:
