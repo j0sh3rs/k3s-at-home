@@ -32,6 +32,8 @@ spec:
       persistence:
         enabled: true
         storageClass: longhorn
+        accessModes:
+          - ReadWriteMany
     metrics:
       enabled: true
       prometheusRule:
