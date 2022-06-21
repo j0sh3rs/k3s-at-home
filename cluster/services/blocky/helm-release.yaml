@@ -31,6 +31,8 @@ spec:
         cpu: 500m
         memory: 512Mi
     service:
+      main:
+        enabled: true
       dns-tcp:
         enabled: true
         type: LoadBalancer
