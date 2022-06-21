@@ -102,10 +102,7 @@ spec:
         address: redis:6379
         database: 3
         required: true
-      bootstrapDns:
-        ips:
-        - 1.1.1.1
-        - 1.0.0.1
+      bootstrapDns: tcp+udp:1.1.1.1
       caching:
         minTime: 5m
         maxTime: 30m
