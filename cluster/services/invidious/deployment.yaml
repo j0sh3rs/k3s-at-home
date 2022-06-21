@@ -49,3 +49,5 @@ spec:
               memory: 2Gi
       hostname: invidious
       restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/arch: amd64
