@@ -31,7 +31,7 @@ spec:
     persistence:
       data:
         enabled: true
-        storageClass: nfs-client
+        storageClass: longhorn
         accessMode: ReadWriteMany
         size: 20Gi
     nodeSelector:
