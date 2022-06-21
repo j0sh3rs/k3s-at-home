@@ -10,5 +10,3 @@ resources:
   - unifi-poller
   - loki-stack
   - uptime-kuma
-  # - datadog
-  # - healthchecks
