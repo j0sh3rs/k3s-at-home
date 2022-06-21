@@ -17,6 +17,11 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      # renovate: datasource=docker
+      repository: spx01/blocky
+      tag: v0.19
+      pullPolicy: Always
     controller:
       type: daemonset
     metrics:
@@ -94,6 +99,7 @@ spec:
           default:
             - ads
         refreshPeriod: 120m
+        processingConcurrency: 10
       prometheus:
         enable: true
         path: /metrics
@@ -102,7 +108,10 @@ spec:
         address: redis:6379
         database: 3
         required: true
-      bootstrapDns: tcp+udp:1.1.1.1
+      bootstrapDns:
+        ips:
+        - 1.1.1.1
+        - 1.0.0.1
       caching:
         minTime: 5m
         maxTime: 30m
