@@ -105,8 +105,8 @@ spec:
         required: true
       bootstrapDns:
         ips:
-          - 1.1.1.1
-          - 1.0.0.1
+        - 1.1.1.1
+        - 1.0.0.1
       caching:
         minTime: 5m
         maxTime: 30m
