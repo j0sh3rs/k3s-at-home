@@ -26,11 +26,15 @@ metadata:
    app: reddit
    release: alpha
 spec:
- replicas: 1
+ replicas: 2
  selector:
    matchLabels:
      app: reddit
      release: alpha
+  strategy:
+    type: RollingUpdate
+    maxUnavailable: 1
+    maxSurge: 3
  template:
    metadata:
      namespace: services

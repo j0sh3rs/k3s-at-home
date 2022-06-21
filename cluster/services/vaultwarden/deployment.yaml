@@ -5,13 +5,13 @@ metadata:
   name: vaultwarden
   namespace: services
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: vaultwarden
   strategy:
     type: RollingUpdate
-    maxUnavailable: 0
+    maxUnavailable: 1
     maxSurge: 3
   template:
     metadata:
@@ -100,16 +100,6 @@ spec:
                 secretKeyRef:
                   key: SMTP_SSL
                   name: vaultwarden-secrets
-            # - name: SMTP_EXPLICIT_TLS
-            #   valueFrom:
-            #     secretKeyRef:
-            #       key: SMTP_EXPLICIT_TLS
-            #       name: vaultwarden-secrets
-            # - name: SMTP_SECURITY
-            #   valueFrom:
-            #     secretKeyRef:
-            #       key: SMTP_SECURITY
-            #       name: vaultwarden-secrets
             - name: SMTP_USERNAME
               valueFrom:
                 secretKeyRef:

@@ -6,7 +6,8 @@ metadata:
   namespace: monitoring
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
+  storageClass: nfs-client
   resources:
     requests:
       storage: 1Gi
