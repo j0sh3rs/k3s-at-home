@@ -11,8 +11,9 @@ spec:
       app: vaultwarden
   strategy:
     type: RollingUpdate
-    maxUnavailable: 1
-    maxSurge: 3
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 3
   template:
     metadata:
       labels:

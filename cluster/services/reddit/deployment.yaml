@@ -26,47 +26,48 @@ metadata:
    app: reddit
    release: alpha
 spec:
- replicas: 2
- selector:
-   matchLabels:
-     app: reddit
-     release: alpha
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reddit
+      release: alpha
   strategy:
     type: RollingUpdate
-    maxUnavailable: 1
-    maxSurge: 3
- template:
-   metadata:
-     namespace: services
-     labels:
-       app: reddit
-       release: alpha
-   spec:
-     securityContext:
-       runAsUser: 1000
-       runAsGroup: 1000
-       fsGroup: 1000
-     containers:
-     - name: reddit
-       image: "spikecodes/libreddit:latest"
-       imagePullPolicy: Always
-       ports:
-       - containerPort: 8080
-       securityContext:
-         allowPrivilegeEscalation: false
-         capabilities:
-           drop:
-           - ALL
-       readinessProbe:
-         httpGet:
-           port: 8080
-           path: /settings
-       livenessProbe:
-         httpGet:
-           port: 8080
-           path: /settings
-         initialDelaySeconds: 15
-         periodSeconds: 300
-     restartPolicy: Always
-     nodeSelector:
-       kubernetes.io/arch: amd64
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 3
+  template:
+    metadata:
+      namespace: services
+      labels:
+        app: reddit
+        release: alpha
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - name: reddit
+        image: "spikecodes/libreddit:latest"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /settings
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /settings
+          initialDelaySeconds: 15
+          periodSeconds: 300
+      restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/arch: amd64
