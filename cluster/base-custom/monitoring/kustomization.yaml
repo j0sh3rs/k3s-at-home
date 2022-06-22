@@ -9,4 +9,4 @@ resources:
   - thanos
   - unifi-poller
   - loki-stack
-  - uptime-kuma
+  # - uptime-kuma
