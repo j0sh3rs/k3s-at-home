@@ -21,18 +21,8 @@ spec:
       capabilities:
         drop:
           - ALL
-      # Add the SYS_CHROOT capability for root and rootless images if you intend to
-      # run pods on nodes that use the container runtime cri-o. Otherwise, you will
-      # get an error message from the SSH server that it is not possible to read from
-      # the repository.
-      # https://gitea.com/gitea/helm-chart/issues/161
-        add:
-          - SYS_CHROOT
       privileged: false
       readOnlyRootFilesystem: true
-      # runAsGroup: 1000
-      runAsNonRoot: true
-      # runAsUser: 1000
     resources:
       limits:
         cpu: 1
