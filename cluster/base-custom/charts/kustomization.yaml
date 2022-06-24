@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - bitnami-charts.yaml
   - k8s-at-home.yaml
-  - kubernetes-sigs-descheduler-charts.yaml
+  # - kubernetes-sigs-descheduler-charts.yaml
   - metallb.yaml
   - nfs-subdir-external-provisioner.yaml
   - stakater-charts.yaml
@@ -14,8 +14,9 @@ resources:
   - node-feature-discovery.yaml
   - grafana-charts.yaml
   - longhorn.yaml
-  - kasten-charts.yaml
+  # - kasten-charts.yaml
   - weaveworks-kured-charts.yaml
-  - secrets-store-csi-driver.yaml
+  # - secrets-store-csi-driver.yaml
   - nvidia.yaml
-  - hashi-charts.yaml
+  # - hashi-charts.yaml
+  - gitea-charts.yaml

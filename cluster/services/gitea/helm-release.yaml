@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pgadmin
+  namespace: services
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://dl.gitea.io/charts/
+      chart: gitea
+      sourceRef:
+        kind: HelmRepository
+        name: gitea-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      # Add the SYS_CHROOT capability for root and rootless images if you intend to
+      # run pods on nodes that use the container runtime cri-o. Otherwise, you will
+      # get an error message from the SSH server that it is not possible to read from
+      # the repository.
+      # https://gitea.com/gitea/helm-chart/issues/161
+        add:
+          - SYS_CHROOT
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsGroup: 1000
+      runAsNonRoot: true
+      runAsUser: 1000
+    resources:
+      limits:
+        cpu: 1
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    persistence:
+      enabled: true
+      size: 20Gi
+      accessModes:
+        - ReadWriteMany
+      storageClass: longhorn
+    signing:
+      enabled: true
+    gitea:
+      admin:
+        existingSecret: gitea-admin-secret
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      additionalConfigSources:
+        - secret:
+            secretName: gitea-config-secrets
+    postgresql:
+      enabled: false
+    memcached:
+      enabled: false
