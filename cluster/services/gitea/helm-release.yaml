@@ -23,6 +23,7 @@ spec:
           - ALL
       privileged: false
       readOnlyRootFilesystem: true
+      runAsNonRoot: false
     resources:
       limits:
         cpu: 1
