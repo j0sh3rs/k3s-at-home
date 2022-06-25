@@ -16,14 +16,16 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    containerSecurityContext:
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop:
-          - ALL
-      privileged: false
-      readOnlyRootFilesystem: true
-      runAsNonRoot: false
+    # containerSecurityContext:
+    #   allowPrivilegeEscalation: false
+    #   capabilities:
+    #     drop:
+    #       - ALL
+    #   privileged: false
+    #   readOnlyRootFilesystem: true
+    #   runAsGroup: 1000
+    #   runAsNonRoot: false
+    #   runAsUser: 1000
     resources:
       limits:
         cpu: 1
