@@ -19,7 +19,6 @@ spec:
   values:
     global:
       storageClass: longhorn
-      imageRegistry: "thanosio/thanos:main-2022-06-27-37cc176c"
     query:
       enabled: true
       nodeSelector:
