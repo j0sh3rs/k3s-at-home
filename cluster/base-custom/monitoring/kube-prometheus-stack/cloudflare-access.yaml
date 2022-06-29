@@ -3,29 +3,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: cloudflare-access-grafana
-  name: cloudflare-access-grafana
+    app: cfaccess-proxy
+  name: cfaccess-proxy
   namespace: monitoring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cloudflare-access-grafana
+      app: cfaccess-proxy
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: cloudflare-access-grafana
+        app: cfaccess-proxy
     spec:
       containers:
-      - image: jorgelbg/cloudflare-access-grafana
-        name: cloudflare-access-grafana
-        ports:
-          - containerPort: 80
-        envFrom:
-          - secretRef:
-              name: cf-access-secrets
+        - image: ghcr.io/j0sh3rs/cfaccess-proxy:latest
+          name: cfaccess-proxy
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: cf-access-secrets
       restartPolicy: Always
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -34,8 +34,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: cloudflare-access-grafana
-  name: cloudflare-access-grafana
+    app: cfaccess-proxy
+  name: cfaccess-proxy
   namespace: monitoring
 spec:
   ports:
@@ -43,4 +43,4 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: cloudflare-access-grafana
+    app: cfaccess-proxy
