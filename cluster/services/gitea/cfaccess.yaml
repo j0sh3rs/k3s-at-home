@@ -25,7 +25,7 @@ spec:
             - containerPort: 80
           envFrom:
             - secretRef:
-                name: cf-access-gitea-secrets
+                name: cf-access-gitea
       restartPolicy: Always
       nodeSelector:
         kubernetes.io/arch: amd64
