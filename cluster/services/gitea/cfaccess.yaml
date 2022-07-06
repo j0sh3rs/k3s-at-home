@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cfaccess-proxy-gitea
+  name: cfaccess-proxy-gitea
+  namespace: services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cfaccess-proxy-gitea
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cfaccess-proxy-gitea
+    spec:
+      containers:
+        - image: ghcr.io/j0sh3rs/cfaccess-proxy:latest
+          name: cfaccess-proxy
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: cf-access-gitea-secrets
+      restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/arch: amd64
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cfaccess-proxy-gitea
+  name: cfaccess-proxy-gitea
+  namespace: services
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: cfaccess-proxy-gitea
