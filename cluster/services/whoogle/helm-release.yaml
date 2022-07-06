@@ -18,11 +18,11 @@ spec:
       interval: 5m
   values:
     controller:
-      replicas: 2
+      replicas: 1
       strategy: RollingUpdate
       rollingUpdate:
-        unavailable: 1
-        surge: 3
+        unavailable: 0
+        surge: 2
     image:
       # renovate: datasource=docker
       tag: 0.7.4
