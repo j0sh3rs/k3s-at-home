@@ -60,6 +60,10 @@ spec:
           - https://1.1.1.1/dns-query
           - https://1.0.0.1/dns-query
       blocking:
+        whiteLists:
+          ads:
+            - |
+              static.cloudflareinsights.com
         blackLists:
           ads:
             - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
