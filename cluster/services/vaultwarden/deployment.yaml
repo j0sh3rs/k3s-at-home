@@ -19,7 +19,7 @@ spec:
       labels:
         app: vaultwarden
     nodeSelector:
-      kubernetes.io/arch: "amd64"
+      kubernetes.io/arch: "arm64"
     spec:
       containers:
         - image: vaultwarden/server:latest
