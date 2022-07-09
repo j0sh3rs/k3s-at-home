@@ -13,6 +13,6 @@ resources:
   - pgbackups
   - foundry
   - reddit
-  - pgadmin
-  - gitea
+  # - pgadmin
+  # - gitea
   # - vikunja
