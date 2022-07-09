@@ -70,4 +70,4 @@ spec:
           periodSeconds: 300
       restartPolicy: Always
       nodeSelector:
-        kubernetes.io/arch: arm64
+        kubernetes.io/arch: amd64
