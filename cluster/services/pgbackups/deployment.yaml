@@ -18,6 +18,8 @@ spec:
       labels:
         app.kubernetes.io/instance: pgbackups
         app.kubernetes.io/name: pgbackups
+    nodeSelector:
+      kubernetes.io/arch: "amd64"
     spec:
       containers:
         - name: pgbackups

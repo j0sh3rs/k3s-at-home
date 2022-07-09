@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    nodeSelector:
+      kubernetes.io/arch: "amd64"
     env:
       email: j0sh3rs@cluster.local
     image:

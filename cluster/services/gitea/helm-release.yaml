@@ -26,6 +26,8 @@ spec:
     #   runAsGroup: 1000
     #   runAsNonRoot: false
     #   runAsUser: 1000
+    nodeSelector:
+      kubernetes.io/arch: "amd64"
     resources:
       limits:
         cpu: 1

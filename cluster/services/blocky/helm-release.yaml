@@ -64,13 +64,13 @@ spec:
           ads:
             - |
               static.cloudflareinsights.com
+              secure.gravatar.com
         blackLists:
           ads:
             - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
             - http://sysctl.org/cameleon/hosts
             - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
             - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-            - https://blocklist.site/app/dl/phishing
             - https://v.firebog.net/hosts/AdguardDNS.txt
             - https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt
             - https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt
@@ -112,10 +112,6 @@ spec:
         address: redis:6379
         database: 3
         required: true
-      bootstrapDns:
-        ips:
-        - 1.1.1.1
-        - 1.0.0.1
       caching:
         minTime: 5m
         maxTime: 30m
