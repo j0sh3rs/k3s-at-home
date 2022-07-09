@@ -22,7 +22,7 @@ spec:
     query:
       enabled: true
       nodeSelector:
-        kubernetes.io/arch: "amd64"
+        kubernetes.io/arch: "arm64"
       replicaCount: 1
       replicaLabels:
         - replica
@@ -40,7 +40,7 @@ spec:
       enabled: false
     bucketweb:
       nodeSelector:
-        kubernetes.io/arch: "amd64"
+        kubernetes.io/arch: "arm64"
       enabled: true
       resources:
         requests:
@@ -51,7 +51,7 @@ spec:
           cpu: 2
     compactor:
       nodeSelector:
-        kubernetes.io/arch: "amd64"
+        kubernetes.io/arch: "arm64"
       enabled: true
       strategyType: Recreate
       persistence:
@@ -68,7 +68,7 @@ spec:
           cpu: 2
     storegateway:
       nodeSelector:
-        kubernetes.io/arch: "amd64"
+        kubernetes.io/arch: "arm64"
       enabled: true
       persistence:
         storageClass: longhorn
@@ -93,7 +93,7 @@ spec:
           memory: 2Gi
           cpu: 2
       nodeSelector:
-        kubernetes.io/arch: "amd64"
+        kubernetes.io/arch: "arm64"
       enabled: true
       serviceMonitor:
         enabled: true

@@ -49,7 +49,7 @@ spec:
       alertmanagerSpec:
         replicas: 1
         nodeSelector:
-          kubernetes.io/arch: amd64
+          kubernetes.io/arch: arm64
         storage:
           volumeClaimTemplate:
             spec:
@@ -103,7 +103,6 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
-        - 192.168.35.4
       service:
         enabled: true
         port: 10257
@@ -117,7 +116,6 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
-        - 192.168.35.4
       service:
         enabled: true
         port: 10259
@@ -131,11 +129,12 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
-        - 192.168.35.4
     kubeEtcd:
       enabled: true
     grafana:
       enabled: true
+      nodeSelector:
+        kubernetes.io/arch: arm64
       defaultDashboardsTimezone: America/New_York
       dashboards:
         default:
