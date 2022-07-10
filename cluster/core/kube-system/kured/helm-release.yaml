@@ -25,9 +25,5 @@ spec:
       startTime: "2:00"
       endTime: "5:00"
       timeZone: "America/New_York"
-    tolerations:
-      - key: "node-role.kubernetes.io/control-plane"
-        operator: "Exists"
-        effect: "NoSchedule"
     metrics:
       create: true

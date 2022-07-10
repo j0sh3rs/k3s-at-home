@@ -10,25 +10,19 @@ spec:
     spec:
       # renovate: registryUrl=https://kubernetes-sigs.github.io/descheduler
       chart: descheduler-helm-chart
-      version: 0.19.1
+      version: 0.24.1
       sourceRef:
         kind: HelmRepository
         name: kubernetes-sigs-descheduler-charts
         namespace: flux-system
       interval: 5m
   values:
-    #schedule: "*/15 * * * *"
-    podAnnotations:
-      botkube.io/disable: "true"
+    schedule: "* */6 * * *" # Every 6 hours
     deschedulerPolicy:
+      ignorePvcPods: true
       strategies:
         RemoveDuplicates:
           enabled: false
-        RemovePodsViolatingNodeAffinity:
-          enabled: true
-          params:
-            nodeAffinityType:
-              - requiredDuringSchedulingIgnoredDuringExecution
         RemovePodsViolatingInterPodAntiAffinity:
           enabled: false
         LowNodeUtilization:
