@@ -6,6 +6,8 @@ metadata:
     app: cfaccess-proxy-gitea
   name: cfaccess-proxy-gitea
   namespace: services
+  annotations:
+    configmap.reloader.stakater.com/reload: "cf-access-gitea"
 spec:
   replicas: 1
   selector:

@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: vaultwarden
   namespace: services
+  annotations:
+    configmap.reloader.stakater.com/reload: "vaultwarden-secrets"
 spec:
   replicas: 2
   selector:

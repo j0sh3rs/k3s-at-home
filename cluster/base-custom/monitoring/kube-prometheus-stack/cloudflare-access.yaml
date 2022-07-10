@@ -6,6 +6,8 @@ metadata:
     app: cfaccess-proxy
   name: cfaccess-proxy
   namespace: monitoring
+  annotations:
+    configmap.reloader.stakater.com/reload: "cf-access-secrets"
 spec:
   replicas: 1
   selector:

@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    annotations:
+      configmap.reloader.stakater.com/reload: "vaultwarden-secrets"
     # containerSecurityContext:
     #   allowPrivilegeEscalation: false
     #   capabilities:

@@ -20,11 +20,11 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: reddit
- namespace: services
- labels:
-   app: reddit
-   release: alpha
+  name: reddit
+  namespace: services
+  labels:
+    app: reddit
+    release: alpha
 spec:
   replicas: 1
   selector:
