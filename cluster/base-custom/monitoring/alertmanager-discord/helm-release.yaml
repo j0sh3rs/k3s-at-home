@@ -17,8 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    nodeSelector:
-      kubernetes.io/arch: "arm64"
+    # nodeSelector:
+    #   kubernetes.io/arch: "arm64"
     env:
       DISCORD_USERNAME: "Alertmanager"
       DISCORD_AVATAR_URL: "https://avatars3.githubusercontent.com/u/3380462"

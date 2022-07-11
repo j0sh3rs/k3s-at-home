@@ -17,8 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    nodeSelector:
-      kubernetes.io/arch: "arm64"
+    # nodeSelector:
+    #   kubernetes.io/arch: "arm64"
     envFrom:
       - secretRef:
           name: unifi-poller-secrets

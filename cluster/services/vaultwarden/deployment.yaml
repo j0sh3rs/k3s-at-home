@@ -20,8 +20,8 @@ spec:
     metadata:
       labels:
         app: vaultwarden
-    nodeSelector:
-      kubernetes.io/arch: "arm64"
+    # nodeSelector:
+    #   kubernetes.io/arch: "arm64"
     spec:
       containers:
         - image: vaultwarden/server:1.25.0-alpine
