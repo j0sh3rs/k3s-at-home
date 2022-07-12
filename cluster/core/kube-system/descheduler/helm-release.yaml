@@ -45,6 +45,7 @@ spec:
               targetThresholds:
                 "cpu": 80
                 "memory": 70
+                "pods": 70
               thresholds:
                 "cpu": 60
                 "memory": 40
