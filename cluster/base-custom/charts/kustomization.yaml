@@ -14,9 +14,5 @@ resources:
   - node-feature-discovery.yaml
   - grafana-charts.yaml
   - longhorn.yaml
-  # - kasten-charts.yaml
   - weaveworks-kured-charts.yaml
-  # - secrets-store-csi-driver.yaml
-  # - nvidia.yaml
-  # - hashi-charts.yaml
   - gitea.yaml
