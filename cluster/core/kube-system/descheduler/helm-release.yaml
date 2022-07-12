@@ -17,13 +17,31 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    schedule: "* */6 * * *" # Every 6 hours
+    schedule: "*/15 * * * *" # Every 15 minutes
     deschedulerPolicy:
       ignorePvcPods: true
       strategies:
+        RemovePodsHavingTooManyRestarts:
+          enabled: true
+          params:
+            podsHavingTooManyRestarts:
+              podRestartThreshold: 5
+              includingInitContainers: true
+        PodLifeTime:
+          params:
+            podLifeTime:
+              maxPodLifeTimeSeconds: 604800
         RemoveDuplicates:
           enabled: false
         RemovePodsViolatingInterPodAntiAffinity:
           enabled: false
         LowNodeUtilization:
-          enabled: false
+          enabled: true
+          params:
+            nodeResourceUtilizationThresholds:
+              targetThresholds:
+                "cpu": 80
+                "memory": 70
+              thresholds:
+                "cpu": 60
+                "memory": 40
