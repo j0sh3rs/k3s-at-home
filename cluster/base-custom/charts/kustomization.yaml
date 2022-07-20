@@ -16,3 +16,4 @@ resources:
   - longhorn.yaml
   - weaveworks-kured-charts.yaml
   - gitea.yaml
+  - splunk-operator.yaml
