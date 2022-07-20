@@ -8,5 +8,6 @@ resources:
   - kube-prometheus-stack
   - thanos
   - unifi-poller
+  - splunk
   # - loki-stack
   # - uptime-kuma
