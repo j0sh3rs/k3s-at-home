@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://j0sh3rs.github.io/splunk-operator
+  url: https://j0sh3rs.github.io/splunk-operator/helm-chart
   timeout: 3m
