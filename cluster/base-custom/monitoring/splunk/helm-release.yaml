@@ -1,24 +1,34 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: splunk-operator
+  name: splunk-connect-for-kubernetes
   namespace: monitoring
 spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://j0sh3rs.github.io/splunk-operator
-      chart: splunk-operator
-      version: 0.1.0
+      # renovate: registryUrl=https://splunk.github.io/splunk-connect-for-kubernetes
+      chart: splunk-connect-for-kubernetes
+      version: 1.4.15
       sourceRef:
         kind: HelmRepository
-        name: splunk-operator
+        name: splunk-connect
         namespace: flux-system
       interval: 5m
-  install:
-    createNamespace: true
-    remediation:
-      retries: 5
-  upgrade:
-    remediation:
-      retries: 5
+  values:
+    global:
+      splunk:
+        hec:
+          host: 192.168.35.5
+          port: 8088
+          token: d7f65bac-fd75-41e4-bdb1-2a808a342617
+          protocol: http
+          indexName: k3s
+      kubernetes:
+        cluster_name: k3s
+      prometheus_enabled: true
+      serviceMonitor:
+        enabled: true
+      containers:
+        localTime: true
+        
