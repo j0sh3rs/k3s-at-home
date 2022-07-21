@@ -21,7 +21,7 @@ spec:
         hec:
           host: 192.168.35.5
           port: 8088
-          token: d7f65bac-fd75-41e4-bdb1-2a808a342617
+          token: 
           protocol: http
           indexName: k3s
       kubernetes:
