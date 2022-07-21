@@ -31,4 +31,7 @@ spec:
         enabled: true
       containers:
         localTime: true
-        
+    splunk-kubernetes-metrics:
+       splunk:
+         hec:
+           indexName: k3s-metrics
