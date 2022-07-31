@@ -24,7 +24,7 @@ spec:
     #   kubernetes.io/arch: "arm64"
     spec:
       containers:
-        - image: vaultwarden/server:1.25.0-alpine
+        - image: vaultwarden/server
           name: vaultwarden
           ports:
             - name: http
