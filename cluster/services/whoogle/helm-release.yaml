@@ -20,11 +20,11 @@ spec:
     nodeSelector:
       kubernetes.io/arch: "amd64"
     controller:
-      replicas: 1
+      replicas: 2
       strategy: RollingUpdate
       rollingUpdate:
-        unavailable: 0
-        surge: 2
+        unavailable: 1
+        surge: 3
     image:
       # renovate: datasource=docker
       tag: 0.7.4
