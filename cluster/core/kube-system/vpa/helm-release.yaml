@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://charts.fairwinds.com/stable
-      chart: reloader
+      chart: vpa
       version: 1.4.0
       sourceRef:
         kind: HelmRepository
