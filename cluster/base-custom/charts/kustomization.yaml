@@ -15,6 +15,5 @@ resources:
   - grafana-charts.yaml
   - longhorn.yaml
   - weaveworks-kured-charts.yaml
-  - gitea.yaml
   - splunk-operator.yaml
-  - splunk-connect.yaml
+  - fairwinds.yaml

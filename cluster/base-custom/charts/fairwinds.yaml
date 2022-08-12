@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: gitea-charts
+  name: fairwinds-charts
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://dl.gitea.io/charts/
+  url: https://charts.fairwinds.com/stable
   timeout: 3m
