@@ -9,5 +9,6 @@ resources:
   - thanos
   - unifi-poller
   - splunk
+  - polaris
   # - loki-stack
   # - uptime-kuma
