@@ -13,3 +13,4 @@ resources:
   - pgbackups
   - foundry
   - reddit
+  - searxng
