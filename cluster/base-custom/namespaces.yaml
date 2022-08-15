@@ -5,6 +5,7 @@ metadata:
   name: services
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/vpa-update-mode: "auto"
 ---
 apiVersion: v1
 kind: Namespace
@@ -12,3 +13,4 @@ metadata:
   name: longhorn-system
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/vpa-update-mode: "auto"
