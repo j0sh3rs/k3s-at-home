@@ -11,6 +11,6 @@ resources:
   - splunk
   - polaris
   - vpa
-  - goldilocks
+  # - goldilocks
   # - loki-stack
   # - uptime-kuma
