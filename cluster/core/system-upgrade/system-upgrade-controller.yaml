@@ -108,7 +108,7 @@ spec:
               memory: 1Gi
             requests:
               cpu: 100m
-              memory: 512Mb
+              memory: 512M
       volumes:
         - name: etc-ssl
           hostPath:
