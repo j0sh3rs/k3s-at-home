@@ -9,19 +9,12 @@ spec:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
-      version: 36.2.0
+      version: 39.6.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
         namespace: flux-system
       interval: 5m
-  install:
-    createNamespace: true
-    remediation:
-      retries: 5
-  upgrade:
-    remediation:
-      retries: 5
   values:
     nameOverride: prometheus
     alertmanager:
@@ -103,6 +96,7 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
+        - 192.168.35.200
       service:
         enabled: true
         port: 10257
@@ -116,6 +110,7 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
+        - 192.168.35.200
       service:
         enabled: true
         port: 10259
@@ -129,6 +124,7 @@ spec:
       endpoints:
         - 192.168.35.8
         - 192.168.35.6
+        - 192.168.35.200
     kubeEtcd:
       enabled: true
     grafana:
@@ -152,7 +148,7 @@ spec:
         enabled: false
       envFromSecret: grafana-secrets
       image:
-        tag: 9.0.0
+        tag: 9.0.7
       plugins:
         - natel-discrete-panel
         - pr0ps-trackmap-panel
@@ -231,8 +227,8 @@ spec:
                requests:
                  storage: 10Gi
         thanos:
-          image: 'quay.io/thanos/thanos:v0.26.0'
-          version: v0.26.0
+          image: 'quay.io/thanos/thanos:v0.27.0'
+          version: v0.27.0
           objectStorageConfig:
             name: thanos-secrets
             key: objstore.yml

@@ -12,3 +12,4 @@ resources:
   - polaris
   - vpa
   - goldilocks
+  - healthchecks
