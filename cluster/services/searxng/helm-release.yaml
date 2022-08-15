@@ -33,4 +33,4 @@ spec:
         existingClaim: searxng-config
         readOnly: true
         mountPoint: /etc/searxng/
-        name: config
+        name: searxng-config
