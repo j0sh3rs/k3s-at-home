@@ -17,8 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    # nodeSelector:
-    #   kubernetes.io/arch: "arm64"
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     envFrom:
       - secretRef:
           name: unifi-poller-secrets
@@ -28,14 +29,6 @@ spec:
       pullPolicy: Always
     influxdb:
       enabled: false
-      # influxdb:
-      #   nodeSelector:
-      #     kubernetes.io/arch: amd64
-      # persistence:
-      #   enabled: true
-      #   storageClass: longhorn
-      #   accessModes:
-      #     - ReadWriteMany
     metrics:
       enabled: true
       prometheusRule:

@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - metallb
-  # - reloader
+  - reloader
   - node-feature-discovery
   - kured
   - descheduler

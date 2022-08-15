@@ -17,8 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    # nodeSelector:
-    #   kubernetes.io/arch: "arm64"
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
     env:
       DISCORD_USERNAME: "Alertmanager"
       DISCORD_AVATAR_URL: "https://avatars3.githubusercontent.com/u/3380462"

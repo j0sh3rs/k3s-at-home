@@ -18,12 +18,13 @@ spec:
       interval: 5m
   values:
     image:
-      # renovate: datasource=docker
       repository: spx01/blocky
       tag: v0.19
       pullPolicy: Always
     controller:
       type: daemonset
+      annotations:
+        reloader.stakater.com/auto: "true"
     metrics:
       enabled: true
       prometheusRule:

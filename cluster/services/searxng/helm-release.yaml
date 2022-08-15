@@ -23,6 +23,8 @@ spec:
       rollingUpdate:
         unavailable: 1
         surge: 3
+      annotations:
+        reloader.stakater.com/auto: "true"
     # envFrom:
     #   - secretRef:
     #       name: searxng-secrets

@@ -4,8 +4,10 @@ kind: Deployment
 metadata:
   name: invidious-server
   namespace: services
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: invidious-server
@@ -50,5 +52,3 @@ spec:
               memory: 2Gi
       hostname: invidious
       restartPolicy: Always
-      nodeSelector:
-        kubernetes.io/arch: amd64

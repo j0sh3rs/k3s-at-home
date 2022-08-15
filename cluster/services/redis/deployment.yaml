@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: redis
   namespace: services
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
@@ -14,8 +16,6 @@ spec:
       labels:
         app: redis
         name: redis
-    nodeSelector:
-      kubernetes.io/arch: "amd64"
     spec:
       securityContext:
         runAsUser: 1000

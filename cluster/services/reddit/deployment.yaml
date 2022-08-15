@@ -10,9 +10,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
+    - name: http
+      port: 8080
+      targetPort: 8080
   selector:
     app: reddit
     release: alpha
@@ -25,6 +25,8 @@ metadata:
   labels:
     app: reddit
     release: alpha
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
@@ -48,26 +50,31 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-      - name: reddit
-        image: "spikecodes/libreddit:latest"
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-        readinessProbe:
-          httpGet:
-            port: 8080
-            path: /settings
-        livenessProbe:
-          httpGet:
-            port: 8080
-            path: /settings
-          initialDelaySeconds: 15
-          periodSeconds: 300
+        - name: reddit
+          image: "spikecodes/libreddit:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /settings
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /settings
+            initialDelaySeconds: 15
+            periodSeconds: 300
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mb
+            requests:
+              cpu: 100m
+              memory: 256Mb
       restartPolicy: Always
-      nodeSelector:
-        kubernetes.io/arch: amd64

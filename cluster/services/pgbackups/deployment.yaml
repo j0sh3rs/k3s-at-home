@@ -7,6 +7,8 @@ metadata:
   labels:
     app.kubernetes.io/instance: pgbackups
     app.kubernetes.io/name: pgbackups
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   selector:
     matchLabels:
@@ -32,7 +34,7 @@ spec:
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PORT
-              value: '35432'
+              value: "35432"
             - name: POSTGRES_EXTRA_OPTS
               value: "-Z9 --schema=public --blobs"
             - name: SCHEDULE
@@ -55,7 +57,7 @@ spec:
               cpu: 150m
               memory: 256Mi
             limits:
-              cpu: 2
+              cpu: 2000m
               memory: 4G
           ports:
             - containerPort: 8080

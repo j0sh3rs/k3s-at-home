@@ -12,5 +12,3 @@ resources:
   - polaris
   - vpa
   - goldilocks
-  # - loki-stack
-  # - uptime-kuma

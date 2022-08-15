@@ -102,6 +102,13 @@ spec:
               mountPath: /etc/ca-certificates
             - name: tmp
               mountPath: /tmp
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 512Mb
       volumes:
         - name: etc-ssl
           hostPath:

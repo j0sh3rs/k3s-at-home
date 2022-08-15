@@ -22,6 +22,8 @@ spec:
       rollingUpdate:
         unavailable: 1
         surge: 2
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       tag: release
       pullPolicy: Always

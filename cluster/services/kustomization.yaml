@@ -7,7 +7,6 @@ resources:
   - blocky
   - vaultwarden
   - cloudflared
-  # - whoogle
   - invidious
   - protonmail-bridge
   - pgbackups

@@ -47,13 +47,14 @@ spec:
         - name: synology
           url: "192.168.35.5"
           module: icmp
-        - name: rpi
-          url: "192.168.35.8"
+        - name: mbp
+          url: "192.168.35.4"
           module: icmp
         - name: xps
           url: "192.168.35.6"
           module: icmp
-
+        - name: tank
+          url: "192.168.35.200"
     prometheusRule:
       enabled: true
       additionalLabels:

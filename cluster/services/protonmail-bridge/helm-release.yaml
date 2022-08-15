@@ -22,13 +22,13 @@ spec:
       rollingUpdate:
         unavailable: 1
         surge: 2
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       tag: build
       pullPolicy: Always
     env:
       TZ: America/New_York
-    nodeSelector:
-      kubernetes.io/arch: "amd64"
     persistence:
       config:
         enabled: true
