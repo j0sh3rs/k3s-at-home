@@ -165,13 +165,13 @@ spec:
         dashboards:
           enabled: true
           searchNamespace: ALL
-      additionalDataSources:
-        - name: Prometheus
-          type: prometheus
-          access: proxy
-          url: 'http://thanos-query:9090/'
-          isDefault: false
-          editable: true
+            # additionalDataSources:
+            #- name: Prometheus
+            # type: prometheus
+            # access: proxy
+            # url: 'http://thanos-query:9090/'
+            # isDefault: false
+            # editable: true
       ingress:
         enabled: false
     prometheus-node-exporter:
