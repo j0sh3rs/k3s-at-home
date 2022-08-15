@@ -10,5 +10,7 @@ resources:
   - unifi-poller
   - splunk
   - polaris
+  - vpa
+  - goldilocks
   # - loki-stack
   # - uptime-kuma

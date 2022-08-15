@@ -7,4 +7,3 @@ resources:
   - node-feature-discovery
   - kured
   - descheduler
-  - vpa
