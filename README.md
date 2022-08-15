@@ -35,3 +35,8 @@ flux bootstrap github \
 ```bash
 pre-commit install
 ```
+
+## Roadmap
+- [ ] Validate Prometheus Metrics Exporting
+- [ ] Reorganize Content more logically
+- [ ] Figure out AGE and SOPS again
