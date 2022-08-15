@@ -23,14 +23,14 @@ spec:
       rollingUpdate:
         unavailable: 1
         surge: 3
-    envFrom:
-      - secretRef:
-          name: searxng-secrets
+    # envFrom:
+    #   - secretRef:
+    #       name: searxng-secrets
     persistence:
       config:
         enabled: true
-    searxng:
-      config:
-        server:
-          server.limiter: true
-          redis.url: redis://@redis:6379/4
+        type: configMap
+        existingClaim: searxng-config
+        readOnly: true
+        mountPoint: /etc/searxng/
+        name: config
