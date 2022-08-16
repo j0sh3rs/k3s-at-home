@@ -57,7 +57,7 @@
     {
       "description": "Process CRD dependencies",
       "fileMatch": [
-        "cluster/configuration/crds/.+\\.ya?ml$"
+        "cluster/base-custom/crds/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
