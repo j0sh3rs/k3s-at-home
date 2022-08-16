@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
-      version: 39.6.0
+      version: 39.7.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -126,11 +126,9 @@ spec:
         - 192.168.35.6
         - 192.168.35.200
     kubeEtcd:
-      enabled: true
+      enabled: false
     grafana:
       enabled: true
-      nodeSelector:
-        kubernetes.io/arch: amd64
       defaultDashboardsTimezone: America/New_York
       dashboards:
         default:
@@ -300,8 +298,8 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: true
+        enabled: false
       thanosServiceMonitor:
-        enabled: true
+        enabled: false
       thanosIngress:
         enabled: false
