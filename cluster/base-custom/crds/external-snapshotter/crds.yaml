@@ -8,6 +8,8 @@ spec:
   interval: 1h
   # renovate: datasource=github-releases
   url: https://github.com/kubernetes-csi/external-snapshotter.git
+  ref:
+    tag: v6.0.1
   ignore: |
     # exclude all
     /*
