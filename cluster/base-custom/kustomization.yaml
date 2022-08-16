@@ -6,3 +6,4 @@ resources:
   - nfs-subdir-external-provisioner
   - crds
   - monitoring
+  - metallb
