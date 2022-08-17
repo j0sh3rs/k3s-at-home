@@ -46,13 +46,9 @@ spec:
               - namespace
       alertmanagerSpec:
         replicas: 1
-        nodeSelector:
-          kubernetes.io/arch: amd64
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
-              accessModes: ["ReadWriteMany"]
               resources:
                 requests:
                   storage: 10Gi
@@ -224,11 +220,9 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-            #  storageClassName: nfs-client
-            #  accessModes: ["ReadWriteMany"]
              resources:
                requests:
-                 storage: 70Gi
+                 storage: 100Gi
         thanos:
           image: 'quay.io/thanos/thanos:v0.27.0'
           version: v0.27.0

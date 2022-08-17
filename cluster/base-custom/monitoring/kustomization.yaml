@@ -5,7 +5,7 @@ resources:
   - blackbox-exporter
   - botkube
   - alertmanager-discord
-  # - kube-prometheus-stack
+  - kube-prometheus-stack
   # - thanos
   - unifi-poller
   - splunk
