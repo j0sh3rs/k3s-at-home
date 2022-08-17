@@ -27,3 +27,11 @@ metadata:
   labels:
     goldilocks.fairwinds.com/enabled: "true"
     goldilocks.fairwinds.com/vpa-update-mode: "auto"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: misc
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/vpa-update-mode: "auto"
