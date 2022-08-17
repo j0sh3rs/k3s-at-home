@@ -18,9 +18,6 @@ spec:
       interval: 5m
   values:
     updateStrategy: RollingUpdate
-    image:
-      repository: quay.io/paulfantom/kured
-      tag: 1.9.2
     configuration:
       startTime: "2:00"
       endTime: "5:00"
