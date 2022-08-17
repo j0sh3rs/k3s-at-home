@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -25,7 +26,7 @@ spec:
           group_by: ['alertname']
           group_wait: 20s
           group_interval: 5m
-          repeat_interval: 3h 
+          repeat_interval: 3h
           receiver: discord_webhook
         receivers:
           - name: 'discord_webhook'
@@ -163,13 +164,13 @@ spec:
         dashboards:
           enabled: true
           searchNamespace: ALL
-            # additionalDataSources:
-            #- name: Prometheus
-            # type: prometheus
-            # access: proxy
-            # url: 'http://thanos-query:9090/'
-            # isDefault: false
-            # editable: true
+          # additionalDataSources:
+          #- name: Prometheus
+          # type: prometheus
+          # access: proxy
+          # url: 'http://thanos-query:9090/'
+          # isDefault: false
+          # editable: true
       ingress:
         enabled: false
     prometheus-node-exporter:
