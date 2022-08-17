@@ -18,3 +18,4 @@ resources:
   - splunk-connect.yaml
   - fairwinds.yaml
   - searxng.yaml
+  - botkube.yaml

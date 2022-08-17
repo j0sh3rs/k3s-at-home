@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: botkube
+  namespace: botkube
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.botkube.io
+      chart: botkube
+      version: v0.12.4
+      sourceRef:
+        kind: HelmRepository
+        name: botkube-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      tag: v0.12.4
+    settings:
+      clusterName: k3s
+    fullnameOverride: botkube
+    existingCommunicationsSecretName: botkube-communication-secret
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 5m
+        memory: 64Mi
