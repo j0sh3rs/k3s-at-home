@@ -5,4 +5,3 @@ resources:
   - clusterrolebinding.yaml
   - helm-release.yaml
   # - cloudflare-access.yaml
-  # - promtail.yaml

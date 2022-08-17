@@ -18,6 +18,10 @@ spec:
       interval: 5m
   values:
     nameOverride: prometheus
+    fullnameOverride: prometheus
+    defaultRules:
+      rules:
+        etcd: false
     alertmanager:
       config:
         global:
@@ -213,18 +217,18 @@ spec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
-        retention: 1d
-        retentionSize: 6GB
+        retention: 21d
+        retentionSize: 50GB
         enableAdminAPI: true
         walCompression: true
         storageSpec:
           volumeClaimTemplate:
             spec:
-             storageClassName: nfs-client
-             accessModes: ["ReadWriteMany"]
+            #  storageClassName: nfs-client
+            #  accessModes: ["ReadWriteMany"]
              resources:
                requests:
-                 storage: 10Gi
+                 storage: 70Gi
         thanos:
           image: 'quay.io/thanos/thanos:v0.27.0'
           version: v0.27.0
