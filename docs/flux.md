@@ -1,6 +1,6 @@
 # Flux
 
-## Install the CLI tool
+## Installation
 
 ```sh
 brew install fluxcd/tap/flux
