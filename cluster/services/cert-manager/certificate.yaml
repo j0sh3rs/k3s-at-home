@@ -10,7 +10,7 @@ spec:
   renewBefore: 360h # 15d
   privateKey:
     algorithm: ECDSA
-    size: 512
+    size: 521
   dnsNames:
     - '*.bth.wtf'
     - bth.wtf
