@@ -9,7 +9,7 @@ spec:
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   privateKey:
-    algorithm: ECSDA
+    algorithm: ECDSA
     size: 512
   dnsNames:
     - '*.bth.wtf'
