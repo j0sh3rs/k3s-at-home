@@ -17,7 +17,7 @@ spec:
           email: cloudflare@beholdthehurricane.com
           apiKeySecretRef:
             name: cloudflare-api-token-secret
-            key: api-key
+            key: api-token
       selector:
         dnsZones:
         - 'bth.wtf'
