@@ -7,3 +7,4 @@ resources:
   - crds
   - monitoring
   - metallb
+  - cert-manager

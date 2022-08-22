@@ -18,3 +18,4 @@ resources:
   - fairwinds.yaml
   - searxng.yaml
   - botkube.yaml
+  - jetstack.yaml
