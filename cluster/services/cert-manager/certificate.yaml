@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-bth-wtf
+  namespace: services
+spec:
+  # Secret names are always required.
+  secretName: wildcard-bth-wtf-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  privateKey:
+    algorithm: ECSDA
+    size: 512
+  dnsNames:
+    - '*.bth.wtf'
+    - bth.wtf
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
