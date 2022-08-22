@@ -8,15 +8,23 @@ spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: acme@beholdthehurricane.com
-
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-    - selector: {}
-      dns01:
+    - dns01:
         cloudflare:
           email: cloudflare@beholdthehurricane.com
           apiKeySecretRef:
             name: cloudflare-api-token-secret
             key: api-key
+      selector:
+        dnsZones:
+        - 'bth.wtf'
+        - 'beholdthehurricane.com'
+    - http01:
+        ingress:
+          class: haproxy
+      selector:
+        matchLabels:
+          "use-http01-solver": "true"
