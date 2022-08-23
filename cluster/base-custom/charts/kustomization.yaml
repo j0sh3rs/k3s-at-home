@@ -19,3 +19,4 @@ resources:
   - searxng.yaml
   - botkube.yaml
   - jetstack.yaml
+  - haproxy.yaml

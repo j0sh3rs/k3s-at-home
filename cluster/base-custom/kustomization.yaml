@@ -9,3 +9,4 @@ resources:
   - monitoring
   - metallb
   - cert-manager
+  - haproxy
