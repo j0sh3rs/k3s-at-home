@@ -19,7 +19,7 @@ spec:
     controller:
       kind: DaemonSet
       daemonset:
-        useHostPorts: true
+        useHostPorts: false
       image:
         pullPolicy: Always
       defaultTLSSecret:
@@ -36,8 +36,8 @@ spec:
       serviceMonitor:
         enabled: true
       service:
-        enabled: false
-        # type: LoadBalancer
+        # enabled: false
+        type: LoadBalancer
         # nodePorts:
         #   http: 32297
         #   https: 31254
