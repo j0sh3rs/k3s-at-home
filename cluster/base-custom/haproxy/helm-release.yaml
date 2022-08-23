@@ -17,10 +17,14 @@ spec:
       interval: 5m
   values:
     controller:
+      config: haproxy-ingress/haproxy-cfg
       image:
         pullPolicy: Always
       extraArgs:
         default-ssl-certificate: "services/wildcard-bth-wtf-tls"
+        watch-ingress-without-class: "true"
+      publishService:
+        enabled: true
     stats:
       enabled: true
     metrics:
@@ -28,7 +32,7 @@ spec:
     serviceMonitor:
       enabled: true
     logs:
-      ENABLED: true
+      enabled: true
     defaultBackend:
       enabled: true
     ingressClassResource:
