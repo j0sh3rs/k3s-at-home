@@ -35,8 +35,8 @@ spec:
       service:
         type: LoadBalancer
         nodePorts:
-          http: 80
-          https: 443
+          http: 32297
+          https: 31254
           stat: 31024
       ingressClassResource:
         default: true
