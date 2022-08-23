@@ -49,5 +49,5 @@ spec:
         enabled: true
       logs:
         enabled: true
-      defaultBackend:
-        enabled: true
+      # defaultBackend:
+      #   enabled: true
