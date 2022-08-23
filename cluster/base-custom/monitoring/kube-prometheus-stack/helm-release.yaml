@@ -171,6 +171,9 @@ spec:
           - grafana.bth.wtf
         annotations:
           haproxy-ingress.github.io/waf: "modsecurity"
+          haproxy-ingress.github.io/ssl-redirect: "true"
+          haproxy-ingress.github.io/hsts-include-subdomains: "true"
+          haproxy-ingress.github.io/hsts-preload: "true"
     prometheus-node-exporter:
       enabled: true
       fullnameOverride: node-exporter
