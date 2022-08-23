@@ -20,7 +20,7 @@ spec:
       image:
         pullPolicy: Always
       extraArgs:
-        default-ssl-certificate: "services/wildcard-bth-wtf"
+        default-ssl-certificate: "services/wildcard-bth-wtf-tls"
     stats:
       enabled: true
     metrics:
