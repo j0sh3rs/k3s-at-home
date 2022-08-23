@@ -33,7 +33,7 @@ spec:
       serviceMonitor:
         enabled: true
       service:
-        type: NodePort
+        type: LoadBalancer
         nodePorts:
           http: 80
           https: 443
