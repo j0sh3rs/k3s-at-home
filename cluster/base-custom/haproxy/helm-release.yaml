@@ -33,6 +33,10 @@ spec:
       serviceMonitor:
         enabled: true
       service:
-        type: LoadBalancer
+        type: NodePort
+        nodePorts:
+          http: 80
+          https: 443
+          stat: 31024
       ingressClassResource:
         default: true
