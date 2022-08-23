@@ -26,7 +26,6 @@ spec:
           tag: "lts-alpine"
       image:
         pullPolicy: Always
-      config: "haproxy-controller/haproxy-cfg"
       extraArgs:
         default-ssl-certificate: "haproxy-controller/wildcard-bth-wtf-tls"
       publishService:
