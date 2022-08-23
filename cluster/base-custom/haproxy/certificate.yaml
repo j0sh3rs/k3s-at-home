@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: wildcard-bth-wtf
-  namespace: services
+  namespace: haproxy-controller
 spec:
   # Secret names are always required.
   secretName: wildcard-bth-wtf-tls
