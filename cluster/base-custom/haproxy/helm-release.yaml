@@ -2,45 +2,49 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: haproxy-controller
+  name: haproxy-ingress
   namespace: haproxy-controller
 spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://haproxytech.github.io/helm-charts
-      chart: kubernetes-ingress
+      # renovate: registryUrl=https://haproxy-ingress.github.io/charts
+      chart: haproxy-ingress
       sourceRef:
         kind: HelmRepository
-        name: haproxy-charts
+        name: haproxy-ingress
         namespace: flux-system
       interval: 5m
   values:
+    nameOverride: haproxy
+    fullnameOverride: haproxy
     controller:
-      kind: DaemonSet
-      daemonset:
-        useHostPorts: false
+      haproxy:
+        enabled: true
+        image:
+          pullPolicy: Always
+          tag: "lts-alpine"
       image:
         pullPolicy: Always
-      defaultTLSSecret:
-        secretNamespace: haproxy-controller
-        secret: wildcard-bth-wtf-tls
+      config: "haproxy-controller/haproxy-cfg"
       extraArgs:
-        - --empty-ingress-class
-        - --prometheus
-        - --publish-service=haproxy-controller/kubernetes-ingress
-        - --configmap=haproxy-controller/haproxy-cfg
-      extraEnvs:
-        - name: TZ
-          value: "America/New_York"
+        default-ssl-certificate: "haproxy-controller/wildcard-bth-wtf-tls"
+      publishService:
+        enabled: true
+      ingressClassResource:
+        enabled: true
+        default: true
+        controllerClass: "haproxy"
+      stats:
+        enabled: true
+      metrics:
+        enabled: true
+        image:
+          pullPolicy: Always
+          tag: "v0.13.0"
       serviceMonitor:
         enabled: true
-      service:
-        # enabled: false
-        type: LoadBalancer
-        # nodePorts:
-        #   http: 32297
-        #   https: 31254
-        #   stat: 31024
-      ingressClassResource:
-        default: true
+      logs:
+        enabled: true
+      defaultBackend:
+        enabled: true

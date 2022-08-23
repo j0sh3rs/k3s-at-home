@@ -20,3 +20,4 @@ resources:
   - botkube.yaml
   - jetstack.yaml
   - haproxy.yaml
+  - haproxy-ingress.yaml

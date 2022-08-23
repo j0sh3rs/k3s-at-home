@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: haproxy-controller
+  namespace: haproxy-controller
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://haproxytech.github.io/helm-charts
+      chart: kubernetes-ingress
+      sourceRef:
+        kind: HelmRepository
+        name: haproxy-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    controller:
+      kind: DaemonSet
+      daemonset:
+        useHostPorts: false
+      image:
+        pullPolicy: Always
+      defaultTLSSecret:
+        secretNamespace: haproxy-controller
+        secret: wildcard-bth-wtf-tls
+      extraArgs:
+        - --empty-ingress-class
+        - --prometheus
+        - --publish-service=haproxy-controller/kubernetes-ingress
+        - --configmap=haproxy-controller/haproxy-cfg
+      extraEnvs:
+        - name: TZ
+          value: "America/New_York"
+      serviceMonitor:
+        enabled: true
+      service:
+        # enabled: false
+        type: LoadBalancer
+        nodePorts:
+          http: 32297
+          https: 31254
+          stat: 31024
+      ingressClassResource:
+        default: true
