@@ -165,7 +165,10 @@ spec:
           enabled: true
           searchNamespace: ALL
       ingress:
-        enabled: false
+        enabled: true
+        ingressClassName: haproxy
+        hosts:
+          - grafana.bth.wtf
     prometheus-node-exporter:
       enabled: true
       fullnameOverride: node-exporter
