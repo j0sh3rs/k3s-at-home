@@ -20,7 +20,7 @@ spec:
     fullnameOverride: haproxy
     controller:
       haproxy:
-        enabled: true
+        enabled: false
         image:
           pullPolicy: Always
           tag: "lts-alpine"
