@@ -28,6 +28,7 @@ spec:
         pullPolicy: Always
       extraArgs:
         default-ssl-certificate: "haproxy-controller/wildcard-bth-wtf-tls"
+        config-map: "haproxy-controller/haproxy-cfg"
       publishService:
         enabled: true
       ingressClassResource:
