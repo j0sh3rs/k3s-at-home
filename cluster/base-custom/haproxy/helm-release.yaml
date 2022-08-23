@@ -17,6 +17,9 @@ spec:
       interval: 5m
   values:
     controller:
+      kind: DaemonSet
+      daemonset:
+        useHostPorts: true
       image:
         pullPolicy: Always
       defaultTLSSecret:
@@ -33,10 +36,11 @@ spec:
       serviceMonitor:
         enabled: true
       service:
-        type: LoadBalancer
-        nodePorts:
-          http: 32297
-          https: 31254
-          stat: 31024
+        enabled: false
+        # type: LoadBalancer
+        # nodePorts:
+        #   http: 32297
+        #   https: 31254
+        #   stat: 31024
       ingressClassResource:
         default: true
