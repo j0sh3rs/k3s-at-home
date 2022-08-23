@@ -32,6 +32,8 @@ spec:
         watch-ingress-without-class: "true"
       publishService:
         enabled: true
+      podAnnotations:
+        reloader.stakater.com/auto: "true"
       ingressClassResource:
         enabled: true
         default: true
