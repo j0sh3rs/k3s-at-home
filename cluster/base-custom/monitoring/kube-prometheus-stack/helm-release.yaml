@@ -169,6 +169,8 @@ spec:
         ingressClassName: haproxy
         hosts:
           - grafana.bth.wtf
+        annotations:
+          haproxy-ingress.github.io/waf: "modsecurity"
     prometheus-node-exporter:
       enabled: true
       fullnameOverride: node-exporter
