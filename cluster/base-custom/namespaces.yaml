@@ -71,7 +71,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: haproxy
+  name: ingress-controller
   labels:
     goldilocks.fairwinds.com/enabled: "true"
     goldilocks.fairwinds.com/vpa-update-mode: "auto"
