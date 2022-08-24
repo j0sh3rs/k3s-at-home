@@ -18,6 +18,8 @@ spec:
   values:
     controller:
       containerName: nginx
+      extraArgs:
+        default-ssl-certificate: "ingress-nginx/wildcard-bth-wtf-tls"
       image:
         pullPolicy: Always
       watchIngressWithoutClass: true
@@ -27,6 +29,8 @@ spec:
         reloader.stakater.com/auto: "true"
       podAnnotations:
         reloader.stakater.com/auto: "true"
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "10245"
       metrics:
         enabled: true
         serviceMonitor:
