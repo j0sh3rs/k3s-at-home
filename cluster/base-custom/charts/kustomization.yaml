@@ -19,5 +19,5 @@ resources:
   - searxng.yaml
   - botkube.yaml
   - jetstack.yaml
-  - haproxy.yaml
+  - ingress-nginx.yaml
   - oauth2-proxy.yaml
