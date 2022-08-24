@@ -43,7 +43,6 @@ spec:
       PodDisruptionBudget:
         enable: true
         maxUnavailable: 1
-        minAvailable: 1
       strategy:
         rollingUpdate:
           maxSurge: 50%
