@@ -170,7 +170,7 @@ spec:
           searchNamespace: ALL
       ingress:
         enabled: true
-        ingressClassName: haproxy
+        ingressClassName: nginx
         hosts:
           - grafana.bth.wtf
     prometheus-node-exporter:
