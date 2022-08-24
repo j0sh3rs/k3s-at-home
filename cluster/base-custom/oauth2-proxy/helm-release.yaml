@@ -42,4 +42,4 @@ spec:
       type: redis
       redis:
         standalone:
-          connectionUrl: "redis://redis:6379/6"
+          connectionUrl: "redis://redis.services:6379/6"
