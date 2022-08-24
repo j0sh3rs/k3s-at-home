@@ -5,7 +5,7 @@ metadata:
   labels:
     run: modsec
   name: modsec
-  namespace: haproxy-controller
+  namespace: haproxy
   annotations:
     reloader.stakater.com/auto: "true"
 spec:

@@ -2,28 +2,23 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: haproxy-ingress
-  namespace: haproxy-controller
+  name: haproxy
+  namespace: haproxy
 spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://haproxy-ingress.github.io/charts
-      chart: haproxy-ingress
+      # renovate: registryUrl=https://haproxytech.github.io/helm-charts
+      chart: kubernetes-ingress
       sourceRef:
         kind: HelmRepository
-        name: haproxy-ingress
+        name: haproxy
         namespace: flux-system
       interval: 5m
   values:
     nameOverride: haproxy
     fullnameOverride: haproxy
     controller:
-      haproxy:
-        enabled: false
-        image:
-          pullPolicy: Always
-          tag: "lts-alpine"
       image:
         pullPolicy: Always
       extraArgs:
