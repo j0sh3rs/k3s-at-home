@@ -10,3 +10,4 @@ resources:
   - metallb
   - cert-manager
   - haproxy
+  - oauth2-proxy
