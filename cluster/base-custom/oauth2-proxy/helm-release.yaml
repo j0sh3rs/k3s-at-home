@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://oauth2-proxy.github.io/manifests
-      chart: oauth2-proxy-charts
+      chart: oauth2-proxy
       sourceRef:
         kind: HelmRepository
         name: oauth2-proxy-charts
