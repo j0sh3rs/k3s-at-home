@@ -50,7 +50,7 @@ metadata:
   labels:
     app: modsec
   name: modsec
-  namespace: haproxy-controller
+  namespace: haproxy
 spec:
   ports:
     - name: modsec

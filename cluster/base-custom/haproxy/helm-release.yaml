@@ -22,39 +22,42 @@ spec:
       image:
         pullPolicy: Always
       extraArgs:
-        default-ssl-certificate: "haproxy-controller/wildcard-bth-wtf-tls"
-        configmap: "haproxy-controller/haproxy-cfg"
-        watch-ingress-without-class: "true"
+        - --configmap=haproxy/haproxy-cfg
+        - --prometheus
+        - --empty-ingress-class
+      defaultTLSSecret:
+        enabled: true
+        secretNamespace: haproxy
+        secret: wildcard-bth-wtf-tls
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 64Mi
       publishService:
         enabled: true
       podAnnotations:
         reloader.stakater.com/auto: "true"
+      PodDisruptionBudget:
+        enable: true
+        maxUnavailable: 1
+        minAvailable: 1
+      strategy:
+        rollingUpdate:
+          maxSurge: 50%
+          maxUnavailable: 50%
+        type: RollingUpdate
+      extraEnvs:
+        - name: TZ
+          value: "America/New_York"
       ingressClassResource:
-        enabled: true
         default: true
-        controllerClass: "haproxy"
-      stats:
-        enabled: true
-      metrics:
-        enabled: true
-        image:
-          pullPolicy: Always
-          tag: "v0.13.0"
       serviceMonitor:
         enabled: true
-        labels:
-          release: prometheus
-        metrics:
-          relabelings:
-          - replacement: cl1
-            targetLabel: cluster
-          - sourceLabels: [__meta_kubernetes_pod_node_name]
-            targetLabel: hostname
-        ctrlMetrics:
-          relabelings:
-          - replacement: cl1
-            targetLabel: cluster
-          - sourceLabels: [__meta_kubernetes_pod_node_name]
-            targetLabel: hostname
-      logs:
-        enabled: true
+      logging:
+        traffic:
+          address: "stdout"
+          format: "raw"
+          facility: "daemon"
