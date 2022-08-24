@@ -20,7 +20,6 @@ spec:
       containerName: nginx
       image:
         pullPolicy: Always
-      # config:
       watchIngressWithoutClass: true
       ingressClassResource:
         default: true
