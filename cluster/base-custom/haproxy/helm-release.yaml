@@ -47,7 +47,19 @@ spec:
           tag: "v0.13.0"
       serviceMonitor:
         enabled: true
+        labels:
+          release: prometheus
+        metrics:
+          relabelings:
+          - replacement: cl1
+            targetLabel: cluster
+          - sourceLabels: [__meta_kubernetes_pod_node_name]
+            targetLabel: hostname
+        ctrlMetrics:
+          relabelings:
+          - replacement: cl1
+            targetLabel: cluster
+          - sourceLabels: [__meta_kubernetes_pod_node_name]
+            targetLabel: hostname
       logs:
         enabled: true
-      # defaultBackend:
-      #   enabled: true
