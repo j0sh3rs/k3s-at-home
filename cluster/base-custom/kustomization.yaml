@@ -9,5 +9,5 @@ resources:
   - monitoring
   - metallb
   - cert-manager
-  # - haproxy
+  # - ingress-nginx
   # - oauth2-proxy
