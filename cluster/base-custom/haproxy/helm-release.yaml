@@ -53,6 +53,8 @@ spec:
           value: "America/New_York"
       ingressClassResource:
         default: true
+      service:
+        type: LoadBalancer
       serviceMonitor:
         enabled: true
       logging:
