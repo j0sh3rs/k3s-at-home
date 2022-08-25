@@ -145,6 +145,10 @@ spec:
             url: >-
               https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
             datasource: Prometheus
+          nginx-ingress:
+            url: >-
+              https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
+            datasource: Prometheus
       deploymentStrategy:
         type: Recreate
       persistence:
