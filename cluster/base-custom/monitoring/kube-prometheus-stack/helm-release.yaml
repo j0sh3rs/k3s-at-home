@@ -190,11 +190,11 @@ spec:
             SecRequestBodyJsonDepthLimit 512
             SecArgumentsLimit 1000
             SecRule &ARGS "@ge 1000" \
-            "id:'200007', phase:2,t:none,log,deny,status:400,msg:'Failed to fully parse request body due to large argument count',severity:2"
+                "id:'200007', phase:2,t:none,log,deny,status:400,msg:'Failed to fully parse request body due to large argument count',severity:2"
             SecRule REQBODY_ERROR "!@eq 0" \
-            "id:'200002', phase:2,t:none,log,deny,status:400,msg:'Failed to parse request body.',logdata:'%{reqbody_error_msg}',severity:2"
+                "id:'200002', phase:2,t:none,log,deny,status:400,msg:'Failed to parse request body.',logdata:'%{reqbody_error_msg}',severity:2"
             SecRule MULTIPART_STRICT_ERROR "!@eq 0" \
-            "id:'200003',phase:2,t:none,log,deny,status:400, \
+                "id:'200003',phase:2,t:none,log,deny,status:400, \
             msg:'Multipart request body failed strict validation: \
             PE %{REQBODY_PROCESSOR_ERROR}, \
             BQ %{MULTIPART_BOUNDARY_QUOTED}, \
@@ -213,11 +213,9 @@ spec:
             SecPcreMatchLimit 1000
             SecPcreMatchLimitRecursion 1000
             SecRule TX:/^MSC_/ "!@streq 0" \
-                    "id:'200005',phase:2,t:none,deny,msg:'ModSecurity internal error flagged: %{MATCHED_VAR_NAME}'"
+                "id:'200005',phase:2,t:none,deny,msg:'ModSecurity internal error flagged: %{MATCHED_VAR_NAME}'"
             SecResponseBodyAccess On
             SecResponseBodyMimeType text/plain text/html text/xml
-
-            # Buffer response bodies of up to 512 KB in length.
             SecResponseBodyLimit 524288
             SecResponseBodyLimitAction ProcessPartial
             SecTmpDir /tmp/
