@@ -10,17 +10,13 @@ spec:
     spec:
       # renovate: registryUrl=https://j0sh3rs.github.io/charts/
       chart: blocky
-      version: 10.5.2
+      version: 10.6.0
       sourceRef:
         kind: HelmRepository
         name: j0sh3rs-charts
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: spx01/blocky
-      tag: v0.19
-      pullPolicy: Always
     controller:
       type: daemonset
       annotations:
