@@ -25,9 +25,19 @@ spec:
         surge: 3
       annotations:
         reloader.stakater.com/auto: "true"
-    # envFrom:
-    #   - secretRef:
-    #       name: searxng-secrets
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+        hosts:
+          - host: bth.wtf
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: 8080
     persistence:
       config:
         enabled: true
