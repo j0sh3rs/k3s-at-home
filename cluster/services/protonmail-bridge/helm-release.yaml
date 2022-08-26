@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://j0sh3rs.github.io/charts/
+      # renovate: registryUrl=https://j0sh3rs.github.io/helm-charts/
       chart: protonmail-bridge
       version: 5.4.2
       sourceRef:
