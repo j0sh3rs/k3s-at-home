@@ -10,20 +10,13 @@ spec:
     spec:
       # renovate: registryUrl=https://j0sh3rs.github.io/helm-charts/
       chart: blocky
-      version: 10.6.1
+      version: 10.6.2
       sourceRef:
         kind: HelmRepository
         name: j0sh3rs-charts
         namespace: flux-system
       interval: 5m
   values:
-    probes:
-      liveliness:
-        enabled: false
-      startup:
-        enabled: false
-      readiness:
-        enabled: false
     controller:
       type: daemonset
       annotations:
