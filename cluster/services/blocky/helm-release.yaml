@@ -104,7 +104,7 @@ spec:
           default:
             - ads
         refreshPeriod: 120m
-        processingConcurrency: 10
+        processingConcurrency: 50
       prometheus:
         enable: true
         path: /metrics
