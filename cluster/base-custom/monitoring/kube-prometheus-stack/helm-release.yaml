@@ -230,7 +230,7 @@ spec:
                requests:
                  storage: 100Gi
         thanos:
-          image: 'quay.io/thanos/thanos:v0.27.0'
+          image: 'quay.io/thanos/thanos:v0.28.0'
           version: v0.27.0
           objectStorageConfig:
             name: thanos-secrets
