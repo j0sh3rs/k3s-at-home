@@ -66,6 +66,7 @@ spec:
             - |
               static.cloudflareinsights.com
               secure.gravatar.com
+              r20.rs6.net
         blackLists:
           ads:
             - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
