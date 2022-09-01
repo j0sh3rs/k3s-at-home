@@ -25,6 +25,9 @@
   ],
   "rebaseWhen": "auto",
   "timezone": "America/New_York",
+  "schedule": [
+    "after 9am and before 5pm every weekday"
+  ],
   "ignorePaths": [
     "cluster/base/"
   ],
