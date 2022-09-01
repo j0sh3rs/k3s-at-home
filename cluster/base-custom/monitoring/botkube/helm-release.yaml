@@ -17,14 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      tag: v0.12.4
     settings:
       clusterName: k3s
     fullnameOverride: botkube
     existingCommunicationsSecretName: botkube-communication-secret
     executors:
-      'kubectl-read-only':
+      "kubectl-read-only":
         kubectl:
           enabled: true
           defaultNamespace: services
