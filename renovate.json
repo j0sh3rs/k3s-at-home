@@ -54,7 +54,7 @@
   },
   "kustomize": {
     "fileMatch": [
-      "(^|/)kustomization\\.ya?ml$"
+      "cluster/.+/(^|/)kustomization\\.ya?ml$"
     ],
     "pinDigests": false
   },
