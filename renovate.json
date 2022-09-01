@@ -24,13 +24,14 @@
     "prIgnoreNotification"
   ],
   "rebaseWhen": "auto",
+  "timezone": "America/New_York",
   "ignorePaths": [
     "cluster/base/"
   ],
-  "docker-compose": {
+  "github-actions": {
     "fileMatch": [
-      "(^|/)docker-compose.*.ya?ml$",
-      "(^|/)docker-compose.*.ya?ml.j2$"
+      "^(workflow-templates|\\.github\\/workflows)\\/[^/]+\\.ya?ml$",
+      "(^|\\/)action\\.ya?ml$"
     ]
   },
   "helm-values": {
@@ -48,6 +49,12 @@
       "cluster/.+\\.yaml$"
     ]
   },
+  "kustomize": {
+    "fileMatch": [
+      "(^|/)kustomization\\.ya?ml$"
+    ],
+    "pinDigests": false
+  },
   "flux": {
     "fileMatch": [
       "cluster/.+\\.yaml$"
@@ -55,15 +62,15 @@
   },
   "regexManagers": [
     {
-      "description": "Process CRD dependencies",
+      "datasourceTemplate": "helm",
       "fileMatch": [
-        "cluster/base-custom/crds/.+/.+.yaml"
+        "^cluster/.*\\.yaml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
-        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)/(?<currentValue>[^/]+)/[^/]+\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*?)\n",
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*?)\n",
+        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-z-]+)-(?<currentValue>.*?)\n",
+      ]
     },
     {
       "description": "Process various dependencies",
