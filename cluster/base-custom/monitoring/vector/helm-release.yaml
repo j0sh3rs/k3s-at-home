@@ -74,7 +74,6 @@ spec:
           compression: gzip
           healthcheck: null
           default_token: ${SPLUNK_HEC_METRICS_TOKEN}
-          sourcetype: "{{ sourcetype }}"
         hec_logs:
           type: splunk_hec_logs
           inputs: [kubernetes_logs]
