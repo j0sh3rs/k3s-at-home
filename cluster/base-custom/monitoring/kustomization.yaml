@@ -13,3 +13,4 @@ resources:
   - vpa
   - goldilocks
   - healthchecks
+  - vector
