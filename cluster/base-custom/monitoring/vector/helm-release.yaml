@@ -71,7 +71,6 @@ spec:
           endpoint: http://192.168.35.5:8088
           host_key: hostname
           index: "k8s-metrics"
-          source: "{{ file }}"
           compression: gzip
           healthcheck: null
           default_token: ${SPLUNK_HEC_METRICS_TOKEN}
