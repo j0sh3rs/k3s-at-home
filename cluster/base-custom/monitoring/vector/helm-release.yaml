@@ -22,9 +22,68 @@ spec:
     role: Agent
     image:
       pullPolicy: Always
-    podAnnotations:
-      reloader.stakater.com/auto: "true"
     updateStrategy:
       type: RollingUpdate
     podMonitor:
       enabled: true
+    args:
+      - -w
+    env:
+      - name: SPLUNK_HEC_LOGS_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: vector-secrets
+            key: SPLUNK_HEC_LOGS_TOKEN
+      - name: SPLUNK_HEC_METRICS_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: vector-secrets
+            key: SPLUNK_HEC_METRICS_TOKEN
+    customConfig:
+      data_dir: /vector-data-dir
+      api:
+        enabled: true
+        address: 127.0.0.1:8686
+        playground: false
+      sources:
+        kubernetes_logs:
+          type: kubernetes_logs
+        host_metrics:
+          filesystem:
+            devices:
+              excludes: [binfmt_misc]
+            filesystems:
+              excludes: [binfmt_misc]
+            mountPoints:
+              excludes: ["*/proc/sys/fs/binfmt_misc"]
+          type: host_metrics
+        internal_metrics:
+          type: internal_metrics
+      sinks:
+        prom_exporter:
+          type: prometheus_exporter
+          inputs: [host_metrics, internal_metrics]
+          address: 0.0.0.0:9090
+        hec_metrics:
+          type: splunk_hec_metrics
+          inputs: [host_metrics, internal_metrics]
+          acknowledgements: null
+          endpoint: http://192.168.35.5:8088
+          host_key: hostname
+          index: "k8s-metrics"
+          source: "{{ file }}"
+          compression: gzip
+          healthcheck: null
+          default_token: ${SPLUNK_HEC_METRICS_TOKEN}
+          sourcetype: "{{ sourcetype }}"
+        hec_logs:
+          type: splunk_hec_logs
+          inputs: [kubernetes_logs]
+          acknowledgements: null
+          endpoint: http://192.168.35.5:8088
+          host_key: hostname
+          compression: gzip
+          encoding:
+            codec: json
+          healthcheck: null
+          default_token: ${SPLUNK_HEC_LOGS_TOKEN}
