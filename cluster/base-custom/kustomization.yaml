@@ -6,7 +6,6 @@ resources:
   - charts
   - nfs-subdir-external-provisioner
   - crds
-  - monitoring
   - metallb
   - cert-manager
   - ingress-nginx
