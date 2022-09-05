@@ -69,21 +69,17 @@ spec:
         hec_metrics:
           type: splunk_hec_metrics
           inputs: [host_metrics, internal_metrics]
-          acknowledgements: null
           endpoint: http://192.168.35.5:8088
           host_key: hostname
           index: "k8s-metrics"
           compression: gzip
-          healthcheck: null
           default_token: ${SPLUNK_HEC_METRICS_TOKEN}
         hec_logs:
           type: splunk_hec_logs
           inputs: [kubernetes_logs]
-          acknowledgements: null
           endpoint: http://192.168.35.5:8088
           host_key: hostname
           compression: gzip
           encoding:
             codec: json
-          healthcheck: null
           default_token: ${SPLUNK_HEC_LOGS_TOKEN}
