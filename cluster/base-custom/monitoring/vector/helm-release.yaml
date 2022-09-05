@@ -28,6 +28,8 @@ spec:
       enabled: true
     args:
       - -w
+      - --config
+      - /etc/vector/vector.yaml
     env:
       - name: SPLUNK_HEC_LOGS_TOKEN
         valueFrom:
