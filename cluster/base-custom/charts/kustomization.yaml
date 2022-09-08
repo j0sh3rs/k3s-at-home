@@ -3,22 +3,23 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - bitnami-charts.yaml
+  - botkube.yaml
+  - fairwinds.yaml
+  - gitlab.yaml
+  - grafana-charts.yaml
+  - ingress-nginx.yaml
   - j0sh3rs.yaml
+  - jetstack.yaml
   - kubernetes-sigs-descheduler-charts.yaml
+  - longhorn.yaml
   - metallb.yaml
   - nfs-subdir-external-provisioner.yaml
-  - stakater-charts.yaml
-  - runix-charts.yaml
-  - prometheus-community-charts.yaml
   - node-feature-discovery.yaml
-  - grafana-charts.yaml
-  - longhorn.yaml
-  - weaveworks-kured-charts.yaml
-  - splunk-connect.yaml
-  - fairwinds.yaml
-  - searxng.yaml
-  - botkube.yaml
-  - jetstack.yaml
-  - ingress-nginx.yaml
   - oauth2-proxy.yaml
+  - prometheus-community-charts.yaml
+  - runix-charts.yaml
+  - searxng.yaml
+  - splunk-connect.yaml
+  - stakater-charts.yaml
   - vector.yaml
+  - weaveworks-kured-charts.yaml
