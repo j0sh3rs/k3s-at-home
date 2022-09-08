@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://j0sh3rs.github.io/helm-charts/
       chart: healthchecks
-      version: 4.4.3
+      version: 4.5.0
       sourceRef:
         kind: HelmRepository
         name: j0sh3rs-charts
