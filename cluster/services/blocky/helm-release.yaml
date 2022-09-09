@@ -69,26 +69,24 @@ spec:
               r20.rs6.net
         blackLists:
           ads:
-            - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-            - http://sysctl.org/cameleon/hosts
-            - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-            - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-            - https://v.firebog.net/hosts/AdguardDNS.txt
-            - https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/torrent-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/fraud-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/phishing-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/tracking-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/abuse-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/drugs-nl.txt
-            - https://blocklistproject.github.io/Lists/alt-version/gambling-nl.txt
-            - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
-            - https://dbl.oisd.nl/
-            - https://www.github.developerdan.com/hosts/lists/tracking-aggressive-extended.txt
-            - https://www.github.developerdan.com/hosts/lists/dating-services-extended.txt
-            - https://www.github.developerdan.com/hosts/lists/hate-and-junk-extended.txt
-            - https://www.github.developerdan.com/hosts/lists/amp-hosts-extended.txt
+            - http://192.168.35.5:7777/hosts
+            - http://192.168.35.5:7777/simple_tracking.txt
+            - http://192.168.35.5:7777/simple_ad.txt
+            - http://192.168.35.5:7777/phishing
+            - http://192.168.35.5:7777/AdguardDNS.txt
+            - http://192.168.35.5:7777/ransomware-nl.txt
+            - http://192.168.35.5:7777/scam-nl.txt
+            - http://192.168.35.5:7777/torrent-nl.txt
+            - http://192.168.35.5:7777/fraud-nl.txt
+            - http://192.168.35.5:7777/phishing-nl.txt
+            - http://192.168.35.5:7777/tracking-nl.txt
+            - http://192.168.35.5:7777/abuse-nl.txt
+            - http://192.168.35.5:7777/drugs-nl.txt
+            - http://192.168.35.5:7777/gambling-nl.txt
+            - http://192.168.35.5:7777/tracking-aggressive-extended.txt
+            - http://192.168.35.5:7777/dating-services-extended.txt
+            - http://192.168.35.5:7777/hate-and-junk-extended.txt
+            - http://192.168.35.5:7777/amp-hosts-extended.txt
             - |
               config.samsungads.com
               gpm.samsungqbe.com
