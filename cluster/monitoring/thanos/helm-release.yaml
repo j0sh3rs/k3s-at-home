@@ -58,7 +58,7 @@ spec:
         storageClass: longhorn
         size: 30Gi
         accessModes:
-          - ReadWriteMany
+          - ReadWriteOnce
       resources:
         requests:
           memory: 512Mi
@@ -73,7 +73,7 @@ spec:
       persistence:
         storageClass: longhorn
         accessModes:
-          - ReadWriteMany
+          - ReadWriteOnce
         size: 20Gi
       resources:
         requests:
