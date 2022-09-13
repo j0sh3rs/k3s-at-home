@@ -69,7 +69,7 @@ spec:
     storegateway:
       nodeSelector:
         kubernetes.io/arch: "amd64"
-      enabled: false
+      enabled: true
       persistence:
         storageClass: longhorn
         accessModes:
