@@ -27,15 +27,24 @@ spec:
         global:
           resolve_timeout: 5m
         route:
-          group_by: ['alertname']
+          group_by: ["alertname"]
           group_wait: 20s
           group_interval: 5m
           repeat_interval: 3h
-          receiver: discord_webhook
+          receiver: "discord_webhook"
+          routes:
+            - receiver: "null"
+              matchers:
+                - alertname =~ "InfoInhibitor|Watchdog|RebootScheduled"
+            - receiver: "discord_webhook"
+              matchers:
+                - severity = "critical"
+              continue: true
         receivers:
-          - name: 'discord_webhook'
+          - name: "null"
+          - name: "discord_webhook"
             webhook_configs:
-            - url: 'http://alertmanager-discord:9094'
+              - url: "http://alertmanager-discord:9094"
         inhibit_rules:
           - source_matchers:
               - severity = "critical"
@@ -97,39 +106,11 @@ spec:
     kubeApiServer:
       enabled: true
     kubeControllerManager:
-      enabled: true
-      endpoints:
-        - 192.168.35.8
-        - 192.168.35.6
-        - 192.168.35.200
-      service:
-        enabled: true
-        port: 10257
-        targetPort: 10257
-      serviceMonitor:
-        enabled: true
-        https: true
-        insecureSkipVerify: true
+      enabled: false
     kubeScheduler:
-      enabled: true
-      endpoints:
-        - 192.168.35.8
-        - 192.168.35.6
-        - 192.168.35.200
-      service:
-        enabled: true
-        port: 10259
-        targetPort: 10259
-      serviceMonitor:
-        enabled: true
-        https: true
-        insecureSkipVerify: true
+      enabled: false
     kubeProxy:
-      enabled: true
-      endpoints:
-        - 192.168.35.8
-        - 192.168.35.6
-        - 192.168.35.200
+      enabled: false
     kubeEtcd:
       enabled: false
     grafana:
@@ -176,7 +157,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"            
+          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         hosts:
           - grafana.bth.wtf
     prometheus-node-exporter:
@@ -226,12 +207,12 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-             resources:
-               requests:
-                 storage: 100Gi
+              resources:
+                requests:
+                  storage: 100Gi
         thanos:
-          image: 'quay.io/thanos/thanos:v0.28.0'
-          version: v0.27.0
+          image: "quay.io/thanos/thanos:v0.28.0"
+          version: v0.28.0
           objectStorageConfig:
             name: thanos-secrets
             key: objstore.yml
@@ -239,7 +220,42 @@ spec:
           - job_name: nas_postgres_exporter
             static_configs:
               - targets:
-                - 192.168.35.5:9187
+                  - ["192.168.35.5:9187"]
+                labels:
+                  app: "postgres"
+            scrape_interval: 60s
+            metrics_path: "/metrics"
+          - job_name: "kubernetes-ingresses"
+            metrics_path: /probe
+            scrape_interval: 60s
+            params:
+              module: [http_2xx]
+            kubernetes_sd_configs:
+              - role: ingress
+            relabel_configs:
+              - source_labels:
+                  [__meta_kubernetes_ingress_annotation_prometheus_io_probe]
+                action: keep
+                regex: true
+              - source_labels:
+                  [
+                    __meta_kubernetes_ingress_scheme,
+                    __address__,
+                    __meta_kubernetes_ingress_path,
+                  ]
+                regex: (.+);(.+);(.+)
+                replacement: ${1}://${2}${3}
+                target_label: __param_target
+              - target_label: __address__
+                replacement: blackbox-exporter-prometheus-blackbox-exporter:9115
+              - source_labels: [__param_target]
+                target_label: instance
+              - action: labelmap
+                regex: __meta_kubernetes_ingress_label_(.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                target_label: kubernetes_namespace
+              - source_labels: [__meta_kubernetes_ingress_name]
+                target_label: kubernetes_name
           - job_name: kubernetes-services-http
             metrics_path: /probe
             scrape_interval: 60s
@@ -261,7 +277,7 @@ spec:
                   - __address__
                 target_label: __param_target
               - target_label: __address__
-                replacement: 'blackbox-exporter-prometheus-blackbox-exporter:9115'
+                replacement: "blackbox-exporter-prometheus-blackbox-exporter:9115"
               - source_labels:
                   - __param_target
                 target_label: instance
@@ -294,7 +310,7 @@ spec:
                   - __address__
                 target_label: __param_target
               - target_label: __address__
-                replacement: 'blackbox-exporter-prometheus-blackbox-exporter:9115'
+                replacement: "blackbox-exporter-prometheus-blackbox-exporter:9115"
               - source_labels:
                   - __param_target
                 target_label: instance
@@ -307,8 +323,8 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: false
+        enabled: true
       thanosServiceMonitor:
-        enabled: false
+        enabled: true
       thanosIngress:
         enabled: false

@@ -21,8 +21,6 @@ spec:
       storageClass: longhorn
     query:
       enabled: true
-      nodeSelector:
-        kubernetes.io/arch: "amd64"
       replicaCount: 1
       replicaLabels:
         - replica
@@ -39,8 +37,6 @@ spec:
     queryFrontend:
       enabled: false
     bucketweb:
-      nodeSelector:
-        kubernetes.io/arch: "amd64"
       enabled: true
       resources:
         requests:
@@ -50,8 +46,6 @@ spec:
           memory: 2Gi
           cpu: 1
     compactor:
-      nodeSelector:
-        kubernetes.io/arch: "amd64"
       enabled: true
       strategyType: Recreate
       persistence:
@@ -67,8 +61,6 @@ spec:
           memory: 2Gi
           cpu: 1
     storegateway:
-      nodeSelector:
-        kubernetes.io/arch: "amd64"
       enabled: true
       persistence:
         storageClass: longhorn
@@ -92,8 +84,6 @@ spec:
         limits:
           memory: 2Gi
           cpu: 1
-      nodeSelector:
-        kubernetes.io/arch: "amd64"
       enabled: true
       serviceMonitor:
         enabled: true
