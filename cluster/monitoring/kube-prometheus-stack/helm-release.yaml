@@ -152,7 +152,14 @@ spec:
           enabled: true
           searchNamespace: ALL
       ingress:
-        enabled: false
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+          prometheus.io/scrape: "true"
+          prometheus.io/probe: "true"
+        hosts:
+          - grafana.bth.wtf
     prometheus-node-exporter:
       enabled: true
       fullnameOverride: node-exporter

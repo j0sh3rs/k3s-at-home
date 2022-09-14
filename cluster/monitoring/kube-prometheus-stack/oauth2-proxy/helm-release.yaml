@@ -21,6 +21,7 @@ spec:
       reloader.stakater.com/auto: "true"
     ingress:
       enabled: true
+      pathType: Prefix
       className: nginx
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
@@ -30,8 +31,7 @@ spec:
         - grafana.bth.wtf
     config:
       cookieName: "bth-wtf-auth"
-      google:
-        existingSecret: grafana-oauth2-proxy
+      existingSecret: grafana-oauth2-proxy
     extraEnv:
       - name: OAUTH2_PROXY_REVERSE_PROXY
         value: "true"
