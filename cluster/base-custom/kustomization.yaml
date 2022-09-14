@@ -9,4 +9,3 @@ resources:
   - metallb
   - cert-manager
   - ingress-nginx
-  - oauth2-proxy
