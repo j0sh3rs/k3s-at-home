@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - clusterrolebinding.yaml
   - helm-release.yaml
+  - oauth2-proxy
