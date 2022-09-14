@@ -17,8 +17,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    nameOverride: prometheus
-    fullnameOverride: prometheus
     defaultRules:
       rules:
         etcd: false
