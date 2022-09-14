@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - clusterrolebinding.yaml
   - helm-release.yaml
-  # - cloudflare-access.yaml
