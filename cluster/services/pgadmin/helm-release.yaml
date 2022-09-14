@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    annotations:
+      reloader.stakater.com/auto: "true"
     image:
       repository: dpage/pgadmin4
       tag: 6
@@ -26,8 +28,7 @@ spec:
     existingSecret: "pgadmin-secrets"
     env:
       email: j0sh3rs
-      enhanced_cookie_protection: "true"
     strategy:
-      type: Recreate
+      type: RollingUpdate
     persistentVolume:
       enabled: true
