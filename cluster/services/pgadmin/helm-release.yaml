@@ -27,7 +27,7 @@ spec:
       type: LoadBalancer
     existingSecret: "pgadmin-secrets"
     env:
-      email: j0sh3rs
+      email: j0sh3rs@cluster.local
     strategy:
       type: RollingUpdate
     persistentVolume:
