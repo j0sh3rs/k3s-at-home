@@ -20,7 +20,6 @@ spec:
       containerName: nginx
       extraArgs:
         default-ssl-certificate: "ingress-nginx/wildcard-bth-wtf-tls"
-        tcp-services-configmap: "ingress-nginx/tcp-configmap-gitlab"
       image:
         pullPolicy: Always
       watchIngressWithoutClass: true
