@@ -24,6 +24,9 @@ spec:
     service:
       type: LoadBalancer
     existingSecret: "pgadmin-secrets"
+    env:
+      email: j0sh3rs
+      enhanced_cookie_protection: "true"
     strategy:
       type: Recreate
     persistentVolume:
