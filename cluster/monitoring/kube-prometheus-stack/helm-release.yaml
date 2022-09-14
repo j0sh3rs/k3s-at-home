@@ -156,6 +156,9 @@ spec:
         ingressClassName: nginx
         annotations:
           nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+          nginx.ingress.kubernetes.io/modsecurity-snippet: |
+            SecRuleEngine DetectionOnly
+            SecDebugLog /tmp/modsec_debug.log
           prometheus.io/scrape: "true"
           prometheus.io/probe: "true"
         hosts:
@@ -322,8 +325,8 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: true
+        enabled: false
       thanosServiceMonitor:
-        enabled: true
+        enabled: false
       thanosIngress:
         enabled: false

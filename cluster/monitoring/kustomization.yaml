@@ -6,11 +6,11 @@ resources:
   - botkube
   - alertmanager-discord
   - kube-prometheus-stack
-  - thanos
+  # - thanos
   - unifi-poller
   - splunk
   - polaris
   - vpa
   - goldilocks
   - healthchecks
-  - vector
+  # - vector
