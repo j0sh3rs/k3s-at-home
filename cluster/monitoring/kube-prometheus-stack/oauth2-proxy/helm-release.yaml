@@ -51,6 +51,8 @@ spec:
         value: "2h"
       - name: OAUTH2_PROXY_COOKIE_SAMESITE
         value: "lax"
+      - name: OAUTH2_PROXY_COOKIE_NAME
+        value: "bth-wtf-auth"
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
