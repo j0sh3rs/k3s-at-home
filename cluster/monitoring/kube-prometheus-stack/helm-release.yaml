@@ -112,7 +112,7 @@ spec:
     kubeEtcd:
       enabled: false
     grafana:
-      enabled: true
+      enabled: false
       defaultDashboardsTimezone: America/New_York
       dashboards:
         default:
