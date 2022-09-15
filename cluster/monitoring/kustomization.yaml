@@ -9,3 +9,4 @@ resources:
   - unifi-poller
   - vpa
   - goldilocks
+  - grafana

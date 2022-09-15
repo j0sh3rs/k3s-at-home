@@ -39,3 +39,48 @@ spec:
       limits:
         cpu: 1
         memory: 2Gi
+    admin:
+      existingSecret: grafana-admin-secrets
+    envFromSecret: "grafana-secrets"
+    plugins:
+      - natel-discrete-panel
+      - pr0ps-trackmap-panel
+      - grafana-piechart-panel
+      - vonage-status-panel
+      - grafana-worldmap-panel
+      - grafana-clock-panel
+      - camptocamp-prometheus-alertmanager-datasource
+      - cloudflare-app
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        # list of datasources that should be deleted from the database
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://kube-prometheus-stack-prometheus:9090
+            isDefault: true
+          - name: Loki
+            type: loki
+            url: http://loki-gateway:80
+      dashboards:
+        default:
+          flux-cluster:
+            url: >-
+              https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+            datasource: Prometheus
+          flux-control-plane:
+            url: >-
+              https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+            datasource: Prometheus
+          nginx-ingress:
+            url: >-
+              https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
+            datasource: Prometheus
+      sidecar:
+        datasources:
+          enabled: true
+          defaultDatasourceEnabled: true
+        dashboards:
+          enabled: true
+          searchNamespace: ALL

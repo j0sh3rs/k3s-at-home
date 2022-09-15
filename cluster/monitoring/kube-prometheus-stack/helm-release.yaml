@@ -106,63 +106,13 @@ spec:
     kubeControllerManager:
       enabled: false
     kubeScheduler:
-      enabled: false
+      enabled: true
     kubeProxy:
-      enabled: false
+      enabled: true
     kubeEtcd:
       enabled: false
     grafana:
       enabled: false
-      defaultDashboardsTimezone: America/New_York
-      dashboards:
-        default:
-          flux-cluster:
-            url: >-
-              https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
-            datasource: Prometheus
-          flux-control-plane:
-            url: >-
-              https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
-            datasource: Prometheus
-          nginx-ingress:
-            url: >-
-              https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
-            datasource: Prometheus
-      deploymentStrategy:
-        type: Recreate
-      persistence:
-        enabled: false
-      envFromSecret: grafana-secrets
-      image:
-        tag: 9.0.7
-      plugins:
-        - natel-discrete-panel
-        - pr0ps-trackmap-panel
-        - grafana-piechart-panel
-        - vonage-status-panel
-        - grafana-worldmap-panel
-        - grafana-clock-panel
-        - camptocamp-prometheus-alertmanager-datasource
-        - cloudflare-app
-      sidecar:
-        datasources:
-          enabled: true
-          defaultDatasourceEnabled: true
-        dashboards:
-          enabled: true
-          searchNamespace: ALL
-      ingress:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
-          nginx.ingress.kubernetes.io/modsecurity-snippet: |
-            SecRuleEngine DetectionOnly
-            SecDebugLog /tmp/modsec_debug.log
-          prometheus.io/scrape: "true"
-          prometheus.io/probe: "true"
-        hosts:
-          - grafana.bth.wtf
     prometheus-node-exporter:
       enabled: true
       fullnameOverride: node-exporter
