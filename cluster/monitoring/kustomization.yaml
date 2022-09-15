@@ -10,3 +10,4 @@ resources:
   - vpa
   - goldilocks
   - grafana
+  - loki
