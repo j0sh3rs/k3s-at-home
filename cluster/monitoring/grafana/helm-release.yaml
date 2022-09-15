@@ -81,6 +81,8 @@ spec:
         datasources:
           enabled: true
           defaultDatasourceEnabled: true
+          labelValue: "1"
         dashboards:
           enabled: true
           searchNamespace: ALL
+          labelValue: "1"
