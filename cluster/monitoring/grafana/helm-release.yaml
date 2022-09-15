@@ -89,6 +89,9 @@ spec:
         nginx-ingress:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
           datasource: Prometheus
+        nginx-ingress-request-handling-performance:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
+          datasource: Prometheus
     sidecar:
       datasources:
         enabled: true
