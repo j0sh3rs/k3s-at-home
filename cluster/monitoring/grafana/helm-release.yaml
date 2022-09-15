@@ -92,6 +92,24 @@ spec:
         nginx-ingress-request-handling-performance:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
           datasource: Prometheus
+        unifi-poller-uap-insights:
+          gnetId: 11314
+          datasource: Prometheus
+        unifi-poller-client-insights:
+          gnetId: 11315
+          datasource: Prometheus
+        unifi-poller-network-sites:
+          gnetId: 11311
+          datasource: Prometheus
+        unifi-poller-usw-insights:
+          gnetId: 11312
+          datasource: Prometheus
+        unifi-poller-usg-insights:
+          gnetId: 11313
+          datasource: Prometheus
+        unifi-poller-client-dpi:
+          gnetId: 11310
+          datasource: Prometheus
     sidecar:
       datasources:
         enabled: true
