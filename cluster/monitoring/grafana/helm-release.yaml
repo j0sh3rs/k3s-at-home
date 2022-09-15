@@ -1,0 +1,41 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: grafana
+      version: 6.38.1
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      pullPolicy: Always
+    serviceMonitor:
+      enabled: true
+    ingress:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+        nginx.ingress.kubernetes.io/modsecurity-snippet: |
+          SecRuleEngine DetectionOnly
+          SecDebugLog /tmp/modsec_debug.log
+        prometheus.io/scrape: "true"
+        prometheus.io/probe: "true"
+      hosts:
+        - grafana.bth.wtf
+    resources:
+      requests:
+        cpu: 200m
+        memory: 1Gi
+      limits:
+        cpu: 1
+        memory: 2Gi

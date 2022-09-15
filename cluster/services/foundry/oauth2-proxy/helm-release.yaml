@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: grafana-oauth2-proxy
-  namespace: monitoring
+  name: rpg-oauth2-proxy
+  namespace: services
 spec:
   interval: 5m
   chart:
@@ -28,10 +28,10 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
       hosts:
-        - grafana.bth.wtf
+        - rpg.bth.wtf
     config:
       cookieName: "bth-wtf-auth"
-      existingSecret: grafana-oauth2-proxy
+      existingSecret: rpg-oauth2-proxy
     extraEnv:
       - name: OAUTH2_PROXY_REVERSE_PROXY
         value: "true"
@@ -42,7 +42,7 @@ spec:
       - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
         value: "true"
       - name: OAUTH2_PROXY_UPSTREAM
-        value: "http://kube-prometheus-stack-grafana"
+        value: "http://kube-prometheus-stack-rpg"
       - name: OAUTH2_PROXY_COOKIE_REFRESH
         value: "60m"
       - name: OAUTH2_PROXY_COOKIE_DOMAIN
@@ -58,7 +58,7 @@ spec:
     authenticatedEmailsFile:
       enabled: true
       persistence: secret
-      template: "grafana-oauth2-proxy"
+      template: "rpg-oauth2-proxy"
       restrictedUserAccessKey: "useraccess"
     resources:
       limits:
