@@ -95,21 +95,27 @@ spec:
         unifi-poller-uap-insights:
           gnetId: 11314
           datasource: Prometheus
+          revision: 9
         unifi-poller-client-insights:
           gnetId: 11315
           datasource: Prometheus
+          revision: 8
         unifi-poller-network-sites:
           gnetId: 11311
           datasource: Prometheus
+          revision: 4
         unifi-poller-usw-insights:
           gnetId: 11312
           datasource: Prometheus
+          revision: 8
         unifi-poller-usg-insights:
           gnetId: 11313
           datasource: Prometheus
+          revision: 8
         unifi-poller-client-dpi:
           gnetId: 11310
           datasource: Prometheus
+          revision: 4
     sidecar:
       datasources:
         enabled: true
