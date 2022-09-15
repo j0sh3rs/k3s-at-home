@@ -113,6 +113,8 @@ spec:
       enabled: false
     grafana:
       enabled: false
+      forceDeployDashboards: true
+      defaultDashboardsTimezone: America/New_York
     prometheus-node-exporter:
       enabled: true
       fullnameOverride: node-exporter
