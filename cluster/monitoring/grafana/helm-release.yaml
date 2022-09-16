@@ -26,7 +26,7 @@ spec:
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
-          SecRuleEngine DetectionOnly
+          SecRuleEngine On
           SecDebugLog /tmp/modsec_debug.log
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
@@ -66,7 +66,6 @@ spec:
     datasources:
       datasources.yaml:
         apiVersion: 1
-        # list of datasources that should be deleted from the database
         datasources:
           - name: Prometheus
             type: prometheus
@@ -116,6 +115,24 @@ spec:
           gnetId: 11310
           datasource: Prometheus
           revision: 4
+        cloudflare-analytics:
+          gnetId: 12167
+          revision: 4
+        synology-nas-details:
+          gnetId: 14284
+          revision: 9
+        synology-nas-overview:
+          gnetId: 14364
+          revision: 8
+        loki-stack-monitoring:
+          gnetId: 14055
+          revision: 5
+        minio:
+          gnetId: 13502
+          revision: 19
+        postgres_database:
+          gnetId: 9628
+          revision: 7
     sidecar:
       datasources:
         enabled: true
