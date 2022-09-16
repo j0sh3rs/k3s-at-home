@@ -42,7 +42,7 @@ metadata:
   name: monitoring
   labels:
     goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/vpa-update-mode: "off"
 ---
 apiVersion: v1
 kind: Namespace

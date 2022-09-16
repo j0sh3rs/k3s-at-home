@@ -19,6 +19,14 @@ spec:
   values:
     nameOverride: goldilocks
     fullnameOverride: goldilocks
+    controller:
+      resources:
+        limits:
+          cpu: 200m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 64Mi
     dashboard:
       service:
         type: LoadBalancer
