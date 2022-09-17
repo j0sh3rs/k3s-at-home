@@ -10,6 +10,5 @@ resources:
   - vpa
   - goldilocks
   - grafana
-  - loki
-  - promtail
+  - loki-stack
   - thanos
