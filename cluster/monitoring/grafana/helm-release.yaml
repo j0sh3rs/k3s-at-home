@@ -128,8 +128,8 @@ spec:
           gnetId: 14055
           revision: 5
         minio:
-          gnetId: 13502
-          revision: 19
+          url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/minio/minio.json
+          datasource: Prometheus
         postgres_database:
           gnetId: 9628
           revision: 7
