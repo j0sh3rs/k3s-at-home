@@ -115,9 +115,6 @@ spec:
           gnetId: 11310
           datasource: Prometheus
           revision: 4
-        cloudflare-analytics:
-          gnetId: 12167
-          revision: 4
         synology-nas-details:
           url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-details.json
           datasource: Prometheus
