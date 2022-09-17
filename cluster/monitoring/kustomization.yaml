@@ -11,3 +11,5 @@ resources:
   - goldilocks
   - grafana
   - loki
+  - promtail
+  - thanos

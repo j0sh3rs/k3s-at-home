@@ -37,14 +37,14 @@ spec:
     queryFrontend:
       enabled: false
     bucketweb:
-      enabled: true
-      resources:
-        requests:
-          memory: 512Mi
-          cpu: 400m
-        limits:
-          memory: 2Gi
-          cpu: 1
+      enabled: false
+      # resources:
+      #   requests:
+      #     memory: 512Mi
+      #     cpu: 400m
+      #   limits:
+      #     memory: 2Gi
+      #     cpu: 1
     compactor:
       enabled: true
       strategyType: Recreate

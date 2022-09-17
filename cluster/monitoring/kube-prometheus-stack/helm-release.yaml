@@ -290,8 +290,8 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: false
+        enabled: true
       thanosServiceMonitor:
-        enabled: false
+        enabled: true
       thanosIngress:
         enabled: false
