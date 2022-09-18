@@ -25,6 +25,9 @@ spec:
       className: nginx
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+        nginx.ingress.kubernetes.io/modsecurity-snippet: |
+          SecRuleEngine DetectionOnly
+          SecDebugLog /tmp/modsec_debug.log
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
       hosts:
@@ -42,7 +45,7 @@ spec:
       - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
         value: "true"
       - name: OAUTH2_PROXY_UPSTREAM
-        value: "http://kube-prometheus-stack-rpg"
+        value: "http://grafana"
       - name: OAUTH2_PROXY_COOKIE_REFRESH
         value: "60m"
       - name: OAUTH2_PROXY_COOKIE_DOMAIN
