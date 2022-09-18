@@ -180,6 +180,12 @@ spec:
             scrape_interval: 60s
             metrics_path: "/metrics"
             scheme: http
+          - job_name: nas_snmp_exporter
+            static_configs:
+              - targets: ["192.168.35.5:9116"]
+            scrape_interval: 60s
+            metrics_path: "/metrics"
+            scheme: http
           - job_name: nas_minio
             static_configs:
               - targets: ["192.168.35.5:9000"]
@@ -292,6 +298,6 @@ spec:
       thanosService:
         enabled: true
       thanosServiceMonitor:
-        enabled: true
+        enabled: false
       thanosIngress:
         enabled: false
