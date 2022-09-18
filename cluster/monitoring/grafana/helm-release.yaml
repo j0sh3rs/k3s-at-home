@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
     image:
       pullPolicy: Always
     serviceMonitor:
