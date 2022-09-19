@@ -45,7 +45,7 @@ spec:
       - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
         value: "true"
       - name: OAUTH2_PROXY_UPSTREAM
-        value: "http://grafana:3000"
+        value: "http://grafana"
       - name: OAUTH2_PROXY_COOKIE_REFRESH
         value: "60m"
       - name: OAUTH2_PROXY_COOKIE_DOMAIN
