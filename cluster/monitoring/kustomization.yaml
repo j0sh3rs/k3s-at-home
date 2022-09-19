@@ -12,3 +12,4 @@ resources:
   - grafana
   - loki-stack
   - thanos
+  - jaeger
