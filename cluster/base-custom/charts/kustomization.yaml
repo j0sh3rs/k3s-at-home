@@ -9,6 +9,7 @@ resources:
   - grafana-charts.yaml
   - ingress-nginx.yaml
   - j0sh3rs.yaml
+  - jaeger.yaml
   - jetstack.yaml
   - kubernetes-sigs-descheduler-charts.yaml
   - longhorn.yaml
