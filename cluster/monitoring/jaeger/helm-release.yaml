@@ -17,7 +17,22 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    provisionDataStore:
+      cassandra: false
+    allInOne:
+      enabled: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 2Gi
+        requests:
+          cpu: 256m
+          memory: 1Gi
     storage:
-      cassandra:
-        keyspace: jaeger
-        existingSecret: jaeger-secrets
+      type: none
+    agent:
+      enabled: false
+    collector:
+      enabled: false
+    query:
+      enabled: false
