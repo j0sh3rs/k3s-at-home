@@ -22,7 +22,7 @@ spec:
     ingress:
       enabled: true
       className: nginx
-      path: /oauth2/*
+      path: /
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |

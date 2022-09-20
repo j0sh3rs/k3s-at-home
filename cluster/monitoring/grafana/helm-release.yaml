@@ -24,7 +24,7 @@ spec:
     serviceMonitor:
       enabled: true
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         nginx.ingress.kubernetes.io/configuration-snippet: |
           auth_request_set $bth-wtf-auth_upstream_1 $upstream_cookie_bth-wtf-auth_1;
