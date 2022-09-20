@@ -57,6 +57,8 @@ spec:
         value: "bth-wtf-auth"
       - name: OAUTH2_PROXY_HTTP_ADDRESS
         value: ":80"
+      - name: OAUTH2_PROXY_UPSTREAM
+        value: "http://grafana
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
