@@ -20,7 +20,7 @@ spec:
     podAnnotations:
       reloader.stakater.com/auto: "true"
     ingress:
-      enabled: true
+      enabled: false
       pathType: ImplementationSpecific
       className: nginx
       annotations:
