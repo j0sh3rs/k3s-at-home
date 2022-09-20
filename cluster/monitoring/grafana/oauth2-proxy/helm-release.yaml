@@ -21,9 +21,8 @@ spec:
       reloader.stakater.com/auto: "true"
     ingress:
       enabled: true
-      pathType: Prefix
       className: nginx
-      path: /
+      path: /oauth2/*
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |

@@ -25,6 +25,17 @@ spec:
       enabled: true
     ingress:
       enabled: false
+      annotations:
+        nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+        nginx.ingress.kubernetes.io/modsecurity-snippet: |
+          SecRuleEngine DetectionOnly
+          SecDebugLog /tmp/modsec_debug.log
+        nginx.ingress.kubernetes.io/auth-signin: "https://grafana.bth.wtf/oauth2/auth"
+        nginx.ingress.kubernetes.io/auth-url: "http://grafana-oauth2-proxy/oauth2/auth"
+        prometheus.io/scrape: "true"
+        prometheus.io/probe: "true"
+      hosts:
+        - grafana.bth.wtf
     resources:
       requests:
         cpu: 200m
