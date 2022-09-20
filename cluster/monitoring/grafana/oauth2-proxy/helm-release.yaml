@@ -20,9 +20,10 @@ spec:
     podAnnotations:
       reloader.stakater.com/auto: "true"
     ingress:
-      enabled: false
-      pathType: ImplementationSpecific
+      enabled: true
+      pathType: Prefix
       className: nginx
+      path: /oauth2
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
@@ -56,6 +57,8 @@ spec:
         value: "lax"
       - name: OAUTH2_PROXY_COOKIE_NAME
         value: "bth-wtf-auth"
+      - name: OAUTH2_PROXY_REDIRECT_URL
+        value: "grafana.bth.wtf/oauth2/callback"
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
