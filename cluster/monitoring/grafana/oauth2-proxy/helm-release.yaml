@@ -33,7 +33,7 @@ spec:
       hosts:
         - grafana.bth.wtf
     config:
-      existingConfig: oauth2-proxy-config
+      existingConfig: grafana-oauth2-proxy-config
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
