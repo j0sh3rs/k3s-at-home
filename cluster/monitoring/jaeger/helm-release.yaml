@@ -21,6 +21,8 @@ spec:
       cassandra: false
     allInOne:
       enabled: true
+      ingress:
+        enabled: false
       resources:
         limits:
           cpu: 500m
