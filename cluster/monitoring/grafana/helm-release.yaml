@@ -30,7 +30,7 @@ spec:
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
           SecRuleEngine DetectionOnly
           SecDebugLog /tmp/modsec_debug.log
-        nginx.ingress.kubernetes.io/auth-signin: "https://grafana.bth.wtf/oauth2/auth"
+        nginx.ingress.kubernetes.io/auth-signin: "https://auth.bth.wtf/grafana/oauth2/auth"
         nginx.ingress.kubernetes.io/auth-url: "http://grafana-oauth2-proxy.monitoring.svc.cluster.local/oauth2/auth"
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"

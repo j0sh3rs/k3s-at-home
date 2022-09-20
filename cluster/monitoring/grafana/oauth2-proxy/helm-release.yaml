@@ -22,7 +22,7 @@ spec:
     ingress:
       enabled: true
       className: nginx
-      path: /oauth2/*
+      path: /grafana
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
@@ -31,31 +31,9 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
       hosts:
-        - grafana.bth.wtf
+        - auth.bth.wtf
     config:
-      cookieName: "bth-wtf-auth"
-      existingSecret: grafana-oauth2-proxy
-    extraEnv:
-      - name: OAUTH2_PROXY_REVERSE_PROXY
-        value: "true"
-      - name: OAUTH2_PROXY_SET_XAUTHREQUEST
-        value: "true"
-      - name: OAUTH2_PROXY_SET_AUTHORIZATION_HEADER
-        value: "true"
-      - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
-        value: "true"
-      - name: OAUTH2_PROXY_COOKIE_REFRESH
-        value: "60m"
-      - name: OAUTH2_PROXY_COOKIE_DOMAIN
-        value: ".bth.wtf"
-      - name: OAUTH2_PROXY_COOKIE_EXPIRE
-        value: "2h"
-      - name: OAUTH2_PROXY_COOKIE_SAMESITE
-        value: "lax"
-      - name: OAUTH2_PROXY_COOKIE_NAME
-        value: "bth-wtf-auth"
-      - name: OAUTH2_PROXY_HTTP_ADDRESS
-        value: ":80"
+      existingConfig: oauth2-proxy-config
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
