@@ -45,8 +45,6 @@ spec:
         value: "true"
       - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
         value: "true"
-      - name: OAUTH2_PROXY_UPSTREAM
-        value: "http://grafana"
       - name: OAUTH2_PROXY_COOKIE_REFRESH
         value: "60m"
       - name: OAUTH2_PROXY_COOKIE_DOMAIN
@@ -68,6 +66,8 @@ spec:
       persistence: secret
       template: "grafana-oauth2-proxy"
       restrictedUserAccessKey: "useraccess"
+    service:
+      portNumber: 4180
     resources:
       limits:
         cpu: 100m
