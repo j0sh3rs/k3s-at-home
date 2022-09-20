@@ -22,7 +22,7 @@ spec:
     ingress:
       enabled: true
       className: nginx
-      path: /grafana
+      path: /oauth2/*
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
@@ -31,7 +31,7 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
       hosts:
-        - auth.bth.wtf
+        - grafana.bth.wtf
     config:
       existingConfig: oauth2-proxy-config
     image:
