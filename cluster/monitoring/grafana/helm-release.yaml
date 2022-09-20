@@ -24,18 +24,7 @@ spec:
     serviceMonitor:
       enabled: true
     ingress:
-      enabled: true
-      annotations:
-        nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
-        nginx.ingress.kubernetes.io/modsecurity-snippet: |
-          SecRuleEngine DetectionOnly
-          SecDebugLog /tmp/modsec_debug.log
-        nginx.ingress.kubernetes.io/auth-url: "grafana.bth.wtf/oauth2/auth"
-        nginx.ingress.kubernetes.io/auth-signin: "grafana.bth.wtf/oauth2/start?rd=$escaped_request_uri"
-        prometheus.io/scrape: "true"
-        prometheus.io/probe: "true"
-      hosts:
-        - grafana.bth.wtf
+      enabled: false
     resources:
       requests:
         cpu: 200m

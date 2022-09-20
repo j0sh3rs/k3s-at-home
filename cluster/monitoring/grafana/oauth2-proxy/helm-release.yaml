@@ -23,7 +23,7 @@ spec:
       enabled: true
       pathType: Prefix
       className: nginx
-      path: /oauth2
+      path: /
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
@@ -56,7 +56,7 @@ spec:
       - name: OAUTH2_PROXY_COOKIE_NAME
         value: "bth-wtf-auth"
       - name: OAUTH2_PROXY_HTTP_ADDRESS
-        value: ":4180"
+        value: ":80"
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
@@ -65,7 +65,7 @@ spec:
       template: "grafana-oauth2-proxy"
       restrictedUserAccessKey: "useraccess"
     service:
-      portNumber: 4180
+      portNumber: 80
     resources:
       limits:
         cpu: 100m
