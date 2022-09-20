@@ -55,8 +55,6 @@ spec:
         value: "lax"
       - name: OAUTH2_PROXY_COOKIE_NAME
         value: "bth-wtf-auth"
-      - name: OAUTH2_PROXY_REDIRECT_URL
-        value: "grafana.bth.wtf/oauth2/callback"
       - name: OAUTH2_PROXY_HTTP_ADDRESS
         value: ":4180"
     image:
