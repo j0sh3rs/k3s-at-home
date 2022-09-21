@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://j0sh3rs.github.io/helm-charts/
       chart: protonmail-bridge
-      version: 5.6.1
+      version: 5.7.1
       sourceRef:
         kind: HelmRepository
         name: j0sh3rs-charts
