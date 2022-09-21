@@ -50,4 +50,4 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           YAML_CONFIG_FILE: .yamllint.yaml
-          KUBERNETES_KUBEVAL_OPTIONS: --ignore-missing-schemas -v 1.24.3 --ignored-filename-patterns='^(?:.+/)?(?:Kustomization|kustomization\.ya?ml)$'
+          FILTER_REGEX_EXCLUDE: .*cluster/.*/kustomization.yaml
