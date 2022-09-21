@@ -35,17 +35,17 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
-      extraVolumeMounts:
-        - name: nginx-geoip-data
-          mountPath: /etc/nginx/geoip/GeoLite2-ASN.mmdb
-          subPath: GeoLite2-ASN.mmdb
-        - name: nginx-geoip-data
-          mountPath: /etc/nginx/geoip/GeoLite2-City.mmdb
-          subPath: GeoLite2-City.mmdb
-        - name: nginx-geoip-data
-          mountPath: /etc/nginx/geoip/GeoLite2-Country.mmdb
-          subPath: GeoLite2-Country.mmdb
-      extraVolumes:
-        - name: nginx-geoip-data
-          persistentVolumeClaim:
-            claimName: nginx-geoip-data
+      # extraVolumeMounts:
+      #   - name: nginx-geoip-data
+      #     mountPath: /etc/nginx/geoip/GeoLite2-ASN.mmdb
+      #     subPath: GeoLite2-ASN.mmdb
+      #   - name: nginx-geoip-data
+      #     mountPath: /etc/nginx/geoip/GeoLite2-City.mmdb
+      #     subPath: GeoLite2-City.mmdb
+      #   - name: nginx-geoip-data
+      #     mountPath: /etc/nginx/geoip/GeoLite2-Country.mmdb
+      #     subPath: GeoLite2-Country.mmdb
+      # extraVolumes:
+      #   - name: nginx-geoip-data
+      #     persistentVolumeClaim:
+      #       claimName: nginx-geoip-data
