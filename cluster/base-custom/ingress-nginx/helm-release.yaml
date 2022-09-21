@@ -20,7 +20,7 @@ spec:
       containerName: nginx
       extraArgs:
         default-ssl-certificate: "ingress-nginx/wildcard-bth-wtf-tls"
-        maxmind-license-key: "${MAXMIND_LICENSE_KEY}"
+        maxmind-license-key: "NzpKczVUrAfaIUf3"
         maxmind-edition-ids: "GeoLite2-City,GeoLite2-ASN,GeoLite2-Country"
       image:
         pullPolicy: Always
