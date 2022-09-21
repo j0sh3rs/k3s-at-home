@@ -118,6 +118,6 @@ spec:
         database: 3
         required: true
       caching:
-        minTime: 5m
-        maxTime: 30m
+        minTime: 1m
+        maxTime: 2m
         prefetching: true
