@@ -25,9 +25,6 @@ spec:
       path: /
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
-        nginx.ingress.kubernetes.io/modsecurity-snippet: |
-          SecRuleEngine DetectionOnly
-          SecDebugLog /tmp/modsec_debug.log
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
       hosts:
