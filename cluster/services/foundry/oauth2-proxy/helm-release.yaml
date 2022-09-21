@@ -21,38 +21,19 @@ spec:
       reloader.stakater.com/auto: "true"
     ingress:
       enabled: true
-      pathType: Prefix
       className: nginx
+      path: /
       annotations:
         nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+        nginx.ingress.kubernetes.io/modsecurity-snippet: |
+          SecRuleEngine DetectionOnly
+          SecDebugLog /tmp/modsec_debug.log
         prometheus.io/scrape: "true"
         prometheus.io/probe: "true"
       hosts:
         - rpg.bth.wtf
     config:
-      cookieName: "bth-wtf-auth"
-      existingSecret: rpg-oauth2-proxy
-    extraEnv:
-      - name: OAUTH2_PROXY_REVERSE_PROXY
-        value: "true"
-      - name: OAUTH2_PROXY_SET_XAUTHREQUEST
-        value: "true"
-      - name: OAUTH2_PROXY_SET_AUTHORIZATION_HEADER
-        value: "true"
-      - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
-        value: "true"
-      - name: OAUTH2_PROXY_UPSTREAM
-        value: "http://kube-prometheus-stack-rpg"
-      - name: OAUTH2_PROXY_COOKIE_REFRESH
-        value: "60m"
-      - name: OAUTH2_PROXY_COOKIE_DOMAIN
-        value: ".bth.wtf"
-      - name: OAUTH2_PROXY_COOKIE_EXPIRE
-        value: "2h"
-      - name: OAUTH2_PROXY_COOKIE_SAMESITE
-        value: "lax"
-      - name: OAUTH2_PROXY_COOKIE_NAME
-        value: "bth-wtf-auth"
+      existingConfig: rpg-oauth2-proxy-config
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
@@ -60,13 +41,15 @@ spec:
       persistence: secret
       template: "rpg-oauth2-proxy"
       restrictedUserAccessKey: "useraccess"
+    service:
+      portNumber: 80
     resources:
-      limits:
-        cpu: 100m
-        memory: 300Mi
       requests:
-        cpu: 100m
-        memory: 300Mi
+        cpu: 200m
+        memory: 1Gi
+      limits:
+        cpu: 1
+        memory: 2Gi
     securityContext:
       enabled: true
       allowPrivilegeEscalation: false

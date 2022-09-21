@@ -19,17 +19,7 @@ spec:
   values:
     ingress:
       main:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
-        hosts:
-          - host: rpg.bth.wtf
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  port: 30000
+        enabled: false
     controller:
       strategy: RollingUpdate
       rollingUpdate:
@@ -51,7 +41,7 @@ spec:
         size: 20Gi
     resources:
       limits:
-        cpu: 4
+        cpu: 2
         memory: 4Gi
       requests:
         cpu: 150m
