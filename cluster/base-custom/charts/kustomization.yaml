@@ -23,4 +23,4 @@ resources:
   - splunk-connect.yaml
   - stakater-charts.yaml
   - vector.yaml
-  - weaveworks-kured-charts.yaml
+  - kured-charts.yaml
