@@ -35,10 +35,10 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
-      extraVolumeMounts:
-        - name: nginx-geoip-data
-          mountPath: /etc/nginx/geoip
-      extraVolumes:
-        - name: nginx-geoip-data
-          persistentVolumeClaim:
-            claimName: nginx-geoip-data
+      # extraVolumeMounts:
+      #   - name: nginx-geoip-data
+      #     mountPath: /etc/nginx/geoip
+      # extraVolumes:
+      #   - name: nginx-geoip-data
+      #     persistentVolumeClaim:
+      #       claimName: nginx-geoip-data
