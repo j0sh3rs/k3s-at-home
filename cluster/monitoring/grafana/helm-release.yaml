@@ -25,23 +25,6 @@ spec:
       enabled: true
     ingress:
       enabled: false
-      annotations:
-        nginx.ingress.kubernetes.io/configuration-snippet: |
-          auth_request_set $bth-wtf-auth_upstream_1 $upstream_cookie_bth-wtf-auth_1;
-
-          access_by_lua_block {
-            if ngx.var.bth-wtf-auth_upstream_1 ~= "" then
-              ngx.header["Set-Cookie"] = "bth-wtf-auth_1=" .. ngx.var.bth-wtf-auth_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
-            end
-          }
-        nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
-        nginx.ingress.kubernetes.io/modsecurity-snippet: |
-          SecRuleEngine DetectionOnly
-          SecDebugLog /tmp/modsec_debug.log
-        nginx.ingress.kubernetes.io/auth-signin: "https://grafana.bth.wtf/oauth2/start?rd=$escaped_request_uri"
-        nginx.ingress.kubernetes.io/auth-url: "http://grafana-oauth2-proxy.monitoring.svc.cluster.local/oauth2/auth"
-        prometheus.io/scrape: "true"
-        prometheus.io/probe: "true"
       hosts:
         - grafana.bth.wtf
     resources:
