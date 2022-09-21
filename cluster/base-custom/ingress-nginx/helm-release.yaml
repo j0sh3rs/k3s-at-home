@@ -20,6 +20,8 @@ spec:
       containerName: nginx
       extraArgs:
         default-ssl-certificate: "ingress-nginx/wildcard-bth-wtf-tls"
+        maxmind-license-key: "${MAXMIND_LICENSE_KEY}"
+        maxmind-edition-ids: "GeoLite2-City,GeoLite2-ASN,GeoLite2-Country"
       image:
         pullPolicy: Always
       watchIngressWithoutClass: true
@@ -35,17 +37,9 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
-      # extraVolumeMounts:
-      #   - name: nginx-geoip-data
-      #     mountPath: /etc/nginx/geoip/GeoLite2-ASN.mmdb
-      #     subPath: GeoLite2-ASN.mmdb
-      #   - name: nginx-geoip-data
-      #     mountPath: /etc/nginx/geoip/GeoLite2-City.mmdb
-      #     subPath: GeoLite2-City.mmdb
-      #   - name: nginx-geoip-data
-      #     mountPath: /etc/nginx/geoip/GeoLite2-Country.mmdb
-      #     subPath: GeoLite2-Country.mmdb
-      # extraVolumes:
-      #   - name: nginx-geoip-data
-      #     persistentVolumeClaim:
-      #       claimName: nginx-geoip-data
+      extraEnvs:
+        - name: MAXMIND_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ingress-nginx-extra-envvars
+              key: MAXMIND_LICENSE_KEY
