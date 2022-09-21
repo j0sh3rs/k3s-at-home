@@ -35,3 +35,6 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      extraVolumeMounts:
+        - name: nginx-geoip-data
+          mountPath: /etc/nginx/geoip
