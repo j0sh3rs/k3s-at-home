@@ -38,3 +38,7 @@ spec:
       extraVolumeMounts:
         - name: nginx-geoip-data
           mountPath: /etc/nginx/geoip
+      extraVolumes:
+        - name: nginx-geoip-data
+          persistentVolumeClaim:
+            claimName: ingress-nginx-controller
