@@ -70,6 +70,8 @@ spec:
               www.maxmind.com
               blog.maxmind.com
               download.maxmind.com
+              updates.maxmind.com
+              dev.maxmind.com
         blackLists:
           ads:
             - http://192.168.35.5:7777/hosts
