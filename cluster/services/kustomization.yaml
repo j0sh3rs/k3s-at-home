@@ -2,15 +2,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - volumes
-  - redis
   - blocky
-  - vaultwarden
   - cloudflared
-  - invidious
-  - protonmail-bridge
-  - pgbackups
   - foundry
-  - reddit
-  - searxng
+  - invidious
+  - memcached
   - pgadmin
+  - pgbackups
+  - protonmail-bridge
+  - reddit
+  - redis
+  - searxng
+  - vaultwarden
+  - volumes
