@@ -37,9 +37,3 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
-      extraEnvs:
-        - name: MAXMIND_LICENSE_KEY
-          valueFrom:
-            secretKeyRef:
-              name: ingress-nginx-extra-envvars
-              key: MAXMIND_LICENSE_KEY
