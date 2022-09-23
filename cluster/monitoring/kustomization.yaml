@@ -13,3 +13,4 @@ resources:
   - loki-stack
   - thanos
   - jaeger
+  - influxdb
