@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - metallb
   - reloader
-  - node-feature-discovery
-  - kured
+  # - node-feature-discovery
+  # - kured
   - descheduler

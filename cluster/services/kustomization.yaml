@@ -5,9 +5,9 @@ resources:
   - blocky
   - cloudflared
   - foundry
-  - invidious
+  # - invidious
   - memcached
-  - pgadmin
+  # - pgadmin
   - pgbackups
   - protonmail-bridge
   - reddit
