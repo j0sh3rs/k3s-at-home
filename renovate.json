@@ -25,9 +25,6 @@
   ],
   "rebaseWhen": "auto",
   "timezone": "America/New_York",
-  "schedule": [
-    "after 9am and before 5pm every weekday"
-  ],
   "ignorePaths": [
     "cluster/base/"
   ],
@@ -100,6 +97,10 @@
   ],
   "packageRules": [
     {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
       "matchDatasources": [
         "helm"
       ],
@@ -110,15 +111,6 @@
         "docker"
       ],
       "commitMessageExtra": "to {{newVersion}}"
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "versioning": "regex:^version-v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
-      "matchPackageNames": [
-        "ghcr.io/linuxserver/healthchecks"
-      ]
     }
   ]
 }
