@@ -23,3 +23,15 @@ spec:
         enabled: true
     persistence:
       size: 50Gi
+    influxdb:
+      extraEnvVars:
+        - name: ADMIN_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: admin-user-password
+              name: influxdb
+        - name: ADMIN_USER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: admin-user-token
+              name: influxdb
