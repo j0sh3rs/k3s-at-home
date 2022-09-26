@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - blocky
   - cloudflared
-  - foundry
+  # - foundry
   # - invidious
   - memcached
   # - pgadmin
