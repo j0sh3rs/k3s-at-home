@@ -17,8 +17,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    auth:
-      enabled: false
     metrics:
       enabled: true
       serviceMonitor:
