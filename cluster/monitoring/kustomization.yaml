@@ -2,15 +2,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - blackbox-exporter
-  # - botkube
   - alertmanager-discord
-  - kube-prometheus-stack
-  - unifi-poller
-  - vpa
+  - blackbox-exporter
   - goldilocks
   - grafana
+  - influxdb
+  - jaeger
+  - kube-prometheus-stack
   - loki-stack
   - thanos
-  - jaeger
-  - influxdb
+  - unifi-poller
+  - vpa

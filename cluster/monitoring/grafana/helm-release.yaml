@@ -125,6 +125,9 @@ spec:
         postgres_database:
           gnetId: 9628
           revision: 7
+        cloudflare-analytics:
+          url: https://raw.githubusercontent.com/jorgedlcruz/cloudflare-grafana/afcffd2cb887463a7eedbe018d9ad230a301bf11/Grafana%20Dashboard%20for%20Cloudflare%20Analytics%20and%20Overview-1587722197564.json
+          datasource: InfluxDB
     sidecar:
       datasources:
         enabled: true
