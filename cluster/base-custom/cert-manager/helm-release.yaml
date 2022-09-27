@@ -21,8 +21,8 @@ spec:
     leaderElection:
       namespace: cert-manager
     extraArgs:
-      - '--dns01-recursive-nameservers-only'
-      - '--dns01-recursive-nameservers=1.1.1.1:53,1.0.0.1:53'
+      - "--dns01-recursive-nameservers-only"
+      - "--dns01-recursive-nameservers=1.1.1.1:53,1.0.0.1:53"
     strategy:
       type: RollingUpdate
       rollingUpdate:
@@ -40,7 +40,4 @@ spec:
       image:
         pullPolicy: Always
     startupapicheck:
-      image:
-        pullPolicy: Always
-    metrics:
-      create: true
+      enabled: false
