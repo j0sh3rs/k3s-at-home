@@ -27,5 +27,3 @@ spec:
         requests:
           cpu: 500m
           memory: 128Mi
-    dashboard:
-      enabled: false
