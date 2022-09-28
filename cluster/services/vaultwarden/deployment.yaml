@@ -7,15 +7,15 @@ metadata:
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: vaultwarden
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 3
+      maxUnavailable: 0
+      maxSurge: 2
   template:
     metadata:
       labels:
