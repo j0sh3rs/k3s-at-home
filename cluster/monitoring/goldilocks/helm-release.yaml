@@ -27,3 +27,11 @@ spec:
         requests:
           cpu: 500m
           memory: 128Mi
+    dashboard:
+      service:
+        type: LoadBalancer
+      replicaCount: 1
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
