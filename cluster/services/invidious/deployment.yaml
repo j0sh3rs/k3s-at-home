@@ -5,7 +5,7 @@ metadata:
   name: invidious-server
   namespace: services
   annotations:
-    reloader.stakater.com/auto: "true"
+    reloader.stakater.com/auto: 'true'
 spec:
   replicas: 1
   selector:
@@ -48,7 +48,10 @@ spec:
           name: invidious
           resources:
             limits:
-              cpu: 500m
+              cpu: 1m
               memory: 2Gi
+            requests:
+              cpu: 250m
+              memory: 512Mi
       hostname: invidious
       restartPolicy: Always

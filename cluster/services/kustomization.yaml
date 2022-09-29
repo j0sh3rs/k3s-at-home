@@ -5,11 +5,11 @@ resources:
   - blocky
   - cloudflared
   # - foundry
-  # - invidious
+  - invidious
   - memcached
   # - pgadmin
   - pgbackups
-  - protonmail-bridge
+  # - protonmail-bridge
   - reddit
   - redis
   - searxng
