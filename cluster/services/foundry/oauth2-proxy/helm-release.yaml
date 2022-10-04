@@ -18,17 +18,17 @@ spec:
   values:
     replicaCount: 1
     podAnnotations:
-      reloader.stakater.com/auto: "true"
+      reloader.stakater.com/auto: 'true'
     ingress:
       enabled: true
       className: nginx
       path: /
       annotations:
-        nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+        nginx.ingress.kubernetes.io/modsecurity-transaction-id: '$request_id'
         nginx.ingress.kubernetes.io/modsecurity-snippet: |
           SecRuleEngine DetectionOnly
-        prometheus.io/scrape: "true"
-        prometheus.io/probe: "true"
+        prometheus.io/scrape: 'true'
+        prometheus.io/probe: 'true'
       hosts:
         - rpg.bth.wtf
     config:
@@ -38,8 +38,8 @@ spec:
     authenticatedEmailsFile:
       enabled: true
       persistence: secret
-      template: "rpg-oauth2-proxy"
-      restrictedUserAccessKey: "useraccess"
+      template: 'rpg-oauth2-proxy'
+      restrictedUserAccessKey: 'useraccess'
     service:
       portNumber: 80
     resources:
@@ -57,4 +57,4 @@ spec:
       type: redis
       redis:
         standalone:
-          connectionUrl: "redis://redis.services:6379/6"
+          connectionUrl: 'redis://redis.infra.svc.cluster.local:6379/6'
