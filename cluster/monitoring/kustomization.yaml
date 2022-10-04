@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   # - alertmanager-discord
   - blackbox-exporter
+  - cloudflare-exporter
   - grafana
   - jaeger
   - kube-prometheus-stack
