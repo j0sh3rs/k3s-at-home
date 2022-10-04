@@ -25,7 +25,7 @@ spec:
     auth:
       enabled: false
       sentinel: false
-    architecture: standlone
+    architecture: standalone
     resources:
       limits:
         cpu: 500m
