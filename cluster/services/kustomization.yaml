@@ -5,8 +5,6 @@ resources:
   - blocky
   - cloudflared
   - invidious
-  # - pgadmin
-  - pgbackups
   - reddit
   - searxng
   - vaultwarden
