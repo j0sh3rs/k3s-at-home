@@ -5,10 +5,8 @@ resources:
   # - alertmanager-discord
   - blackbox-exporter
   - grafana
-  - influxdb
   - jaeger
   - kube-prometheus-stack
   - loki-stack
   - thanos
   - unifi-poller
-  - vpa
