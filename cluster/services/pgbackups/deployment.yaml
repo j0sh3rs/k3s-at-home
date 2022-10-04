@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: pgbackups
     app.kubernetes.io/name: pgbackups
   annotations:
-    reloader.stakater.com/auto: "true"
+    reloader.stakater.com/auto: 'true'
 spec:
   selector:
     matchLabels:
@@ -32,19 +32,19 @@ spec:
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PORT
-              value: "35432"
+              value: '35432'
             - name: POSTGRES_EXTRA_OPTS
-              value: "-Z9 --schema=public --blobs"
+              value: '-Z9 --schema=public --blobs'
             - name: SCHEDULE
-              value: "@daily"
+              value: '@daily'
             - name: BACKUP_KEEP_DAYS
-              value: "7"
+              value: '7'
             - name: BACKUP_KEEP_WEEKS
-              value: "4"
+              value: '4'
             - name: BACKUP_KEEP_MONTHS
-              value: "2"
+              value: '2'
             - name: TZ
-              value: "America/New_York"
+              value: 'America/New_York'
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -70,4 +70,4 @@ spec:
       dnsConfig:
         options:
           - name: ndots
-            value: "1"
+            value: '1'
