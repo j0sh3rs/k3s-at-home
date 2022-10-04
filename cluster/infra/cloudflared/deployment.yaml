@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
-  namespace: services
+  namespace: infra
   annotations:
     reloader.stakater.com/auto: 'true'
 spec:

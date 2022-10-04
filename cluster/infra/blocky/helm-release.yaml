@@ -1,0 +1,123 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: blocky
+  namespace: infra
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://j0sh3rs.github.io/helm-charts/
+      chart: blocky
+      version: 10.8.3
+      sourceRef:
+        kind: HelmRepository
+        name: j0sh3rs-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: 'true'
+      strategy: RollingUpdate
+      replicas: 2
+      rollingUpdate:
+        unavailable: 1
+        surge: 2
+    metrics:
+      enabled: true
+      prometheusRule:
+        enabled: true
+    resources:
+      requests:
+        cpu: 150m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+    service:
+      main:
+        enabled: true
+      dns-tcp:
+        enabled: true
+        type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.20
+          metallb.universe.tf/allow-shared-ip: 'blocky-192.168.35.20'
+      dns-udp:
+        enabled: true
+        type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.20
+          metallb.universe.tf/allow-shared-ip: 'blocky-192.168.35.20'
+    env:
+      TZ: America/New_York
+    config: |
+      upstream:
+        default:
+          - https://1.1.1.1/dns-query
+          - https://1.0.0.1/dns-query
+      blocking:
+        whiteLists:
+          ads:
+            - |
+              static.cloudflareinsights.com
+              secure.gravatar.com
+              r20.rs6.net
+              www.maxmind.com
+              blog.maxmind.com
+              download.maxmind.com
+              updates.maxmind.com
+              dev.maxmind.com
+        blackLists:
+          ads:
+            - http://192.168.35.5:7777/hosts
+            - http://192.168.35.5:7777/simple_tracking.txt
+            - http://192.168.35.5:7777/simple_ad.txt
+            - http://192.168.35.5:7777/phishing
+            - http://192.168.35.5:7777/AdguardDNS.txt
+            - http://192.168.35.5:7777/ransomware-nl.txt
+            - http://192.168.35.5:7777/scam-nl.txt
+            - http://192.168.35.5:7777/torrent-nl.txt
+            - http://192.168.35.5:7777/fraud-nl.txt
+            - http://192.168.35.5:7777/phishing-nl.txt
+            - http://192.168.35.5:7777/tracking-nl.txt
+            - http://192.168.35.5:7777/abuse-nl.txt
+            - http://192.168.35.5:7777/drugs-nl.txt
+            - http://192.168.35.5:7777/gambling-nl.txt
+            - http://192.168.35.5:7777/tracking-aggressive-extended.txt
+            - http://192.168.35.5:7777/dating-services-extended.txt
+            - http://192.168.35.5:7777/hate-and-junk-extended.txt
+            - http://192.168.35.5:7777/amp-hosts-extended.txt
+            - |
+              config.samsungads.com
+              gpm.samsungqbe.com
+              log-config.samsungacr.com
+              samsung.com
+              samsungacr.com
+              samsungads.com
+              samsungcloudsolution.com
+              samsungcloudsolution.net
+              samsungotn.net
+              scs.samsungqbe.com
+              lcprd1.samsungcloudsolution.net
+        clientGroupsBlock:
+          default:
+            - ads
+        refreshPeriod: 120m
+        processingConcurrency: 50
+      prometheus:
+        enable: true
+        path: /metrics
+      httpPort: 4000
+      redis:
+        address: redis-master.infra.svc.cluster.local:6379
+        database: 3
+        required: true
+      caching:
+        minTime: 1m
+        maxTime: 2m
+        prefetching: true

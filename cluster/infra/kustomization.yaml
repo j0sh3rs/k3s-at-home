@@ -4,10 +4,8 @@ kind: Kustomization
 resources:
   - blocky
   - cloudflared
-  - invidious
-  # - pgadmin
-  - pgbackups
-  - reddit
-  - searxng
-  - vaultwarden
-  - volumes
+  - goldilocks
+  - influxdb
+  - memcached
+  - pgadmin
+  - redis

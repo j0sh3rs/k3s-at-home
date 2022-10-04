@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: pgadmin
-  namespace: services
+  namespace: infra
 spec:
   interval: 5m
   chart:
@@ -18,14 +18,14 @@ spec:
       interval: 5m
   values:
     annotations:
-      reloader.stakater.com/auto: "true"
+      reloader.stakater.com/auto: 'true'
     image:
       repository: dpage/pgadmin4
       tag: 6
       pullPolicy: Always
     service:
       type: LoadBalancer
-    existingSecret: "pgadmin-secrets"
+    existingSecret: 'pgadmin-secrets'
     env:
       email: j0sh3rs@cluster.com
     strategy:
