@@ -18,19 +18,19 @@ spec:
       interval: 5m
   values:
     controller:
-      replicas: 2
+      replicas: 1
       strategy: RollingUpdate
       rollingUpdate:
-        unavailable: 1
-        surge: 3
+        unavailable: 0
+        surge: 2
       annotations:
-        reloader.stakater.com/auto: "true"
+        reloader.stakater.com/auto: 'true'
     ingress:
       main:
         enabled: true
         ingressClassName: nginx
         annotations:
-          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+          nginx.ingress.kubernetes.io/modsecurity-transaction-id: '$request_id'
         hosts:
           - host: bth.wtf
             paths:
