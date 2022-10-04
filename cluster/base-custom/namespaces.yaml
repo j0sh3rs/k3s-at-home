@@ -4,8 +4,8 @@ kind: Namespace
 metadata:
   name: services
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
 ---
 apiVersion: v1
 kind: Namespace
@@ -17,51 +17,51 @@ kind: Namespace
 metadata:
   name: metallb-system
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: misc
+  name: infra
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: monitoring
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/enabled: 'true'
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: system-upgrade
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: kube-system
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/enabled: 'true'
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: cert-manager
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ingress-nginx
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
-    goldilocks.fairwinds.com/vpa-update-mode: "auto"
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'auto'

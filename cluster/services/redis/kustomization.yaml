@@ -5,3 +5,4 @@ resources:
   # - pvc.yaml
   - service.yaml
   - deployment.yaml
+  - helm-release.yaml
