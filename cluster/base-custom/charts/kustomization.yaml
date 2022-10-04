@@ -12,6 +12,7 @@ resources:
   - jaeger.yaml
   - jetstack.yaml
   - kubernetes-sigs-descheduler-charts.yaml
+  - lablabs.yaml
   - longhorn.yaml
   - metallb.yaml
   - nfs-subdir-external-provisioner.yaml
