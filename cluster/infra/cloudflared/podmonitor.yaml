@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    app.kubernetes.io/instance: cloudflared
+    app.kubernetes.io/version: latest
+  name: cloudflared
+  namespace: infra
+spec:
+  namespaceSelector:
+    matchNames:
+      - infra
+  podMetricsEndpoints:
+    - port: http-metrics
+  selector:
+    matchLabels:
+      app: cloudflared
