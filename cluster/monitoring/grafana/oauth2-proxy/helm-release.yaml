@@ -57,4 +57,4 @@ spec:
       type: redis
       redis:
         standalone:
-          connectionUrl: 'redis://redis.infra.svc.cluster.local:6379/6'
+          connectionUrl: 'redis://redis-master.infra.svc.cluster.local:6379/6'
