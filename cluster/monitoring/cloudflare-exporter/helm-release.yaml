@@ -20,3 +20,5 @@ spec:
     secretRef: 'cloudflare-exporter-secrets'
     serviceMonitor:
       enabled: true
+    podAnnotations:
+      reloader.stakater.com/auto: 'true'
