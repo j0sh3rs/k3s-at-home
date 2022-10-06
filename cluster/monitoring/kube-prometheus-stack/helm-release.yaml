@@ -187,12 +187,12 @@ spec:
             scrape_interval: 60s
             metrics_path: '/metrics'
             scheme: http
-          # - job_name: nas_minio
-          #   static_configs:
-          #     - targets: ["192.168.35.5:9000"]
-          #   scrape_interval: 60s
-          #   metrics_path: "/minio/v2/metrics/node"
-          #   scheme: http
+          - job_name: nas_minio
+            static_configs:
+              - targets: ['192.168.35.5:9000']
+            scrape_interval: 60s
+            metrics_path: '/minio/v2/metrics/node'
+            scheme: http
           - job_name: nas_node_exporter
             static_configs:
               - targets: ['192.168.35.5:9100']
