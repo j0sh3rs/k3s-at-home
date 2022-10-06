@@ -25,24 +25,24 @@ spec:
         global:
           resolve_timeout: 5m
         route:
-          group_by: ["alertname"]
+          group_by: ['alertname']
           group_wait: 20s
           group_interval: 5m
           repeat_interval: 3h
-          receiver: "discord_webhook"
+          receiver: 'discord_webhook'
           routes:
-            - receiver: "null"
+            - receiver: 'null'
               matchers:
                 - alertname =~ "InfoInhibitor|Watchdog|RebootScheduled"
-            - receiver: "discord_webhook"
+            - receiver: 'discord_webhook'
               matchers:
                 - severity = "critical"
               continue: true
         receivers:
-          - name: "null"
-          - name: "discord_webhook"
+          - name: 'null'
+          - name: 'discord_webhook'
             webhook_configs:
-              - url: "http://alertmanager-discord:9094"
+              - url: 'http://alertmanager-discord:9094'
         inhibit_rules:
           - source_matchers:
               - severity = "critical"
@@ -61,7 +61,7 @@ spec:
                   storage: 10Gi
       prometheus:
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
         monitor:
           enabled: true
           relabelings:
@@ -82,7 +82,7 @@ spec:
             cpu: 300m
             memory: 50Mi
       podAnnotations:
-        reloader.stakater.com/auto: "true"
+        reloader.stakater.com/auto: 'true'
     nodeExporter:
       enabled: true
       serviceMonitor:
@@ -146,10 +146,11 @@ spec:
       prometheusSpec:
         resources:
           requests:
-            memory: 512Mi
+            memory: 2539M
             cpu: 250m
           limits:
-            memory: 2048Mi
+            memory: 3500M
+            cpu: 519m
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false
@@ -166,7 +167,7 @@ spec:
                 requests:
                   storage: 100Gi
         thanos:
-          image: "quay.io/thanos/thanos:v0.28.0"
+          image: 'quay.io/thanos/thanos:v0.28.0'
           version: v0.28.0
           objectStorageConfig:
             name: thanos-secrets
@@ -174,17 +175,17 @@ spec:
         additionalScrapeConfigs:
           - job_name: nas_postgres_exporter
             static_configs:
-              - targets: ["192.168.35.5:9187"]
+              - targets: ['192.168.35.5:9187']
                 labels:
-                  app: "postgres"
+                  app: 'postgres'
             scrape_interval: 60s
-            metrics_path: "/metrics"
+            metrics_path: '/metrics'
             scheme: http
           - job_name: nas_snmp_exporter
             static_configs:
-              - targets: ["192.168.35.5:9116"]
+              - targets: ['192.168.35.5:9116']
             scrape_interval: 60s
-            metrics_path: "/metrics"
+            metrics_path: '/metrics'
             scheme: http
           # - job_name: nas_minio
           #   static_configs:
@@ -194,11 +195,11 @@ spec:
           #   scheme: http
           - job_name: nas_node_exporter
             static_configs:
-              - targets: ["192.168.35.5:9100"]
+              - targets: ['192.168.35.5:9100']
             scrape_interval: 60s
-            metrics_path: "/metrics"
+            metrics_path: '/metrics'
             scheme: http
-          - job_name: "kubernetes-ingresses"
+          - job_name: 'kubernetes-ingresses'
             metrics_path: /probe
             scrape_interval: 60s
             params:
@@ -250,7 +251,7 @@ spec:
                   - __address__
                 target_label: __param_target
               - target_label: __address__
-                replacement: "blackbox-exporter-prometheus-blackbox-exporter:9115"
+                replacement: 'blackbox-exporter-prometheus-blackbox-exporter:9115'
               - source_labels:
                   - __param_target
                 target_label: instance
@@ -283,7 +284,7 @@ spec:
                   - __address__
                 target_label: __param_target
               - target_label: __address__
-                replacement: "blackbox-exporter-prometheus-blackbox-exporter:9115"
+                replacement: 'blackbox-exporter-prometheus-blackbox-exporter:9115'
               - source_labels:
                   - __param_target
                 target_label: instance

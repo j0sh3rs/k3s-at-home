@@ -19,7 +19,7 @@ spec:
   values:
     leaderElection:
       enabled: false
-    schedule: "*/15 * * * *" # Every 15 minutes
+    schedule: '*/15 * * * *' # Every 15 minutes
     deschedulerPolicy:
       ignorePvcPods: true
       strategies:
@@ -31,12 +31,12 @@ spec:
               includingInitContainers: true
               namespaces:
                 include:
-                  - "kube-system"
-                  - "longhorn-system"
-                  - "metallb-system"
-                  - "monitoring"
-                  - "services"
-                  - "system-upgrade"
+                  - 'kube-system'
+                  - 'longhorn-system'
+                  - 'metallb-system'
+                  - 'monitoring'
+                  - 'services'
+                  - 'system-upgrade'
         PodLifeTime:
           enabled: true
           params:
@@ -44,12 +44,12 @@ spec:
               maxPodLifeTimeSeconds: 604800
               namespaces:
                 include:
-                  - "kube-system"
-                  - "longhorn-system"
-                  - "metallb-system"
-                  - "monitoring"
-                  - "services"
-                  - "system-upgrade"
+                  - 'kube-system'
+                  - 'longhorn-system'
+                  - 'metallb-system'
+                  - 'monitoring'
+                  - 'services'
+                  - 'system-upgrade'
         RemoveDuplicates:
           enabled: false
         RemovePodsViolatingInterPodAntiAffinity:
@@ -59,9 +59,9 @@ spec:
           params:
             nodeResourceUtilizationThresholds:
               targetThresholds:
-                "cpu": 80
-                "memory": 70
-                "pods": 70
+                'cpu': 80
+                'memory': 70
+                'pods': 70
               thresholds:
-                "cpu": 60
-                "memory": 40
+                'cpu': 60
+                'memory': 40

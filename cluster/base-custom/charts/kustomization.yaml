@@ -5,13 +5,14 @@ resources:
   - bitnami-charts.yaml
   - botkube.yaml
   - fairwinds.yaml
-  - gitlab.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
   - j0sh3rs.yaml
   - jaeger.yaml
   - jetstack.yaml
   - kubernetes-sigs-descheduler-charts.yaml
+  - kubernetes-sigs-metrics-server.yaml
+  - kured-charts.yaml
   - lablabs.yaml
   - longhorn.yaml
   - metallb.yaml
@@ -21,7 +22,5 @@ resources:
   - prometheus-community-charts.yaml
   - runix-charts.yaml
   - searxng.yaml
-  - splunk-connect.yaml
   - stakater-charts.yaml
   - vector.yaml
-  - kured-charts.yaml
