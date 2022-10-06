@@ -34,7 +34,7 @@ spec:
         cpu: 15m
         memory: 105Mi
       limits:
-        cpu: 266mm
+        cpu: 266m
         memory: 2268Mi
     service:
       main:
