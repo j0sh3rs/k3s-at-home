@@ -9,4 +9,4 @@ resources:
   - memcached
   - pgadmin
   - redis
-  - vpa
+  # - vpa
