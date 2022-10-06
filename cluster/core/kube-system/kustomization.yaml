@@ -5,6 +5,5 @@ resources:
   - metallb
   - metrics-server
   - reloader
-  # - node-feature-discovery
   # - kured
   - descheduler

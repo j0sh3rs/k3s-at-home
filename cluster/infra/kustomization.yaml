@@ -7,6 +7,7 @@ resources:
   - goldilocks
   - influxdb
   - memcached
+  - node-feature-discovery
   - pgadmin
   - redis
   - vpa
