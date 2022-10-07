@@ -38,5 +38,5 @@ spec:
     topologyUpdater:
       annotations:
         reloader.stakater.com/auto: 'true'
-      enable: true
+      enable: false
       createCRDs: true
