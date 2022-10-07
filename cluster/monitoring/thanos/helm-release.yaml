@@ -78,8 +78,8 @@ spec:
           memory: 2Gi
           cpu: 1
       existingConfigmap: 'thanos-configs'
-      extraFlags:
-        - --tracing.config-file='/conf/cache/tracing.yml'
+      # extraFlags:
+      #   - --tracing.config-file='/conf/cache/tracing.yml'
     ruler:
       enabled: false
     metrics:
