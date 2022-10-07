@@ -60,6 +60,9 @@ spec:
         limits:
           memory: 2Gi
           cpu: 1
+      retentionResolutionRaw: 10d
+      retentionResolution5m: 10d
+      retentionResolution1h: 90d
     storegateway:
       enabled: true
       persistence:
@@ -74,6 +77,9 @@ spec:
         limits:
           memory: 2Gi
           cpu: 1
+      existingConfigmap: 'thanos-configs'
+      extraFlags:
+        - --tracing.config-file='/conf/cache/tracing.yml'
     ruler:
       enabled: false
     metrics:
@@ -87,4 +93,4 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    existingObjstoreSecret: "thanos-secrets"
+    existingObjstoreSecret: 'thanos-secrets'
