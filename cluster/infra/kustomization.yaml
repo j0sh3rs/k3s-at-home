@@ -5,7 +5,7 @@ resources:
   - blocky
   - cloudflared
   - goldilocks
-  - influxdb
+  # - influxdb
   - memcached
   - node-feature-discovery
   - pgadmin

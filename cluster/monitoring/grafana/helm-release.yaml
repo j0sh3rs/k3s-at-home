@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     podAnnotations:
-      reloader.stakater.com/auto: "true"
+      reloader.stakater.com/auto: 'true'
     image:
       pullPolicy: Always
     serviceMonitor:
@@ -36,7 +36,7 @@ spec:
         memory: 2Gi
     admin:
       existingSecret: grafana-admin-secrets
-    envFromSecret: "grafana-secrets"
+    envFromSecret: 'grafana-secrets'
     plugins:
       - natel-discrete-panel
       - pr0ps-trackmap-panel
@@ -50,9 +50,9 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-          - name: "default"
+          - name: 'default'
             orgId: 1
-            folder: ""
+            folder: ''
             type: file
             disableDeletion: false
             editable: true
@@ -126,14 +126,14 @@ spec:
           gnetId: 9628
           revision: 7
         cloudflare-analytics:
-          url: https://raw.githubusercontent.com/jorgedlcruz/cloudflare-grafana/afcffd2cb887463a7eedbe018d9ad230a301bf11/Grafana%20Dashboard%20for%20Cloudflare%20Analytics%20and%20Overview-1587722197564.json
-          datasource: InfluxDB
+          gnetId: 13133
+          datasource: Prometheus
     sidecar:
       datasources:
         enabled: true
         defaultDatasourceEnabled: true
-        labelValue: "1"
+        labelValue: '1'
       dashboards:
         enabled: true
         searchNamespace: ALL
-        labelValue: "1"
+        labelValue: '1'
