@@ -20,6 +20,7 @@ spec:
     defaultRules:
       rules:
         etcd: false
+        kubelet: false
     alertmanager:
       config:
         global:
@@ -60,8 +61,6 @@ spec:
                 requests:
                   storage: 10Gi
       prometheus:
-        annotations:
-          reloader.stakater.com/auto: 'true'
         monitor:
           enabled: true
           relabelings:
@@ -101,6 +100,20 @@ spec:
             sourceLabels:
               - node
             targetLabel: instance
+    kubeStateMetrics:
+      enabled: true
+      metricLabelsAllowlist:
+        - 'persistentvolumeclaims=[*]'
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
     kubeApiServer:
       enabled: true
     kubeControllerManager:
@@ -156,6 +169,7 @@ spec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
         retention: 21d
         retentionSize: 50GB
         enableAdminAPI: true
