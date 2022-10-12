@@ -94,7 +94,7 @@ spec:
               - __meta_kubernetes_pod_node_name
             targetLabel: kubernetes_node
     kubelet:
-      enabled: true
+      enabled: false
       serviceMonitor:
         metricRelabelings:
           - action: replace
@@ -206,8 +206,6 @@ spec:
               - targets: ['192.168.35.5:9100']
             scrape_interval: 60s
             metrics_path: '/metrics'
-            labels:
-              group: 'prometheus'
             scheme: http
           - job_name: 'kubernetes-ingresses'
             metrics_path: /probe
