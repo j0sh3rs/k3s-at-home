@@ -175,8 +175,8 @@ spec:
           - job_name: nas_postgres_exporter
             static_configs:
               - targets: ['192.168.35.5:9187']
-                labels:
-                  app: 'postgres'
+            labels:
+              app: 'postgres'
             scrape_interval: 60s
             metrics_path: '/metrics'
             scheme: http
