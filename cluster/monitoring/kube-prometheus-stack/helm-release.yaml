@@ -209,8 +209,6 @@ spec:
               - targets: ['192.168.35.5:9100']
             scrape_interval: 60s
             metrics_path: '/metrics'
-            labels:
-              group: 'prometheus'
             scheme: http
           - job_name: 'kubernetes-ingresses'
             metrics_path: /probe
