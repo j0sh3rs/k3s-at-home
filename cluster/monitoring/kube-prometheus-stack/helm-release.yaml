@@ -94,7 +94,7 @@ spec:
               - __meta_kubernetes_pod_node_name
             targetLabel: kubernetes_node
     kubelet:
-      enabled: false
+      enabled: true
       serviceMonitor:
         metricRelabelings:
           - action: replace
@@ -175,15 +175,17 @@ spec:
           - job_name: nas_postgres_exporter
             static_configs:
               - targets: ['192.168.35.5:9187']
+                labels:
+                  app: 'postgres'
             scrape_interval: 60s
             metrics_path: '/metrics'
             scheme: http
-          - job_name: 'nas_snmp_exporter'
+          - job_name: nas_snmp_exporter
             static_configs:
               - targets: ['192.168.35.5:9116']
-            metrics_path: /snmp
-            params:
-              module: [synology]
+            scrape_interval: 60s
+            metrics_path: '/metrics'
+            scheme: http
           - job_name: nas_minio
             static_configs:
               - targets: ['192.168.35.5:9000']
@@ -195,6 +197,8 @@ spec:
               - targets: ['192.168.35.5:9100']
             scrape_interval: 60s
             metrics_path: '/metrics'
+            labels:
+              group: 'prometheus'
             scheme: http
           - job_name: 'kubernetes-ingresses'
             metrics_path: /probe
