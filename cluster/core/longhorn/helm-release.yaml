@@ -25,6 +25,15 @@ spec:
           tag: v1.3.2
         ui:
           tag: v1.3.2
+        shareManager:
+          tag: v1_20211020_patch1
+        instanceManager:
+          tag: v1_20221003
+        backingImageManager:
+          tag: v3_20221003
+      csi:
+        snapshotter:
+          tag: v5.0.1
     annotations:
       reloader.stakater.com/auto: 'true'
     service:
