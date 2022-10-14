@@ -8,6 +8,6 @@ resources:
   # - influxdb
   - memcached
   - node-feature-discovery
-  # - pgadmin
-  # - redis
+  - pgadmin
+  - redis
   - vpa
