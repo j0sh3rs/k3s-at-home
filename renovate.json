@@ -41,7 +41,8 @@
   },
   "helmv3": {
     "fileMatch": [
-      "charts/.+/Chart\\.yaml$"
+      "charts/.+/Chart\\.yaml$",
+      "cluster/base-custom/charts/*.yaml"
     ]
   },
   "kubernetes": {
@@ -97,20 +98,13 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
       "automerge": true
-    },
-    {
-      "matchDatasources": [
-        "helm"
-      ],
-      "ignoreDeprecated": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "commitMessageExtra": "to {{newVersion}}"
     }
   ]
 }
