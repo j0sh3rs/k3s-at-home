@@ -5,7 +5,7 @@ resources:
   - alertmanager-discord
   - blackbox-exporter
   - cloudflare-exporter
-  - falco
+  # - falco
   - grafana
   - jaeger
   - kube-prometheus-stack

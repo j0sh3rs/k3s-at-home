@@ -26,3 +26,5 @@ spec:
         enabled: false
     falcosidekick:
       enabled: true
+      webui:
+        enabled: true
