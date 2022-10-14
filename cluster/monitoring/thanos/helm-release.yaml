@@ -31,22 +31,15 @@ spec:
         sidecarsNamespace: monitoring
       resources:
         requests:
-          memory: 512Mi
-          cpu: 400m
+          cpu: 15m
+          memory: 105M
         limits:
-          memory: 2Gi
-          cpu: 1
+          cpu: 26m
+          memory: 105M
     queryFrontend:
       enabled: false
     bucketweb:
       enabled: false
-      # resources:
-      #   requests:
-      #     memory: 512Mi
-      #     cpu: 400m
-      #   limits:
-      #     memory: 2Gi
-      #     cpu: 1
     compactor:
       enabled: true
       strategyType: Recreate
@@ -57,11 +50,11 @@ spec:
           - ReadWriteOnce
       resources:
         requests:
-          memory: 512Mi
-          cpu: 400m
+          cpu: 15m
+          memory: 163M
         limits:
-          memory: 2Gi
-          cpu: 1
+          cpu: 56m
+          memory: 398M
       retentionResolutionRaw: 10d
       retentionResolution5m: 10d
       retentionResolution1h: 90d
@@ -74,11 +67,11 @@ spec:
         size: 20Gi
       resources:
         requests:
-          memory: 512Mi
-          cpu: 400m
+          cpu: 15m
+          memory: 105M
         limits:
-          memory: 2Gi
-          cpu: 1
+          cpu: 26m
+          memory: 105M
       # extraFlags:
       #   - --tracing.config-file='/conf/tracing.yml'
     ruler:

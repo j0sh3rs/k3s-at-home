@@ -18,13 +18,20 @@ spec:
       interval: 5m
   values:
     controller:
+      resources:
+        requests:
+          cpu: 22m
+          memory: 105M
+        limits:
+          cpu: 118m
+          memory: 155M
       annotations:
-        reloader.stakater.com/auto: "true"
+        reloader.stakater.com/auto: 'true'
     envFrom:
       - secretRef:
           name: unifi-poller-secrets
     image:
-      repository: "golift/unifi-poller"
+      repository: 'golift/unifi-poller'
       tag: latest
       pullPolicy: Always
     influxdb:
