@@ -22,5 +22,7 @@ spec:
     collectors:
       containerd:
         socket: /run/k3s/containerd/containerd.sock
+      crio:
+        enabled: false
     falcosidekick:
       enabled: true
