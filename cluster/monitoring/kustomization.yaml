@@ -9,5 +9,5 @@ resources:
   - jaeger
   - kube-prometheus-stack
   - loki-stack
-  - thanos
+  # - thanos
   - unifi-poller
