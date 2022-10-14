@@ -20,6 +20,8 @@ spec:
     nameOverride: redis
     fullnameOverride: redis
     master:
+      persistence:
+        enabled: false
       service:
         type: LoadBalancer
     auth:
