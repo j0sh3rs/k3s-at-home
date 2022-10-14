@@ -7,7 +7,7 @@ resources:
   - cloudflare-exporter
   - grafana
   - jaeger
-  # - kube-prometheus-stack
+  - kube-prometheus-stack
   - loki-stack
-  # - thanos
+  - thanos
   - unifi-poller
