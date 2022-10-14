@@ -17,14 +17,14 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    controller:
-      resources:
-        requests:
-          cpu: 22m
-          memory: 105M
-        limits:
-          cpu: 118m
-          memory: 155M
+    resources:
+      requests:
+        cpu: 22m
+        memory: 105M
+      limits:
+        cpu: 118m
+        memory: 155M
+    global:
       annotations:
         reloader.stakater.com/auto: 'true'
     envFrom:
