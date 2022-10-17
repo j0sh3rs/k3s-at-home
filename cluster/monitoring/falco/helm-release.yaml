@@ -25,7 +25,7 @@ spec:
       containerd:
         socket: /run/k3s/containerd/containerd.sock
       crio:
-        enabled: false
+        socket: /run/k3s/containerd/containerd.sock
     falcosidekick:
       enabled: true
       webui:
