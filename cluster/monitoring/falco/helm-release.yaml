@@ -27,6 +27,6 @@ spec:
       crio:
         enabled: false
     falcosidekick:
-      enabled: false
+      enabled: true
       webui:
-        enabled: false
+        enabled: true
