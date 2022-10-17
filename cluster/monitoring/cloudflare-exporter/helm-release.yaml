@@ -22,3 +22,10 @@ spec:
       enabled: true
     podAnnotations:
       reloader.stakater.com/auto: 'true'
+    resources:
+      requests:
+        cpu: 15m
+        memory: 105M
+      limits:
+        cpu: 142m
+        memory: 469M

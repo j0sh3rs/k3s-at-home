@@ -25,6 +25,13 @@ spec:
         surge: 2
       annotations:
         reloader.stakater.com/auto: 'true'
+      resources:
+        requests:
+          cpu: 15m
+          memory: 1518M
+        limits:
+          cpu: 145m
+          memory: 21G
     ingress:
       main:
         enabled: true

@@ -22,8 +22,8 @@ spec:
         cpu: 10m
         memory: 53M
       limits:
-        cpu: 23m
-        memory: 53M
+        cpu: 157m
+        memory: 165M
     persistence:
       enabled: true
     metrics:
@@ -33,5 +33,5 @@ spec:
           cpu: 10m
           memory: 53M
         limits:
-          cpu: 23m
-          memory: 53M
+          cpu: 157m
+          memory: 165M

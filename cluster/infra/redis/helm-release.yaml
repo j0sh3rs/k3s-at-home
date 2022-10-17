@@ -26,11 +26,11 @@ spec:
         type: LoadBalancer
       resources:
         limits:
-          cpu: 50m
-          memory: 128Mi
+          cpu: 158m
+          memory: 166M
         requests:
           cpu: 10m
-          memory: 53Mi
+          memory: 53M
     auth:
       enabled: false
       sentinel: false
@@ -43,8 +43,8 @@ spec:
         enabled: true
       resources:
         requests:
-          cpu: 10m
+          cpu: 22m
           memory: 53M
         limits:
-          cpu: 23m
-          memory: 53M
+          cpu: 330m
+          memory: 166M

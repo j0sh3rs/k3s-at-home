@@ -29,11 +29,11 @@ spec:
         - grafana.bth.wtf
     resources:
       requests:
-        cpu: 200m
-        memory: 1Gi
+        cpu: 22m
+        memory: 92M
       limits:
-        cpu: 1
-        memory: 2Gi
+        cpu: 297m
+        memory: 1211M
     admin:
       existingSecret: grafana-admin-secrets
     envFromSecret: 'grafana-secrets'

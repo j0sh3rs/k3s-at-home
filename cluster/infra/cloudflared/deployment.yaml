@@ -46,7 +46,7 @@ spec:
               memory: 105M
             limits:
               cpu: 100m
-              memory: 210M
+              memory: 1Gi
           livenessProbe:
             httpGet:
               # Cloudflared has a /ready endpoint which returns 200 if and only if

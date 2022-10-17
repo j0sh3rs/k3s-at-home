@@ -35,7 +35,7 @@ spec:
         memory: 145Mi
       limits:
         cpu: 266m
-        memory: 436Mi
+        memory: 1123Mi
     service:
       main:
         enabled: true

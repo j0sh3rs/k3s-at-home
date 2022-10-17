@@ -25,8 +25,8 @@ spec:
           cpu: 15m
           memory: 105M
         limits:
-          cpu: 23m
-          memory: 136M
+          cpu: 157m
+          memory: 1124M
       extraArgs:
         v: '4'
         pod-recommendation-min-cpu-millicores: 15
@@ -41,13 +41,13 @@ spec:
           cpu: 15m
           memory: 105M
         limits:
-          cpu: 23m
-          memory: 106M
+          cpu: 158m
+          memory: 914M
     updater:
       resources:
         requests:
           cpu: 15m
           memory: 105M
         limits:
-          cpu: 23m
-          memory: 106M
+          cpu: 157m
+          memory: 912M

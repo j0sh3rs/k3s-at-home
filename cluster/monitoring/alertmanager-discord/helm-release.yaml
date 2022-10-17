@@ -25,8 +25,8 @@ spec:
         cpu: 15m
         memory: 105M
       limits:
-        cpu: 26m
-        memory: 105M
+        cpu: 141m
+        memory: 149M
     env:
       DISCORD_USERNAME: 'Alertmanager'
       DISCORD_AVATAR_URL: 'https://avatars3.githubusercontent.com/u/3380462'

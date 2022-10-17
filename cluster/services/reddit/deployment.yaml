@@ -26,7 +26,7 @@ metadata:
     app: reddit
     release: alpha
   annotations:
-    reloader.stakater.com/auto: "true"
+    reloader.stakater.com/auto: 'true'
 spec:
   replicas: 1
   selector:
@@ -51,7 +51,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: reddit
-          image: "spikecodes/libreddit:latest"
+          image: 'spikecodes/libreddit:latest'
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -72,9 +72,9 @@ spec:
             periodSeconds: 300
           resources:
             limits:
-              cpu: 500m
-              memory: 512M
+              cpu: 145m
+              memory: 175M
             requests:
-              cpu: 100m
-              memory: 256M
+              cpu: 15m
+              memory: 105M
       restartPolicy: Always

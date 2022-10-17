@@ -24,12 +24,12 @@ spec:
       ingress:
         enabled: false
       resources:
-        limits:
-          cpu: 500m
-          memory: 2Gi
         requests:
-          cpu: 256m
-          memory: 1Gi
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 142m
+          memory: 822M
     storage:
       type: none
     agent:

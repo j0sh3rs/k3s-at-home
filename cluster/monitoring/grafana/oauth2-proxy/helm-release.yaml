@@ -44,11 +44,11 @@ spec:
       portNumber: 80
     resources:
       requests:
-        cpu: 200m
-        memory: 1Gi
+        cpu: 15m
+        memory: 105M
       limits:
-        cpu: 1
-        memory: 2Gi
+        cpu: 142m
+        memory: 305M
     securityContext:
       enabled: true
       allowPrivilegeEscalation: false
