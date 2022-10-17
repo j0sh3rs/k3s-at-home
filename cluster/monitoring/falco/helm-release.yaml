@@ -19,8 +19,6 @@ spec:
   values:
     driver:
       kind: ebpf
-      ebpf:
-        leastPrivileged: true
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     collectors:
@@ -29,6 +27,6 @@ spec:
       crio:
         enabled: false
     falcosidekick:
-      enabled: true
+      enabled: false
       webui:
-        enabled: true
+        enabled: false
