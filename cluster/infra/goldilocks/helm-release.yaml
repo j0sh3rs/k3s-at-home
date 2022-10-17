@@ -20,12 +20,28 @@ spec:
     nameOverride: goldilocks
     fullnameOverride: goldilocks
     controller:
+      rbac:
+        extraRules:
+          - apiGroups:
+              - 'jobs.batch'
+            resources:
+              - 'jobs'
+            verbs:
+              - 'get'
+              - 'list'
+          - apiGroups:
+              - 'cronjobs.batch'
+            resources:
+              - 'cronjobs'
+            verbs:
+              - 'get'
+              - 'list'
       resources:
         limits:
-          cpu: 1
-          memory: 256Mi
+          cpu: 15m
+          memory: 105Mi
         requests:
-          cpu: 500m
+          cpu: 74m
           memory: 128Mi
     dashboard:
       service:
@@ -33,5 +49,8 @@ spec:
       replicaCount: 1
       resources:
         limits:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 23m
+          memory: 210Mi
+        requests:
+          cpu: 15m
+          memory: 105Mi

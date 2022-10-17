@@ -24,20 +24,27 @@ spec:
         enabled: false
       service:
         type: LoadBalancer
+      resources:
+        limits:
+          cpu: 50m
+          memory: 128Mi
+        requests:
+          cpu: 10m
+          memory: 53Mi
     auth:
       enabled: false
       sentinel: false
     architecture: standalone
-    resources:
-      limits:
-        cpu: 500m
-        memory: 512Mi
-      requests:
-        cpu: 100m
-        memory: 128Mi
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
       prometheusRule:
         enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 53M
+        limits:
+          cpu: 23m
+          memory: 53M

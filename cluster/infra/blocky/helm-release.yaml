@@ -32,10 +32,10 @@ spec:
     resources:
       requests:
         cpu: 15m
-        memory: 105Mi
+        memory: 145Mi
       limits:
         cpu: 266m
-        memory: 2268Mi
+        memory: 436Mi
     service:
       main:
         enabled: true

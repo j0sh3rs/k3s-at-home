@@ -26,6 +26,13 @@ spec:
     master:
       annotations:
         reloader.stakater.com/auto: 'true'
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 23m
+          memory: 105M
     worker:
       annotations:
         reloader.stakater.com/auto: 'true'
@@ -35,6 +42,13 @@ spec:
             - all
           labelSources:
             - all
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 23m
+          memory: 105M
     topologyUpdater:
       annotations:
         reloader.stakater.com/auto: 'true'

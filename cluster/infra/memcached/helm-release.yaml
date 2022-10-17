@@ -18,10 +18,20 @@ spec:
       interval: 5m
   values:
     resources:
+      requests:
+        cpu: 10m
+        memory: 53M
       limits:
-        cpu: 500m
-        memory: 512Mi
+        cpu: 23m
+        memory: 53M
     persistence:
       enabled: true
     metrics:
       enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 53M
+        limits:
+          cpu: 23m
+          memory: 53M
