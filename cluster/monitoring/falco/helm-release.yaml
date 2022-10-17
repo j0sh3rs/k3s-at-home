@@ -20,11 +20,7 @@ spec:
     driver:
       kind: ebpf
       ebpf:
-        path: /root/.falco/falco-bpf.o
         leastPrivileged: true
-      loader:
-        initContainer:
-          enabled: false
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     collectors:
