@@ -23,16 +23,18 @@ spec:
       rbac:
         extraRules:
           - apiGroups:
-              - 'jobs.batch'
+              - 'batch'
             resources:
               - 'jobs'
+              - 'cronjobs'
             verbs:
               - 'get'
               - 'list'
           - apiGroups:
-              - 'cronjobs.batch'
+              - 'monitoring.coreos.com'
             resources:
-              - 'cronjobs'
+              - 'alertmanagers'
+              - 'prometheuses'
             verbs:
               - 'get'
               - 'list'
