@@ -38,6 +38,14 @@ spec:
             verbs:
               - 'get'
               - 'list'
+          - apiGroups:
+              - 'longhorn.io'
+            resources:
+              - 'instancemanagers'
+              - 'engineimages'
+            verbs:
+              - 'get'
+              - 'list'
       resources:
         requests:
           cpu: 15m
