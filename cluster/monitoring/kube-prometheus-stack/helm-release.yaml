@@ -119,7 +119,8 @@ spec:
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
-      selfMonitor: true
+      selfMonitor:
+        enabled: true
       prometheus:
         monitor:
           enabled: true
