@@ -25,8 +25,8 @@ spec:
           cpu: 15m
           memory: 105M
         limits:
-          cpu: 157m
-          memory: 1124M
+          cpu: 50m
+          memory: 210M
       extraArgs:
         v: '4'
         pod-recommendation-min-cpu-millicores: 15
@@ -35,19 +35,6 @@ spec:
           http://thanos-query.monitoring.svc.cluster.local:9090
         storage: prometheus
     admissionController:
-      enabled: true
-      resources:
-        requests:
-          cpu: 15m
-          memory: 105M
-        limits:
-          cpu: 158m
-          memory: 914M
+      enabled: false
     updater:
-      resources:
-        requests:
-          cpu: 15m
-          memory: 105M
-        limits:
-          cpu: 157m
-          memory: 912M
+      enabled: false

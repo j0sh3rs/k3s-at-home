@@ -39,20 +39,20 @@ spec:
               - 'get'
               - 'list'
       resources:
-        limits:
-          cpu: 502m
-          memory: 713M
         requests:
           cpu: 15m
-          memory: 128M
+          memory: 105M
+        limits:
+          cpu: 126m
+          memory: 210M
     dashboard:
       service:
         type: LoadBalancer
       replicaCount: 1
       resources:
-        limits:
-          cpu: 158m
-          memory: 522M
         requests:
           cpu: 15m
           memory: 105M
+        limits:
+          cpu: 50m
+          memory: 210M
