@@ -20,7 +20,6 @@ spec:
     defaultRules:
       rules:
         etcd: false
-        kubelet: false
     alertmanager:
       config:
         global:
@@ -60,6 +59,13 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+        resources:
+          requests:
+            cpu: 10m
+            memory: 53M
+          limits:
+            cpu: 22m
+            memory: 104M
       prometheus:
         monitor:
           enabled: true
@@ -72,16 +78,25 @@ spec:
               targetLabel: kubernetes_node
     prometheusOperator:
       createCustomResource: true
+      resources:
+        requests:
+          cpu: 15m
+          memory: 272M
+        limits:
+          cpu: 102m
+          memory: 568M
       prometheusConfigReloader:
         resources:
           requests:
-            cpu: 150m
-            memory: 50Mi
+            cpu: 10m
+            memory: 35M
           limits:
-            cpu: 300m
-            memory: 50Mi
+            cpu: 22m
+            memory: 50M
       podAnnotations:
         reloader.stakater.com/auto: 'true'
+      verticalPodAutoscaler:
+        enabled: true
     nodeExporter:
       enabled: true
       serviceMonitor:
@@ -102,8 +117,8 @@ spec:
             targetLabel: instance
     kubeStateMetrics:
       enabled: true
-      metricLabelsAllowlist:
-        - 'persistentvolumeclaims=[*]'
+    kube-state-metrics:
+      selfMonitor: true
       prometheus:
         monitor:
           enabled: true
