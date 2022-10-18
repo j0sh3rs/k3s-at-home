@@ -28,7 +28,21 @@ spec:
         enabled: false
     falcosidekick:
       enabled: true
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 23m
+          memory: 105M
       webui:
         enabled: true
         service:
           type: LoadBalancer
+        resources:
+          requests:
+            cpu: 15m
+            memory: 105M
+          limits:
+            cpu: 23m
+            memory: 171M
