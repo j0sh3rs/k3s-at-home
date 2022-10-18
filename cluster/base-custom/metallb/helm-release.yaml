@@ -24,6 +24,8 @@ spec:
         enabled: true
       prometheusRule:
         enabled: true
+      serviceAccount: 'kube-prometheus-stack-prometheus'
+      namespace: 'monitoring'
     rbacProxy:
       tag: v0.13.0
     controller:
