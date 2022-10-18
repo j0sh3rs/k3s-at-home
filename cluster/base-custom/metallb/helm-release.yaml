@@ -19,9 +19,26 @@ spec:
   values:
     crds:
       enabled: true
-    serviceMonitor:
-      enabled: true
-    prometheusRule:
-      enabled: true
+    prometheus:
+      serviceMonitor:
+        enabled: true
+      prometheusRule:
+        enabled: true
     rbacProxy:
       tag: v0.13.0
+    controller:
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 171m
+          memory: 771M
+    speaker:
+      resources:
+        requests:
+          cpu: 15m
+          memory: 105M
+        limits:
+          cpu: 357m
+          memory: 770M
