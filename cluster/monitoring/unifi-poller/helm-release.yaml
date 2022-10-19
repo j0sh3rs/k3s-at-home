@@ -19,11 +19,11 @@ spec:
   values:
     resources:
       requests:
-        cpu: 15m
-        memory: 105M
+        cpu: 100m
+        memory: 135M
       limits:
         cpu: 200m
-        memory: 167M
+        memory: 673M
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
