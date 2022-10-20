@@ -5,7 +5,7 @@ metadata:
   name: services
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -13,7 +13,7 @@ metadata:
   name: longhorn-system
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -21,7 +21,7 @@ metadata:
   name: metallb-system
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -29,7 +29,7 @@ metadata:
   name: infra
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -37,7 +37,7 @@ metadata:
   name: monitoring
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
   annotations:
     goldilocks.fairwinds.com/vpa-resource-policy: >
       { "containerPolicies": [ { "containerName": "unifi-poller", "mode": "off",
@@ -49,7 +49,7 @@ metadata:
   name: system-upgrade
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -57,7 +57,7 @@ metadata:
   name: kube-system
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -65,7 +65,7 @@ metadata:
   name: cert-manager
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
 ---
 apiVersion: v1
 kind: Namespace
@@ -73,4 +73,4 @@ metadata:
   name: ingress-nginx
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
-    goldilocks.fairwinds.com/vpa-update-mode: 'auto'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
