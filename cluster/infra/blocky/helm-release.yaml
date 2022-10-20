@@ -60,6 +60,11 @@ spec:
         default:
           - https://1.1.1.1/dns-query
           - https://1.0.0.1/dns-query
+      customDNS:
+        rewrite:
+          bth.wtf: nginx-ingress
+        mapping:
+          nginx-ingress: 192.168.35.16
       blocking:
         whiteLists:
           ads:
@@ -109,6 +114,8 @@ spec:
             - ads
         refreshPeriod: 120m
         processingConcurrency: 50
+      clientLookup:
+        upstream: 192.168.35.1
       prometheus:
         enable: true
         path: /metrics
