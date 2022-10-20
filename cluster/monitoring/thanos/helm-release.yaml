@@ -31,11 +31,11 @@ spec:
         sidecarsNamespace: monitoring
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 200m
+          memory: 512Mi
         limits:
-          cpu: 141m
-          memory: 305M
+          cpu: 500m
+          memory: 2Gi
     queryFrontend:
       enabled: false
     bucketweb:
