@@ -32,9 +32,9 @@ spec:
         # metric-for-pod-labels: kube_pod_labels{job="kube-state-metrics"}
         pod-recommendation-min-cpu-millicores: 100
         pod-recommendation-min-memory-mb: 128
-        prometheus-address: |
-          http://thanos-query.monitoring.svc.cluster.local:9090
-        storage: prometheus
+        # prometheus-address: |
+        #   http://thanos-query.monitoring.svc.cluster.local:9090
+        # storage: prometheus
     admissionController:
       enabled: false
     updater:
