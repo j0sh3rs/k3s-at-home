@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - clusterrolebinding.yaml
   - helm-release.yaml
+  - prometheus_rules.yaml
