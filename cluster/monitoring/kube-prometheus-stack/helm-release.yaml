@@ -203,6 +203,8 @@ spec:
             name: thanos-secrets
             key: objstore.yml
         additionalScrapeConfigs:
+          # https://stackoverflow.com/questions/69406120/changing-prometheus-job-label-in-scraper-for-cadvisor-breaks-grafana-dashboards
+          # https://stackoverflow.com/questions/65409886/changing-promethus-job-label-from-kubelet-to-kubernetes-cadvisor/65421764#65421764
           - job_name: 'kubernetes-cadvisor'
             honor_labels: true
             honor_timestamps: true
