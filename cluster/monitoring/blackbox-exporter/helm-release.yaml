@@ -67,16 +67,3 @@ spec:
         - name: tank
           url: '192.168.35.200'
           module: icmp
-    prometheusRule:
-      enabled: true
-      additionalLabels:
-        app: prometheus-operator
-        release: prometheus
-      rules:
-        - alert: HostDown
-          expr: probe_success == 0
-          for: 10m
-          labels:
-            severity: critical
-          annotations:
-            message: The host {{"{{ $labels.target }}"}} is currently unreachable
