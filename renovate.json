@@ -74,6 +74,17 @@
       ]
     },
     {
+      "datasourceTemplate": "docker",
+      "fileMatch": [
+        "^cluster/.*\\.yaml$"
+      ],
+      "matchStrings": [
+        "dockerUrl=(?<dockerUrl>.*?)\n *version: (?<currentValue>.*?)\n",
+        "dockerUrl=(?<dockerUrl>.*?) tag: (?<currentValue>.*?)\n",
+        "dockerUrl=(?<dockerUrl>.*?)\n *tag: (?<depName>[a-z-]+)-(?<currentValue>.*?)\n"
+      ]
+    },
+    {
       "description": "Process various dependencies",
       "fileMatch": [
         "cluster/.+\\.ya?ml$"

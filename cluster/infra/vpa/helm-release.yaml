@@ -20,13 +20,15 @@ spec:
     nameOverride: vpa
     fullnameOverride: vpa
     recommender:
+      podAnnotations:
+        reloader.stakater.com/auto: 'true'
       resources:
         requests:
           cpu: 15m
           memory: 105M
         limits:
-          cpu: 50m
-          memory: 210M
+          cpu: 150m
+          memory: 512M
       extraArgs:
         v: '4'
         pod-recommendation-min-cpu-millicores: 100
@@ -34,7 +36,14 @@ spec:
         prometheus-address: |
           http://thanos-query.monitoring.svc.cluster.local:9090
         storage: prometheus
+      image:
+        # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-recommender
+        tag: 0.12.0
     admissionController:
       enabled: false
     updater:
-      enabled: false
+      image:
+        # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-updater
+        tag: 0.12.0
+      podAnnotations:
+        reloader.stakater.com/auto: 'true'
