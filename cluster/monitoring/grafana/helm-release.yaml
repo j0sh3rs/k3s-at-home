@@ -128,6 +128,13 @@ spec:
         cloudflare-analytics:
           gnetId: 13133
           datasource: Prometheus
+        blocky:
+          gnetId: 13768
+          datasource: Prometheus
+          revision: 3
+        redis:
+          gnetId: 11835
+          datasource: Prometheus
     sidecar:
       datasources:
         enabled: true
