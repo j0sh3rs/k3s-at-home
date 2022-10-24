@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - alertmanager-discord
   - blackbox-exporter
+  - botkube
   - cadvisor
   - cloudflare-exporter
   - falco

@@ -25,11 +25,11 @@ spec:
         enabled: false
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 199m
+          memory: 380Mi
         limits:
-          cpu: 142m
-          memory: 822M
+          cpu: 299m
+          memory: 512Mi
     storage:
       type: none
     agent:

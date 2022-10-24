@@ -22,11 +22,11 @@ spec:
         reloader.stakater.com/auto: 'true'
     resources:
       requests:
-        cpu: 15m
-        memory: 105M
+        cpu: 100m
+        memory: 135Mi
       limits:
-        cpu: 23m
-        memory: 105M
+        cpu: 100m
+        memory: 135Mi
     env:
       DISCORD_USERNAME: 'Alertmanager'
       DISCORD_AVATAR_URL: 'https://avatars3.githubusercontent.com/u/3380462'
