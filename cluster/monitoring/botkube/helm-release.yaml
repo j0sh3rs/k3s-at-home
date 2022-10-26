@@ -32,8 +32,8 @@ spec:
         reloader.stakater.com/auto: 'true'
     resources:
       limits:
-        cpu: 100m
-        memory: 128Mi
+        cpu: 200m
+        memory: 725M
       requests:
         cpu: 50m
-        memory: 64Mi
+        memory: 68M

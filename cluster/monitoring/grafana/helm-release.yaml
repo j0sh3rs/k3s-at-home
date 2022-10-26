@@ -30,10 +30,10 @@ spec:
     resources:
       requests:
         cpu: 200m
-        memory: 110M
+        memory: 110Mi
       limits:
         cpu: 1
-        memory: 1211M
+        memory: 3072Mi
     admin:
       existingSecret: grafana-admin-secrets
     envFromSecret: 'grafana-secrets'
