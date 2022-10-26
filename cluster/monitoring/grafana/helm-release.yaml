@@ -45,6 +45,7 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - camptocamp-prometheus-alertmanager-datasource
+      - redis-datasource
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
@@ -68,6 +69,12 @@ spec:
           - name: Loki
             type: loki
             url: http://loki-stack:3100
+          - name: Redis
+            type: redis
+            url: redis://redis-master:6379
+          - name: Jaeger
+            type: jaeger
+            url: http://jaeger-query:16686
     dashboards:
       default:
         flux-cluster:
