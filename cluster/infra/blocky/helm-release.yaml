@@ -31,11 +31,11 @@ spec:
         enabled: true
     resources:
       requests:
-        cpu: 15m
-        memory: 145Mi
+        cpu: 100m
+        memory: 145M
       limits:
-        cpu: 266m
-        memory: 1123Mi
+        cpu: 300m
+        memory: 512M
     service:
       main:
         enabled: true

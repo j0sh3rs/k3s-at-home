@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:latest
+          image: cloudflare/cloudflared
+          tag: 2022.10.3
           args:
             - tunnel
             - --metrics
