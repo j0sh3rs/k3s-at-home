@@ -27,11 +27,11 @@ spec:
         reloader.stakater.com/auto: 'true'
       resources:
         requests:
-          cpu: 15m
+          cpu: 100m
           memory: 1518M
         limits:
-          cpu: 145m
-          memory: 21G
+          cpu: 200m
+          memory: 9058M
     ingress:
       main:
         enabled: true

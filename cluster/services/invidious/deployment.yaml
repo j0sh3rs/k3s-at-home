@@ -48,10 +48,10 @@ spec:
           name: invidious
           resources:
             limits:
-              cpu: 145m
-              memory: 481M
+              cpu: 200m
+              memory: 512M
             requests:
-              cpu: 15m
-              memory: 105M
+              cpu: 100m
+              memory: 256M
       hostname: invidious
       restartPolicy: Always

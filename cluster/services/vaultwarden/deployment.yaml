@@ -31,11 +31,11 @@ spec:
               containerPort: 3012
           resources:
             limits:
-              memory: 841M
-              cpu: 145m
+              memory: 512M
+              cpu: 200m
             requests:
-              cpu: 15m
-              memory: 105M
+              cpu: 100m
+              memory: 128M
           volumeMounts:
             - mountPath: /data
               name: vaultwarden-claim0
