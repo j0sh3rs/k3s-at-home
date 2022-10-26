@@ -45,9 +45,8 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - camptocamp-prometheus-alertmanager-datasource
-      - redis-datasource
-      - redis-app
-      - redis-explorer-app
+      # - redis-datasource
+      # - redis-app
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
@@ -71,9 +70,9 @@ spec:
           - name: Loki
             type: Loki
             url: http://loki-stack:3100
-          - name: Redis
-            type: Redis
-            url: redis://redis-master:6379
+          # - name: Redis
+          #   type: Redis
+          #   url: redis://redis-master:6379
           - name: Jaeger
             type: Jaeger
             url: http://jaeger-query:16686
