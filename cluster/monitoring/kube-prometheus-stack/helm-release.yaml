@@ -176,11 +176,11 @@ spec:
       prometheusSpec:
         resources:
           requests:
-            cpu: 162m
-            memory: 3474M
+            cpu: 250m
+            memory: 2384M
           limits:
-            cpu: 1
-            memory: 7341M
+            cpu: 3
+            memory: 15G
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false
