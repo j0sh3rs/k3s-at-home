@@ -73,9 +73,9 @@ spec:
           # - name: Redis
           #   type: Redis
           #   url: redis://redis-master:6379
-          - name: Jaeger
-            type: Jaeger
-            url: http://jaeger-query:16686
+          # - name: Jaeger
+          #   type: Jaeger
+          #   url: http://jaeger-query:16686
     dashboards:
       default:
         flux-cluster:
