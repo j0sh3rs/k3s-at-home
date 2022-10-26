@@ -69,13 +69,13 @@ spec:
             url: http://thanos-query:9090
             isDefault: true
           - name: Loki
-            type: loki
+            type: Loki
             url: http://loki-stack:3100
           - name: Redis
-            type: redis
+            type: Redis
             url: redis://redis-master:6379
           - name: Jaeger
-            type: jaeger
+            type: Jaeger
             url: http://jaeger-query:16686
     dashboards:
       default:
