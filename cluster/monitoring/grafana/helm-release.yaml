@@ -45,8 +45,8 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - camptocamp-prometheus-alertmanager-datasource
-      # - redis-datasource
-      # - redis-app
+      - redis-datasource
+      - redis-app
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
