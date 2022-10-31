@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/modsecurity-transaction-id: $request_id
+    nginx.ingress.kubernetes.io/modsecurity-snippet: |
+      SecRuleEngine DetectionOnly
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: reddit
+    app.kubernetes.io/name: reddit
+    app.kubernetes.io/version: latest
+  name: reddit
+  namespace: services
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: reddit.bth.wtf
+      http:
+        paths:
+          - backend:
+              service:
+                name: reddit
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
