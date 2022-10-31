@@ -7,21 +7,21 @@ metadata:
       SecRuleEngine DetectionOnly
   generation: 1
   labels:
-    app.kubernetes.io/instance: reddit
-    app.kubernetes.io/name: reddit
+    app.kubernetes.io/instance: invidious
+    app.kubernetes.io/name: invidious
     app.kubernetes.io/version: latest
-  name: reddit
+  name: invidious
   namespace: services
 spec:
   ingressClassName: nginx
   rules:
-    - host: reddit.bth.wtf
+    - host: yt.bth.wtf
       http:
         paths:
           - backend:
               service:
-                name: reddit
+                name: invidious-server
                 port:
-                  number: 8080
+                  number: 3000
             path: /
             pathType: Prefix
