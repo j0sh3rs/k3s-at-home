@@ -19,5 +19,3 @@ spec:
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
-  ipAddresses:
-    - 192.168.35.16
