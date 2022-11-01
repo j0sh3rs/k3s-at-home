@@ -60,7 +60,7 @@ spec:
         default:
           - https://1.1.1.1/dns-query
           - https://1.0.0.1/dns-query
-      conditional:
+      customDNS:
         rewrite:
           bth.wtf: ingress-nginx
         mapping:
