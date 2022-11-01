@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -13,31 +14,27 @@ spec:
     - host: vault.bth.wtf
       http:
         paths:
-          - backend:
-              service:
-                name: vaultwarden
-                port:
-                  number: 3012
-            path: /notifications/hub
-            pathType: Prefix
-          - backend:
-              service:
-                name: vaultwarden
-                port:
-                  number: 80
-            path: /notifications
-            pathType: Prefix
-          - backend:
-              service:
-                name: vaultwarden
-                port:
-                  number: 80
-            path: /hub/negotiate
-            pathType: Prefix
+          # Main catch-all: https://github.com/dani-garcia/vaultwarden/wiki/Enabling-WebSocket-notifications
           - backend:
               service:
                 name: vaultwarden
                 port:
                   number: 80
             path: /
+            pathType: Prefix
+          # Websocket doesn't handle the negotiate endpoint
+          - backend:
+              service:
+                name: vaultwarden
+                port:
+                  number: 80
+            path: /notifications/hub/negotiate
+            pathType: Prefix
+          # WebSocket for Clients
+          - backend:
+              service:
+                name: vaultwarden
+                port:
+                  number: 3012
+            path: /notifications/hub
             pathType: Prefix
