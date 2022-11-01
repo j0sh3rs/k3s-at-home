@@ -12,9 +12,12 @@ spec:
   privateKey:
     algorithm: ECDSA
     size: 384
+    rotationPolicy: Always
   dnsNames:
     - '*.bth.wtf'
     - bth.wtf
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
+  ipAddresses:
+    - 192.168.35.16
