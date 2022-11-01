@@ -42,6 +42,7 @@ spec:
     admissionController:
       enabled: false
     updater:
+      enabled: false
       image:
         # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-updater
         tag: 0.12.0
