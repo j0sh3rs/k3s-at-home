@@ -137,6 +137,7 @@ spec:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
     kubeControllerManager:
+      # https://github.com/k3s-io/k3s/issues/3619#issuecomment-973188304
       enabled: true
       endpoints:
         - 192.168.35.4
