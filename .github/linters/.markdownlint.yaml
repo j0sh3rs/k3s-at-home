@@ -10,7 +10,7 @@ MD013:
   # Number of characters for code blocks
   code_block_line_length: 80
   # Include code blocks
-  code_blocks: true
+  code_blocks: false
   # Include tables
   tables: true
   # Include headings
@@ -25,7 +25,7 @@ MD013:
 # MD026/no-trailing-punctuation - Trailing punctuation in heading
 MD026:
   # Punctuation characters
-  punctuation: "："
+  punctuation: '：'
 
 # MD033/no-inline-html - Inline HTML
 MD033:
