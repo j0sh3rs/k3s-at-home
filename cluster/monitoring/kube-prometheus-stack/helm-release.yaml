@@ -137,16 +137,19 @@ spec:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
     kubeControllerManager:
+      enabled: false
       endpoints:
         - 192.168.35.4
         - 192.168.35.6
         - 192.168.35.200
     kubeScheduler:
+      enabled: false
       endpoints:
         - 192.168.35.4
         - 192.168.35.6
         - 192.168.35.200
     kubeProxy:
+      enabled: false
       endpoints:
         - 192.168.35.4
         - 192.168.35.6
