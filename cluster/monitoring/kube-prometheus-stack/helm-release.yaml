@@ -20,7 +20,6 @@ spec:
     defaultRules:
       rules:
         etcd: false
-        kubelet: false
     alertmanager:
       config:
         global:
@@ -98,6 +97,12 @@ spec:
         reloader.stakater.com/auto: 'true'
       verticalPodAutoscaler:
         enabled: true
+        maxAllowed:
+          cpu: 2
+          memory: 4Gi
+        minAllowed:
+          cpu: 200m
+          memory: 128Mi
     nodeExporter:
       enabled: true
       serviceMonitor:
@@ -131,14 +136,21 @@ spec:
               sourceLabels:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
-    kubeApiServer:
-      enabled: true
     kubeControllerManager:
-      enabled: false
+      endpoints:
+        - 192.168.35.4
+        - 192.168.35.6
+        - 192.168.35.200
     kubeScheduler:
-      enabled: false
+      endpoints:
+        - 192.168.35.4
+        - 192.168.35.6
+        - 192.168.35.200
     kubeProxy:
-      enabled: false
+      endpoints:
+        - 192.168.35.4
+        - 192.168.35.6
+        - 192.168.35.200
     kubeEtcd:
       enabled: false
     grafana:
@@ -146,7 +158,6 @@ spec:
       forceDeployDashboards: true
       defaultDashboardsTimezone: America/New_York
     prometheus-node-exporter:
-      enabled: true
       fullnameOverride: node-exporter
       serviceMonitor:
         relabelings:
@@ -449,6 +460,6 @@ spec:
       thanosService:
         enabled: true
       thanosServiceMonitor:
-        enabled: false
+        enabled: true
       thanosIngress:
         enabled: false
