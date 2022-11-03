@@ -1,6 +1,7 @@
 ---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+
 fail_fast: false
 repos:
   - repo: https://github.com/adrienverge/yamllint.git
@@ -16,6 +17,9 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: mixed-line-ending
+      - id: check-yaml
+      - id: detect-private-key
+      - id: sort-simple-yaml
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.3.1
     hooks:
@@ -40,4 +44,8 @@ repos:
       - id: markdownlint
         args:
           - --config
-          - ".github/linters/.markdownlint.yaml"
+          - '.github/linters/.markdownlint.yaml'
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.18.4
+    hooks:
+      - id: check-renovate
