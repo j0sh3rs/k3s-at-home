@@ -48,19 +48,19 @@ spec:
               - 'list'
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 100m
+          memory: 128Mi
         limits:
-          cpu: 126m
-          memory: 210M
+          cpu: 250m
+          memory: 256Mi
     dashboard:
       service:
         type: LoadBalancer
       replicaCount: 1
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 100m
+          memory: 128Mi
         limits:
-          cpu: 50m
-          memory: 210M
+          cpu: 200m
+          memory: 256Mi
