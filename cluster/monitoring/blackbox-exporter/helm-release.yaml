@@ -23,11 +23,11 @@ spec:
         add: ['NET_RAW']
     resources:
       requests:
-        cpu: 15m
-        memory: 105M
+        cpu: 100m
+        memory: 105Mi
       limits:
-        cpu: 23m
-        memory: 105M
+        cpu: 250m
+        memory: 256Mi
     config:
       modules:
         icmp:
