@@ -202,7 +202,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
-        retention: 21d
+        retention: 120d
         retentionSize: 50GB
         enableAdminAPI: true
         walCompression: true
@@ -462,8 +462,8 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: true
+        enabled: false
       thanosServiceMonitor:
-        enabled: true
+        enabled: false
       thanosIngress:
         enabled: false
