@@ -22,7 +22,7 @@ spec:
   interval: 10m0s
   path: ./cluster
   prune: true
-  verification: client
+  validation: client
   sourceRef:
     kind: GitRepository
     name: flux-system
