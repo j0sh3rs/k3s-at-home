@@ -98,11 +98,6 @@ spec:
                 secretKeyRef:
                   key: SMTP_PORT
                   name: vaultwarden-secrets
-            - name: SMTP_SSL
-              valueFrom:
-                secretKeyRef:
-                  key: SMTP_SSL
-                  name: vaultwarden-secrets
             - name: SMTP_USERNAME
               valueFrom:
                 secretKeyRef:
