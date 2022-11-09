@@ -56,6 +56,9 @@ spec:
     dashboard:
       service:
         type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.15
       replicaCount: 1
       resources:
         requests:

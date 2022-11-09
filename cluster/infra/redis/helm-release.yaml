@@ -24,6 +24,9 @@ spec:
         enabled: false
       service:
         type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.12
       resources:
         limits:
           cpu: 158m

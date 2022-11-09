@@ -25,6 +25,9 @@ spec:
       pullPolicy: Always
     service:
       type: LoadBalancer
+      annotations:
+        metallb.universe.tf/address-pool: default
+        metallb.universe.tf/loadBalancerIps: 192.168.35.10
     existingSecret: 'pgadmin-secrets'
     env:
       email: j0sh3rs@cluster.com

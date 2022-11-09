@@ -39,6 +39,9 @@ spec:
     service:
       ui:
         type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.14
     persistence:
       defaultClassReplicaCount: 2
       defaultDataLocality: best-effort
