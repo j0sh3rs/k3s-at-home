@@ -12,19 +12,19 @@ spec:
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-    - dns01:
-        cloudflare:
-          email: cloudflare@beholdthehurricane.com
-          apiTokenSecretRef:
-            name: cloudflare-api-token-secret
-            key: api-token
-      selector:
-        dnsZones:
-        - 'bth.wtf'
-        - 'beholdthehurricane.com'
-    - http01:
-        ingress:
-          class: haproxy
-      selector:
-        matchLabels:
-          "use-http01-solver": "true"
+      - dns01:
+          cloudflare:
+            email: cloudflare@beholdthehurricane.com
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
+        selector:
+          dnsZones:
+            - 'bth.wtf'
+            - 'beholdthehurricane.com'
+      - http01:
+          ingress:
+            class: nginx
+        selector:
+          matchLabels:
+            'use-http01-solver': 'true'
