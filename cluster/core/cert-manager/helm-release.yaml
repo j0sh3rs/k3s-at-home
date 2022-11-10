@@ -19,12 +19,11 @@ spec:
   values:
     resources:
       requests:
-        cpu: 15m
-        memory: 204M
+        cpu: 100m
+        memory: 256Mi
       limits:
-        cpu: 22m
-        memory: 411M
-    installCRDS: true
+        cpu: 200m
+        memory: 512Mi
     leaderElection:
       namespace: cert-manager
     extraArgs:
@@ -43,22 +42,20 @@ spec:
     webhook:
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 100m
+          memory: 128Mi
         limits:
-          cpu: 22m
-          memory: 105M
+          cpu: 200m
+          memory: 256Mi
       image:
         pullPolicy: Always
     cainjector:
       resources:
         requests:
-          cpu: 15m
-          memory: 248M
+          cpu: 100m
+          memory: 256Mi
         limits:
-          cpu: 22m
-          memory: 501M
+          cpu: 200m
+          memory: 512M
       image:
         pullPolicy: Always
-    startupapicheck:
-      enabled: false
