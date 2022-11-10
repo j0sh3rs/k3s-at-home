@@ -8,7 +8,7 @@
 
 This repository is shamelessly stolen and modified from the great work that [Auricom](https://github.com/auricom/home-cluster) has done on his homelab.
 
-Modified to my needs, updated to use Age instead of PGP, and using cloudflared and/or haproxy instead of nginx for ingress.
+Modified to my needs, updated to use Age instead of PGP, and using cloudflared and/or ingress-nginx.
 
 <br/>
 <br/>
@@ -40,10 +40,34 @@ pre-commit install
 
 K3s allows you to use either a config file or CLI args + Envvars to customize its installation. I've opted for the CLI args + Envvars, and may consider switching to the config file at a later date.
 
-My installation command looks roughly like such, incorporating much of the [k3s cis hardening guide](https://docs.k3s.io/security/hardening-guide) as possible.
+My installation command looks roughly like such, incorporating as much of the [k3s cis hardening guide](https://docs.k3s.io/security/hardening-guide) as possible.
 
-```shell
-curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=v1.24 sh -s - --token ${MYTOKEN} --disable local-storage --disable traefik --disable metrics-server --disable servicelb --disable-cloud-controller --protect-kernel-defaults=true --datastore-endpoint=postgres://k3s:"'${MYDBPW}'"@postgres:35432/kubernetes?sslmode=disable --write-kubeconfig-mode 0644  --kube-proxy-arg=metrics-bind-address=0.0.0.0 --kube-scheduler-arg=bind-address=0.0.0.0 --kube-apiserver-arg=audit-log-path=/var/log/k3s/server/audit.log --kube-apiserver-arg=audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml --kube-apiserver-arg=audit-log-maxage=7 --kube-apiserver-arg=audit-log-maxbackup=3 --kube-apiserver-arg=audit-log-maxsize=50 --kube-apiserver-arg=request-timeout=300s --kube-apiserver-arg=service-account-lookup=true --kube-controller-manager-arg=terminated-pod-gc-threshold=10 --kube-controller-manager-arg=use-service-account-credentials=true --kube-controller-manager-arg=bind-address=0.0.0.0 --kubelet-arg=streaming-connection-idle-timeout=5m --kubelet-arg=make-iptables-util-chains=true --kubelet-arg=containerd=/run/k3s/containerd/containerd.sock --secrets-encryption
+ ```shell
+curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=v1.24 sh -s - --token ${MYTOKEN} \
+--disable local-storage \
+--disable traefik \
+--disable metrics-server \
+--disable servicelb \
+--disable-cloud-controller \
+--protect-kernel-defaults=true \
+--datastore-endpoint=postgres://k3s:"'${MYDBPW}'"@postgres:35432/kubernetes?sslmode=disable \
+--write-kubeconfig-mode 0644 \
+--kube-proxy-arg=metrics-bind-address=0.0.0.0 \
+--kube-scheduler-arg=bind-address=0.0.0.0 \
+--kube-apiserver-arg=audit-log-path=/var/log/k3s/server/audit.log \
+--kube-apiserver-arg=audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml \
+--kube-apiserver-arg=audit-log-maxage=7 \
+--kube-apiserver-arg=audit-log-maxbackup=3 \
+--kube-apiserver-arg=audit-log-maxsize=50 \
+--kube-apiserver-arg=request-timeout=300 \
+--kube-apiserver-arg=service-account-lookup=true \
+--kube-controller-manager-arg=terminated-pod-gc-threshold=10 \
+--kube-controller-manager-arg=use-service-account-credentials=true \
+--kube-controller-manager-arg=bind-address=0.0.0.0 \
+--kubelet-arg=streaming-connection-idle-timeout=5m \
+--kubelet-arg=make-iptables-util-chains=true \
+--kubelet-arg=containerd=/run/k3s/containerd/containerd.sock \
+--secrets-encryption
 ```
 
 ## Roadmap
