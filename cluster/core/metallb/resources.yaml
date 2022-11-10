@@ -8,7 +8,7 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.35.10-192.168.35.20
+    - 192.168.35.10-192.168.35.30
 status: {}
 ---
 apiVersion: metallb.io/v1beta1
@@ -19,5 +19,5 @@ metadata:
   namespace: metallb-system
 spec:
   ipAddressPools:
-  - default
+    - default
 status: {}
