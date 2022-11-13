@@ -19,7 +19,7 @@ spec:
             containerName: nginx
             extraArgs:
                 default-ssl-certificate: ingress-nginx/wildcard-bth-wtf-tls
-                maxmind-license-key: ENC[AES256_GCM,data:Sr+5EGFSetR4sYuzBkZ8WQ==,iv:xk80oziZcK0ZLzgWnUjnlWREYQPDq6AmAPaSPt0JaHk=,tag:P3xwgczoyrXC8X/3O8mKFA==,type:str]
+                maxmind-license-key: NzpKczVUrAfaIUf3
                 maxmind-edition-ids: GeoLite2-City,GeoLite2-ASN,GeoLite2-Country
             image:
                 pullPolicy: Always
@@ -38,23 +38,3 @@ spec:
                     enabled: true
             service:
                 loadBalancerIP: 192.168.35.16
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1fv0zda6zuz4t8w0pl4ds7q0cla7xshv074mejlf5w8y9us35zfws7vsa3f
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwbE10amlOZ0l5RFc5Rm5r
-            Mkt1UHFGc3NpdmpNbkhaYXI0c1BLZmRvQkhzCnFyd044UE1JQ0ZVdjRoWDJSVGdO
-            MkRWSFJTVEp3V2pOZGM1S2pvZVlXNXcKLS0tIEk5eTQwK1F5d3YvTTVkeGM5UGUy
-            QnQyWVJyNVp1aU1pTGIwWXRXbzJxQmMKpSTDg10f5aNiv7ApTMQRrxpFanZb2ik/
-            w1+qyr7HPNrARq8QOAlxIEs/DA9Rdez4LX8sizcviAyueel9eyhzSQ==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-11-13T02:12:42Z"
-    mac: ENC[AES256_GCM,data:S59AJLdc9HT0XCtdRAfP5iozLYb7a8MDjwb/8/XkzYlIflxGnut/29+NVvFhCy/ILb/5Jj2j+rqwp/dDi6nb0DedFcdf17S4ZYn6CqOQyEqG4LQJdGWn3qcrsF7BpRqTeB5uKP1oUYu2Z13Sm3StsAqDplb++QfMDi+B4bVXHss=,iv:p66oqJXjjubGCNSGNoF0n/eoI88VflDAmEj6sN+UV8w=,tag:98c6Wu1qwJzkYb6ZCb+Anw==,type:str]
-    pgp: []
-    encrypted_regex: ^(data|stringData|maxmind-license-key)$
-    version: 3.7.3
