@@ -19,6 +19,10 @@ spec:
   values:
     driver:
       kind: ebpf
+    grpc:
+      enabled: true
+    grpc_output:
+      enabled: true   
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     collectors:
