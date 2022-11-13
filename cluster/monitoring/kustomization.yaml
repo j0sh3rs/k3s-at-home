@@ -7,10 +7,9 @@ resources:
   - botkube
   - cadvisor
   - cloudflare-exporter
-  # - falco
+  - falco
   - grafana
   - jaeger
   - kube-prometheus-stack
   - loki-stack
-  # - thanos
   - unifi-poller
