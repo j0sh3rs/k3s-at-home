@@ -80,19 +80,19 @@ spec:
       createCustomResource: true
       resources:
         requests:
-          cpu: 15m
-          memory: 272M
+          cpu: 100m
+          memory: 384Mi
         limits:
-          cpu: 102m
-          memory: 568M
+          cpu: 300m
+          memory: 778Mi
       prometheusConfigReloader:
         resources:
           requests:
-            cpu: 10m
-            memory: 35M
+            cpu: 100m
+            memory: 64Mi
           limits:
-            cpu: 22m
-            memory: 50M
+            cpu: 200m
+            memory: 128Mi
       podAnnotations:
         reloader.stakater.com/auto: 'true'
       verticalPodAutoscaler:

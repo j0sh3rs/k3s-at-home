@@ -5,9 +5,8 @@ resources:
   - blocky
   - cloudflared
   - goldilocks
-  # - influxdb
   - memcached
   # - node-feature-discovery
-  - pgadmin
+  # - pgadmin
   - redis
   - vpa

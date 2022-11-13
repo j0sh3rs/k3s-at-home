@@ -30,19 +30,19 @@ spec:
       enabled: true
       resources:
         requests:
-          cpu: 15m
-          memory: 105M
+          cpu: 100m
+          memory: 128Mi
         limits:
           cpu: 300m
-          memory: 105M
+          memory: 256Mi
       webui:
         enabled: true
         service:
           type: LoadBalancer
         resources:
           requests:
-            cpu: 15m
-            memory: 105M
+            cpu: 100m
+            memory: 128Mi
           limits:
             cpu: 300m
-            memory: 171M
+            memory: 256Mi
