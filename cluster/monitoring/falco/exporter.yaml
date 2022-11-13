@@ -24,4 +24,3 @@ spec:
       namespace: monitoring
     prometheusEvents:
       enabled: true
-        
