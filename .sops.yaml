@@ -1,4 +1,4 @@
 creation_rules:
-  - encrypted_regex: ^(data|stringData|maxmind-license-key)$
+  - encrypted_regex: ^(data|stringData)$
     age: >-
       age1fv0zda6zuz4t8w0pl4ds7q0cla7xshv074mejlf5w8y9us35zfws7vsa3f

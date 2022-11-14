@@ -14,47 +14,31 @@ spec:
                 name: ingress-nginx
                 namespace: flux-system
             interval: 5m
+    valuesFrom:
+        - kind: Secret
+          name: ingress-nginx-secrets
+          valuesKey: maxmind-license-key
+          targetPath: controller.extraArgs.maxmind-license-key
     values:
         controller:
             containerName: nginx
-            extraArgs:
-                default-ssl-certificate: ingress-nginx/wildcard-bth-wtf-tls
-                maxmind-license-key: ENC[AES256_GCM,data:JBQ0phZWt6BtkZ3v24fz0A==,iv:LBbauNn9ouIQShOI56h5JiNHgRle98kjaWyHGLE128A=,tag:Bpvy2oQ2pJFeNnmRypBHPw==,type:str]
-                maxmind-edition-ids: GeoLite2-City,GeoLite2-ASN,GeoLite2-Country
             image:
                 pullPolicy: Always
+            extraArgs:
+                default-ssl-certificate: ingress-nginx/wildcard-bth-wtf-tls
+                maxmind-edition-ids: GeoLite2-City,GeoLite2-ASN,GeoLite2-Country
             watchIngressWithoutClass: true
             ingressClassResource:
                 default: true
             annotations:
-                reloader.stakater.com/auto: "true"
+                reloader.stakater.com/auto: 'true'
             podAnnotations:
-                reloader.stakater.com/auto: "true"
-                prometheus.io/scrape: "true"
-                prometheus.io/port: "10245"
+                reloader.stakater.com/auto: 'true'
+                prometheus.io/scrape: 'true'
+                prometheus.io/port: '10245'
             metrics:
                 enabled: true
                 serviceMonitor:
                     enabled: true
             service:
                 loadBalancerIP: 192.168.35.16
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1fv0zda6zuz4t8w0pl4ds7q0cla7xshv074mejlf5w8y9us35zfws7vsa3f
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSRUc5Z1REUTgyMSt4VlM5
-            ODFXU0Urb3ZnUklEekpnVkEyeXZJSWFCNUhzCjZaZmxRZ3k0eE92U3NuTWdmWGJp
-            RnZETWdmTXVoeHlYYmIwbExnU2V1ZlkKLS0tIEMyTi8xZGsrV0p4bmswZ0crMzZQ
-            OXBnbERnSzhoc2p6dlgzUy8wbUM1cGsKiICkBVfvepavE+JeOMSkI9jTX11CAbHD
-            1Vhk6xoOTyUjFrQ5XyFOh9sInhRFQwhHrsN5DfE9eBqys47dYH2uSw==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-11-14T15:54:35Z"
-    mac: ENC[AES256_GCM,data:cVicb2yKCf8puvaSaGOdmSUI+yJDCp32JpBza0+dZ1fFVQ2WpfNNODnPsh5lqrwRREnVT8yqPv531w3PzEpD7TMrsI3q+RYL5LTJfA7vAXH6WUcPWPyPgt+Gt7nJkGAL7qxG+njeQ68kIG7Nau/GTChvnQG74N3OL0fNLSj+ENo=,iv:pMMHaODvWV3r/8uIn0KN5js7mDaKGA4aHCTTlZfhApI=,tag:WUonWfAaQzC35Z6Dyjxz5g==,type:str]
-    pgp: []
-    encrypted_regex: ^(data|stringData|maxmind-license-key)$
-    version: 3.7.3
