@@ -14,11 +14,11 @@ spec:
                 name: ingress-nginx
                 namespace: flux-system
             interval: 5m
-    # valuesFrom:
-    #     - kind: Secret
-    #       name: ingress-nginx-secrets
-    #       valuesKey: maxmind-license-key
-    #       targetPath: controller.extraArgs.maxmind-license-key
+    valuesFrom:
+        - kind: Secret
+          name: ingress-nginx-secrets
+          valuesKey: maxmind-license-key
+          targetPath: controller.extraArgs.maxmind-license-key
     values:
         controller:
             containerName: nginx
