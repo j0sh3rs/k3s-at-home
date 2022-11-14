@@ -19,11 +19,11 @@ spec:
   values:
     driver:
       kind: ebpf
-    falco: 
+    falco:
       grpc:
         enabled: true
       grpc_output:
-        enabled: true   
+        enabled: true
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     collectors:
@@ -33,7 +33,7 @@ spec:
         enabled: false
     falcosidekick:
       replicaCount: 1
-      enabled: true
+      enabled: false
       resources:
         requests:
           cpu: 100m
