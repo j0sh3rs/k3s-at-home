@@ -5,3 +5,4 @@ resources:
   - helm-release.yaml
   - certificate.yaml
   - geoip.yaml
+  - config-maps.yaml
