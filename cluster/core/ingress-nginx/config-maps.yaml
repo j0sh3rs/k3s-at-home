@@ -1,0 +1,61 @@
+apiVersion: v1
+data:
+  X-Frame-Options: 'deny'
+  X-XSS-Protection: '1; mode=block'
+  X-Content-Type-Options: 'nosniff'
+  Permissions-Policy: 'accelerometer=(),autoplay=(),camera=(),clipboard-read=(),clipboard-write=(),fullscreen=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()'
+  Feature-Policy: "accelerometer 'none';ambient-light-sensor'none';autoplay'none';camera'none';encrypted-media'none';fullscreen'none';geolocation'none';gyroscope'none';magnetometer'none';microphone'none';midi'none';payment'none';picture-in-picture'none';sync-xhr'none';usb'none';vr'none'"
+  X-Robots-Tag: 'noindex,none,noarchive,nosnippet,notranslate,noimageindex'
+  Referrer-Policy: 'strict-origin-when-cross-origin'
+  Cross-Origin-Embedder-Policy: 'require-corp'
+  Cross-Origin-Opener-Policy: 'same-origin'
+  Cross-Origin-Resource-Policy: 'same-origin'
+kind: ConfigMap
+metadata:
+  name: custom-headers
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-namespace: 'ingress-nginx'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-namespace: 'ingress-nginx'
+    meta.helm.sh/release-name: 'ingress-nginx'
+data:
+  add-headers: 'ingress-nginx/custom-headers'
+  enable-modsecurity: 'false'
+  enable-owasp-modsecurity-crs: 'false'
+  enable-opentracing: 'true'
+  enable-ocsp: 'true'
+  enable-real-ip: 'true'
+  force-ssl-redirect: 'true'
+  hsts: 'true'
+  hsts-include-subdomains: 'true'
+  hsts-max-age: '63072000'
+  hsts-preload: 'true'
+  global-rate-limit-memcahed-host: memcached.infra.svc.cluster.local
+  global-rate-limit-memcahed-pool-size: '100'
+  jaeger-collector-host: jaeger-collector.monitoring.svc.cluster.local
+  ssl-dh-param: 'ingress-nginx/ingress-nginx-secrets'
+  ssl-protocols: 'TLSv1.3 TLSv1.2'
+  ssl-early-data: 'true'
+  ssl-ecdh-curve: 'secp384r1'
+  ssl-reject-handshake: 'true'
+  ssl-session-cache: 'true'
+  ssl-sesion-cache-size: '10m'
+  ssl-session-tickets: 'false'
+  use-http2: 'false'
+  use-geoip2: 'true'
+  enable-brotli: 'true'
