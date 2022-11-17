@@ -23,7 +23,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl="${repo_url}"
+      # renovate: registryUrl=${repo_url}
       chart: ${chart_name}
       version:
       sourceRef:
