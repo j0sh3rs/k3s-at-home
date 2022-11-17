@@ -33,6 +33,14 @@ spec:
       name: authentik-secrets
       valuesKey: postgres_password
       targetPath: authentik.postgresql.password
+    - kind: Secret
+      name: authentik-secrets
+      valuesKey: geoip_licenseKey
+      targetPath: geoip.licenseKey
+    - kind: Secret
+      name: authentik-secrets
+      valuesKey: geoip_accountId
+      targetPath: geoip.accountId
   values:
     ingress:
       enabled: true
