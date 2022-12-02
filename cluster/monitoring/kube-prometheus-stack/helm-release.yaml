@@ -142,19 +142,19 @@ spec:
       endpoints:
         - 192.168.35.4
         - 192.168.35.6
-        - 192.168.35.200
+        - 192.168.35.3
     kubeScheduler:
       enabled: true
       endpoints:
         - 192.168.35.4
         - 192.168.35.6
-        - 192.168.35.200
+        - 192.168.35.3
     kubeProxy:
       enabled: true
       endpoints:
         - 192.168.35.4
         - 192.168.35.6
-        - 192.168.35.200
+        - 192.168.35.3
     kubeEtcd:
       enabled: false
     grafana:
