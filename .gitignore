@@ -1,3 +1,8 @@
 ### SOPS ###
 .decrypted~*.yaml
 checkov
+
+# Local-only content
+node_modules
+package-lock.json
+package.json
