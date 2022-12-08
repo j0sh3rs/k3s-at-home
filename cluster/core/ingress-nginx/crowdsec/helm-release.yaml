@@ -44,6 +44,9 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      persistentVolume:
+        config:
+          accessModes: ['ReadWriteMany']
     tls:
       enabled: true
     lapi:
