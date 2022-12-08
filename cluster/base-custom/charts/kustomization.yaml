@@ -2,9 +2,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - authentik.yaml
   - bitnami-charts.yaml
   - botkube.yaml
+  - crowdsec.yaml
   - fairwinds.yaml
   - falco.yaml
   - grafana-charts.yaml
@@ -25,4 +25,3 @@ resources:
   - runix-charts.yaml
   - searxng.yaml
   - stakater-charts.yaml
-  - vector.yaml

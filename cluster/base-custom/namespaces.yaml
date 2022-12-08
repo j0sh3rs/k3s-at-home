@@ -71,3 +71,11 @@ metadata:
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
     goldilocks.fairwinds.com/vpa-update-mode: 'off'
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crowdsec
+  labels:
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'

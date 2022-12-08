@@ -1,0 +1,60 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: crowdsec
+    namespace: crowdsec
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://crowdsecurity.github.io/helm-charts
+      chart: crowdsec
+      sourceRef:
+          kind: HelmRepository
+          name: crowdsec
+          namespace: flux-system
+      interval: 5m
+  valuesFrom:
+      - kind: Secret
+        name: ingress-nginx-secrets
+        valuesKey: maxmind-license-key
+        targetPath: controller.extraArgs.maxmind-license-key
+  values:
+    container_runtime: containerd
+    agent:
+    # To specify each pod you want to process it logs (pods present in the node)
+      acquisition:
+      # The namespace where the pod is located
+        - namespace: ingress-nginx
+        # The pod name
+          podName: ingress-nginx-controller-*
+        # as in crowdsec configuration, we need to specify the program name so the parser will match and parse logs
+          program: nginx
+        # Those are ENV variables
+      env:
+      # As it's a test, we don't want to share signals with CrowdSec so disable the Online API.
+      - name: DISABLE_ONLINE_API
+        value: "true"
+      # As we are running Nginx, we want to install the Nginx collection
+      - name: COLLECTIONS
+        value: "crowdsecurity/nginx"
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+    tls:
+      enabled: true
+    lapi:
+      env:
+      # As it's a test, we don't want to share signals with CrowdSec, so disable the Online API.
+      - name: DISABLE_ONLINE_API
+        value: "true"
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      dashboard:
+        enabled: true
+        ingress:
+          enabled: true
+          host: crowdsec-dash.bth.wtf
