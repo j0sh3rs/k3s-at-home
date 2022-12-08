@@ -11,7 +11,7 @@ spec:
       chart: crowdsec
       sourceRef:
           kind: HelmRepository
-          name: crowdsec
+          name: crowdsec-charts
           namespace: flux-system
       interval: 5m
   # valuesFrom:
