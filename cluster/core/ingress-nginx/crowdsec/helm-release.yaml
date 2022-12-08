@@ -51,7 +51,6 @@ spec:
       enabled: true
     lapi:
       env:
-      # As it's a test, we don't want to share signals with CrowdSec, so disable the Online API.
       - name: DISABLE_ONLINE_API
         value: "true"
       metrics:
@@ -59,7 +58,7 @@ spec:
         serviceMonitor:
           enabled: true
       dashboard:
-        enabled: true
+        enabled: false
         ingress:
           enabled: true
           host: crowdsec-dash.bth.wtf
