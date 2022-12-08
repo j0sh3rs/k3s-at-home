@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-    name: crowdsec
-    namespace: crowdsec
+  name: crowdsec
+  namespace: crowdsec
 spec:
   interval: 5m
   chart:
@@ -14,11 +14,11 @@ spec:
           name: crowdsec
           namespace: flux-system
       interval: 5m
-  valuesFrom:
-      - kind: Secret
-        name: ingress-nginx-secrets
-        valuesKey: maxmind-license-key
-        targetPath: controller.extraArgs.maxmind-license-key
+  # valuesFrom:
+  #     - kind: Secret
+  #       name: ingress-nginx-secrets
+  #       valuesKey: maxmind-license-key
+  #       targetPath: controller.extraArgs.maxmind-license-key
   values:
     container_runtime: containerd
     agent:
