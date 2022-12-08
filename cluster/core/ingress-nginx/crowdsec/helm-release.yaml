@@ -40,6 +40,8 @@ spec:
         value: "crowdsecurity/nginx"
       - name: TZ
         value: 'America/New_York'
+      - name: PARSERS
+        value: "crowdsecurity/cri-logs"
       metrics:
         enabled: true
         serviceMonitor:
@@ -47,6 +49,7 @@ spec:
       persistentVolume:
         config:
           accessModes: ['ReadWriteMany']
+          storageClassName: 'nfs-client'
     tls:
       enabled: true
     lapi:
@@ -61,4 +64,4 @@ spec:
         enabled: false
         ingress:
           enabled: true
-          host: crowdsec-dash.bth.wtf
+          host: crowdsec.bth.wtf
