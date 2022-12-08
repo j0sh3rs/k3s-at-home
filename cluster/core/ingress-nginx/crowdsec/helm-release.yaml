@@ -38,6 +38,8 @@ spec:
       # As we are running Nginx, we want to install the Nginx collection
       - name: COLLECTIONS
         value: "crowdsecurity/nginx"
+      - name: TZ
+        value: 'America/New_York'
       metrics:
         enabled: true
         serviceMonitor:
@@ -54,7 +56,7 @@ spec:
         serviceMonitor:
           enabled: true
       dashboard:
-        enabled: true
+        enabled: false
         ingress:
           enabled: true
           host: crowdsec-dash.bth.wtf
