@@ -55,7 +55,4 @@ spec:
         serviceMonitor:
           enabled: true
       dashboard:
-        enabled: true
-        ingress:
-          enabled: true
-          host: crowdsec.bth.wtf
+        enabled: false
