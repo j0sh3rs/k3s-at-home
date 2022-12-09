@@ -42,6 +42,7 @@ spec:
         value: 'America/New_York'
       - name: PARSERS
         value: "crowdsecurity/cri-logs"
+      - name:
       metrics:
         enabled: true
         serviceMonitor:
@@ -54,14 +55,12 @@ spec:
       enabled: true
     lapi:
       env:
-      - name: DISABLE_ONLINE_API
-        value: "true"
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
       dashboard:
-        enabled: false
+        enabled: true
         ingress:
           enabled: true
           host: crowdsec.bth.wtf
