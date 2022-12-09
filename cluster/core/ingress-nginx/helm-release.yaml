@@ -18,10 +18,6 @@ spec:
       name: ingress-nginx-secrets
       valuesKey: maxmind-license-key
       targetPath: controller.extraArgs.maxmind-license-key
-    - kind: Secret
-      name: ingress-nginx-secrets
-      valuesKey: crowdsec-api-key
-      targetPath: controller.extraInitContainers[0].env.API_KEY
   values:
     controller:
       extraVolumes:
@@ -38,6 +34,11 @@ spec:
               value: 'true'
             - name: BOUNCER_CONFIG
               value: /crowdsec/crowdsec-bouncer.conf
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: crowdsec-api-key
+                  name: ingress-nginx-secrets
           command:
             - sh
             - '-c'
