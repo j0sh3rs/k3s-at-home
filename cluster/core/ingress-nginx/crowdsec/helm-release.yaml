@@ -54,13 +54,12 @@ spec:
     tls:
       enabled: true
     lapi:
-      env:
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
       dashboard:
-        enabled: true
+        enabled: false
         ingress:
           enabled: true
           host: crowdsec.bth.wtf
