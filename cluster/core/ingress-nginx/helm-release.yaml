@@ -33,7 +33,7 @@ spec:
             value: "http://crowdsec-service.crowdsec.svc.cluster.local:8080"
           - name: API_KEY
             valueFrom:
-              secretRef:
+              secretKeyRef:
                 key: crowdsec-api-key
                 name: ingress-nginx-secrets
           - name: BOUNCER_CONFIG
