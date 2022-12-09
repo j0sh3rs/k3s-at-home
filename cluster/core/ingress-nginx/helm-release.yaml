@@ -1,44 +1,77 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-    name: ingress-nginx
-    namespace: ingress-nginx
+  name: ingress-nginx
+  namespace: ingress-nginx
 spec:
-    interval: 5m
-    chart:
-        spec:
-            # renovate: registryUrl=https://kubernetes.github.io/ingress-nginx
-            chart: ingress-nginx
-            sourceRef:
-                kind: HelmRepository
-                name: ingress-nginx
-                namespace: flux-system
-            interval: 5m
-    valuesFrom:
-        - kind: Secret
-          name: ingress-nginx-secrets
-          valuesKey: maxmind-license-key
-          targetPath: controller.extraArgs.maxmind-license-key
-    values:
-        controller:
-            containerName: nginx
-            image:
-                pullPolicy: Always
-            extraArgs:
-                default-ssl-certificate: ingress-nginx/wildcard-bth-wtf-tls
-                maxmind-edition-ids: GeoLite2-City,GeoLite2-ASN,GeoLite2-Country
-            watchIngressWithoutClass: true
-            ingressClassResource:
-                default: true
-            annotations:
-                reloader.stakater.com/auto: 'true'
-            podAnnotations:
-                reloader.stakater.com/auto: 'true'
-                prometheus.io/scrape: 'true'
-                prometheus.io/port: '10245'
-            metrics:
-                enabled: true
-                serviceMonitor:
-                    enabled: true
-            service:
-                loadBalancerIP: 192.168.35.16
+  interval: 5m
+  chart:
+    spec:
+      chart: ingress-nginx
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: ingress-nginx-secrets
+      valuesKey: maxmind-license-key
+      targetPath: controller.extraArgs.maxmind-license-key
+    - kind: Secret
+      name: ingress-nginx-secrets
+      valuesKey: crowdsec-api-key
+      targetPath: controller.extraInitContainers[0].env.API_KEY
+  values:
+    controller:
+      extraVolumes:
+        - name: crowdsec-bouncer-plugin
+          emptyDir: {}
+      extraInitContainers:
+        - name: init-clone-crowdsec-bouncer
+          image: crowdsecurity/lua-bouncer-plugin
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: API_URL
+              value: 'http://crowdsec-service.crowdsec.svc.cluster.local:8080'
+            - name: DISABLE_RUN
+              value: 'true'
+            - name: BOUNCER_CONFIG
+              value: /crowdsec/crowdsec-bouncer.conf
+          command:
+            - sh
+            - '-c'
+            - >-
+              sh /docker_start.sh; mkdir -p /lua_plugins/crowdsec/; cp
+              /crowdsec/* /lua_plugins/crowdsec/
+          volumeMounts:
+            - name: crowdsec-bouncer-plugin
+              mountPath: /lua_plugins
+      extraVolumeMounts:
+        - name: crowdsec-bouncer-plugin
+          mountPath: /etc/nginx/lua/plugins/crowdsec
+          subPath: crowdsec
+      config:
+        plugins: crowdsec
+        lua-shared-dicts: 'crowdsec_cache: 50m'
+      containerName: nginx
+      image:
+        pullPolicy: Always
+      extraArgs:
+        default-ssl-certificate: ingress-nginx/wildcard-bth-wtf-tls
+        maxmind-edition-ids: 'GeoLite2-City,GeoLite2-ASN,GeoLite2-Country'
+      watchIngressWithoutClass: true
+      ingressClassResource:
+        default: true
+      annotations:
+        reloader.stakater.com/auto: 'true'
+      podAnnotations:
+        reloader.stakater.com/auto: 'true'
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '10245'
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      service:
+        loadBalancerIP: 192.168.35.16
