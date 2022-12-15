@@ -43,6 +43,19 @@ spec:
           name: vaultwarden-secrets
     ingress:
       main:
-        enabled: false
+        enabled: true
         hosts:
           - host: vault.bth.wtf
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: http
+              - path: /notifications/hub/negotiate
+                pathType: Prefix
+                service:
+                  port: http
+              - path: /notifications/hub
+                pathType: Prefix
+                service:
+                  port: websocket
