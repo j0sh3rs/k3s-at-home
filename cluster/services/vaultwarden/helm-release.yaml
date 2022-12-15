@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: vaultwardwen
+  name: vaultwarden
   namespace: services
 spec:
   interval: 5m
@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    global:
+      fullnameOverride: vaultwarden
     controller:
       annotations:
         reloader.stakater.com/auto: 'true'
@@ -39,3 +41,8 @@ spec:
     envFrom:
       - secretRef:
           name: vaultwarden-secrets
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: vault.bth.wtf
