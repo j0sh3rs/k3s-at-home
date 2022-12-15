@@ -110,7 +110,7 @@ spec:
         refreshPeriod: 120m
         processingConcurrency: 50
       clientLookup:
-        upstream: 192.168.35.1
+        upstream: tcp+udp:192.168.35.1
       prometheus:
         enable: true
         path: /metrics
