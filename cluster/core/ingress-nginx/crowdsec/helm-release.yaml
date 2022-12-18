@@ -9,10 +9,11 @@ spec:
     spec:
       # renovate: registryUrl=https://crowdsecurity.github.io/helm-charts
       chart: crowdsec
+      version: 0.8.1
       sourceRef:
-          kind: HelmRepository
-          name: crowdsec-charts
-          namespace: flux-system
+        kind: HelmRepository
+        name: crowdsec-charts
+        namespace: flux-system
       interval: 5m
   # valuesFrom:
   #     - kind: Secret
@@ -22,23 +23,23 @@ spec:
   values:
     container_runtime: containerd
     agent:
-    # To specify each pod you want to process it logs (pods present in the node)
+      # To specify each pod you want to process it logs (pods present in the node)
       acquisition:
-      # The namespace where the pod is located
+        # The namespace where the pod is located
         - namespace: ingress-nginx
-        # The pod name
+          # The pod name
           podName: ingress-nginx-controller-*
-        # as in crowdsec configuration, we need to specify the program name so the parser will match and parse logs
+          # as in crowdsec configuration, we need to specify the program name so the parser will match and parse logs
           program: nginx
         # Those are ENV variables
       env:
-      # As we are running Nginx, we want to install the Nginx collection
-      - name: COLLECTIONS
-        value: "crowdsecurity/nginx"
-      - name: TZ
-        value: 'America/New_York'
-      - name: PARSERS
-        value: "crowdsecurity/cri-logs"
+        # As we are running Nginx, we want to install the Nginx collection
+        - name: COLLECTIONS
+          value: 'crowdsecurity/nginx'
+        - name: TZ
+          value: 'America/New_York'
+        - name: PARSERS
+          value: 'crowdsecurity/cri-logs'
       metrics:
         enabled: true
         serviceMonitor:
