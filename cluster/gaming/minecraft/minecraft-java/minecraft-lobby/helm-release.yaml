@@ -36,7 +36,8 @@ spec:
       # 9089 = EssentialsX https://essentialsx.net/downloads.html?branch=stable
       # 34315 = Vault
       # 28140 = LuckPerms
-      SPIGET_RESOURCES: "83557,9089,34315,28140"
+      SPIGET_RESOURCES: "83557,34315,28140"
+      MODS: "https://github.com/EssentialsX/Essentials/releases/download/2.19.7/EssentialsX-2.19.7.jar"
     minecraftServer:
       eula: "TRUE"
       version: "LATEST"
