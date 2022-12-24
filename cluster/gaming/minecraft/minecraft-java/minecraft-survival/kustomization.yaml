@@ -2,8 +2,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - invidious
-  - reddit
-  - searxng
-  - vaultwarden
-  - volumes
+  - helm-release.yaml

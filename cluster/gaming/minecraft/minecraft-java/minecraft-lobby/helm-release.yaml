@@ -1,0 +1,63 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-java-lobby
+  namespace: gaming
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://itzg.github.io/minecraft-server-charts/
+      chart: minecraft
+      version: 4.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: itzg/minecraft-server
+      tag: java17-graalvm-ce
+      pullSecret: ""
+    persistence:
+      dataDir:
+        enabled: true
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: 250m
+      limits:
+        memory: 2Gi
+    extraEnv:
+      ENABLE_AUTOPAUSE: false
+      # 83557 = BlueMap https://github.com/BlueMap-Minecraft/BlueMap
+      # 9089 = EssentialsX https://essentialsx.net/downloads.html?branch=stable
+      # 34315 = Vault
+      # 28140 = LuckPerms
+      SPIGET_RESOURCES: "83557,9089,34315,28140"
+    minecraftServer:
+      eula: "TRUE"
+      version: "LATEST"
+      type: PAPER
+      forceReDownload: true
+      onlineMode: false
+      difficulty: peaceful
+      maxTickTime: -1
+      serviceType: ClusterIP
+      gameMode: adventure
+      motd: "\u00a7fmine.bth.wtf\u00a7 - \u00a7a\u00a7llobby\u00a7"
+      icon: https://www.freeiconspng.com/uploads/minecraft-server-icon-13.png
+      rcon:
+        enabled: false
+      extraPorts:
+        - name: geyser
+          containerPort: 19132
+          protocol: UDP
+          service:
+            enabled: true
+            type: LoadBalancer
+            port: 19132
+          ingress:
+            enabled: false
