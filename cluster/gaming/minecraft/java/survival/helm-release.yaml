@@ -35,7 +35,7 @@ spec:
         memory: 10Gi
         cpu: 250m
       limits:
-        memory: 10Gi
+        memory: 15Gi
     livenessProbe:
       initialDelaySeconds: 30
       periodSeconds: 5
