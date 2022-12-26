@@ -60,7 +60,8 @@ spec:
       # 73650 = VillagerDrops
       # 74208 = Graves
       # 82349 = DualWield
-      SPIGET_RESOURCES: "83557,34315,28140,73650,74208,82349"
+      # 105587 = What am I looking at?
+      SPIGET_RESOURCES: "83557,34315,28140,73650,74208,82349,105587"
       MODS: "https://github.com/EssentialsX/Essentials/releases/download/2.19.7/EssentialsX-2.19.7.jar"
     minecraftServer:
       eula: "TRUE"
