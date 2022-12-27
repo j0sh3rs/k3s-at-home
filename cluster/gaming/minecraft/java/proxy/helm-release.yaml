@@ -46,7 +46,7 @@ spec:
         enabled: false
         port: 25575
         serviceType: LoadBalancer
-      type: WATERFALL
+      type: VELOCITY
       # A list of .jar URLs to download into the plugins folder.
       # plugins: []
       serviceType: LoadBalancer
@@ -79,7 +79,7 @@ spec:
         servers:
           lobby:
             motd: '&mine.bth.wtf lobby'
-            address: mc-lobby-minecraft:25565
+            address: lobby-java-minecraft:25565
             restricted: false
           creative:
             motd: 'creative server'
@@ -87,7 +87,7 @@ spec:
             restricted: false
           survival:
             motd: 'Survival'
-            address: mc-survival-minecraft:25565
+            address: survival-java-minecraft:25565
             restricted: true
         listeners:
         - query_port: 25577
