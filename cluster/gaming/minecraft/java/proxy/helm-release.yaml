@@ -46,7 +46,7 @@ spec:
         enabled: false
         port: 25575
         serviceType: LoadBalancer
-      type: VELOCITY
+      type: WATERFALL
       # A list of .jar URLs to download into the plugins folder.
       # plugins: []
       serviceType: LoadBalancer
