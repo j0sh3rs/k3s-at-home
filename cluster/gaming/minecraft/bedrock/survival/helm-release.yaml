@@ -52,5 +52,5 @@ spec:
       serviceType: LoadBalancer
       gameMode: survival
       serverName: 'BTH Creative'
-      levelSeed: '-3832188667730420108'
+      levelSeed: '968565878525959881'
       defaultPermission: operator
