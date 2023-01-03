@@ -21,6 +21,8 @@ spec:
       reloader.stakater.com/auto: 'true'
     image:
       pullPolicy: Always
+    rbac:
+      pspEnabled: false
     serviceMonitor:
       enabled: true
     ingress:

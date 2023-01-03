@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gotk-pvc
+  namespace: flux-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+patches:
+  - patch: |
+      - op: add
+        path: '/spec/template/spec/volumes/-'
+        value:
+          name: persistent-data
+          persistentVolumeClaim:
+            claimName: gotk-pvc
+      - op: replace
+        path: '/spec/template/spec/containers/0/volumeMounts/0'
+        value:
+          name: persistent-data
+          mountPath: /data
+    target:
+      kind: Deployment
+      name: source-controller
+  - patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --helm-cache-max-size=10
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --helm-cache-ttl=60m
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --helm-cache-purge-interval=5m
+    target:
+      kind: Deployment
+      name: source-controller
