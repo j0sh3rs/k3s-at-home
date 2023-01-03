@@ -23,6 +23,8 @@ spec:
       pullPolicy: Always
     rbac:
       pspEnabled: false
+    testFramework:
+      enabled: false
     serviceMonitor:
       enabled: true
     ingress:
