@@ -20,8 +20,12 @@ spec:
     nameOverride: redis
     fullnameOverride: redis
     master:
+      startupProbe:
+        enabled: true
       persistence:
-        enabled: false
+        enabled: true
+        storageClass: longhorn
+        size: 20G
       service:
         type: LoadBalancer
         annotations:
@@ -29,15 +33,20 @@ spec:
           metallb.universe.tf/loadBalancerIps: 192.168.35.12
       resources:
         limits:
-          cpu: 158m
-          memory: 166M
+          cpu: 150m
+          memory: 256Mi
         requests:
-          cpu: 10m
-          memory: 53M
+          cpu: 50m
+          memory: 128Mi
     auth:
       enabled: false
       sentinel: false
-    architecture: standalone
+    replica:
+      replicaCount: 2
+      persistence:
+        storageClass: longhorn
+        size: 20G
+    architecture: replication
     metrics:
       enabled: true
       serviceMonitor:
@@ -46,7 +55,7 @@ spec:
         enabled: true
       resources:
         requests:
-          cpu: 22m
+          cpu: 50m
           memory: 53M
         limits:
           cpu: 330m

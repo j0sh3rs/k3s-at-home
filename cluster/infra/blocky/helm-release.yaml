@@ -24,7 +24,7 @@ spec:
       replicas: 2
       rollingUpdate:
         unavailable: 1
-        surge: 2
+        surge: 3
     metrics:
       enabled: true
       prometheusRule:
@@ -32,7 +32,7 @@ spec:
     resources:
       requests:
         cpu: 100m
-        memory: 145M
+        memory: 256M
       limits:
         cpu: 300m
         memory: 512M
@@ -60,6 +60,9 @@ spec:
         default:
           - https://1.1.1.1/dns-query
           - https://1.0.0.1/dns-query
+      customDNS:
+        mapping:
+           bth.wtf: 192.168.35.11
       blocking:
         whiteLists:
           ads:

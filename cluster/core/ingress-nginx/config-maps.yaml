@@ -35,8 +35,8 @@ metadata:
     meta.helm.sh/release-name: 'ingress-nginx'
 data:
   add-headers: 'ingress-nginx/custom-headers'
-  enable-modsecurity: 'false'
-  enable-owasp-modsecurity-crs: 'false'
+  enable-modsecurity: 'true'
+  enable-owasp-modsecurity-crs: 'true'
   enable-opentracing: 'true'
   enable-ocsp: 'true'
   enable-real-ip: 'true'
@@ -56,6 +56,6 @@ data:
   ssl-session-cache: 'true'
   ssl-sesion-cache-size: '10m'
   ssl-session-tickets: 'false'
-  use-http2: 'false'
+  use-http2: 'true'
   use-geoip2: 'true'
   enable-brotli: 'true'
