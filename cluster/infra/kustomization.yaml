@@ -9,5 +9,5 @@ resources:
   - memcached
   # - node-feature-discovery
   # - pgadmin
-  # - redis
+  - redis
   - vpa
