@@ -21,6 +21,7 @@ spec:
       rules:
         etcd: false
     alertmanager:
+      enabled: false
       config:
         global:
           resolve_timeout: 5m
@@ -56,6 +57,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
+            accessModes: ['ReadWriteMany']
               resources:
                 requests:
                   storage: 10Gi
