@@ -57,7 +57,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-            accessModes: ['ReadWriteMany']
+              accessModes: ['ReadWriteMany']
               resources:
                 requests:
                   storage: 10Gi
