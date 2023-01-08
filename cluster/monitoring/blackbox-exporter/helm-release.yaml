@@ -17,6 +17,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    pspEnabled: false
     securityContext:
       capabilities:
         drop: ['ALL']
@@ -64,6 +65,6 @@ spec:
         - name: xps
           url: '192.168.35.6'
           module: icmp
-        - name: tank
-          url: '192.168.35.200'
+        - name: bee
+          url: '192.168.35.3'
           module: icmp
