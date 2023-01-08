@@ -27,6 +27,7 @@ spec:
       pullPolicy: Always
     rbac:
       pspEnabled: false
+      pspUseAppArmor: false
     testFramework:
       enabled: false
     serviceMonitor:
