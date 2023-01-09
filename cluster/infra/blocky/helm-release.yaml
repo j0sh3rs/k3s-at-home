@@ -62,7 +62,8 @@ spec:
           - https://1.0.0.1/dns-query
       customDNS:
         mapping:
-           bth.wtf: 192.168.35.11
+           bth.wtf: 192.168.35.16
+           68cc.io: 192.168.35.16
       blocking:
         whiteLists:
           ads:
