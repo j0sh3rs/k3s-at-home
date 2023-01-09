@@ -5,23 +5,16 @@ metadata:
   name: letsencrypt
   namespace: cert-manager
 spec:
-  valuesFrom:
-    - kind: Secret
-      name: cloudflare-api-token-secret
-      valuesKey: acme-email
-      targetPath: acme.email
-    - kind: Secret
-      name: cloudflare-api-token-secret
-      valuesKey: cloudflare-email
-      targetPath: acme.solvers['dns01'].cloudflare.email
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
+    email: acme@beholdthehurricane.com
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
       name: letsencrypt
     solvers:
       - dns01:
           cloudflare:
+            email: cloudflare@beholdthehurricane.com
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
