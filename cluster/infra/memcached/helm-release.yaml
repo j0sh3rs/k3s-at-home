@@ -19,19 +19,19 @@ spec:
   values:
     resources:
       requests:
-        cpu: 10m
-        memory: 53M
+        cpu: 50m
+        memory: 64Mi
       limits:
-        cpu: 157m
-        memory: 165M
+        cpu: 300m
+        memory: 256Mi
     persistence:
       enabled: true
     metrics:
       enabled: true
       resources:
         requests:
-          cpu: 10m
-          memory: 53M
+          cpu: 50m
+          memory: 64Mi
         limits:
-          cpu: 157m
-          memory: 165M
+          cpu: 300m
+          memory: 256Mi
