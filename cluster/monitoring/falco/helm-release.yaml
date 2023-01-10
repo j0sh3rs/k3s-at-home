@@ -16,6 +16,11 @@ spec:
         name: falco-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: discord-secrets
+      valuesKey: DISCORD_WEBHOOK
+      targetPath: falcosidekick.config.discord.webhookurl
   values:
     driver:
       kind: ebpf
@@ -33,7 +38,9 @@ spec:
         enabled: false
     falcosidekick:
       replicaCount: 1
-      enabled: false
+      nameOverride: falcosidekick
+      fullnameOverride: falcosidekick
+      enabled: true
       resources:
         requests:
           cpu: 100m
@@ -42,11 +49,8 @@ spec:
           cpu: 300m
           memory: 256Mi
       webui:
-        enabled: true
+        enabled: false
         replicaCount: 1
-        service:
-          type: LoadBalancer
-          port: 80
         resources:
           requests:
             cpu: 100m
