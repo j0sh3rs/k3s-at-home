@@ -36,6 +36,13 @@ spec:
       main:
         annotations:
           nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+          nginx.ingress.kubernetes.io/enable-owasp-core-rules: "true"
+          nginx.ingress.kubernetes.io/modsecurity-snippet: |
+            SecRuleEngine On
+            SecRequestBodyAccess On
+            SecAuditEngine RelevantOnly
+            SecAuditLogParts ABIJDEFHZ
+            SecAuditLog /var/log/modsec_audit.log
         enabled: true
         ingressClassName: nginx
         hosts:

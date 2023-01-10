@@ -39,7 +39,6 @@ data:
   brotli-level: '9'
   enable-brotli: 'true'
   enable-modsecurity: 'true'
-  enable-owasp-modsecurity-crs: 'true'
   enable-opentracing: 'true'
   enable-ocsp: 'true'
   enable-real-ip: 'true'
