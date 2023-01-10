@@ -51,7 +51,6 @@ data:
   global-rate-limit-memcahed-host: memcached.infra.svc.cluster.local
   global-rate-limit-memcahed-pool-size: '100'
   jaeger-collector-host: jaeger-collector.monitoring.svc.cluster.local
-  proxy-real-ip-cidr: "192.168.0.0/16,10.0.0.0/9"
   ssl-chipers: 'EECDH+AESGCM:EDH+AESGCM'
   ssl-dh-param: 'ingress-nginx/ingress-nginx-secrets'
   ssl-protocols: 'TLSv1.3'
@@ -64,4 +63,3 @@ data:
   use-http2: 'true'
   use-forwarded-headers: 'true'
   use-geoip2: 'true'
-  use-proxy-protocol: 'true'
