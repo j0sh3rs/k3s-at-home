@@ -34,6 +34,14 @@ spec:
           memory: 9058M
     ingress:
       main:
+        annotations:
+          nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+          nginx.ingress.kubernetes.io/modsecurity-snippet: |
+            SecRuleEngine On
+            SecRequestBodyAccess On
+            SecAuditEngine RelevantOnly
+            SecAuditLogParts ABIJDEFHZ
+            Include /etc/nginx/owasp-modsecurity-crs/nginx-modsecurity.conf
         enabled: true
         ingressClassName: nginx
         hosts:

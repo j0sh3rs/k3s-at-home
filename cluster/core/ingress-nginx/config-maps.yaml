@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-  X-Frame-Options: 'deny'
+  X-Frame-Options: 'DENY'
   X-XSS-Protection: '1; mode=block'
   X-Content-Type-Options: 'nosniff'
   Permissions-Policy: 'accelerometer=(),autoplay=(),camera=(),clipboard-read=(),clipboard-write=(),fullscreen=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()'
@@ -35,6 +35,7 @@ metadata:
     meta.helm.sh/release-name: 'ingress-nginx'
 data:
   add-headers: 'ingress-nginx/custom-headers'
+  enable-brotli: 'true'
   enable-modsecurity: 'true'
   enable-owasp-modsecurity-crs: 'true'
   enable-opentracing: 'true'
@@ -48,8 +49,10 @@ data:
   global-rate-limit-memcahed-host: memcached.infra.svc.cluster.local
   global-rate-limit-memcahed-pool-size: '100'
   jaeger-collector-host: jaeger-collector.monitoring.svc.cluster.local
+  proxy-cookie-domain: .bth.wtf
+  ssl-chipers: 'EECDH+AESGCM:EDH+AESGCM'
   ssl-dh-param: 'ingress-nginx/ingress-nginx-secrets'
-  ssl-protocols: 'TLSv1.3 TLSv1.2'
+  ssl-protocols: 'TLSv1.3'
   ssl-early-data: 'true'
   ssl-ecdh-curve: 'secp384r1'
   ssl-reject-handshake: 'true'
@@ -58,4 +61,3 @@ data:
   ssl-session-tickets: 'false'
   use-http2: 'true'
   use-geoip2: 'true'
-  enable-brotli: 'true'

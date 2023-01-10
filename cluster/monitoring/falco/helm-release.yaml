@@ -24,6 +24,8 @@ spec:
   values:
     driver:
       kind: ebpf
+      ebpf:
+        leastPrivileged: true
     falco:
       grpc:
         enabled: true
