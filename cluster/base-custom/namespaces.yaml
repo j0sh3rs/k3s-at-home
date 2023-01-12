@@ -86,3 +86,11 @@ metadata:
   labels:
     goldilocks.fairwinds.com/enabled: 'true'
     goldilocks.fairwinds.com/vpa-update-mode: 'off'
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: auditors
+  labels:
+    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/vpa-update-mode: 'off'
