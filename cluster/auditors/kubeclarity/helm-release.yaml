@@ -8,9 +8,8 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://openclarity.github.io/kubeclarity/
+      # renovate: registryUrl=https://openclarity.github.io/kubeclarity
       chart: kubeclarity
-      version: latest
       sourceRef:
         kind: HelmRepository
         name: kubeclarity
