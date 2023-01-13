@@ -2,3 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - helm-release.yaml
+  - github.com/open-policy-agent/gatekeeper-library/library/general/automount-serviceaccount-token
+  - github.com/open-policy-agent/gatekeeper-library/library/general/block-nodeport-services
+  - github.com/open-policy-agent/gatekeeper-library/library/general/disallowanonymous
+  - github.com/open-policy-agent/gatekeeper-library/library/general/httpsonly
+  - github.com/open-policy-agent/gatekeeper-library/library/general/noupdateserviceaccount
+  - github.com/open-policy-agent/gatekeeper-library/library/general/uniqueserviceselector
