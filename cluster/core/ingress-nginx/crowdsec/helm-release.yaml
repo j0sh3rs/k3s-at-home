@@ -57,3 +57,5 @@ spec:
           enabled: true
       dashboard:
         enabled: false
+      strategy:
+        type: Recreate
