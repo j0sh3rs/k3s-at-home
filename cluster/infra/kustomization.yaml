@@ -5,6 +5,7 @@ resources:
   # - authentik
   - blocky
   - cloudflared
+  - gatekeeper
   - goldilocks
   - memcached
   # - node-feature-discovery

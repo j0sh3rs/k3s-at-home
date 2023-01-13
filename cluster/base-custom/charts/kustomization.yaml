@@ -24,6 +24,7 @@ resources:
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
   - oauth2-proxy.yaml
+  - opa.yaml
   - prometheus-community-charts.yaml
   - runix-charts.yaml
   - searxng.yaml
