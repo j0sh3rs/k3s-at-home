@@ -56,6 +56,10 @@ spec:
     env:
       TZ: America/New_York
     config: |
+      customDNS:
+        mapping:
+          68cc.io: 192.168.35.5
+          bth.wtf: 192.168.35.16
       upstream:
         default:
           - https://1.1.1.1/dns-query
