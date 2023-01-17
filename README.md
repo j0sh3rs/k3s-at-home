@@ -102,11 +102,12 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 
 ## Roadmap
 
-- [ ] Re-implement kured and system-upgrade controller
-- [ ] Finish Minecraft setups
+- [X] Re-implement kured and system-upgrade controller
 - [ ] Move off Cloudflare to Nginx + Crowdsec
+  - [ ] Ensure all crowdsec plugins/detectors are estbalished in helm chart
 - [ ] Upstream improvements to helm charts as outputs of security tool analysis
   - [ ] Popeye
   - [ ] Kube-Bench
   - [ ] Polaris
 - [ ] Better chart rightsizing as outputs of Goldilocks
+- [ ] Drop KPS and move it off cluster to NAS
