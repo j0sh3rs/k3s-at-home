@@ -44,12 +44,34 @@ My installation command looks roughly like such, incorporating as much of the [k
 
 ```shell
 mkdir -p /var/lib/rancher/k3s/server && \
-cat << EOF > /var/lib/rancher/k3s/server/audit.yaml
+cat <<-EOHD
+---
 apiVersion: audit.k8s.io/v1
 kind: Policy
 rules:
 - level: Metadata
-EOF && \
+EOHD | tee /var/lib/rancher/k3s/server/audit.yaml
+cat <<- EOHD
+---
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: PodSecurity
+  configuration:
+    apiVersion: pod-security.admission.config.k8s.io/v1beta1
+    kind: PodSecurityConfiguration
+    defaults:
+      enforce: "restricted"
+      enforce-version: "latest"
+      audit: "restricted"
+      audit-version: "latest"
+      warn: "restricted"
+      warn-version: "latest"
+    exemptions:
+      usernames: []
+      runtimeClasses: []
+      namespaces: [kube-system, infra]
+EOHD | tee /var/lib/rancher/k3s/server/psa.yaml
 curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTOKEN} \
 --disable local-storage \
 --disable traefik \
@@ -67,6 +89,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --kube-apiserver-arg=audit-log-maxbackup=3 \
 --kube-apiserver-arg=audit-log-maxsize=50 \
 --kube-apiserver-arg=request-timeout=300s \
+--kube-apiserver-arg="admission-control-config-file=/var/lib/rancher/k3s/server/psa.yaml" \
 --kube-apiserver-arg=service-account-lookup=true \
 --kube-controller-manager-arg=terminated-pod-gc-threshold=10 \
 --kube-controller-manager-arg=use-service-account-credentials=true \
