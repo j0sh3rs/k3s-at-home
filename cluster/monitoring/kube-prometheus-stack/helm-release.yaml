@@ -142,19 +142,16 @@ spec:
       # https://github.com/k3s-io/k3s/issues/3619#issuecomment-973188304
       enabled: true
       endpoints:
-        - 192.168.35.4
         - 192.168.35.6
         - 192.168.35.3
     kubeScheduler:
       enabled: true
       endpoints:
-        - 192.168.35.4
         - 192.168.35.6
         - 192.168.35.3
     kubeProxy:
       enabled: true
       endpoints:
-        - 192.168.35.4
         - 192.168.35.6
         - 192.168.35.3
     kubeEtcd:
