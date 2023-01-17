@@ -16,6 +16,11 @@ spec:
         name: j0sh3rs-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: blocky-config
+      valuesKey: config
+      targetPath: config
   values:
     controller:
       annotations:
@@ -55,76 +60,3 @@ spec:
           metallb.universe.tf/allow-shared-ip: 'blocky-192.168.35.11'
     env:
       TZ: America/New_York
-    config: |
-      customDNS:
-        mapping:
-          68cc.io: 192.168.35.5
-          bth.wtf: 192.168.35.16
-      upstream:
-        default:
-          - https://1.1.1.1/dns-query
-          - https://1.0.0.1/dns-query
-          - https://208.67.222.222/dns-query
-      blocking:
-        whiteLists:
-          ads:
-            - |
-              static.cloudflareinsights.com
-              secure.gravatar.com
-              r20.rs6.net
-              www.maxmind.com
-              blog.maxmind.com
-              download.maxmind.com
-              updates.maxmind.com
-              dev.maxmind.com
-        blackLists:
-          ads:
-            - http://192.168.35.5:7777/hosts
-            - http://192.168.35.5:7777/simple_tracking.txt
-            - http://192.168.35.5:7777/simple_ad.txt
-            - http://192.168.35.5:7777/phishing
-            - http://192.168.35.5:7777/AdguardDNS.txt
-            - http://192.168.35.5:7777/ransomware-nl.txt
-            - http://192.168.35.5:7777/scam-nl.txt
-            - http://192.168.35.5:7777/torrent-nl.txt
-            - http://192.168.35.5:7777/fraud-nl.txt
-            - http://192.168.35.5:7777/phishing-nl.txt
-            - http://192.168.35.5:7777/tracking-nl.txt
-            - http://192.168.35.5:7777/abuse-nl.txt
-            - http://192.168.35.5:7777/drugs-nl.txt
-            - http://192.168.35.5:7777/gambling-nl.txt
-            - http://192.168.35.5:7777/tracking-aggressive-extended.txt
-            - http://192.168.35.5:7777/dating-services-extended.txt
-            - http://192.168.35.5:7777/hate-and-junk-extended.txt
-            - http://192.168.35.5:7777/amp-hosts-extended.txt
-            - |
-              config.samsungads.com
-              gpm.samsungqbe.com
-              log-config.samsungacr.com
-              samsung.com
-              samsungacr.com
-              samsungads.com
-              samsungcloudsolution.com
-              samsungcloudsolution.net
-              samsungotn.net
-              scs.samsungqbe.com
-              lcprd1.samsungcloudsolution.net
-        clientGroupsBlock:
-          default:
-            - ads
-        refreshPeriod: 120m
-        processingConcurrency: 50
-      clientLookup:
-        upstream: tcp+udp:192.168.35.1
-      prometheus:
-        enable: true
-        path: /metrics
-      httpPort: 4000
-      redis:
-        address: redis-master.infra.svc.cluster.local:6379
-        database: 3
-        required: true
-      caching:
-        minTime: 1m
-        maxTime: 2m
-        prefetching: true
