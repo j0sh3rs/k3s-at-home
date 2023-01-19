@@ -20,7 +20,7 @@ Modified to my needs, updated to use Age instead of PGP, and using cloudflared a
 
 ## Bootstrap Flux
 
-```bash
+```shell
 flux bootstrap github \
   --version=latest \
   --owner=j0sh3rs \
@@ -32,7 +32,7 @@ flux bootstrap github \
 
 ## Install pre-commit hooks
 
-```bash
+```shell
 pre-commit install
 ```
 
@@ -43,15 +43,15 @@ K3s allows you to use either a config file or CLI args + Envvars to customize it
 My installation command looks roughly like such, incorporating as much of the [k3s cis hardening guide](https://docs.k3s.io/security/hardening-guide) as possible.
 
 ```shell
-mkdir -p /var/lib/rancher/k3s/server && \
-cat <<-EOHD
+mkdir -p /var/lib/rancher/k3s/server
+cat <<-EOHD > /var/lib/rancher/k3s/server/audit.yaml
 ---
 apiVersion: audit.k8s.io/v1
 kind: Policy
 rules:
 - level: Metadata
-EOHD | tee /var/lib/rancher/k3s/server/audit.yaml
-cat <<- EOHD
+EOHD
+cat <<-EOHD > /var/lib/rancher/k3s/server/psa.yaml
 ---
 apiVersion: apiserver.config.k8s.io/v1
 kind: AdmissionConfiguration
@@ -71,7 +71,7 @@ plugins:
       usernames: []
       runtimeClasses: []
       namespaces: [kube-system, infra]
-EOHD | tee /var/lib/rancher/k3s/server/psa.yaml
+EOHD
 curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTOKEN} \
 --disable local-storage \
 --disable traefik \
