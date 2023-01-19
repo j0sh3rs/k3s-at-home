@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - flux-system
-  # - ingress-nginx
+  - ingress-nginx
   - kube-system
   - longhorn
   - metallb
