@@ -41,12 +41,12 @@ spec:
     auth:
       enabled: false
       sentinel: false
-    replica:
-      replicaCount: 2
-      persistence:
-        storageClass: longhorn
-        size: 20G
-    architecture: replication
+    # replica:
+    #   replicaCount: 2
+    #   persistence:
+    #     storageClass: longhorn
+    #     size: 20G
+    architecture: standalone
     metrics:
       enabled: true
       serviceMonitor:
