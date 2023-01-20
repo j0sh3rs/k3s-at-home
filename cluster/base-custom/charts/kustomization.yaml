@@ -5,6 +5,7 @@ resources:
   - aquasecurity.yaml
   - bitnami-charts.yaml
   - botkube.yaml
+  - coroot.yaml
   - crowdsec.yaml
   - fairwinds.yaml
   - falco.yaml
