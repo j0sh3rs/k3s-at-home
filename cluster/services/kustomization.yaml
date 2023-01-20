@@ -5,5 +5,5 @@ resources:
   # - invidious
   # - reddit
   # - searxng
-  # - vaultwarden
+  - vaultwarden
   - volumes
