@@ -77,5 +77,5 @@ spec:
         serviceMonitor:
           enabled: true
       service:
-        loadBalancerIP: 192.168.35.15
+        loadBalancerIP: 192.168.35.16
         externalTrafficPolicy: "Local"
