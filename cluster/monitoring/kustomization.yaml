@@ -6,11 +6,11 @@ resources:
   - blackbox-exporter
   # - botkube
   - cadvisor
-  - cloudflare-exporter
+  # - cloudflare-exporter
   # - coroot
   - falco
   - grafana
-  - jaeger
+  # - jaeger
   - kube-prometheus-stack
-  - loki-stack
+  # - loki-stack
   - unifi-poller

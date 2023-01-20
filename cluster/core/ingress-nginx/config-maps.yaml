@@ -50,7 +50,6 @@ data:
   hsts-preload: 'true'
   global-rate-limit-memcahed-host: memcached.infra.svc.cluster.local
   global-rate-limit-memcahed-pool-size: '100'
-  jaeger-collector-host: jaeger-collector.monitoring.svc.cluster.local
   ssl-chipers: 'EECDH+AESGCM:EDH+AESGCM'
   ssl-dh-param: 'ingress-nginx/ingress-nginx-secrets'
   ssl-protocols: 'TLSv1.3'
