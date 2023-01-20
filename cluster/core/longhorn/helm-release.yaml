@@ -16,15 +16,25 @@ spec:
         name: longhorn
         namespace: longhorn-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: longhorn-secrets
+      valuesKey: LONGHORN_INGRESS_HOST
+      targetPath: ingress.host
   values:
+    ingress:
+      enabled: true
+      tls: true
+      tlsSecret: ingress-nginx.wildcard-bth-wtf-tls
+      ingressClassName: nginx
     annotations:
       reloader.stakater.com/auto: 'true'
-    service:
-      ui:
-        type: LoadBalancer
-        annotations:
-          metallb.universe.tf/address-pool: default
-          metallb.universe.tf/loadBalancerIps: 192.168.35.14
+    # service:
+    #   ui:
+    #     type: LoadBalancer
+    #     annotations:
+    #       metallb.universe.tf/address-pool: default
+    #       metallb.universe.tf/loadBalancerIps: 192.168.35.14
     persistence:
       defaultClassReplicaCount: 2
       defaultDataLocality: best-effort
