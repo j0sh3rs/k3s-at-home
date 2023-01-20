@@ -7,7 +7,7 @@ resources:
   # - botkube
   - cadvisor
   # - cloudflare-exporter
-  # - coroot
+  - coroot
   - falco
   - grafana
   # - jaeger
