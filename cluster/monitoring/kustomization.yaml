@@ -9,7 +9,7 @@ resources:
   - cloudflare-exporter
   # - coroot
   - falco
-  # - grafana
+  - grafana
   - jaeger
   - kube-prometheus-stack
   - loki-stack
