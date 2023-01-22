@@ -217,7 +217,7 @@ spec:
         - name: prometheus
           args:
             - '--config.file=/etc/prometheus/config_out/prometheus.env.yaml'
-            - '--storage.agent.path=/prometheus'
+            # - '--storage.agent.path=/prometheus'
             # - '--enable-feature=agent'
             - '--web.enable-lifecycle'
             - '--web.console.templates=/etc/prometheus/consoles'
