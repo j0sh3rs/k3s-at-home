@@ -191,7 +191,7 @@ spec:
         enableFeatures:
           - agent
         remoteWrite:
-          - url: https://prom.68cc.io/api/v1/push
+          - url: https://push.68cc.io/api/v1/write
         resources:
           requests:
             cpu: 250m
