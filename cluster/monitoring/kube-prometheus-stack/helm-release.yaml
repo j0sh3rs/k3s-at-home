@@ -191,7 +191,7 @@ spec:
         enableFeatures:
           - agent
         remoteWrite:
-          - url: https://prom.68cc.io/push
+          - url: https://prom.68cc.io/api/v1/push
         resources:
           requests:
             cpu: 250m
@@ -202,11 +202,24 @@ spec:
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false
+        ruleSelector: ~
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: false
+        containers:
+        - name: prometheus
+          args:
+            - '--config.file=/etc/prometheus/config_out/prometheus.env.yaml'
+            - '--storage.agent.path=/prometheus'
+            - '--enable-feature=agent'
+            - '--web.enable-lifecycle'
+            - '--web.console.templates=/etc/prometheus/consoles'
+            - '--web.console.libraries=/etc/prometheus/console_libraries'
+            - '--web.external-url=http://kube-prometheus-stack-prometheus.monitoring:9090'
+            - '--web.route-prefix=/'
+            - '--web.config.file=/etc/prometheus/web_config/web-config.yaml'
         storageSpec:
           volumeClaimTemplate:
             spec:
