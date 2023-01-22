@@ -194,6 +194,7 @@ spec:
           - url: https://prom.68cc.io/api/v1/write
             tls:
               insecure_skip_verify: true
+        remoteWriteDashboards: true
         resources:
           requests:
             cpu: 250m
@@ -224,6 +225,10 @@ spec:
             - '--web.external-url=http://kube-prometheus-stack-prometheus.monitoring:9090'
             - '--web.route-prefix=/'
             - '--web.config.file=/etc/prometheus/web_config/web-config.yaml'
+          livenessProbe:
+            failureThreshold: 1000
+          readinessProbe:
+            failureThreshold: 1000
         storageSpec:
           volumeClaimTemplate:
             spec:
