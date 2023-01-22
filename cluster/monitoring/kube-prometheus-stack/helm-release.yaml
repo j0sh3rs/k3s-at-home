@@ -198,11 +198,12 @@ spec:
             memory: 2384M
           limits:
             cpu: 750m
-            memory: 4qG
+            memory: 4G
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false
         ruleSelector: ~
+        retention: ~
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
