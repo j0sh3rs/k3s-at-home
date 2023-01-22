@@ -192,8 +192,6 @@ spec:
           - agent
         remoteWrite:
           - url: https://push.68cc.io/api/v1/write
-            headers:
-              HOST: push.68cc.io
             tls:
               insecure_skip_verify: true
         resources:
