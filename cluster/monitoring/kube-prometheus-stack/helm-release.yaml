@@ -21,37 +21,37 @@ spec:
       rules:
         etcd: false
     alertmanager:
-      enabled: false
-      # config:
-      #   global:
-      #     resolve_timeout: 5m
-      #   route:
-      #     group_by: ['alertname']
-      #     group_wait: 20s
-      #     group_interval: 5m
-      #     repeat_interval: 3h
-      #     receiver: 'discord_webhook'
-      #     routes:
-      #       - receiver: 'null'
-      #         matchers:
-      #           - alertname =~ "InfoInhibitor|Watchdog|RebootScheduled"
-      #       - receiver: 'discord_webhook'
-      #         matchers:
-      #           - severity = "critical"
-      #         continue: true
-      #   receivers:
-      #     - name: 'null'
-      #     - name: 'discord_webhook'
-      #       webhook_configs:
-      #         - url: 'http://alertmanager-discord:9094'
-      #   inhibit_rules:
-      #     - source_matchers:
-      #         - severity = "critical"
-      #       target_matchers:
-      #         - severity = "warning"
-      #       equal:
-      #         - alertname
-      #         - namespace
+      enabled: true
+      config:
+        global:
+          resolve_timeout: 5m
+        route:
+          group_by: ['alertname']
+          group_wait: 20s
+          group_interval: 5m
+          repeat_interval: 3h
+          receiver: 'discord_webhook'
+          routes:
+            - receiver: 'null'
+              matchers:
+                - alertname =~ "InfoInhibitor|Watchdog|RebootScheduled"
+            - receiver: 'discord_webhook'
+              matchers:
+                - severity = "critical"
+              continue: true
+        receivers:
+          - name: 'null'
+          - name: 'discord_webhook'
+            webhook_configs:
+              - url: 'http://alertmanager-discord:9094'
+        inhibit_rules:
+          - source_matchers:
+              - severity = "critical"
+            target_matchers:
+              - severity = "warning"
+            equal:
+              - alertname
+              - namespace
       alertmanagerSpec:
         replicas: 1
         storage:
@@ -188,12 +188,12 @@ spec:
         limits:
           memory: 2048Mi
       prometheusSpec:
-        enableFeatures:
-          - agent
-        remoteWrite:
-          - url: https://prom.68cc.io/api/v1/write
-            tls:
-              insecure_skip_verify: true
+        # enableFeatures:
+        #   - agent
+        # remoteWrite:
+        #   - url: https://prom.68cc.io/api/v1/write
+        #     tls:
+        #       insecure_skip_verify: true
         remoteWriteDashboards: true
         resources:
           requests:
