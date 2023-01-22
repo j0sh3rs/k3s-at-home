@@ -198,10 +198,10 @@ spec:
         resources:
           requests:
             cpu: 250m
-            memory: 2384M
-          limits:
-            cpu: 2
             memory: 4G
+          limits:
+            cpu: 1
+            memory: 8G
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false
