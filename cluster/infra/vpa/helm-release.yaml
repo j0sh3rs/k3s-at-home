@@ -34,7 +34,7 @@ spec:
         pod-recommendation-min-cpu-millicores: 100
         pod-recommendation-min-memory-mb: 128
         prometheus-address: |
-          http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+          https://prom.68cc.io
         storage: prometheus
       image:
         # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-recommender

@@ -54,11 +54,14 @@ spec:
           cpu: 500m
           memory: 256Mi
     dashboard:
-      service:
-        type: LoadBalancer
-        annotations:
-          metallb.universe.tf/address-pool: default
-          metallb.universe.tf/loadBalancerIps: 192.168.35.15
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: goldi.bth.wtf
+            paths:
+              - path: /
+                type: ImplementationSpecific
       replicaCount: 1
       resources:
         requests:
