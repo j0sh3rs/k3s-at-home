@@ -198,7 +198,7 @@ spec:
             memory: 2384M
           limits:
             cpu: 750m
-            memory: 4G
+            memory: 4qG
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false
@@ -206,7 +206,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         enableAdminAPI: true
-        walCompression: true
+        walCompression: false
         storageSpec:
           volumeClaimTemplate:
             spec:
