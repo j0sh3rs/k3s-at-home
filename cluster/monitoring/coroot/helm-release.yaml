@@ -21,10 +21,10 @@ spec:
       resources:
         requests:
           cpu: 125m
-          memory: 135M
+          memory: 135Mi
         limits:
           cpu: 371m
-          memory: 145M
+          memory: 145Mi
     prometheus:
       enabled: false
     corootCE:
