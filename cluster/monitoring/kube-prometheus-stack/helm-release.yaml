@@ -83,17 +83,17 @@ spec:
       resources:
         requests:
           cpu: 100m
-          memory: 384Mi
+          memory: 225Mi
         limits:
-          cpu: 300m
-          memory: 778Mi
+          cpu: 462m
+          memory: 514Mi
       prometheusConfigReloader:
         resources:
           requests:
-            cpu: 100m
-            memory: 64Mi
+            cpu: 50m
+            memory: 75Mi
           limits:
-            cpu: 200m
+            cpu: 100m
             memory: 128Mi
       podAnnotations:
         reloader.stakater.com/auto: 'true'
@@ -107,6 +107,21 @@ spec:
           memory: 128Mi
     nodeExporter:
       enabled: true
+      rbac:
+        pspEnabled: false
+      verticalPodAutoscaler:
+        enabled: true
+      resources:
+        requests:
+          cpu: 100m
+          memory: 135M
+        limits:
+          cpu: 100m
+          memory: 135M
+      prometheus:
+        monitor: true
+        podMonitor:
+          enabled: true
       serviceMonitor:
         relabelings:
           - action: replace
@@ -126,6 +141,13 @@ spec:
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 135M
+        limits:
+          cpu: 100m
+          memory: 135M
       selfMonitor:
         enabled: true
       prometheus:
@@ -197,10 +219,10 @@ spec:
         remoteWriteDashboards: true
         resources:
           requests:
-            cpu: 250m
+            cpu: 350m
             memory: 4G
           limits:
-            cpu: 1
+            cpu: 500m
             memory: 8G
         replicas: 1
         replicaExternalLabelName: replica

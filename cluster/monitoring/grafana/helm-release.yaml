@@ -38,11 +38,11 @@ spec:
         - grafana.bth.wtf
     resources:
       requests:
-        cpu: 200m
-        memory: 110Mi
+        cpu: 33m
+        memory: 127M
       limits:
-        cpu: 1
-        memory: 3072Mi
+        cpu: 79m
+        memory: 289M
     admin:
       existingSecret: grafana-admin-secrets
     envFromSecret: 'grafana-secrets'
@@ -149,6 +149,13 @@ spec:
           gnetId: 11835
           datasource: Prometheus
     sidecar:
+      resources:
+        requests:
+          cpu: 33m
+          memory: 94M
+        limits:
+          cpu: 33m
+          memory: 214M
       datasources:
         enabled: true
         defaultDatasourceEnabled: true

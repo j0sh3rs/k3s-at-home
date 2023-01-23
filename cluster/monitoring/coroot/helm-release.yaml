@@ -17,9 +17,24 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    node-agent:
+      resources:
+        requests:
+          cpu: 125m
+          memory: 135M
+        limits:
+          cpu: 371m
+          memory: 145M
     prometheus:
       enabled: false
     corootCE:
+      resources:
+        requests:
+          cpu: 181m
+          memory: 674Mi
+        limits:
+          cpu: 680M
+          memory: 3Gi
       env:
         - name: PG_CONNECTION_STRING
           valueFrom:

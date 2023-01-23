@@ -25,9 +25,9 @@ spec:
     resources:
       requests:
         cpu: 100m
-        memory: 105Mi
+        memory: 135Mi
       limits:
-        cpu: 250m
+        cpu: 100m
         memory: 256Mi
     config:
       modules:
@@ -58,9 +58,6 @@ spec:
       targets:
         - name: nas
           url: '192.168.35.5'
-          module: icmp
-        - name: mbp
-          url: '192.168.35.4'
           module: icmp
         - name: xps
           url: '192.168.35.6'

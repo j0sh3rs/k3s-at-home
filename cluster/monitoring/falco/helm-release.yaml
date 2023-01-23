@@ -22,6 +22,13 @@ spec:
       valuesKey: DISCORD_WEBHOOK
       targetPath: falcosidekick.config.discord.webhookurl
   values:
+    resources:
+      requests:
+        cpu: 125m
+        memory: 135M
+      limits:
+        cpu: 414m
+        memory: 251M
     driver:
       kind: ebpf
       ebpf:
@@ -46,17 +53,9 @@ spec:
       resources:
         requests:
           cpu: 100m
-          memory: 128Mi
+          memory: 135M
         limits:
-          cpu: 300m
-          memory: 256Mi
+          cpu: 100m
+          memory: 135M
       webui:
         enabled: false
-        replicaCount: 1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 300m
-            memory: 256Mi
