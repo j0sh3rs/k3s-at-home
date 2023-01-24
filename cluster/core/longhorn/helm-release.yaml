@@ -24,8 +24,7 @@ spec:
   values:
     ingress:
       enabled: true
-      tls: true
-      tlsSecret: ingress-nginx/ingress-nginx.wildcard-bth-wtf-tls
+      host: longhorn.bth.wtf
       ingressClassName: nginx
     annotations:
       reloader.stakater.com/auto: 'true'
