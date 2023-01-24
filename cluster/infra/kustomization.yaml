@@ -8,6 +8,5 @@ resources:
   - goldilocks
   - memcached
   # - node-feature-discovery
-  # - pgadmin
   - redis
   - vpa
