@@ -38,11 +38,11 @@ spec:
         - grafana.bth.wtf
     resources:
       requests:
-        cpu: 33m
+        cpu: 250m
         memory: 127M
       limits:
-        cpu: 79m
-        memory: 289M
+        cpu: 1
+        memory: 4Gi
     admin:
       existingSecret: grafana-admin-secrets
     envFromSecret: 'grafana-secrets'
@@ -151,10 +151,10 @@ spec:
     sidecar:
       resources:
         requests:
-          cpu: 33m
+          cpu: 50m
           memory: 94M
         limits:
-          cpu: 33m
+          cpu: 500m
           memory: 214M
       datasources:
         enabled: true
