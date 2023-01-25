@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://coroot.github.io/helm-charts
       chart: coroot
-      version: 0.1.20
+      version: 0.1.21
       sourceRef:
         kind: HelmRepository
         name: coroot
