@@ -9,7 +9,7 @@ spec:
   url: https://github.com/grafana/helm-charts.git
   ref:
     # renovate: registryUrl=https://grafana.github.io/helm-charts
-    tag: main
+    branch: main
   ignore: |
     # exclude all
     /*
