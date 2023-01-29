@@ -10,7 +10,7 @@ resources:
   # - coroot
   - falco
   # - grafana
-  - grafana-agent-operator
+  # - grafana-agent-operator
   # - jaeger
   # - kube-prometheus-stack
   # - loki-stack
