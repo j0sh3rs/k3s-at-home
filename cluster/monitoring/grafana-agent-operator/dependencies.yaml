@@ -174,7 +174,14 @@ spec:
         key: username
         name: metrics-secret
     url: https://prometheus-prod-10-prod-us-central-0.grafana.net/api/prom/push
-  serviceMonitorNamespaceSelector: {}
+  serviceMonitorNamespaceSelector:
+    - monitoring
+    - infra
+    - crowdsec
+    - metallb-system
+    - kube-system
+    - cert-manager
+    - ingress-nginx
   serviceMonitorSelector:
     matchLabels:
       instance: primary
