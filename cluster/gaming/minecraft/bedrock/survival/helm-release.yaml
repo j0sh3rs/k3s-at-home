@@ -21,6 +21,7 @@ spec:
     persistence:
       dataDir:
         enabled: true
+        Size: 30Gi
     resources:
       requests:
         memory: 4Gi
@@ -47,10 +48,10 @@ spec:
       metallb.universe.tf/loadBalancerIPs: '192.168.35.18'
     minecraftServer:
       eula: 'TRUE'
-      version: 'LATEST'
       difficulty: normal
       serviceType: LoadBalancer
       gameMode: survival
-      serverName: 'BTH Creative'
-      levelSeed: '968565878525959881'
+      serverName: 'R&Z Survival'
       defaultPermission: operator
+      enableLanVisibility: true
+      emitServerTelemetry: true
