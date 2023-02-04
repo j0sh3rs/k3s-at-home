@@ -4,6 +4,8 @@ kind: ServiceAccount
 metadata:
   namespace: monitoring
   name: prometheus
+secrets:
+  - name: prom-scrape-nas
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
