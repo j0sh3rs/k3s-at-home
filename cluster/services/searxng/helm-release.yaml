@@ -35,6 +35,8 @@ spec:
     ingress:
       main:
         annotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/probe: 'true'
           nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
           nginx.ingress.kubernetes.io/enable-owasp-core-rules: "true"
           nginx.ingress.kubernetes.io/modsecurity-snippet: |

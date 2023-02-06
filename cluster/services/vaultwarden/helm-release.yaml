@@ -43,6 +43,9 @@ spec:
           name: vaultwarden-secrets
     ingress:
       main:
+        annotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/probe: 'true'
         enabled: true
         hosts:
           - host: vault.bth.wtf
