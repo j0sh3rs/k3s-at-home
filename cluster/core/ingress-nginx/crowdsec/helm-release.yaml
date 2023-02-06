@@ -44,6 +44,10 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      service:
+        annotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/probe: 'true'
       persistentVolume:
         config:
           accessModes: ['ReadWriteMany']
@@ -59,3 +63,7 @@ spec:
         enabled: false
       strategy:
         type: Recreate
+      service:
+        annotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/probe: 'true'

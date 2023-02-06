@@ -21,5 +21,13 @@ spec:
       reloader.stakater.com/auto: 'true'
     metrics:
       enabled: true
+    apiService:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/probe: 'true'
     serviceMonitor:
       enabled: true
+    service:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/probe: 'true'
