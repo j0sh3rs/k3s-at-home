@@ -65,3 +65,7 @@ spec:
         - name: bee
           url: '192.168.35.3'
           module: icmp
+    service:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9130'

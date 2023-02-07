@@ -22,6 +22,8 @@ spec:
       valuesKey: DISCORD_WEBHOOK
       targetPath: falcosidekick.config.discord.webhookurl
   values:
+    scc:
+      create: false
     resources:
       requests:
         cpu: 125m
@@ -30,7 +32,7 @@ spec:
         cpu: 414m
         memory: 251M
     driver:
-      kind: ebpf
+      kind: modern-ebpf
       ebpf:
         leastPrivileged: true
     falco:

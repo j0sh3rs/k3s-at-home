@@ -24,10 +24,10 @@ spec:
     apiService:
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/probe: 'true'
+        prometheus.io/port: '443'
     serviceMonitor:
       enabled: true
     service:
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/probe: 'true'
+        prometheus.io/port: '443'

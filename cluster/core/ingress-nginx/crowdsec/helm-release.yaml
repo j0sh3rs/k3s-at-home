@@ -47,7 +47,7 @@ spec:
       service:
         annotations:
           prometheus.io/scrape: 'true'
-          prometheus.io/probe: 'true'
+          prometheus.io/port: '6060'
       persistentVolume:
         config:
           accessModes: ['ReadWriteMany']
@@ -66,4 +66,4 @@ spec:
       service:
         annotations:
           prometheus.io/scrape: 'true'
-          prometheus.io/probe: 'true'
+          prometheus.io/port: '6060'

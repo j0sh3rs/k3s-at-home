@@ -86,4 +86,3 @@ spec:
         externalTrafficPolicy: "Local"
         annotations:
           prometheus.io/scrape: 'true'
-          prometheus.io/probe: 'true'

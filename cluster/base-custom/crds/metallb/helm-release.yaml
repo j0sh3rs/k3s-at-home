@@ -30,6 +30,7 @@ spec:
         enabled: true
       serviceAccount: 'kube-prometheus-stack-prometheus'
       namespace: 'monitoring'
+      scrapeAnnotations: true
     rbacProxy:
       tag: v0.13.0
     controller:

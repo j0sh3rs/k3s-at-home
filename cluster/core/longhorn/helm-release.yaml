@@ -28,7 +28,6 @@ spec:
       ingressClassName: nginx
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/probe: 'true'
     annotations:
       reloader.stakater.com/auto: 'true'
     # service:

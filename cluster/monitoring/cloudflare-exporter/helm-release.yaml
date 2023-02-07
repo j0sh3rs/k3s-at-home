@@ -18,6 +18,9 @@ spec:
       interval: 5m
   values:
     secretRef: 'cloudflare-exporter-secrets'
+    service:
+      annotations:
+        prometheus.io/port: '8080'
     serviceMonitor:
       enabled: true
     podAnnotations:

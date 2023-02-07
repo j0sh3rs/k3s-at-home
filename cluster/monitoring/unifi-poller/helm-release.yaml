@@ -50,3 +50,9 @@ spec:
             for: 5m
             labels:
               severity: critical
+    service:
+      main:
+        annotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/probe: 'true'
+          prometheus.io/port: '9130'
