@@ -6,7 +6,7 @@ resources:
   # - botkube
   - cadvisor
   - cloudflare-exporter
-  - falco
+  # - falco
   # - grafana
   - prometheus
   - unifi-poller
