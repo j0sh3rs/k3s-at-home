@@ -8,4 +8,5 @@ resources:
   - cloudflare-exporter
   - falco
   # - grafana
+  - prometheus
   - unifi-poller

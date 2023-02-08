@@ -1,0 +1,211 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      version: 44.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    fullnameOverride: prometheus
+    defaultRules:
+      rules:
+        etcd: false
+    alertmanager:
+      enabled: false
+    prometheusOperator:
+      createCustomResource: true
+      resources:
+        requests:
+          cpu: 100m
+          memory: 225Mi
+        limits:
+          cpu: 462m
+          memory: 514Mi
+      prometheusConfigReloader:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 75Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+      podAnnotations:
+        reloader.stakater.com/auto: 'true'
+      verticalPodAutoscaler:
+        enabled: true
+        maxAllowed:
+          cpu: 500m
+          memory: 1Gi
+        minAllowed:
+          cpu: 200m
+          memory: 128Mi
+    nodeExporter:
+      enabled: true
+      verticalPodAutoscaler:
+        enabled: true
+      resources:
+        requests:
+          cpu: 100m
+          memory: 135M
+        limits:
+          cpu: 100m
+          memory: 135M
+      prometheus:
+        monitor: true
+        podMonitor:
+          enabled: true
+      serviceMonitor:
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
+    kubeStateMetrics:
+      enabled: true
+    kube-state-metrics:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 135M
+        limits:
+          cpu: 100m
+          memory: 135M
+      selfMonitor:
+        enabled: true
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
+    kubeControllerManager:
+      # https://github.com/k3s-io/k3s/issues/3619#issuecomment-973188304
+      enabled: true
+      endpoints:
+        - 192.168.35.3
+        - 192.168.35.6
+    kubeScheduler:
+      enabled: true
+      endpoints:
+        - 192.168.35.3
+        - 192.168.35.6
+    kubeProxy:
+      enabled: true
+      endpoints:
+        - 192.168.35.3
+        - 192.168.35.6
+    kubeEtcd:
+      enabled: false
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+      defaultDashboardsTimezone: America/New_York
+    prometheus-node-exporter:
+      fullnameOverride: node-exporter
+      serviceMonitor:
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
+    prometheus:
+      enabled: false
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 250m
+        limits:
+          memory: 2048Mi
+      prometheusSpec:
+        enableFeatures:
+          - agent
+        remoteWrite:
+          - url: https://prom.68cc.io/api/v1/write
+            tls:
+              insecure_skip_verify: true
+        remoteWriteDashboards: true
+        resources:
+          requests:
+            cpu: 350m
+            memory: 4G
+          limits:
+            cpu: 500m
+            memory: 8G
+        replicas: 1
+        replicaExternalLabelName: replica
+        ruleSelectorNilUsesHelmValues: false
+        ruleSelector: ~
+        retention: ~
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        enableAdminAPI: true
+        walCompression: true
+        disableCompaction: true
+        containers:
+        - name: prometheus
+          args:
+            - '--config.file=/etc/prometheus/config_out/prometheus.env.yaml'
+            - '--storage.agent.path=/prometheus'
+            - '--storage.agent.wal-compression'
+            - '--enable-feature=agent'
+            - '--web.enable-lifecycle'
+            - '--web.console.templates=/etc/prometheus/consoles'
+            - '--web.console.libraries=/etc/prometheus/console_libraries'
+            - '--web.external-url=http://kube-prometheus-stack-prometheus.monitoring:9090'
+            - '--web.route-prefix=/'
+            - '--web.config.file=/etc/prometheus/web_config/web-config.yaml'
+          livenessProbe:
+            failureThreshold: 1000
+          readinessProbe:
+            failureThreshold: 1000
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              resources:
+                requests:
+                  storage: 100Gi
+      thanosService:
+        enabled: false
+      thanosServiceMonitor:
+        enabled: false
+      thanosIngress:
+        enabled: false
+    cleanPrometheusOperatorObjectNames: true
