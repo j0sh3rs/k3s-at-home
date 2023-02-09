@@ -9,4 +9,5 @@ resources:
   - kube-prometheus-stack
   # - falco
   # - grafana
+  - thanos
   - unifi-poller
