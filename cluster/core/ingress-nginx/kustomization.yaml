@@ -6,4 +6,4 @@ resources:
   - certificate.yaml
   - geoip.yaml
   - config-maps.yaml
-  - crowdsec
+  # - crowdsec

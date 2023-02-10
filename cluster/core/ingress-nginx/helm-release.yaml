@@ -23,40 +23,40 @@ spec:
       targetPath: controller.extraArgs.maxmind-license-key
   values:
     controller:
-      extraVolumes:
-      - name: crowdsec-bouncer-plugin
-        emptyDir: {}
-      extraInitContainers:
-      - name: init-clone-crowdsec-bouncer
-        image: crowdsecurity/lua-bouncer-plugin
-        imagePullPolicy: IfNotPresent
-        env:
-          - name: API_URL
-            value: "http://crowdsec-service.crowdsec.svc.cluster.local:8080"
-          - name: API_KEY
-            valueFrom:
-              secretKeyRef:
-                key: crowdsec-api-key
-                name: ingress-nginx-secrets
-          - name: BOUNCER_CONFIG
-            value: "/crowdsec/crowdsec-bouncer.conf"
-          - name: BAN_TEMPLATE_PATH
-            value: /etc/nginx/lua/plugins/crowdsec/templates/ban.html
-          - name: CAPTCHA_TEMPLATE_PATH
-            value: /etc/nginx/lua/plugins/crowdsec/templates/captcha.html
-        command: ['sh', '-xc', "sh -x /docker_start.sh; mkdir -p /lua_plugins/crowdsec/; cp -R /crowdsec/* /lua_plugins/crowdsec/"]
-        volumeMounts:
-        - name: crowdsec-bouncer-plugin
-          mountPath: /lua_plugins
-      extraVolumeMounts:
-      - name: crowdsec-bouncer-plugin
-        mountPath: /etc/nginx/lua/plugins/crowdsec
-        subPath: crowdsec
-      config:
-        plugins: "crowdsec"
-        lua-shared-dicts: "crowdsec_cache: 50m"
-        server-snippet: |
-          resolver local=on ipv6=off;
+      # extraVolumes:
+      # - name: crowdsec-bouncer-plugin
+      #   emptyDir: {}
+      # extraInitContainers:
+      # - name: init-clone-crowdsec-bouncer
+      #   image: crowdsecurity/lua-bouncer-plugin
+      #   imagePullPolicy: IfNotPresent
+      #   env:
+      #     - name: API_URL
+      #       value: "http://crowdsec-service.crowdsec.svc.cluster.local:8080"
+      #     - name: API_KEY
+      #       valueFrom:
+      #         secretKeyRef:
+      #           key: crowdsec-api-key
+      #           name: ingress-nginx-secrets
+      #     - name: BOUNCER_CONFIG
+      #       value: "/crowdsec/crowdsec-bouncer.conf"
+      #     - name: BAN_TEMPLATE_PATH
+      #       value: /etc/nginx/lua/plugins/crowdsec/templates/ban.html
+      #     - name: CAPTCHA_TEMPLATE_PATH
+      #       value: /etc/nginx/lua/plugins/crowdsec/templates/captcha.html
+      #   command: ['sh', '-xc', "sh -x /docker_start.sh; mkdir -p /lua_plugins/crowdsec/; cp -R /crowdsec/* /lua_plugins/crowdsec/"]
+      #   volumeMounts:
+      #   - name: crowdsec-bouncer-plugin
+      #     mountPath: /lua_plugins
+      # extraVolumeMounts:
+      # - name: crowdsec-bouncer-plugin
+      #   mountPath: /etc/nginx/lua/plugins/crowdsec
+      #   subPath: crowdsec
+      # config:
+      #   plugins: "crowdsec"
+      #   lua-shared-dicts: "crowdsec_cache: 50m"
+      #   server-snippet: |
+      #     resolver local=on ipv6=off;
       containerName: nginx
       image:
         pullPolicy: Always
