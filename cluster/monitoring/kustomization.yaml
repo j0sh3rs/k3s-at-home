@@ -2,13 +2,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - alertmanager-discord
+  # - alertmanager-discord
   - blackbox-exporter
   # - botkube
   - cadvisor
   - cloudflare-exporter
-  - kube-prometheus-stack
+  # - kube-prometheus-stack
   # - falco
   # - grafana
-  - thanos
+  # - thanos
   - unifi-poller
