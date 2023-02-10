@@ -21,6 +21,8 @@ spec:
   #       valuesKey: maxmind-license-key
   #       targetPath: controller.extraArgs.maxmind-license-key
   values:
+    image:
+      tag: v1.4.6
     container_runtime: containerd
     agent:
       # To specify each pod you want to process it logs (pods present in the node)
