@@ -24,7 +24,7 @@ spec:
         reloader.stakater.com/auto: 'true'
       resources:
         requests:
-          cpu: 100m
+          cpu: 50m
           memory: 135M
         limits:
           cpu: 150m
@@ -34,23 +34,26 @@ spec:
         pod-recommendation-min-cpu-millicores: 100
         pod-recommendation-min-memory-mb: 128
         prometheus-address: |
-          https://prom.68cc.io
+          http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
         storage: prometheus
       image:
         # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-recommender
-        tag: 0.12.0
+        tag: 0.13.0
     admissionController:
-      enabled: false
-    updater:
-      enabled: false
+      enabled: true
       image:
         # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-updater
-        tag: 0.12.0
+        tag: 0.13.0
+    updater:
+      enabled: true
+      image:
+        # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-updater
+        tag: 0.13.0
       podAnnotations:
         reloader.stakater.com/auto: 'true'
       resources:
         requests:
-          cpu: 100m
+          cpu: 50m
           memory: 135M
         limits:
           cpu: 200m

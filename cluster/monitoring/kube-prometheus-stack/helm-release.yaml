@@ -138,17 +138,14 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.3
-        - 192.168.35.6
     kubeScheduler:
       enabled: true
       endpoints:
         - 192.168.35.3
-        - 192.168.35.6
     kubeProxy:
       enabled: true
       endpoints:
         - 192.168.35.3
-        - 192.168.35.6
     kubeEtcd:
       enabled: false
     grafana:
@@ -196,7 +193,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
-        retention: 21d
+        retention: 14d
         retentionSize: 50GB
         enableAdminAPI: true
         walCompression: true
@@ -205,7 +202,7 @@ spec:
             spec:
               resources:
                 requests:
-                  storage: 100Gi
+                  storage: 55Gi
         additionalScrapeConfigs:
           # https://stackoverflow.com/questions/69406120/changing-prometheus-job-label-in-scraper-for-cadvisor-breaks-grafana-dashboards
           # https://stackoverflow.com/questions/65409886/changing-promethus-job-label-from-kubelet-to-kubernetes-cadvisor/65421764#65421764

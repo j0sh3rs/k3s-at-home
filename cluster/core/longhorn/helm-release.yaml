@@ -30,14 +30,8 @@ spec:
         prometheus.io/scrape: 'true'
     annotations:
       reloader.stakater.com/auto: 'true'
-    # service:
-    #   ui:
-    #     type: LoadBalancer
-    #     annotations:
-    #       metallb.universe.tf/address-pool: default
-    #       metallb.universe.tf/loadBalancerIps: 192.168.35.14
     persistence:
-      defaultClassReplicaCount: 2
+      defaultClassReplicaCount: 1
       defaultDataLocality: best-effort
     defaultSettings:
       replicaAutoBalance: best-effort
