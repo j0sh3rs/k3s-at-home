@@ -10,12 +10,12 @@ spec:
   selector:
     matchLabels:
       app: cloudflared
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 3
+      maxUnavailable: 0
+      maxSurge: 2
   template:
     metadata:
       labels:
@@ -24,7 +24,7 @@ spec:
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared
-          tag: 2022.10.3
+          tag: 2023.2.2
           args:
             - tunnel
             - --metrics
