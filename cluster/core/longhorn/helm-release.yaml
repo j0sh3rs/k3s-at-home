@@ -24,7 +24,6 @@ spec:
   values:
     ingress:
       enabled: true
-      host: longhorn.bth.wtf
       ingressClassName: nginx
       annotations:
         prometheus.io/scrape: 'true'

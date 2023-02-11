@@ -34,8 +34,6 @@ spec:
       enabled: true
     ingress:
       enabled: false
-      hosts:
-        - grafana.bth.wtf
     resources:
       requests:
         cpu: 250m
@@ -74,7 +72,7 @@ spec:
         datasources:
           - name: Prometheus
             type: prometheus
-            url: https://prom.68cc.io
+            url: http://thanos-query:9090
             isDefault: true
           # - name: Loki
           #   type: Loki

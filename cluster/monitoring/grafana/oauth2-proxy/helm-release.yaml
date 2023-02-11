@@ -15,6 +15,11 @@ spec:
         name: oauth2-proxy-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GF_SERVER_DOMAIN
+      targetPath: ingress.hosts
   values:
     replicaCount: 1
     podAnnotations:
@@ -26,8 +31,6 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/probe: 'true'
-      hosts:
-        - grafana.bth.wtf
     config:
       existingConfig: grafana-oauth2-proxy-config
     image:
