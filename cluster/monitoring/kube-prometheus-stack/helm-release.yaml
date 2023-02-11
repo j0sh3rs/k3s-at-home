@@ -120,6 +120,18 @@ spec:
             targetLabel: instance
     kubeStateMetrics:
       enabled: true
+      metricLabelsAllowlist:
+        - "persistentvolumeclaims=[*]"
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
     kube-state-metrics:
       collectors:
         - certificatesigningrequests
@@ -186,6 +198,12 @@ spec:
       defaultDashboardsTimezone: America/New_York
     prometheus-node-exporter:
       fullnameOverride: node-exporter
+      resources:
+        requests:
+          cpu: 23m
+          memory: 64M
+        limits:
+          memory: 64M
       serviceMonitor:
         relabelings:
           - action: replace
@@ -225,6 +243,10 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
+        thanos:
+          image: quay.io/thanos/thanos:v0.30.2
+          # renovate: datasource=docker depName=quay.io/thanos/thanos
+          version: "v0.30.2"
         retention: 14d
         retentionSize: 50GB
         enableAdminAPI: true
@@ -482,7 +504,7 @@ spec:
       thanosService:
         enabled: true
       thanosServiceMonitor:
-        enabled: false
+        enabled: true
       thanosIngress:
         enabled: false
     cleanPrometheusOperatorObjectNames: true
