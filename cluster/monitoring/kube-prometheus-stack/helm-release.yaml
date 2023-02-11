@@ -121,7 +121,39 @@ spec:
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
+      collectors:
+        - certificatesigningrequests
+        - configmaps
+        - cronjobs
+        - daemonsets
+        - deployments
+        - endpoints
+        - horizontalpodautoscalers
+        - ingresses
+        - jobs
+        - leases
+        - limitranges
+        - mutatingwebhookconfigurations
+        - namespaces
+        - networkpolicies
+        - nodes
+        - persistentvolumeclaims
+        - persistentvolumes
+        - poddisruptionbudgets
+        - pods
+        - replicasets
+        - replicationcontrollers
+        - resourcequotas
+        - secrets
+        - services
+        - statefulsets
+        - storageclasses
+        - validatingwebhookconfigurations
+        - volumeattachments
+        - verticalpodautoscalers
       selfMonitor:
+        enabled: true
+      verticalPodAutoscaler:
         enabled: true
       prometheus:
         monitor:
@@ -448,7 +480,7 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: false
+        enabled: true
       thanosServiceMonitor:
         enabled: false
       thanosIngress:
