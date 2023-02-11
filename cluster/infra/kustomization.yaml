@@ -8,5 +8,6 @@ resources:
   - goldilocks
   - memcached
   # - node-feature-discovery
+  - oauth2-proxy
   - redis
   - vpa
