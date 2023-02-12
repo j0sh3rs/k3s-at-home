@@ -15,7 +15,14 @@ spec:
         name: oauth2-proxy-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: oauth2-proxy
+      valuesKey: host
+      targetPath: ingress.hosts[0]
   values:
+    ingress:
+      enabled: true
     replicaCount: 1
     podAnnotations:
       reloader.stakater.com/auto: 'true'

@@ -5,7 +5,7 @@ resources:
   - blocky
   - cloudflared
   # - gatekeeper
-  - goldilocks
+  # - goldilocks
   - memcached
   # - node-feature-discovery
   - oauth2-proxy
