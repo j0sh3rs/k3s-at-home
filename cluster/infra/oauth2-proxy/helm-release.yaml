@@ -10,6 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://oauth2-proxy.github.io/manifests
       chart: oauth2-proxy
+      version: 6.8.0
       sourceRef:
         kind: HelmRepository
         name: oauth2-proxy-charts
@@ -20,6 +21,22 @@ spec:
       name: oauth2-proxy
       valuesKey: host
       targetPath: ingress.hosts[0]
+    - kind: Secret
+      name: oauth2-proxy
+      valuesKey: clientId
+      targetPath: config.clientID
+    - kind: Secret
+      name: oauth2-proxy
+      valuesKey: clientSecret
+      targetPath: config.clientSecret
+    - kind: Secret
+      name: oauth2-proxy
+      valuesKey: cookieSecret
+      targetPath: config.cookieSecret
+    - kind: Secret
+      name: oauth2-proxy
+      valuesKey: cookieName
+      targetPath: config.cookieName
   values:
     ingress:
       enabled: true
@@ -27,7 +44,20 @@ spec:
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     config:
-      existingConfig: oauth2-proxy-config
+      configFile: |-
+        http_address = "127.0.0.1:80"
+        reverse_proxy = true
+        pass_basic_auth = true
+        pass_user_headers = true
+        set_xauthrequest = true
+        pass_host_header = true
+        silence_ping_logging = true
+        upstreams = "file:///dev/null"
+        cookie_expire = "2h"
+        cookie_refresh = "60m"
+        cookie_secure = true
+        cookie_httponly = true
+        cookie_samesite = "lax"
     image:
       pullPolicy: Always
     authenticatedEmailsFile:
@@ -37,6 +67,9 @@ spec:
       restrictedUserAccessKey: 'useraccess'
     service:
       portNumber: 80
+    metrics:
+      servicemonitor:
+        enabled: true
     resources:
       requests:
         cpu: 100m
@@ -52,4 +85,4 @@ spec:
       type: redis
       redis:
         standalone:
-          connectionUrl: 'redis://redis-master.infra.svc.cluster.local:6379/6'
+          connectionUrl: 'redis://redis-master:6379/6'
