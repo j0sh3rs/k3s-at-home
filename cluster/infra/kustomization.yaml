@@ -6,6 +6,7 @@ resources:
   - cloudflared
   # - gatekeeper
   # - goldilocks
+  - grafana
   - memcached
   # - node-feature-discovery
   - oauth2-proxy

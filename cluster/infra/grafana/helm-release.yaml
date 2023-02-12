@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: grafana
-  namespace: monitoring
+  namespace: infra
 spec:
   interval: 5m
   chart:
@@ -20,11 +20,28 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
+  valuesFrom:
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GF_SERVER_DOMAIN
+      targetPath: ingress.hosts[0]
   values:
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     image:
       pullPolicy: Always
+    ingress:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+        nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+      extraPaths:
+        - path: /oauth2
+          backend:
+            service:
+              name: oauth2-proxy
+              port:
+                name: http
     rbac:
       pspEnabled: false
       pspUseAppArmor: false
@@ -32,8 +49,6 @@ spec:
       enabled: false
     serviceMonitor:
       enabled: true
-    ingress:
-      enabled: false
     resources:
       requests:
         cpu: 250m
@@ -72,7 +87,7 @@ spec:
         datasources:
           - name: Prometheus
             type: prometheus
-            url: http://thanos-query:9090
+            url: http://thanos-query.monitoring:9090
             isDefault: true
           # - name: Loki
           #   type: Loki

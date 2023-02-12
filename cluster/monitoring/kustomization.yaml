@@ -9,6 +9,5 @@ resources:
   - cloudflare-exporter
   - kube-prometheus-stack
   # - falco
-  # - grafana
   - thanos
   - unifi-poller

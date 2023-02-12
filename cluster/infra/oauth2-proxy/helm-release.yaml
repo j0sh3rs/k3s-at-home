@@ -19,10 +19,6 @@ spec:
   valuesFrom:
     - kind: Secret
       name: oauth2-proxy
-      valuesKey: host
-      targetPath: ingress.hosts[0]
-    - kind: Secret
-      name: oauth2-proxy
       valuesKey: client-id
       targetPath: config.clientID
     - kind: Secret
@@ -38,8 +34,6 @@ spec:
       valuesKey: cookieName
       targetPath: config.cookieName
   values:
-    ingress:
-      enabled: true
     replicaCount: 1
     podAnnotations:
       reloader.stakater.com/auto: 'true'
