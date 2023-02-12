@@ -37,6 +37,7 @@ spec:
         nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
       extraPaths:
         - path: /oauth2
+          pathType: Prefix
           backend:
             service:
               name: oauth2-proxy
