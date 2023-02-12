@@ -23,11 +23,11 @@ spec:
       targetPath: ingress.hosts[0]
     - kind: Secret
       name: oauth2-proxy
-      valuesKey: clientId
+      valuesKey: client-id
       targetPath: config.clientID
     - kind: Secret
       name: oauth2-proxy
-      valuesKey: clientSecret
+      valuesKey: client-secret
       targetPath: config.clientSecret
     - kind: Secret
       name: oauth2-proxy

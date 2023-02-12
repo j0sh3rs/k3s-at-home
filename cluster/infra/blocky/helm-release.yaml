@@ -26,10 +26,10 @@ spec:
       annotations:
         reloader.stakater.com/auto: 'true'
       strategy: RollingUpdate
-      replicas: 2
+      replicas: 1
       rollingUpdate:
-        unavailable: 1
-        surge: 3
+        unavailable: 0
+        surge: 2
     metrics:
       enabled: true
       prometheusRule:
