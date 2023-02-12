@@ -32,12 +32,13 @@ spec:
       pullPolicy: Always
     ingress:
       enabled: true
+      pathType: ImplementationSpecific
       annotations:
         nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
         nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
       extraPaths:
         - path: /oauth2
-          pathType: Prefix
+          pathType: ImplementationSpecific
           backend:
             service:
               name: oauth2-proxy
