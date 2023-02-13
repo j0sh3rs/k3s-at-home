@@ -373,9 +373,9 @@ spec:
                     - kube-system
           - job_name: nas_postgres_exporter
             static_configs:
-              - targets: ['nas.68cc.io']
+              - targets: ['pg.68cc.io']
             scrape_interval: 60s
-            metrics_path: '/pge/metrics'
+            metrics_path: '/metrics'
             scheme: https
           - job_name: 'nas_blocky'
             static_configs:
@@ -385,8 +385,8 @@ spec:
           - job_name: 'snmp-exporter'
             scheme: https
             static_configs:
-              - targets: ['nas.68cc.io']
-            metrics_path: /snmp
+              - targets: ['snmp.68cc.io']
+            metrics_path: /metrics
             params:
               module: [synology]
             relabel_configs:
