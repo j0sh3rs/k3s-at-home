@@ -371,39 +371,45 @@ spec:
                 namespaces:
                   names:
                     - kube-system
-          # - job_name: nas_postgres_exporter
-          #   static_configs:
-          #     - targets: ['192.168.35.5:9187']
-          #   scrape_interval: 60s
-          #   metrics_path: '/metrics'
-          #   scheme: http
-          # - job_name: 'snmp-exporter'
-          #   static_configs:
-          #     - targets: ['192.168.35.5']
-          #   metrics_path: /snmp
-          #   params:
-          #     module: [synology]
-          #   relabel_configs:
-          #     - source_labels: [__address__]
-          #       target_label: __param_target
-          #     - source_labels: [__param_target]
-          #       target_label: instance
-          #     - source_labels: [__param_target]
-          #       regex: (.*)
-          #       replacement: ${1}:9116
-          #       target_label: __address__
-          # - job_name: nas_minio
-          #   static_configs:
-          #     - targets: ['192.168.35.5:9000']
-          #   scrape_interval: 60s
-          #   metrics_path: '/minio/v2/metrics/cluster'
-          #   scheme: http
-          # - job_name: nas_node_exporter
-          #   static_configs:
-          #     - targets: ['192.168.35.5:9100']
-          #   scrape_interval: 60s
-          #   metrics_path: '/metrics'
-          #   scheme: http
+          - job_name: nas_postgres_exporter
+            static_configs:
+              - targets: ['nas.68cc.io']
+            scrape_interval: 60s
+            metrics_path: '/pge/metrics'
+            scheme: https
+          - job_name: 'nas_blocky'
+            static_configs:
+              - targets: ['nas.68cc.io']
+            metrics_path: '/blocky/metrics'
+            scheme: http
+          - job_name: 'snmp-exporter'
+            scheme: https
+            static_configs:
+              - targets: ['nas.68cc.io']
+            metrics_path: /snmp
+            params:
+              module: [synology]
+            relabel_configs:
+              - source_labels: [__address__]
+                target_label: __param_target
+              - source_labels: [__param_target]
+                target_label: instance
+              - source_labels: [__param_target]
+                regex: (.*)
+                replacement: ${1}:9116
+                target_label: __address__
+          - job_name: nas_minio
+            static_configs:
+              - targets: ['s3.68cc.io']
+            scrape_interval: 60s
+            metrics_path: '/minio/v2/metrics/cluster'
+            scheme: https
+          - job_name: nas_node_exporter
+            static_configs:
+              - targets: ['nas.68cc.io']
+            scrape_interval: 60s
+            metrics_path: '/metrics'
+            scheme: https
           - job_name: 'kubernetes-ingresses'
             metrics_path: /probe
             scrape_interval: 60s
