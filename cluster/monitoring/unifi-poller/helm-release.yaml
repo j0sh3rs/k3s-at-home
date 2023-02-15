@@ -22,7 +22,7 @@ spec:
         cpu: 100m
         memory: 135Mi
       limits:
-        cpu: 100m
+        cpu: 500m
         memory: 256Mi
     global:
       annotations:

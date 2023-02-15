@@ -4,10 +4,8 @@ kind: Kustomization
 resources:
   - alertmanager-discord
   - blackbox-exporter
-  # - botkube
   - cadvisor
   - cloudflare-exporter
   - kube-prometheus-stack
-  # - falco
   - thanos
   - unifi-poller
