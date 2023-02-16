@@ -8,11 +8,11 @@
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
-    ":semanticCommits",
     "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge",
     "github>j0sh3rs/k3s-at-home//.github/renovate/labels"
   ],
   "platform": "github",
+  "semanticCommits": "enabled",
   "username": "Barrybot[bot]",
   "repositories": [
     "j0sh3rs/k3s-at-home"
@@ -63,48 +63,19 @@
   },
   "regexManagers": [
     {
-      "datasourceTemplate": "helm",
+      "datasourceTemplate": "{{datasource}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}{{#if (containsString datasource 'pypi')}}pep440{{else}}semver{{/if}}{{/if}}",
       "fileMatch": [
         "^cluster/.*\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*?)\n",
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*?)\n",
-        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-z-]+)-(?<currentValue>.*?)\n"
+        "datasource=(?<datasource>github-releases) repos=(?<depName>\\S+)\n.*?\"?(?<currentValue>[^-\\s]*?)\"?\n",
+        "datasource=(?<datasource>docker) image=(?<depName>\\S+)\n.*?\"?(?<currentValue>[^-\\s]*?)\"?\n",
+        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-z-]+)-(?<currentValue>.*?)\n",
+        "datasource=(?<datasource>helm) registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?\"?(?<currentValue>[^-\\s]*?)\"?\n"
       ]
-    },
-    {
-      "datasourceTemplate": "docker",
-      "fileMatch": [
-        "^cluster/.*\\.yaml$"
-      ],
-      "matchStrings": [
-        "dockerUrl=(?<dockerUrl>.*?)\n *version: (?<currentValue>.*?)\n",
-        "dockerUrl=(?<dockerUrl>.*?) tag: (?<currentValue>.*?)\n",
-        "dockerUrl=(?<dockerUrl>.*?)\n *tag: (?<depName>[a-z-]+)-(?<currentValue>.*?)\n"
-      ]
-    },
-    {
-      "description": "Process various dependencies",
-      "fileMatch": [
-        "cluster/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-    },
-    {
-      "description": "Process raw GitHub URLs",
-      "fileMatch": [
-        "cluster/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
-      ],
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
