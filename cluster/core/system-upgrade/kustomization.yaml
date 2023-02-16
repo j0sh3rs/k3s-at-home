@@ -11,8 +11,6 @@ images:
   - name: rancher/system-upgrade-controller
     newTag: v0.10.0
 patchesStrategicMerge:
-  # delete namespace resource
-  - ./system-upgrade-patches.yaml
   # add labels
   - |-
     apiVersion: apps/v1
