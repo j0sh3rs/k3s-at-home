@@ -382,22 +382,22 @@ spec:
               - targets: ['nas.68cc.io']
             metrics_path: '/blocky/metrics'
             scheme: http
-          - job_name: 'snmp-exporter'
-            scheme: https
-            static_configs:
-              - targets: ['snmp.68cc.io']
-            metrics_path: /metrics
-            params:
-              module: [synology]
-            relabel_configs:
-              - source_labels: [__address__]
-                target_label: __param_target
-              - source_labels: [__param_target]
-                target_label: instance
-              - source_labels: [__param_target]
-                regex: (.*)
-                replacement: ${1}:9116
-                target_label: __address__
+          # - job_name: 'snmp-exporter'
+          #   scheme: https
+          #   static_configs:
+          #     - targets: ['snmp.68cc.io']
+          #   metrics_path: /metrics
+          #   params:
+          #     module: [synology]
+          #   relabel_configs:
+          #     - source_labels: [__address__]
+          #       target_label: __param_target
+          #     - source_labels: [__param_target]
+          #       target_label: instance
+          #     - source_labels: [__param_target]
+          #       regex: (.*)
+          #       replacement: ${1}:9116
+          #       target_label: __address__
           - job_name: nas_minio
             static_configs:
               - targets: ['s3.68cc.io']
@@ -509,8 +509,8 @@ spec:
                 target_label: kubernetes_name
       thanosService:
         enabled: true
-      thanosServiceMonitor:
-        enabled: true
+      # thanosServiceMonitor:
+      #   enabled: true
       thanosIngress:
         enabled: false
     cleanPrometheusOperatorObjectNames: true
