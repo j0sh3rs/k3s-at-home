@@ -8,7 +8,7 @@
 
 This repository is shamelessly stolen and modified from the great work that [Auricom](https://github.com/auricom/home-cluster) has done on his homelab.
 
-Modified to my needs, updated to use Age instead of PGP, and using cloudflared and/or ingress-nginx.
+Modified to my needs, updated to use Age instead of PGP, Calico for the CNI in eBPF mode, and using cloudflared and/or ingress-nginx.
 
 <br/>
 <br/>
@@ -79,7 +79,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --disable servicelb \
 --disable-cloud-controller \
 --protect-kernel-defaults=true \
---datastore-endpoint=postgres://k3s:"'${MYDBPW}'"@postgres:35432/kubernetes?sslmode=disable \
+# --datastore-endpoint=postgres://k3s:"'${MYDBPW}'"@postgres:35432/kubernetes?sslmode=disable \
 --write-kubeconfig-mode 0644 \
 --kube-proxy-arg=metrics-bind-address=0.0.0.0 \
 --kube-scheduler-arg=bind-address=0.0.0.0 \
@@ -97,7 +97,11 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --kubelet-arg=streaming-connection-idle-timeout=5m \
 --kubelet-arg=make-iptables-util-chains=true \
 --kubelet-arg=containerd=/run/k3s/containerd/containerd.sock \
---secrets-encryption
+--secrets-encryption \
+--flannel-backend=none \
+--cluster-cidr=172.16.0.0/16 \
+--disable-network-policy \
+--cluster-init
 ```
 
 ## Roadmap
