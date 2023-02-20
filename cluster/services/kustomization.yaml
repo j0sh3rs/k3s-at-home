@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   # - invidious
   # - reddit
-  - searxng
-  - vaultwarden
+  # - searxng
+  # - vaultwarden
   - volumes
