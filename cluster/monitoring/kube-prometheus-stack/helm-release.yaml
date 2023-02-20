@@ -187,11 +187,9 @@ spec:
       endpoints:
         - 192.168.35.3
     kubeProxy:
-      enabled: true
-      endpoints:
-        - 192.168.35.3
-    kubeEtcd:
       enabled: false
+    kubeEtcd:
+      enabled: true
     grafana:
       enabled: false
       forceDeployDashboards: true
