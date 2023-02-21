@@ -6,6 +6,6 @@ resources:
   - cloudflared
   - grafana
   - memcached
-  # - oauth2-proxy
+  - oauth2-proxy
   - redis
   - vpa
