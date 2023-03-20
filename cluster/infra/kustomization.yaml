@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   - blocky
   # - cloudflared
-  - grafana
-  - memcached
-  - oauth2-proxy
+  # - grafana
+  # - memcached
+  # - oauth2-proxy
   - redis
-  - vpa
+  # - vpa
