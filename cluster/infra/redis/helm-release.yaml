@@ -24,7 +24,6 @@ spec:
         enabled: true
       persistence:
         enabled: true
-        storageClass: longhorn
         size: 20G
       service:
         type: LoadBalancer
