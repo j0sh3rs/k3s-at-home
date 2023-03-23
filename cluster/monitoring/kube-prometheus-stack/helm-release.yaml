@@ -237,7 +237,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         thanos:
-          image: quay.io/thanos/thanos:v0.30.2
+          image: quay.io/thanos/thanos:v0.31.0
           # renovate: datasource=docker depName=quay.io/thanos/thanos
           version: "v0.30.2"
         retention: 14d
