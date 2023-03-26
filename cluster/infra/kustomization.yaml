@@ -5,7 +5,7 @@ resources:
   - blocky
   # - cloudflared
   # - grafana
-  # - memcached
+  - memcached
   # - oauth2-proxy
   - redis
-  # - vpa
+  - vpa

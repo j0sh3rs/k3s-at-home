@@ -5,8 +5,8 @@ resources:
   - cert-manager
   # - flux-system
   - ingress-nginx
-  - kube-system
+  -  kube-system
   - longhorn
-  # - metallb
+  - metallb
   - nfs-subdir-external-provisioner
   # - system-upgrade
