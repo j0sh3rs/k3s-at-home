@@ -7,6 +7,6 @@ resources:
   - ingress-nginx
   - kube-system
   - longhorn
-  - metallb
+  # - metallb
   - nfs-subdir-external-provisioner
   # - system-upgrade
