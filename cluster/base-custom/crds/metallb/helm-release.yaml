@@ -25,9 +25,9 @@ spec:
       enabled: true
     prometheus:
       serviceMonitor:
-        enabled: true
+        enabled: false
       prometheusRule:
-        enabled: true
+        enabled: false
       serviceAccount: 'kube-prometheus-stack-prometheus'
       namespace: 'monitoring'
       scrapeAnnotations: true
