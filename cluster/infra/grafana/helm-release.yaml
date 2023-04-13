@@ -169,7 +169,7 @@ spec:
           cpu: 50m
           memory: 94M
         limits:
-          cpu: 500m
+          cpu: 1
           memory: 214M
       datasources:
         enabled: true
