@@ -118,6 +118,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest K3S_URL=https://${NODE
 ## OS Tuning
 
 All agents and nodes are augmented with the following kernel tunings:
+
 ```shell
 fs.inotify.max_user_watches = 1048576
 fs.inotify.max_user_instances = 512
