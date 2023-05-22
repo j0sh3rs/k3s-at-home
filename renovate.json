@@ -36,13 +36,13 @@
   },
   "helm-values": {
     "fileMatch": [
-      "cluster/.+/helm-release\\.yaml$"
+      "(cluster|bootstrap)/.+/helm-release\\.yaml$"
     ]
   },
   "helmv3": {
     "fileMatch": [
       "charts/.+/Chart\\.yaml$",
-      "cluster/base-custom/charts/*.yaml"
+      "(cluster|bootstrap)/base-custom/charts/*.yaml"
     ]
   },
   "kubernetes": {
