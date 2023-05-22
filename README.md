@@ -110,9 +110,9 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --kubelet-arg=make-iptables-util-chains=true \
 --kubelet-arg=containerd=/run/k3s/containerd/containerd.sock \
 --secrets-encryption \
---flannel-backend=none \
---cluster-cidr=172.16.0.0/16 \
---disable-network-policy \
+# --flannel-backend=none \
+# --cluster-cidr=172.16.0.0/16 \
+# --disable-network-policy \
 ```
 
 For agents, the following was used to connect them:
@@ -157,10 +157,8 @@ mitigations=off elevator=mq-deadline transparent_hugepage=always
 
 ## Roadmap
 
-- [X] Re-implement kured and system-upgrade controller
-- [X] Move to Calico w/ eBPF for fun
-- [X] Move off Cloudflare to Nginx + Crowdsec
-  - [ ] Ensure all crowdsec plugins/detectors are estbalished in helm chart
+- [ ] Re-implement kured and system-upgrade controller
+- [ ] Move to Calico w/ eBPF for fun
 - [ ] Figure out better bootstrapping order
   - [ ] Conflicts between initial run of flux + CRDs + Prom Monitors + Ingresses
 - [ ] Upstream improvements to helm charts as outputs of security tool analysis

@@ -4,4 +4,3 @@ resources:
   - cert-manager
   - kube-prometheus-stack
   - metallb
-  - tigera-operator
