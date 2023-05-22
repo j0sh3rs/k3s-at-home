@@ -31,6 +31,14 @@ flux bootstrap github \
   --version=latest \
   --owner=j0sh3rs \
   --repository=k3s-at-home \
+  --path=bootstrap \
+  --personal \
+  --network-policy=false
+
+flux bootstrap github \
+  --version=latest \
+  --owner=j0sh3rs \
+  --repository=k3s-at-home \
   --path=cluster \
   --personal \
   --network-policy=false
@@ -57,27 +65,27 @@ kind: Policy
 rules:
 - level: Metadata
 EOHD
-cat <<-EOHD > /var/lib/rancher/k3s/server/psa.yaml
----
-apiVersion: apiserver.config.k8s.io/v1
-kind: AdmissionConfiguration
-plugins:
-- name: PodSecurity
-  configuration:
-    apiVersion: pod-security.admission.config.k8s.io/v1beta1
-    kind: PodSecurityConfiguration
-    defaults:
-      enforce: "restricted"
-      enforce-version: "latest"
-      audit: "restricted"
-      audit-version: "latest"
-      warn: "restricted"
-      warn-version: "latest"
-    exemptions:
-      usernames: []
-      runtimeClasses: []
-      namespaces: [kube-system, infra]
-EOHD
+# cat <<-EOHD > /var/lib/rancher/k3s/server/psa.yaml
+# ---
+# apiVersion: apiserver.config.k8s.io/v1
+# kind: AdmissionConfiguration
+# plugins:
+# - name: PodSecurity
+#   configuration:
+#     apiVersion: pod-security.admission.config.k8s.io/v1beta1
+#     kind: PodSecurityConfiguration
+#     defaults:
+#       enforce: "restricted"
+#       enforce-version: "latest"
+#       audit: "restricted"
+#       audit-version: "latest"
+#       warn: "restricted"
+#       warn-version: "latest"
+#     exemptions:
+#       usernames: []
+#       runtimeClasses: []
+#       namespaces: [kube-system, infra]
+# EOHD
 curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTOKEN} \
 --disable local-storage \
 --disable traefik \
@@ -94,7 +102,6 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --kube-apiserver-arg=audit-log-maxbackup=3 \
 --kube-apiserver-arg=audit-log-maxsize=50 \
 --kube-apiserver-arg=request-timeout=300s \
---kube-apiserver-arg="admission-control-config-file=/var/lib/rancher/k3s/server/psa.yaml" \
 --kube-apiserver-arg=service-account-lookup=true \
 --kube-controller-manager-arg=terminated-pod-gc-threshold=10 \
 --kube-controller-manager-arg=use-service-account-credentials=true \
@@ -106,7 +113,6 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --flannel-backend=none \
 --cluster-cidr=172.16.0.0/16 \
 --disable-network-policy \
---cluster-init
 ```
 
 For agents, the following was used to connect them:
