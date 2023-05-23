@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
-      version: 45.30.0
+      version: 46.1.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -179,10 +179,14 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.3
+        - 192.168.35.6
+        - 192.168.35.9
     kubeScheduler:
       enabled: true
       endpoints:
         - 192.168.35.3
+        - 192.168.35.6
+        - 192.168.35.9
     kubeProxy:
       enabled: false
     grafana:
@@ -239,7 +243,7 @@ spec:
         thanos:
           image: quay.io/thanos/thanos:v0.31.0
           # renovate: datasource=docker depName=quay.io/thanos/thanos
-          version: "v0.30.2"
+          version: "v0.31.0"
         retention: 14d
         retentionSize: 50GB
         enableAdminAPI: true

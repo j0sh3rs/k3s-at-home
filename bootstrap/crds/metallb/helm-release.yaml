@@ -31,9 +31,9 @@ spec:
       serviceAccount: 'kube-prometheus-stack-prometheus'
       namespace: 'monitoring'
       scrapeAnnotations: true
-    rbacProxy:
+    rbacProxy:    
       # renovate: datasource=docker dockerUrl=https://gcr.io/kubebuilder/kube-rbac-proxy
-      tag: v0.13.0
+      tag: v0.14.1
     controller:
       resources:
         requests:
