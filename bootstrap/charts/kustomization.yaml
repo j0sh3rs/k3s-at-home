@@ -5,10 +5,8 @@ resources:
   - aquasecurity.yaml
   - bitnami-charts.yaml
   - botkube.yaml
-  - coroot.yaml
-  - crowdsec.yaml
+  - cilium.yaml
   - fairwinds.yaml
-  - falco.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
   - j0sh3rs.yaml
@@ -25,7 +23,6 @@ resources:
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
   - oauth2-proxy.yaml
-  - opa.yaml
   - prometheus-community-charts.yaml
   - runix-charts.yaml
   - searxng.yaml
