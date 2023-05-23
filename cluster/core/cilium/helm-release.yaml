@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: cilium
-  namespace: cilium-system
+  namespace: kube-system
 spec:
   interval: 5m
   upgrade:
@@ -11,8 +11,6 @@ spec:
       remediateLastFailure: true
       retries: 5
       strategy: rollback
-  install:
-    createNamespace: true
   chart:
     spec:
       # renovate: registryUrl=https://helm.cilium.io/
@@ -24,32 +22,33 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    autoDirectNodeRoutes: true
-    localRedirectPolicy: true
+    # autoDirectNodeRoutes: true
+    # localRedirectPolicy: true
     rollOutCiliumPods: true
     bpf:
       clockProbe: true
       preallocateMaps: true
     cni:
       uninstall: false
-    kubeProxyReplacement: "strict"
-    kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
-    ipv4NativeRoutingCIDR: "192.168.35.0/24"
-    loadBalancer:
-      algorithm: "maglev"
-      mode: "dsr"
-    tunnel: "disabled"
-    endpointRoutes:
-      enabled: true
-    encryption:
-      enabled: false
+      # install: true
+    # kubeProxyReplacement: "strict"
+    # kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+    # ipv4NativeRoutingCIDR: "192.168.35.0/24"
+    # loadBalancer:
+    #   algorithm: "maglev"
+    #   mode: "dsr"
+    # tunnel: "disabled"
+    # endpointRoutes:
+    #   enabled: true
+    # encryption:
+    #   enabled: false
     ipam:
       mode: "kubernetes"
     operator:
       rollOutPods: true
-    containerRuntime:
-      integration: containerd
-      socketPath: /run/k3s/containerd/containerd.sock
+    # containerRuntime:
+    #   integration: containerd
+    #   socketPath: /run/k3s/containerd/containerd.sock
     hubble:
       enabled: true
       metrics:
