@@ -32,6 +32,7 @@ spec:
       preallocateMaps: true
     cni:
       uninstall: false
+      install: false
     # kubeProxyReplacement: "strict"
     # kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
     ipv4NativeRoutingCIDR: "192.168.35.0/24"
