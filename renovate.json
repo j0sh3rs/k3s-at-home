@@ -47,18 +47,18 @@
   },
   "kubernetes": {
     "fileMatch": [
-      "cluster/.+\\.yaml$"
+      "(cluster|bootstrap)/.+\\.yaml$"
     ]
   },
   "kustomize": {
     "fileMatch": [
-      "cluster/.+/(^|/)kustomization\\.ya?ml$"
+      "(cluster|bootstrap)/.+/(^|/)kustomization\\.ya?ml$"
     ],
     "pinDigests": false
   },
   "flux": {
     "fileMatch": [
-      "cluster/.+\\.yaml$"
+      "(cluster|bootstrap)/.+\\.yaml$"
     ]
   },
   "regexManagers": [
@@ -66,7 +66,7 @@
       "datasourceTemplate": "{{datasource}}",
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}{{#if (containsString datasource 'pypi')}}pep440{{else}}semver{{/if}}{{/if}}",
       "fileMatch": [
-        "^cluster/.*\\.yaml$"
+        "^(cluster|bootstrap)/.*\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*?)\n",
@@ -79,7 +79,7 @@
     },
     {
       "description": "Process raw GitHub URLs",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "fileMatch": ["(cluster|bootstrap)/.+\\.ya?ml$"],
       "matchStrings": [
         "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
       ],
