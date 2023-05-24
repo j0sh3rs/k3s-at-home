@@ -63,3 +63,13 @@ metadata:
   annotations:
     meta.helm.sh/release-name: cilium
     meta.helm.sh/release-namespace: cilium-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: system-upgrade
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: system-upgrade
+    meta.helm.sh/release-namespace: system-upgrade
