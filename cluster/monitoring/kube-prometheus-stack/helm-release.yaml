@@ -18,6 +18,33 @@ spec:
       interval: 5m
   values:
     fullnameOverride: prometheus
+    defaultRules:
+      enabled: true
+      rules:
+        alertmanager: true
+        etcd: true
+        configReloaders: true
+        general: true
+        k8s: true
+        kubeApiserver: true
+        kubeApiserverAvailability: true
+        kubeApiserverSlos: true
+        kubelet: true
+        kubeProxy: false
+        kubePrometheusGeneral: true
+        kubePrometheusNodeRecording: true
+        kubernetesApps: true
+        kubernetesResources: true
+        kubernetesStorage: true
+        kubernetesSystem: true
+        kubeScheduler: false
+        kubeStateMetrics: true
+        network: true
+        node: true
+        nodeExporterAlerting: true
+        nodeExporterRecording: true
+        prometheus: true
+        prometheusOperator: true
     alertmanager:
       enabled: true
       config:
@@ -189,10 +216,22 @@ spec:
         - 192.168.35.9
     kubeProxy:
       enabled: false
+    kubeApiServer:
+      enabled: true
+    kubeEtcd:
+      enabeld: true
+      endpoints:
+        - 192.168.35.3
+        - 192.168.35.6
+        - 192.168.35.9
     grafana:
       enabled: false
       forceDeployDashboards: true
       defaultDashboardsTimezone: America/New_York
+      sidecar:
+        dashboards:
+          annotations:
+            grafana_folder: Prometheus
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       resources:
@@ -239,11 +278,8 @@ spec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
+        podAntiAffinity: hard
         probeSelectorNilUsesHelmValues: false
-        thanos:
-          image: quay.io/thanos/thanos:v0.31.0
-          # renovate: datasource=docker depName=quay.io/thanos/thanos
-          version: "v0.31.0"
         retention: 14d
         retentionSize: 50GB
         enableAdminAPI: true
@@ -505,9 +541,9 @@ spec:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
       thanosService:
-        enabled: true
+        enabled: false
       thanosServiceMonitor:
-        enabled: true
+        enabled: false
       thanosIngress:
         enabled: false
     cleanPrometheusOperatorObjectNames: true

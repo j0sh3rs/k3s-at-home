@@ -6,6 +6,7 @@ resources:
   - bitnami-charts.yaml
   - botkube.yaml
   - cilium.yaml
+  - deliveryhero.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
@@ -27,3 +28,4 @@ resources:
   - runix-charts.yaml
   - searxng.yaml
   - stakater-charts.yaml
+  - vector.yaml

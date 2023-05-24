@@ -1,7 +1,0 @@
----
-# namespace should already exist
-$patch: delete
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: system-upgrade

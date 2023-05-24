@@ -7,5 +7,6 @@ resources:
   - cadvisor
   # - cloudflare-exporter
   - kube-prometheus-stack
-  # - thanos
+  - metrics-server
+  - node-problem-detector
   - unifi-poller

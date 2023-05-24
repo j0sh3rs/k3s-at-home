@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: splunk-connect
+  name: deliveryhero-charts
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://splunk.github.io/splunk-connect-for-kubernetes/
+  url: https://charts.deliveryhero.io/
   timeout: 3m
