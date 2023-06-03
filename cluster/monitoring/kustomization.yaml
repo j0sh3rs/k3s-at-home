@@ -6,6 +6,7 @@ resources:
   - blackbox-exporter
   - cadvisor
   # - cloudflare-exporter
+  - falco
   - kube-prometheus-stack
   - metrics-server
   - node-problem-detector
