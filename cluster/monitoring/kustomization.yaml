@@ -8,6 +8,6 @@ resources:
   # - cloudflare-exporter
   # - falco
   - kube-prometheus-stack
-  - metrics-server
+  # - metrics-server
   - node-problem-detector
   - unifi-poller
