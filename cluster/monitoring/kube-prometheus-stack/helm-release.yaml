@@ -186,7 +186,6 @@ spec:
         - storageclasses
         - validatingwebhookconfigurations
         - volumeattachments
-        - verticalpodautoscalers
       selfMonitor:
         enabled: true
       verticalPodAutoscaler:
