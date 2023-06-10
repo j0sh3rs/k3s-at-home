@@ -22,33 +22,38 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    # autoDirectNodeRoutes: true
-    # localRedirectPolicy: true
+    debug:
+      enabled: true
+    autoDirectNodeRoutes: false
+    localRedirectPolicy: true
     rollOutCiliumPods: true
+    annotateK8sNode: true
     bpf:
       clockProbe: true
       preallocateMaps: true
+      masquerade: true
     cni:
       uninstall: false
       install: true
-    # kubeProxyReplacement: "strict"
-    # kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
-    # ipv4NativeRoutingCIDR: "192.168.35.0/24"
-    # loadBalancer:
-    #   algorithm: "maglev"
-    #   mode: "dsr"
-    # tunnel: "disabled"
-    # endpointRoutes:
-    #   enabled: true
-    # encryption:
-    #   enabled: false
+    kubeConfigPath: "/etc/rancher/k3s/k3s.yaml"
+    kubeProxyReplacement: "strict"
+    k8sServiceHost: "192.168.35.3"
+    k8sServicePort: "6443"
+    kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+    ipv4NativeRoutingCIDR: "192.168.35.0/24"
+    loadBalancer:
+      algorithm: "maglev"
+      mode: "dsr"
+    tunnel: "disabled"
+    endpointRoutes:
+      enabled: true
+    encryption:
+      enabled: false
     ipam:
-      mode: "kubernetes"
+      operator:
+        clusterPoolIPv4PodCIDRList: "172.16.0.0/8"
     operator:
       rollOutPods: true
-    # containerRuntime:
-    #   integration: containerd
-    #   socketPath: /run/k3s/containerd/containerd.sock
     hubble:
       enabled: true
       metrics:

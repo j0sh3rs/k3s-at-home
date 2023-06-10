@@ -155,6 +155,7 @@ net.core.rmem_max=16777216
 net.core.wmem_max=16777216
 net.ipv4.tcp_fastopen=3
 net.ipv4.tcp_mtu_probing=1
+net.core.bpf_jit_enable=1
 ```
 
 Further, since the nodes are not exposed to the internet, the following GRUB boot configs have been implemented:
