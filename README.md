@@ -85,8 +85,8 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --kubelet-arg=containerd=/run/k3s/containerd/containerd.sock \
 --secrets-encryption \
 --flannel-backend=none \
---cluster-cidr=172.16.0.0/16 \
 --disable-network-policy \
+--disable-kube-proxy \
 --etcd-expose-metrics \
 --etcd-s3 \
 --etcd-s3-endpoint ${S3_ENDPOINT} \
@@ -108,7 +108,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest K3S_URL=https://${NODE
 ```shell
 kubectl create ns flux-system # Seed the namespace
 
-cat age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin # Add the sops key
+cat /root/age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin # Add the sops key
 
 curl -s https://fluxcd.io/install.sh | sudo bash # ensure flux is latest on host
 
