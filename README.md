@@ -87,6 +87,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token ${MYTO
 --flannel-backend=none \
 --disable-network-policy \
 --disable-kube-proxy \
+--cluster-cidr "10.0.0.0/8" \
 --etcd-expose-metrics \
 --etcd-s3 \
 --etcd-s3-endpoint ${S3_ENDPOINT} \
