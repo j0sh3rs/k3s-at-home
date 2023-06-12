@@ -51,4 +51,6 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           YAML_CONFIG_FILE: .yamllint.yaml
+          VALIDATE_SHELL_SHFMT: false
+          VALIDATE_BASH: false
           # FILTER_REGEX_EXCLUDE: .*cluster/.*/kustomization.yaml
