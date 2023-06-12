@@ -19,7 +19,8 @@ spec:
   values:
     image:
       tag: 8.2.1
-    ingress:
-      enabled: true
-      hosts:
-        - polaris.bth.wtf
+    dashboard:
+      ingress:
+        enabled: true
+        hosts:
+          - polaris.bth.wtf
