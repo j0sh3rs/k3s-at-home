@@ -10,4 +10,5 @@ resources:
   # - falco
   - kube-prometheus-stack
   - node-problem-detector
+  - tetragon
   - unifi-poller
