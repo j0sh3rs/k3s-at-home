@@ -8,6 +8,7 @@ resources:
   - cilium.yaml
   - deliveryhero.yaml
   - fairwinds.yaml
+  - falcosecurity.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
   - j0sh3rs.yaml
