@@ -35,11 +35,6 @@ spec:
       kind: modern-ebpf
       ebpf:
         leastPrivileged: true
-    falco:
-      grpc:
-        enabled: true
-      grpc_output:
-        enabled: true
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     collectors:

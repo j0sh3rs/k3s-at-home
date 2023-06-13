@@ -7,7 +7,7 @@ resources:
   - blackbox-exporter
   - cadvisor
   # - cloudflare-exporter
-  # - falco
+  - falco
   - kube-prometheus-stack
   - node-problem-detector
   - unifi-poller
