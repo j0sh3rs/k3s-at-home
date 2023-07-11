@@ -6,8 +6,6 @@ resources:
   - auditors
   - blackbox-exporter
   - cadvisor
-  # - cloudflare-exporter
-  # - falco
   - kube-prometheus-stack
   # - node-problem-detector
   - tetragon

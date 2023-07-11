@@ -8,6 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
+    # renovate: registryUrl=https://charts.deliveryhero.io/
       chart: node-problem-detector
       version: 2.3.5
       sourceRef:
