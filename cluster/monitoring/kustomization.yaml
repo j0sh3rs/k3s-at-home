@@ -9,6 +9,6 @@ resources:
   # - cloudflare-exporter
   # - falco
   - kube-prometheus-stack
-  - node-problem-detector
+  # - node-problem-detector
   - tetragon
   - unifi-poller
