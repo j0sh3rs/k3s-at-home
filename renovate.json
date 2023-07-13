@@ -58,7 +58,8 @@
   },
   "flux": {
     "fileMatch": [
-      "(cluster|bootstrap)\/.+\\*.yaml$"
+      "cluster\/.+\/*.yaml$",
+      "bootstrap\/.+\/*.yaml$"
     ]
   },
   "regexManagers": [
