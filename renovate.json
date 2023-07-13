@@ -86,6 +86,16 @@
       ],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver"
+    },
+    {
+      "fileMatch": [
+        "^bootstrap\/crds\/.*\/.*.yaml$"
+      ],
+      "description": "Handle CRD Gitrepo Updates",
+      "datasourceTemplate": "github-tags",
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?)\n"
+      ]
     }
   ],
   "packageRules": [
