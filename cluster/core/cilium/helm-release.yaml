@@ -45,6 +45,7 @@ spec:
       enabled: false
     operator:
       rollOutPods: true
+      replicas: 1
     hubble:
       enabled: true
       metrics:
