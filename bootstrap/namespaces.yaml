@@ -1,14 +1,14 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: services
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: longhorn-system
----
+# ---
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: services
+#---
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: longhorn-system
+#---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -38,11 +38,11 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: ingress-nginx
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: crowdsec
+    #---
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: crowdsec
 ---
 apiVersion: v1
 kind: Namespace
