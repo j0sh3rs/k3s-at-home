@@ -23,6 +23,7 @@ encryption:
     enabled: false
 operator:
     rollOutPods: true
+    replicas: 1
 hubble:
     enabled: true
     metrics:
@@ -67,8 +68,8 @@ sops:
             b2ZzdkdkdlNzTnlTeVpzcEMyYjlTVm8KHJSJlXSqZjT01CulFxFGSlQQJTCF5NjQ
             DvPqPMpLHY3sMlC9GveExrcwJciR7++j64QE7oywKuuDWXtipWQMeg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-06-12T13:29:57Z"
-    mac: ENC[AES256_GCM,data:xah3QLHDkaZlT/cSFZismUplkJLpFAof8LI4M40Ky7b2dqS3dIt0ZPA10Hx6FMfdUZsEJP4BSLAcXF+RwjNYKk07Twm2gjB0v9ZoOw0PHpqFbq+2vnYzxARQ0lvk1cLSNQR1HEZLY9QAJING0BqwHLWDlbGmoH+RP/mD3vCMzcQ=,iv:Q1YThAMfeJZ9Chgg1Hi5KeZlm0BUTezTa/UoUVdIqn8=,tag:gzfl3leTRhiXE+s6ld55KA==,type:str]
+    lastmodified: "2023-08-07T20:02:51Z"
+    mac: ENC[AES256_GCM,data:L8q/MDpo4fQ/AjA5nQaR93TP5mnz6m/u7vD1yy7oD7w9gdRYQychUE5mkgjqZe14zl/RYB4IGPrRKQvb3yvpdWwvqHERaEqPu9ME+gZNKNdXMLh/k7fooe8O2TvnOBHvK2Ttxg5Lvk3c3v/F/sMHTRmZ9lxv9GbzuYA8JkGDZOk=,iv:LwycvlSgtBgvK0H8LkzMpdQxgPbkUUrICuVaXNCTDeQ=,tag:irGyTL/jMRY8FBdISsqaRQ==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData|k8sServiceHost)$
     version: 3.7.3
