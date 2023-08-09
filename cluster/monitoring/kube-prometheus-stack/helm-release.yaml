@@ -79,13 +79,6 @@ spec:
               - namespace
       alertmanagerSpec:
         replicas: 1
-        storage:
-          volumeClaimTemplate:
-            spec:
-              accessModes: ['ReadWriteMany']
-              resources:
-                requests:
-                  storage: 10Gi
         resources:
           requests:
             cpu: 50m
