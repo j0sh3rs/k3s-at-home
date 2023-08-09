@@ -207,7 +207,7 @@ spec:
     kubeApiServer:
       enabled: true
     kubeEtcd:
-      enabeld: false
+      enabled: false
     grafana:
       enabled: false
       forceDeployDashboards: true
