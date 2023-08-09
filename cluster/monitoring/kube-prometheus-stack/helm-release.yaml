@@ -207,9 +207,7 @@ spec:
     kubeApiServer:
       enabled: true
     kubeEtcd:
-      enabeld: true
-      endpoints:
-        - 192.168.35.3
+      enabeld: false
     grafana:
       enabled: false
       forceDeployDashboards: true
