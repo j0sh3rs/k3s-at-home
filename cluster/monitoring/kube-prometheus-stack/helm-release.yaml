@@ -198,14 +198,10 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.3
-        - 192.168.35.6
-        - 192.168.35.9
     kubeScheduler:
       enabled: true
       endpoints:
         - 192.168.35.3
-        - 192.168.35.6
-        - 192.168.35.9
     kubeProxy:
       enabled: false
     kubeApiServer:
@@ -214,8 +210,6 @@ spec:
       enabeld: true
       endpoints:
         - 192.168.35.3
-        - 192.168.35.6
-        - 192.168.35.9
     grafana:
       enabled: false
       forceDeployDashboards: true
