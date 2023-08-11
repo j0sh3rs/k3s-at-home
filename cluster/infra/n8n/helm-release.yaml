@@ -89,6 +89,8 @@ spec:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
       className: "nginx"
+      hosts:
+        - paths: ["/"]
     resources:
       limits:
         cpu: 500m
