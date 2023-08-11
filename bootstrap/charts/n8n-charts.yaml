@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: n8n-charts
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://8gears.container-registry.com/chartrepo/library
+  timeout: 3m
