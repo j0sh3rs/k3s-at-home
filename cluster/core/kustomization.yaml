@@ -7,7 +7,6 @@ resources:
   - flux-system
   - ingress-nginx
   - kube-system
-  # - longhorn
   - metallb
   - nfs-subdir-external-provisioner
   - system-upgrade

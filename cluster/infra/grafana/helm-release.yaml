@@ -69,8 +69,8 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - camptocamp-prometheus-alertmanager-datasource
-      - redis-datasource
-      - redis-app
+      # - redis-datasource
+      # - redis-app
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
@@ -89,7 +89,7 @@ spec:
         datasources:
           - name: Prometheus
             type: prometheus
-            url: http://thanos-query.monitoring:9090
+            url: http://prometheus-prometheus.monitoring:9090
             isDefault: true
           # - name: Loki
           #   type: Loki
@@ -160,9 +160,9 @@ spec:
           gnetId: 13768
           datasource: Prometheus
           revision: 3
-        redis:
-          gnetId: 11835
-          datasource: Prometheus
+        # redis:
+        #   gnetId: 11835
+        #   datasource: Prometheus
     sidecar:
       resources:
         requests:
