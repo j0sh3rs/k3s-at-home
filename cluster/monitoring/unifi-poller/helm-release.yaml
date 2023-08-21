@@ -23,7 +23,7 @@ spec:
         memory: 135Mi
       limits:
         cpu: 1
-        memory: 256Mi
+        memory: 512Mi
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
