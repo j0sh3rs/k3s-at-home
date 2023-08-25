@@ -45,7 +45,7 @@ repos:
           - --config
           - '.github/linters/.markdownlint.yaml'
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.24.1
+    rev: 0.26.0
     hooks:
       - id: check-renovate
   - repo: https://github.com/zricethezav/gitleaks
