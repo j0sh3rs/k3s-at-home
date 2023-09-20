@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://8gears.container-registry.com/chartrepo/library
       chart: n8n
-      version: 0.12.1
+      version: 0.13.0
       sourceRef:
         kind: HelmRepository
         name: n8n-charts
