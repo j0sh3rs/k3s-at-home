@@ -31,6 +31,8 @@ spec:
   values:
     podAnnotations:
       reloader.stakater.com/auto: 'true'
+    podLabels:
+      dummy.pod.label/bump: 'true'
     image:
       pullPolicy: Always
     ingress:
