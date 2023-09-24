@@ -20,6 +20,7 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
+    force: true
   valuesFrom:
     - kind: Secret
       name: grafana-secrets
