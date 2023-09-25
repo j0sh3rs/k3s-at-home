@@ -415,18 +415,18 @@ spec:
           #       regex: (.*)
           #       replacement: ${1}:9116
           #       target_label: __address__
-          - job_name: nas_minio
-            static_configs:
-              - targets: ['s3.68cc.io']
-            scrape_interval: 60s
-            metrics_path: '/minio/v2/metrics/cluster'
-            scheme: https
-          - job_name: nas_node_exporter
-            static_configs:
-              - targets: ['nas.68cc.io']
-            scrape_interval: 60s
-            metrics_path: '/metrics'
-            scheme: https
+          # - job_name: nas_minio
+          #   static_configs:
+          #    - targets: ['s3.68cc.io']
+          #   scrape_interval: 60s
+          #  metrics_path: '/minio/v2/metrics/cluster'
+          #  scheme: https
+          # - job_name: nas_node_exporter
+          #   static_configs:
+          #   - targets: ['nas.68cc.io']
+          #   scrape_interval: 60s
+          #   metrics_path: '/metrics'
+          #   scheme: https
           - job_name: 'kubernetes-ingresses'
             metrics_path: /probe
             scrape_interval: 60s
