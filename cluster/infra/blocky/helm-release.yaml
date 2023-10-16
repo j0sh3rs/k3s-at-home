@@ -37,10 +37,10 @@ spec:
     resources:
       requests:
         cpu: 100m
-        memory: 256M
-      limits:
-        cpu: 300m
         memory: 512M
+      limits:
+        cpu: 1
+        memory: 2G
     service:
       main:
         enabled: true
