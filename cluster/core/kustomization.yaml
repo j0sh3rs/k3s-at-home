@@ -9,4 +9,4 @@ resources:
   - kube-system
   - metallb
   # - nfs-subdir-external-provisioner
-  - system-upgrade
+  # - system-upgrade
