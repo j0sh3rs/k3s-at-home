@@ -8,7 +8,7 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-    - 192.168.35.10-192.168.35.30
+    - 192.168.35.11-192.168.35.50
 status: {}
 ---
 apiVersion: metallb.io/v1beta1

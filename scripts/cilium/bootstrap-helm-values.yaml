@@ -14,7 +14,7 @@ containerRuntime:
     integration: containerd
 kubeConfigPath: /etc/rancher/k3s/k3s.yaml
 kubeProxyReplacement: strict
-k8sServiceHost: ENC[AES256_GCM,data:SNdngex0lA6i5JRY,iv:RIGwbTSa7ujy1EsW9Rrjo3vTMFmRW8emTiAv8Ws0BlA=,tag:MTTfZ7WWa6/19rQJlNy8sQ==,type:str]
+k8sServiceHost: ENC[AES256_GCM,data:IToxvc3maASe0Wxnyw==,iv:uJkgOaThCB3oyfcM5BTSxy4eDpUgk/uK29XPb6R0xTk=,tag:mrE5afNKJhuEChwbYPO0Kw==,type:str]
 k8sServicePort: "6443"
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 loadBalancer:
@@ -68,8 +68,8 @@ sops:
             b2ZzdkdkdlNzTnlTeVpzcEMyYjlTVm8KHJSJlXSqZjT01CulFxFGSlQQJTCF5NjQ
             DvPqPMpLHY3sMlC9GveExrcwJciR7++j64QE7oywKuuDWXtipWQMeg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-08-07T20:02:51Z"
-    mac: ENC[AES256_GCM,data:L8q/MDpo4fQ/AjA5nQaR93TP5mnz6m/u7vD1yy7oD7w9gdRYQychUE5mkgjqZe14zl/RYB4IGPrRKQvb3yvpdWwvqHERaEqPu9ME+gZNKNdXMLh/k7fooe8O2TvnOBHvK2Ttxg5Lvk3c3v/F/sMHTRmZ9lxv9GbzuYA8JkGDZOk=,iv:LwycvlSgtBgvK0H8LkzMpdQxgPbkUUrICuVaXNCTDeQ=,tag:irGyTL/jMRY8FBdISsqaRQ==,type:str]
+    lastmodified: "2023-10-16T17:35:01Z"
+    mac: ENC[AES256_GCM,data:XSP+0aNm46AWJivR0Yyy4EO/bBZYezhJvDK77XQx4KMv/iz+YNlA5THPZJTkN/iVKtMMF5biT5YNow1pOrNgV9df1TSzq8QLr5ko6N0bylVm5/vRkFlwm0Xn3TPti09CiozO5iPbzBCbZoo02hSji/zqqJlorfLr4i8guLVMGdE=,iv:Pa9pOtLJukGhWHujVXxE8g5dflRGeC3dEQ0QIxbdRMA=,tag:371rPj7F4FNtCJC7z1MIIA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData|k8sServiceHost)$
-    version: 3.7.3
+    version: 3.8.1

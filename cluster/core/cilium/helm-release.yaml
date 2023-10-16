@@ -36,7 +36,7 @@ spec:
       integration: "containerd"
     kubeConfigPath: "/etc/rancher/k3s/k3s.yaml"
     kubeProxyReplacement: "strict"
-    k8sServiceHost: "192.168.35.3"
+    k8sServiceHost: "192.168.35.10"
     k8sServicePort: "6443"
     kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
     loadBalancer:
