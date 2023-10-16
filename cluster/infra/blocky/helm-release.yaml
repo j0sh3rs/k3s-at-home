@@ -36,11 +36,11 @@ spec:
         enabled: true
     resources:
       requests:
-        cpu: 100m
-        memory: 512M
-      limits:
         cpu: 1
-        memory: 2G
+        memory: 1G
+      limits:
+        cpu: 2
+        memory: 5G
     service:
       main:
         enabled: true
