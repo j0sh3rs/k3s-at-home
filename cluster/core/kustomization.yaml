@@ -8,5 +8,5 @@ resources:
   - ingress-nginx
   - kube-system
   - metallb
-  - nfs-subdir-external-provisioner
+  # - nfs-subdir-external-provisioner
   - system-upgrade
