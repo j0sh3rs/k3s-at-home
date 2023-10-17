@@ -19,7 +19,7 @@ resources:
   - kubernetes-sigs-metrics-server.yaml
   - kured-charts.yaml
   - lablabs.yaml
-  # - longhorn.yaml
+  - longhorn.yaml
   - metallb.yaml
   - minecraft-charts.yaml
   - n8n-charts.yaml
