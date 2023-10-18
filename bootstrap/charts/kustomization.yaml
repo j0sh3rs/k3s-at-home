@@ -30,4 +30,5 @@ resources:
   - runix-charts.yaml
   - searxng.yaml
   - stakater-charts.yaml
+  - truecharts.yaml
   - vector.yaml
