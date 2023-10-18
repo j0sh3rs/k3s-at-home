@@ -21,30 +21,6 @@ spec:
       name: blocky-config
       valuesKey: config
       targetPath: config
-    - kind: Secret
-      name: blocky-config
-      valuesKey: blockyMetalLBIP
-      targetPath: service.dns-tcp.loadBalancerIP
-    - kind: Secret
-      name: blocky-config
-      valuesKey: blockyMetalLBIP
-      targetPath: service.dns-tcp.annotations.metallb.universe.tf/loadBalancerIps
-    - kind: Secret
-      name: blocky-config
-      valuesKey: blockyMetalLBShareKey
-      targetPath: service.dns-tcp.annotations.metallb.universe.tf/allow-shared-ip
-    - kind: Secret
-      name: blocky-config
-      valuesKey: blockyMetalLBIP
-      targetPath: service.dns-udp.annotations.metallb.universe.tf/loadBalancerIps
-    - kind: Secret
-      name: blocky-config
-      valuesKey: blockyMetalLBShareKey
-      targetPath: service.dns-udp.annotations.metallb.universe.tf/allow-shared-ip
-    - kind: Secret
-      name: blocky-config
-      valuesKey: blockyMetalLBIP
-      targetPath: service.dns-udp.loadBalancerIP
   values:
     controller:
       annotations:
@@ -75,12 +51,18 @@ spec:
       dns-tcp:
         enabled: true
         type: LoadBalancer
+        loadBalancerIP: 192.168.35.12
         annotations:
           metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.12
+          metallb.universe.tf/allow-shared-ip: 'blocky-192.168.35.12'
       dns-udp:
         enabled: true
         type: LoadBalancer
+        loadBalancerIP: 192.168.35.12
         annotations:
           metallb.universe.tf/address-pool: default
+          metallb.universe.tf/loadBalancerIps: 192.168.35.12
+          metallb.universe.tf/allow-shared-ip: 'blocky-192.168.35.12'
     env:
       TZ: America/New_York
