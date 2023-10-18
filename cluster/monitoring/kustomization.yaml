@@ -7,4 +7,5 @@ resources:
    - blackbox-exporter
    - cadvisor
    - kube-prometheus-stack
+   - node-problem-detector
    - unifi-poller

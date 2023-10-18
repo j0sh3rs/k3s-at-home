@@ -33,6 +33,9 @@ spec:
       reloader.stakater.com/auto: 'true'
     image:
       pullPolicy: Always
+    persistence:
+      enabled: true
+      size: 50Gi
     ingress:
       enabled: true
     rbac:
