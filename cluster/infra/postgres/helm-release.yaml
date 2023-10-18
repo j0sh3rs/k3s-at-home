@@ -35,6 +35,6 @@ spec:
       storage:
         size: 50Gi
     metrics:
-      enabled: true
+      enabled: false
       serviceMonitor:
-        enabled: true
+        enabled: false
