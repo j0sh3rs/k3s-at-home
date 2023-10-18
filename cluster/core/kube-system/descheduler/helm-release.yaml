@@ -20,46 +20,6 @@ spec:
     leaderElection:
       enabled: false
     schedule: '*/15 * * * *' # Every 15 minutes
+    timeZone: "America/New_York"
     deschedulerPolicy:
       ignorePvcPods: true
-      strategies:
-        RemovePodsHavingTooManyRestarts:
-          enabled: true
-          params:
-            podsHavingTooManyRestarts:
-              podRestartThreshold: 5
-              includingInitContainers: true
-              namespaces:
-                include:
-                  - 'kube-system'
-                  - 'metallb-system'
-                  - 'monitoring'
-                  - 'services'
-                  - 'system-upgrade'
-        PodLifeTime:
-          enabled: true
-          params:
-            podLifeTime:
-              maxPodLifeTimeSeconds: 604800
-              namespaces:
-                include:
-                  - 'kube-system'
-                  - 'metallb-system'
-                  - 'monitoring'
-                  - 'services'
-                  - 'system-upgrade'
-        RemoveDuplicates:
-          enabled: false
-        RemovePodsViolatingInterPodAntiAffinity:
-          enabled: false
-        LowNodeUtilization:
-          enabled: true
-          params:
-            nodeResourceUtilizationThresholds:
-              targetThresholds:
-                'cpu': 80
-                'memory': 70
-                'pods': 70
-              thresholds:
-                'cpu': 60
-                'memory': 40
