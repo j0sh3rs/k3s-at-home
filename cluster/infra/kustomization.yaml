@@ -6,6 +6,6 @@ resources:
   # - grafana
   - memcached
   # - n8n
-  - postgres
+  # - postgres
   - redis
   - vpa
