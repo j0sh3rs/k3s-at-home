@@ -8,4 +8,4 @@ resources:
   # - n8n
   # - postgres
   - redis
-  - vpa
+  # - vpa

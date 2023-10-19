@@ -21,9 +21,6 @@ spec:
       requests:
         cpu: 100m
         memory: 256Mi
-      limits:
-        cpu: 200m
-        memory: 512Mi
     leaderElection:
       namespace: cert-manager
     extraArgs:
@@ -44,9 +41,6 @@ spec:
         requests:
           cpu: 100m
           memory: 128Mi
-        limits:
-          cpu: 200m
-          memory: 256Mi
       image:
         pullPolicy: Always
     cainjector:
@@ -54,8 +48,5 @@ spec:
         requests:
           cpu: 100m
           memory: 256Mi
-        limits:
-          cpu: 200m
-          memory: 512M
       image:
         pullPolicy: Always

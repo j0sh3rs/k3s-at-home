@@ -35,9 +35,6 @@ spec:
         limits:
           cpu: 150m
           memory: 256Mi
-        requests:
-          cpu: 50m
-          memory: 128Mi
     auth:
       enabled: false
       sentinel: false
@@ -52,6 +49,3 @@ spec:
         requests:
           cpu: 50m
           memory: 53M
-        limits:
-          cpu: 330m
-          memory: 166M

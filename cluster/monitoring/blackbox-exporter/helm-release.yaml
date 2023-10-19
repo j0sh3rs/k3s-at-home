@@ -26,9 +26,6 @@ spec:
       requests:
         cpu: 100m
         memory: 135Mi
-      limits:
-        cpu: 100m
-        memory: 256Mi
     config:
       modules:
         icmp:
@@ -56,9 +53,6 @@ spec:
         interval: 2m
         scrapeTimeout: 30s
       targets:
-        - name: nas
-          url: '192.168.35.5'
-          module: icmp
         - name: b3
           url: '192.168.35.10'
           module: icmp

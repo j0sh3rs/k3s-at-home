@@ -102,17 +102,11 @@ spec:
         requests:
           cpu: 100m
           memory: 384Mi
-        limits:
-          cpu: 300m
-          memory: 778Mi
       prometheusConfigReloader:
         resources:
           requests:
             cpu: 100m
             memory: 64Mi
-          limits:
-            cpu: 200m
-            memory: 128Mi
       podAnnotations:
         reloader.stakater.com/auto: 'true'
       verticalPodAutoscaler:
@@ -258,9 +252,6 @@ spec:
           requests:
             cpu: 250m
             memory: 2384M
-          limits:
-            cpu: 2
-            memory: 15G
         replicas: 1
         replicaExternalLabelName: replica
         ruleSelectorNilUsesHelmValues: false

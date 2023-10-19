@@ -38,9 +38,6 @@ spec:
       requests:
         cpu: 500m
         memory: 1G
-      limits:
-        cpu: 2
-        memory: 5G
     service:
       main:
         enabled: true

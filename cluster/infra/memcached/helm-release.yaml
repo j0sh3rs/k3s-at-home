@@ -21,9 +21,6 @@ spec:
       requests:
         cpu: 50m
         memory: 64Mi
-      limits:
-        cpu: 300m
-        memory: 256Mi
     persistence:
       enabled: true
     metrics:
@@ -32,6 +29,3 @@ spec:
         requests:
           cpu: 50m
           memory: 64Mi
-        limits:
-          cpu: 300m
-          memory: 256Mi

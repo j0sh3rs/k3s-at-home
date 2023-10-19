@@ -49,9 +49,6 @@ spec:
       requests:
         cpu: 250m
         memory: 127M
-      limits:
-        cpu: 1
-        memory: 4Gi
     admin:
       existingSecret: grafana-admin-secrets
     envFromSecret: 'grafana-secrets'
@@ -162,9 +159,6 @@ spec:
         requests:
           cpu: 50m
           memory: 94M
-        limits:
-          cpu: 1
-          memory: 214M
       datasources:
         enabled: true
         defaultDatasourceEnabled: true
