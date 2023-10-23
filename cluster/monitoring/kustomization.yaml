@@ -9,4 +9,4 @@ resources:
    - kube-prometheus-stack
    - node-problem-detector
    - unifi-poller
-   - uptime-kuma
+   # - uptime-kuma
