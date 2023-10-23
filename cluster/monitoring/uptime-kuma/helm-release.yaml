@@ -29,6 +29,10 @@ spec:
     ingress:
       enabled: true
       className: 'nginx'
+      hosts:
+        - paths:
+          - path: /
+            type: ImplementationSpecific
     volume:
       size: 20Gi
     serviceMonitor:
