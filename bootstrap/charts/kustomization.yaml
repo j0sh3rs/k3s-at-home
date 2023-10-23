@@ -1,5 +1,5 @@
 ---
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.config.k8s.io/v1
 kind: Kustomization
 resources:
   - aquasecurity.yaml
@@ -11,6 +11,7 @@ resources:
   - falcosecurity.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
+  - irsigler.yaml
   - j0sh3rs.yaml
   - jaeger.yaml
   - jetstack.yaml
