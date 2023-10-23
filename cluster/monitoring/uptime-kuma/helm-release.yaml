@@ -32,7 +32,7 @@ spec:
       hosts:
         - paths:
           - path: /
-            type: ImplementationSpecific
+            pathType: ImplementationSpecific
     volume:
       size: 20Gi
     serviceMonitor:
