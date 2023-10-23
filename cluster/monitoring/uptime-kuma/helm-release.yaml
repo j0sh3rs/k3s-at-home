@@ -22,7 +22,7 @@ spec:
     serviceAccount:
       create: true
     ingress:
-      enabled: true
+      enabled: false
       className: 'nginx'
       hosts:
         - host: uptime.bth.wtf
