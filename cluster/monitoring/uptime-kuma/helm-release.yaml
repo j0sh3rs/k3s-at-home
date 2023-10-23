@@ -16,6 +16,19 @@ spec:
         name: irsigler-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: uptime-kuma-secrets
+      valuesKey: INGRESS_DOMAIN
+      targetPath: ingress.hosts[0].host
+    - kind: Secret
+      name: uptime-kuma-secrets
+      valuesKey: ADMIN_USERNAME
+      targetPath: serviceMonitor.basicAuth.username
+    - kind: Secret
+      name: uptime-kuma-secrets
+      valuesKey: ADMIN_PASS
+      targetPath: serviceMonitor.basicAuth.password
   values:
     nameOverride: "uptime-kuma"
     fullnameOverride: "uptime-kuma"
@@ -25,8 +38,7 @@ spec:
       enabled: true
       className: 'nginx'
       hosts:
-        - host: uptime.bth.wtf
-          paths:
+        - paths:
           - path: /
             pathType: ImplementationSpecific
     volume:
