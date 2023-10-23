@@ -19,10 +19,6 @@ spec:
   valuesFrom:
     - kind: Secret
       name: uptime-kuma-secrets
-      valuesKey: INGRESS_DOMAIN
-      targetPath: ingress.hosts[0].host
-    - kind: Secret
-      name: uptime-kuma-secrets
       valuesKey: ADMIN_USERNAME
       targetPath: serviceMonitor.basicAuth.username
     - kind: Secret
@@ -38,7 +34,8 @@ spec:
       enabled: true
       className: 'nginx'
       hosts:
-        - paths:
+        - host: uptime.bth.wtf
+          paths:
           - path: /
             pathType: ImplementationSpecific
     volume:
