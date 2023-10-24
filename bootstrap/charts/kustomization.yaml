@@ -6,6 +6,7 @@ resources:
   - bitnami-charts.yaml
   - botkube.yaml
   - cilium.yaml
+  - coredns.yaml
   - deliveryhero.yaml
   - fairwinds.yaml
   - falcosecurity.yaml
