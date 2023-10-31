@@ -36,6 +36,7 @@ spec:
     persistence:
       enabled: true
       size: 50Gi
+      storageClassName: longhorn
       accessModes:
         - ReadWriteMany
     ingress:
