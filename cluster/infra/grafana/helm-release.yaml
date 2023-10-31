@@ -33,12 +33,12 @@ spec:
       reloader.stakater.com/auto: 'true'
     image:
       pullPolicy: Always
-    persistence:
-      enabled: true
-      size: 50Gi
-      storageClassName: longhorn
-      accessModes:
-        - ReadWriteMany
+        # persistence:
+        #enabled: true
+        #size: 50Gi
+        #storageClassName: longhorn
+        #accessModes:
+        #- ReadWriteMany
     ingress:
       enabled: true
     rbac:
