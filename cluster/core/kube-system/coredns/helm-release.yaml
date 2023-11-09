@@ -17,6 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    service:
+      name: "kube-dns"
+      clusterIP: "10.43.0.10"
     resources:
       limits:
         cpu: 1
