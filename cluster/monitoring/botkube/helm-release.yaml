@@ -30,6 +30,14 @@ spec:
       valuesKey: apiKey
       targetPath: config.provider.apiKey
   values:
+    settings:
+      clusterName: Homelab
+    serviceMonitor:
+      enabled: true
+    rbac:
+      groups:
+        flux-read-patch:
+          create: true
     deployment:
       annotations:
         reloader.stakater.com/auto: 'true'
@@ -37,3 +45,7 @@ spec:
       requests:
         cpu: 100m
         memory: 68Mi
+    communications:
+      default-group:
+        discord:
+          enabled: true
