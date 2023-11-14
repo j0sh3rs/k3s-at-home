@@ -37,7 +37,10 @@ spec:
     resources:
       requests:
         cpu: 500m
-        memory: 1G
+        memory: 1Gi
+      limits:
+        cpu: 2
+        memory: 8Gi
     service:
       main:
         enabled: true
