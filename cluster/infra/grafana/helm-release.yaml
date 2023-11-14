@@ -154,6 +154,9 @@ spec:
           gnetId: 13768
           datasource: Prometheus
           revision: 3
+        cloudnative-pg:
+          url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
+          datasource: Prometheus
         # redis:
         #   gnetId: 11835
         #   datasource: Prometheus
