@@ -27,9 +27,6 @@ spec:
         reloader.stakater.com/auto: 'true'
       strategy: RollingUpdate
       type: daemonset
-      rollingUpdate:
-        unavailable: 1
-        surge: 4
     metrics:
       enabled: true
       prometheusRule:
@@ -39,7 +36,7 @@ spec:
         cpu: 500m
         memory: 1Gi
       limits:
-        cpu: 2
+        cpu: 4
         memory: 8Gi
     service:
       main:
