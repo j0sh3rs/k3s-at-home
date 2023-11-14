@@ -16,24 +16,24 @@ spec:
         name: botkube-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: endpoint
+      targetPath: config.provider.endpoint
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: identifier
+      targetPath: config.provider.identifier
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: apiKey
+      targetPath: config.provider.apiKey
   values:
-    settings:
-      clusterName: k3s
-    fullnameOverride: botkube
-    existingCommunicationsSecretName: botkube-communication-secret
-    executors:
-      'kubectl-read-only':
-        kubectl:
-          enabled: true
-          defaultNamespace: services
-          restrictAccess: true
     deployment:
       annotations:
         reloader.stakater.com/auto: 'true'
     resources:
-      limits:
-        cpu: 200m
-        memory: 725M
       requests:
-        cpu: 50m
-        memory: 68M
+        cpu: 100m
+        memory: 68Mi
