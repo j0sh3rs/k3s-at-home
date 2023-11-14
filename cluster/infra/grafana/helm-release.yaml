@@ -63,8 +63,8 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - camptocamp-prometheus-alertmanager-datasource
-      # - redis-datasource
-      # - redis-app
+      - redis-datasource
+      - redis-app
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
@@ -157,9 +157,9 @@ spec:
         cloudnative-pg:
           url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
           datasource: Prometheus
-        # redis:
-        #   gnetId: 11835
-        #   datasource: Prometheus
+        redis:
+          gnetId: 11835
+          datasource: Prometheus
     sidecar:
       resources:
         requests:
