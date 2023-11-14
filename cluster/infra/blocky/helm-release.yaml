@@ -26,7 +26,7 @@ spec:
       annotations:
         reloader.stakater.com/auto: 'true'
       strategy: RollingUpdate
-      # type: daemonset
+      type: daemonset
       rollingUpdate:
         unavailable: 1
         surge: 4
