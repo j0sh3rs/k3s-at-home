@@ -34,9 +34,6 @@ spec:
       # When set to false leader election will be disabled
       enabled: true
     resources:
-      limits:
-        cpu: 200m
-        memory: 128Mi
       requests:
         cpu: 200m
         memory: 128Mi
