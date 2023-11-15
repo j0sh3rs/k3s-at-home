@@ -1,170 +1,20 @@
-#!/usr/bin/env bash
-set -x
-## Vars for Behavior Pivots
-BOOTSTRAP_MASTER_NODE="bee-jms-03"
-MY_HOST=$(hostname)
-
-### Setup Kernel
-
-function set_kernel_tunings () {
-    cat <<-EOHD > /etc/sysctl.conf
-fs.file-max = 1048576
-fs.inotify.max_queued_events = 16384
-fs.inotify.max_user_instances = 512
-fs.inotify.max_user_watches = 1048576
-fs.suid_dumpable=0
-kernel.core_pattern=|/bin/false
-kernel.keys.root_maxbytes=25000000
-kernel.panic=10
-kernel.panic_on_oops=1
-net.core.bpf_jit_enable=1
-net.core.netdev_max_backlog=65535
-net.core.somaxconn=65535
-net.ipv4.ip_forward = 1
-net.ipv4.ip_local_port_range = 1024 65000
-net.ipv4.tcp_fastopen=3
-net.ipv4.tcp_max_syn_backlog=65535
-net.ipv4.tcp_max_tw_buckets=262144
-net.ipv4.tcp_mtu_probing=1
-vm.max_map_count = 262144
-vm.overcommit_memory=1
-vm.panic_on_oom=0
-EOHD
-sysctl -p
+{
+    "data": "ENC[AES256_GCM,data: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,iv:tuKTFVxm6SAdyD/pOwZT6tvT6BGaK/qqsdJeGgLQtPg=,tag:uR2qKc9ZKqqoMoC9tLSB4g==,type:str]",
+    "sops": {
+        "kms": null,
+        "gcp_kms": null,
+        "azure_kv": null,
+        "hc_vault": null,
+        "age": [
+            {
+                "recipient": "age1qwwzsz6z2mmu6hpmjt2he7nepmnhutmhehvkva7l5zy5xzf08d5s5n4d6n",
+                "enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsR0dFWXpPcW9hNkQ5bnov\nRTkrRVk4QXFkU0czcWs4RysrSW8xczR2REdJCkhxR0dOb054SkxVYS9uOHVrN3Nr\nRjlVTnlFcDJOWU5QK2pWM3FHRHdieDAKLS0tIEdENkoxRHZRYlVib29saTRzMlJh\nNW1jQUZtWEh3QXB5RjZQNWhCWmR1NUUKTfChQqg53NuFVTsFOB8vuFf9CQ8y/dpt\nV3Xrq2QQI10Khc3W2m4HPUGbkNMHYBDh56fiVmWcPTp1kNAKm7Advw==\n-----END AGE ENCRYPTED FILE-----\n"
+            }
+        ],
+        "lastmodified": "2023-11-15T03:47:38Z",
+        "mac": "ENC[AES256_GCM,data:i+Oix1IO9EiqNstNCzJlzPSImesHqWfPayezYe7M1+Pq6T8nDlO4w52Il8ZIawBqoJ7YV/LskmzMzJLWIsxcGGgUiu8HiOC8rFcrZeDLeshu2s3nhijH6f/mApXewsXkGqnLQyOdi4Pc6f3CfWo521JQ+F0NmM3N6A50mQUirn8=,iv:sNIk84T2KxruqYaq1npFo/nTM7uFSpIjI1edeRJ2Pqk=,tag:oD+VY3DxCy42nJw/qANlGQ==,type:str]",
+        "pgp": null,
+        "encrypted_regex": "^(data|stringData|k8sServiceHost)$",
+        "version": "3.8.1"
+    }
 }
-### Setup Packages
-
-function install_cilium_cli () {
-    CILIUM_CLI_VERSION="v0.15.13"
-    CLI_ARCH=amd64
-    if [ "$(uname -m)" = "aarch64" ]; then CLI_ARCH=arm64; fi
-    curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
-    sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
-    sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
-    rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
-}
-
-function install_flux_cli () {
-    curl -s https://fluxcd.io/install.sh | sudo bash
-}
-
-function install_k3s_initial () {
-    mkdir -p /var/lib/rancher/k3s/server
-    cat <<-EOHD > /var/lib/rancher/k3s/server/audit.yaml
----
-apiVersion: audit.k8s.io/v1
-kind: Policy
-rules:
-- level: Metadata
-EOHD
-
-    curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --token FofgJxtCfMK4AgQ4HCsvBUP9z8cwCCs9NKeRzpsarWPPh66fDwswJZcrp3kXAdUSTmAvbvwXhxdCumsCPyxuTw2xE98q62ZdX9T4brfjJ9SDYgFgczmWBiCDkuKmL9Zy \
-    --disable traefik \
-    --disable metrics-server \
-    --disable servicelb \
-    --disable local-storage \
-    --disable-cloud-controller \
-    --protect-kernel-defaults=true \
-    --write-kubeconfig-mode 0644 \
-    --kube-proxy-arg=metrics-bind-address=0.0.0.0 \
-    --kube-scheduler-arg=bind-address=0.0.0.0 \
-    --kube-apiserver-arg=audit-log-path=/var/log/k3s/server/audit.log \
-    --kube-apiserver-arg=audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml \
-    --kube-apiserver-arg=audit-log-maxage=7 \
-    --kube-apiserver-arg=audit-log-maxbackup=3 \
-    --kube-apiserver-arg=audit-log-maxsize=50 \
-    --kube-apiserver-arg=request-timeout=300s \
-    --kube-apiserver-arg=service-account-lookup=true \
-    --kube-controller-manager-arg=terminated-pod-gc-threshold=10 \
-    --kube-controller-manager-arg=use-service-account-credentials=true \
-    --kube-controller-manager-arg=bind-address=0.0.0.0 \
-    --kubelet-arg=streaming-connection-idle-timeout=5m \
-    --kubelet-arg=make-iptables-util-chains=true \
-    --kubelet-arg=containerd=/run/k3s/containerd/containerd.sock \
-    --secrets-encryption \
-    --etcd-expose-metrics \
-    --etcd-s3 \
-    --etcd-s3-endpoint https://s3.68cc.io \
-    --etcd-s3-access-key k3s \
-    --etcd-s3-secret-key k3s12345 \
-    --etcd-s3-bucket k8s \
-    --etcd-s3-folder backups/etcd \
-    --cluster-init \
-    --disable-kube-proxy \
-    --flannel-backend=none \
-    --disable-network-policy
-}
-
-function install_k3s_secondary () {
-  mkdir -p /var/lib/rancher/k3s/server
-  cat <<-EOHD > /var/lib/rancher/k3s/server/audit.yaml
----
-apiVersion: audit.k8s.io/v1
-kind: Policy
-rules:
-- level: Metadata
-EOHD
-
-  curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - --server https://192.168.35.10:6443 --token FofgJxtCfMK4AgQ4HCsvBUP9z8cwCCs9NKeRzpsarWPPh66fDwswJZcrp3kXAdUSTmAvbvwXhxdCumsCPyxuTw2xE98q62ZdX9T4brfjJ9SDYgFgczmWBiCDkuKmL9Zy \
-  --disable traefik \
-  --disable metrics-server \
-  --disable servicelb \
-  --disable local-storage \
-  --disable-cloud-controller \
-  --protect-kernel-defaults=true \
-  --write-kubeconfig-mode 0644 \
-  --kube-proxy-arg=metrics-bind-address=0.0.0.0 \
-  --kube-scheduler-arg=bind-address=0.0.0.0 \
-  --kube-apiserver-arg=audit-log-path=/var/log/k3s/server/audit.log \
-  --kube-apiserver-arg=audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml \
-  --kube-apiserver-arg=audit-log-maxage=7 \
-  --kube-apiserver-arg=audit-log-maxbackup=3 \
-  --kube-apiserver-arg=audit-log-maxsize=50 \
-  --kube-apiserver-arg=request-timeout=300s \
-  --kube-apiserver-arg=service-account-lookup=true \
-  --kube-controller-manager-arg=terminated-pod-gc-threshold=10 \
-  --kube-controller-manager-arg=use-service-account-credentials=true \
-  --kube-controller-manager-arg=bind-address=0.0.0.0 \
-  --kubelet-arg=streaming-connection-idle-timeout=5m \
-  --kubelet-arg=make-iptables-util-chains=true \
-  --kubelet-arg=containerd=/run/k3s/containerd/containerd.sock \
-  --secrets-encryption \
-  --etcd-expose-metrics \
-  --etcd-s3 \
-  --etcd-s3-endpoint https://s3.68cc.io \
-  --etcd-s3-access-key k3s \
-  --etcd-s3-secret-key k3s12345 \
-  --etcd-s3-bucket k8s \
-  --etcd-s3-folder backups/etcd \
-  --disable-kube-proxy \
-  --flannel-backend=none \
-  --disable-network-policy
-}
-
-function bootstrap_flux () {
-    kubectl create ns flux-system
-    cat /home/j0sh3rs/.config/sops/age/keys.txt | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin
-    flux bootstrap github \
-        --owner=j0sh3rs \
-        --repository=k3s-at-home \
-        --path=bootstrap \
-        --personal \
-        --network-policy=false
-}
-
-function bootstrap_cilium () {
-  export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-  cilium install --version 1.14.4 --helm-values cilium/bootstrap-helm-values.yaml
-}
-## Run on everything
-# set_kernel_tunings
-install_cilium_cli
-install_flux_cli
-if [ "$MY_HOST" == "$BOOTSTRAP_MASTER_NODE" ]; then
-  install_k3s_initial
-  sleep 5
-  bootstrap_cilium
-  bootstrap_flux
-else
-  install_k3s_secondary
-fi
