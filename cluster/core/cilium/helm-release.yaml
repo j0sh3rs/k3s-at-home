@@ -50,7 +50,7 @@ spec:
       rollOutPods: true
       replicas: 1
     hubble:
-      enabled: false
+      enabled: true
       metrics:
         enabled:
           - dns:query
@@ -71,7 +71,7 @@ spec:
         prometheus:
           enabled: true
       ui:
-        enabled: false
+        enabled: true
         rollOutPods: true
         ingress:
           enabled: true
