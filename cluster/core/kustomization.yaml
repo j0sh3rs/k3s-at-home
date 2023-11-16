@@ -3,11 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - cert-manager
-  # - cilium
+  - cilium
   - flux-system
   - ingress-nginx
   - kube-system
   - longhorn
-  - metallb
+  # - metallb
   # - nfs-subdir-external-provisioner
   # - system-upgrade
