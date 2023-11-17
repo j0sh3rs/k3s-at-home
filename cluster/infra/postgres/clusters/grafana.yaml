@@ -1,0 +1,23 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: grafana-pg
+  namespace: infra
+spec:
+  bootstrap:
+    initdb:
+      database: grafana
+      owner: grafana
+      localeCollate: 'en_US'
+      localCType: 'en_US'
+      secret:
+        name: grafana-pg-secrets
+  instances: 2
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 20Gi
+    storageClass: longhorn
+  monitoring:
+    enablePodMonitor: true
