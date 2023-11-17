@@ -19,7 +19,7 @@ spec:
   values:
     nfs:
       server: 192.168.35.5
-      path: /volume1/k3s/pods
+      path: /volume1/k8s/pods
       volumeName: nfs-subdir-external-provisioner-root
       # Reclaim policy for the main nfs volume
       reclaimPolicy: Delete
