@@ -9,8 +9,6 @@ spec:
     initdb:
       database: grafana
       owner: grafana
-      localeCollate: 'en_US'
-      localCType: 'en_US'
       secret:
         name: grafana-pg-secrets
   instances: 2

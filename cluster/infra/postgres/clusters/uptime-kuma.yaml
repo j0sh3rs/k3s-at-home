@@ -9,8 +9,6 @@ spec:
     initdb:
       database: uptime-kuma
       owner: uptime-kuma
-      localeCollate: 'en_US'
-      localCType: 'en_US'
       secret:
         name: uptime-kuma-pg-secrets
   instances: 2
