@@ -16,6 +16,11 @@ spec:
         name: bitnami-charts
         namespace: flux-system
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: postgresql-postgresql-ha-postgresql
+      valuesKey: password
+      targetPath: postgresql.password
   values:
     global:
       nameOverride: postgres
