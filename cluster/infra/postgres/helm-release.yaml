@@ -25,6 +25,10 @@ spec:
       name: postgresql-postgresql-ha-postgresql
       valuesKey: repmgr-password
       targetPath: postgresql.repmgrPassword
+    - kind: Secret
+      name: postgresql-postgresql-ha-pgpool
+      valuesKey: admin-password
+      targetPath: pgpool.adminPassword
   values:
     global:
       nameOverride: postgres
