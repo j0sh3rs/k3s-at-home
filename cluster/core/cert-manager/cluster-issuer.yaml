@@ -21,3 +21,4 @@ spec:
         selector:
           dnsZones:
             - 'bth.wtf'
+            - '68cc.io'

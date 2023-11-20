@@ -10,12 +10,14 @@ spec:
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   privateKey:
-    algorithm: ECDSA
+    algorithm: Ed25519
     size: 384
     rotationPolicy: Always
   dnsNames:
     - '*.bth.wtf'
     - bth.wtf
+    - '*.68cc.io'
+    - 68cc.io
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
