@@ -2,26 +2,20 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - aquasecurity.yaml
   - bitnami-charts.yaml
   - botkube.yaml
   - cilium.yaml
-  - cloudnative-pg.yaml
   - coredns.yaml
   - deliveryhero.yaml
   - fairwinds.yaml
-  - falcosecurity.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
   - irsigler.yaml
   - j0sh3rs.yaml
-  - jaeger.yaml
   - jetstack.yaml
-  - kubeclarity.yaml
   - kubernetes-sigs-descheduler-charts.yaml
   - kubernetes-sigs-metrics-server.yaml
   - kured-charts.yaml
-  - lablabs.yaml
   - longhorn.yaml
   - metallb.yaml
   - minecraft-charts.yaml
@@ -30,8 +24,4 @@ resources:
   - node-feature-discovery.yaml
   - oauth2-proxy.yaml
   - prometheus-community-charts.yaml
-  - runix-charts.yaml
-  - searxng.yaml
   - stakater-charts.yaml
-  - truecharts.yaml
-  - vector.yaml
