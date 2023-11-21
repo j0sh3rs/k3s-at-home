@@ -19,6 +19,7 @@ resources:
   - longhorn.yaml
   - metallb.yaml
   - minecraft-charts.yaml
+  - minio.yaml
   - n8n-charts.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
