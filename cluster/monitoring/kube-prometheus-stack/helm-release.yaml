@@ -192,13 +192,13 @@ spec:
       enabled: true
       endpoints:
         - 192.168.35.3
-        # - 192.168.35.6
+        - 192.168.35.6
         - 192.168.35.10
     kubeScheduler:
       enabled: true
       endpoints:
         - 192.168.35.3
-        # - 192.168.35.6
+        - 192.168.35.6
         - 192.168.35.10
     kubeProxy:
       enabled: false
@@ -330,7 +330,7 @@ spec:
                 replacement: ${1}
                 action: replace
               - source_labels: [__meta_kubernetes_namespace]
-                separator: ;
+                separator: ;k get
                 regex: (.*)
                 target_label: namespace
                 replacement: $1
