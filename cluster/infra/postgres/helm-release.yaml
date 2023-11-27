@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
-      chart: postgresql-ha
+      chart: postgresql
       version: 12.2.0
       sourceRef:
         kind: HelmRepository
@@ -18,21 +18,15 @@ spec:
       interval: 5m
   valuesFrom:
     - kind: Secret
-      name: postgresql-postgresql-ha-postgresql
+      name: postgresql-secrets
       valuesKey: password
       targetPath: postgresql.password
-    - kind: Secret
-      name: postgresql-postgresql-ha-postgresql
-      valuesKey: repmgr-password
-      targetPath: postgresql.repmgrPassword
-    - kind: Secret
-      name: postgresql-postgresql-ha-pgpool
-      valuesKey: admin-password
-      targetPath: pgpool.adminPassword
   values:
     global:
       nameOverride: postgres
       fullnameOverride: postgres
+      auth:
+        existingSecret: postgresql-secrets
     metrics:
       enabled: true
       serviceMonitor:
