@@ -28,7 +28,7 @@ spec:
       auth:
         existingSecret: postgresql-secrets
     metrics:
-      enabled: true
+      enabled: false
       serviceMonitor:
         enabled: true
     persistence:
