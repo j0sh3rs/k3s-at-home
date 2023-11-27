@@ -45,7 +45,7 @@ spec:
     volume:
       size: 20Gi
     serviceMonitor:
-      enabled: true
+      enabled: false
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     podEnv:
