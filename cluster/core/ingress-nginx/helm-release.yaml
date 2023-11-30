@@ -61,7 +61,7 @@ spec:
       image:
         pullPolicy: Always
       extraArgs:
-        default-ssl-certificate: ingress-nginx/wildcard-bth-wtf-tls
+        default-ssl-certificate: ingress-nginx/wildcard-68cc-io-tls
         maxmind-edition-ids: 'GeoLite2-City,GeoLite2-ASN,GeoLite2-Country'
       watchIngressWithoutClass: true
       ingressClassResource:
