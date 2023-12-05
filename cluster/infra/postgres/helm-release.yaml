@@ -34,9 +34,4 @@ spec:
     persistence:
       size: 50Gi
     backup:
-      enabled: true
-      storage:
-        storageClass: nfs-client
-        accessModes:
-          - ReadWriteMany
-        size: 50Gi
+      enabled: false
