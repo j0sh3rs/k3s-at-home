@@ -34,14 +34,14 @@ spec:
       enabled: true
       className: 'nginx'
       hosts:
-        - host: uptime.68cc.io
+        - host: uptime.bth.wtf
           paths:
           - path: /
             pathType: ImplementationSpecific
       tls:
-        - secretName: wildcard-68cc-io-tls
+        - secretName: wildcard-bth-wtf-tls
           hosts:
-            - uptime.68cc.io
+            - uptime.bth.wtf
     volume:
       size: 20Gi
     serviceMonitor:

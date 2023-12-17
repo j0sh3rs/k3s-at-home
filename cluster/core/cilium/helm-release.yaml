@@ -76,7 +76,7 @@ spec:
         ingress:
           enabled: true
           hosts:
-            - "hubble.68cc.io"
+            - "hubble.bth.wtf"
     securityContext:
       privileged: true
     prometheus:
