@@ -10,6 +10,7 @@ resources:
   - deliveryhero.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
+  - hashicorp.yaml
   - ingress-nginx.yaml
   - irsigler.yaml
   - j0sh3rs.yaml
