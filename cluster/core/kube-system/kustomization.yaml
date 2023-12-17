@@ -6,5 +6,5 @@ resources:
   - descheduler
   - metrics-server
   - reloader
-  - vault
+  # - vault
   # - kured
