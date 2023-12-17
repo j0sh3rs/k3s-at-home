@@ -28,6 +28,23 @@ spec:
       prometheusRules:
         enabled: true
     server:
+      ha:
+        enabled: true
+        config: |
+          ui = true
+          listener "tcp" {
+            tls_disable = 1
+            address = "[::]:8200"
+            cluster_address = "[::]:8201"
+          }
+          storage "file" {
+            path = "/vault/data"
+          }
+          service_registration "kubernetes" {}
+          telemetry {
+            prometheus_retention_time = "30s"
+            disable_hostname = true
+          }
       ingress:
         enabled: true
         ingressClassName: nginx
