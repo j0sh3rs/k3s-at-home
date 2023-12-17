@@ -37,8 +37,9 @@ spec:
             address = "[::]:8200"
             cluster_address = "[::]:8201"
           }
-          storage "file" {
-            path = "/vault/data"
+          storage "s3" {
+            bucket = "vault"
+            path = "secrets"
           }
           service_registration "kubernetes" {}
           telemetry {
