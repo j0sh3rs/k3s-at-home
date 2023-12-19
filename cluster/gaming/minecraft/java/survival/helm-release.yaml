@@ -34,10 +34,10 @@ spec:
           Size: 200Gi
     resources:
       requests:
-        memory: 10Gi
+        memory: 6Gi
         cpu: 250m
       limits:
-        memory: 15Gi
+        memory: 12Gi
     extraEnv:
       USE_AIKAR_FLAGS: true
       TZ: America/New_York
@@ -63,7 +63,7 @@ spec:
         apiKey:
           existingSecret: "minecraft-secrets"
       forceReDownload: true
-      memory: 10240M
+      memory: 6G
       difficulty: normal
       maxTickTime: -1
       serviceType: LoadBalancer
