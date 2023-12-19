@@ -31,7 +31,7 @@ spec:
       persistence:
         backupDir:
           enabled: true
-          Size: 200Gi
+          Size: 50Gi
     resources:
       requests:
         memory: 6Gi
