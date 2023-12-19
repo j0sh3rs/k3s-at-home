@@ -40,8 +40,6 @@ spec:
         memory: 15Gi
     extraEnv:
       USE_AIKAR_FLAGS: true
-      DEBUG: true
-      DEBUG_EXEC: true
       TZ: America/New_York
     minecraftServer:
       eula: "TRUE"
