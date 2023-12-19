@@ -50,7 +50,7 @@ spec:
       autoCurseForge:
         slug: "all-the-mods-9"
         parallelDownloads: 10
-        includeMods:
+        excludeMods:
           - functional-storage
           - structory
           - rs-requestify
