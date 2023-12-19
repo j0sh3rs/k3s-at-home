@@ -42,11 +42,6 @@ spec:
       USE_AIKAR_FLAGS: true
       DEBUG: true
       DEBUG_EXEC: true
-      CF_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            key: cf-api-key
-            name: minecraft-secrets
       TZ: America/New_York
     minecraftServer:
       eula: "TRUE"
@@ -55,6 +50,17 @@ spec:
       autoCurseForge:
         slug: "all-the-mods-9"
         parallelDownloads: 10
+        includeMods:
+          - functional-storage
+          - structory
+          - rs-requestify
+          - dark-mode-everywhere
+          - titanium
+          - industrial-foregoing-souls
+          - towers-of-the-wild-modded
+          - findme
+          - industrial-foregoing
+          - all-the-wizard-gear
         apiKey:
           existingSecret: "minecraft-secrets"
       forceReDownload: true
