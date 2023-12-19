@@ -25,12 +25,13 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        size: 50Gi
+        Size: 50Gi
     mcbackup:
       enabled: true
       persistence:
-        enabled: true
-        size: 200Gi
+        backupDir:
+          enabled: true
+          Size: 200Gi
     resources:
       requests:
         memory: 10Gi
