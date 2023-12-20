@@ -27,7 +27,7 @@ spec:
           - name: manual_mods
             mountPath: /downloads
         volumes:
-          - name: minecraft_mods
+          - name: manual_mods
             persistentVolumeClaim:
               claimName: minecraft-mods
     persistence:
