@@ -22,6 +22,14 @@ spec:
       tag: java21-graalvm
       pullSecret: ""
     strategyType: Recreate
+    extraVolumes:
+      - volumeMounts:
+          - name: manual_mods
+            mountPath: /downloads
+        volumes:
+          - name: minecraft_mods
+            persistentVolumeClaim:
+              claimName: minecraft-mods
     persistence:
       dataDir:
         enabled: true
