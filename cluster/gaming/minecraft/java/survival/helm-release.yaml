@@ -27,7 +27,7 @@ spec:
         enabled: true
         Size: 50Gi
     mcbackup:
-      enabled: true
+      enabled: false
       persistence:
         backupDir:
           enabled: true

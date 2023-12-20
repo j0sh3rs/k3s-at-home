@@ -41,8 +41,6 @@ data:
   enable-modsecurity: 'false'
   enable-ocsp: 'true'
   enable-real-ip: 'false'
-  global-rate-limit-memcahed-host: memcached.infra.svc.cluster.local
-  global-rate-limit-memcahed-pool-size: '100'
   force-ssl-redirect: 'true'
   hsts: 'true'
   hsts-include-subdomains: 'true'
