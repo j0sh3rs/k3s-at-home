@@ -61,7 +61,6 @@ spec:
       forceReDownload: true
       memory: 10G
       difficulty: normal
-      maxTickTime: -1
       serviceType: LoadBalancer
       gameMode: survival
       ops: j0sh3rs
