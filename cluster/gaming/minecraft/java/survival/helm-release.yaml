@@ -34,7 +34,7 @@ spec:
           Size: 50Gi
     resources:
       requests:
-        memory: 6Gi
+        memory: 10Gi
         cpu: 250m
       limits:
         memory: 12Gi
@@ -63,7 +63,7 @@ spec:
         apiKey:
           existingSecret: "minecraft-secrets"
       forceReDownload: true
-      memory: 6G
+      memory: 10G
       difficulty: normal
       maxTickTime: -1
       serviceType: LoadBalancer
