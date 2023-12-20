@@ -49,13 +49,13 @@ spec:
     extraEnv:
       USE_AIKAR_FLAGS: true
       TZ: America/New_York
+      CF_DOWNLOADS_REPO: '/downloads'
     minecraftServer:
       eula: "TRUE"
       version: "1.20.1"
       type: AUTO_CURSEFORGE
       autoCurseForge:
         slug: "all-the-mods-9"
-        parallelDownloads: 10
         apiKey:
           existingSecret: "minecraft-secrets"
       forceReDownload: true
