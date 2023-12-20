@@ -24,10 +24,10 @@ spec:
     strategyType: Recreate
     extraVolumes:
       - volumeMounts:
-          - name: manual_mods
+          - name: manual-mods
             mountPath: /downloads
         volumes:
-          - name: manual_mods
+          - name: manual-mods
             persistentVolumeClaim:
               claimName: minecraft-mods
     persistence:
