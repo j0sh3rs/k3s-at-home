@@ -22,6 +22,8 @@ spec:
       valuesKey: LONGHORN_INGRESS_HOST
       targetPath: ingress.host
   values:
+    longhornUI:
+      replicas: 1
     ingress:
       enabled: true
       ingressClassName: nginx
