@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    serviceAnnotations:
+      metallb.universe.tf/loadBalancerIPs: '192.168.35.12'
     image:
       repository: itzg/minecraft-server
       tag: java21-graalvm
@@ -64,6 +66,7 @@ spec:
       serviceType: LoadBalancer
       gameMode: survival
       ops: j0sh3rs
+      loadBalancerIP: 192.168.35.12
       whitelist: j0sh3rs
       pvp: false
       motd: "BTH's All the Mods 9!"
