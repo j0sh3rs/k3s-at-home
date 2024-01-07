@@ -16,10 +16,19 @@ spec:
         name: metallb
         namespace: flux-system
       interval: 5m
+  maxHistory: 2
   install:
+    createNamespace: true
+    remediation:
+      retries: 3
     crds: CreateReplace
   upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
     crds: CreateReplace
+  uninstall:
+    keepHistory: false
   values:
     crds:
       enabled: true
@@ -32,8 +41,8 @@ spec:
       namespace: 'monitoring'
       scrapeAnnotations: true
     rbacProxy:
-      # renovate: datasource=docker dockerUrl=https://gcr.io/kubebuilder/kube-rbac-proxy
-      tag: v0.14.1
+      # renovate: datasource=docker
+      tag: v0.15.0
     controller:
       resources:
         requests:
