@@ -44,7 +44,7 @@ spec:
       targetPath: externalServices.loki.basicAuth.password
     - kind: Secret
       name: grafana-secrets
-      valuesKey: GRAFANA_CLOUD_LOKI_USER
+      valuesKey: GRAFANA_CLOUD_TEMPO_USER
       targetPath: externalServices.tempo.basicAuth.username
     - kind: Secret
       name: grafana-secrets
