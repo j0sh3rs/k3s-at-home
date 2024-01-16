@@ -1,0 +1,69 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana-k8s-monitoring
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: grafana-k8s-monitoring
+      version: 0.8.3
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GRAFANA_CLOUD_TOKEN
+      targetPath: externalServices.prometheus.basicAuth.password
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GRAFANA_CLOUD_PROM_USER
+      targetPath: externalServices.prometheus.basicAuth.username
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GRAFANA_CLOUD_LOKI_USER
+      targetPath: externalServices.loki.basicAuth.username
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GRAFANA_CLOUD_TOKEN
+      targetPath: externalServices.loki.basicAuth.password
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GRAFANA_CLOUD_LOKI_USER
+      targetPath: externalServices.tempo.basicAuth.username
+    - kind: Secret
+      name: grafana-secrets
+      valuesKey: GRAFANA_CLOUD_TOKEN
+      targetPath: externalServices.tempo.basicAuth.password
+  values:
+    cluster:
+      name: k3s
+    externalServices:
+      prometheus:
+        host: https://prometheus-prod-10-prod-us-central-0.grafana.net
+      loki:
+        host: https://logs-prod3.grafana.net
+      tempo:
+        host: https://tempo-us-central1.grafana.net
+    metrics:
+      cost:
+        enabled: false
+    opencost:
+      enabled: false
+    traces:
+      enabled: true
