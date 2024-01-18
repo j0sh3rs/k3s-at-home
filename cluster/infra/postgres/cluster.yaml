@@ -1,0 +1,105 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+  namespace: infra
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  storage:
+    size: 20Gi
+    storageClass: local-path
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: postgres-superuser
+  postgresql:
+    parameters:
+      max_connections: "800"
+      shared_buffers: "512MB"
+      ssl_min_protocol_version: TLSv1.2
+  bootstrap:
+    recovery:
+      source: &previousCluster postgres
+  monitoring:
+    enablePodMonitor: true
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: &s3 s3://postgres/
+      endpointURL: &endpoint https://s3.68cc.io
+      serverName: postgres
+      s3Credentials:
+        accessKeyId:
+          name: postgres-secrets
+          key: minio_s3_access_key
+        secretAccessKey:
+          name: postgres-secrets
+          key: minio_s3_secret_access_key
+  externalClusters:
+    - name: *previousCluster
+      barmanObjectStore:
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: *s3
+        endpointURL: *endpoint
+        s3Credentials:
+          accessKeyId:
+            name: postgres-secrets
+            key: minio_s3_access_key
+          secretAccessKey:
+            name: postgres-secrets
+            key: minio_s3_secret_access_key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-r
+  namespace: infra
+spec:
+  type: ClusterIP
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: postgres
+    cnpg.io/podRole: instance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-ro
+  namespace: infra
+spec:
+  type: ClusterIP
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: postgres
+    role: replica
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-rw
+  namespace: infra
+spec:
+  type: ClusterIP
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: postgres
+    role: primary
