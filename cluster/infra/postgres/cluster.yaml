@@ -20,8 +20,11 @@ spec:
       shared_buffers: "512MB"
       ssl_min_protocol_version: TLSv1.2
   bootstrap:
-    recovery:
-      source: &previousCluster postgres
+    initdb:
+      database: grafana
+      owner: grafana
+      secret:
+        name: postgres-secrets
   monitoring:
     enablePodMonitor: true
   backup:
@@ -40,21 +43,6 @@ spec:
         secretAccessKey:
           name: postgres-secrets
           key: minio_s3_secret_access_key
-  externalClusters:
-    - name: *previousCluster
-      barmanObjectStore:
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: *s3
-        endpointURL: *endpoint
-        s3Credentials:
-          accessKeyId:
-            name: postgres-secrets
-            key: minio_s3_access_key
-          secretAccessKey:
-            name: postgres-secrets
-            key: minio_s3_secret_access_key
 ---
 apiVersion: v1
 kind: Service
