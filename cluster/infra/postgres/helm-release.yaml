@@ -2,36 +2,28 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: postgresql
+  name: cloudnative-pg
   namespace: infra
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.bitnami.com/bitnami
-      chart: postgresql
-      version: 13.3.0
+      chart: cloudnative-pg
+      version: 0.20.0
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts
+        name: cloudnative-pg
         namespace: flux-system
-      interval: 5m
-  valuesFrom:
-    - kind: Secret
-      name: postgresql-secrets
-      valuesKey: password
-      targetPath: postgresql.password
+      interval: 15m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
   values:
-    global:
-      nameOverride: postgres
-      fullnameOverride: postgres
-      auth:
-        existingSecret: postgresql-secrets
-    metrics:
-      enabled: false
-      serviceMonitor:
-        enabled: true
-    persistence:
-      size: 50Gi
-    backup:
-      enabled: false
+    crds:
+      create: true
