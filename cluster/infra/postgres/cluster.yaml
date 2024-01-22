@@ -23,7 +23,7 @@ spec:
       database: grafana
       owner: grafana
       secret:
-        name: postgres-secrets
+        name: postgresql-secrets
   monitoring:
     enablePodMonitor: true
   backup:
