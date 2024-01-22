@@ -7,4 +7,5 @@ resources:
   # - n8n
   - postgres
   - redis
+  - weave-gitops
   # - vpa
