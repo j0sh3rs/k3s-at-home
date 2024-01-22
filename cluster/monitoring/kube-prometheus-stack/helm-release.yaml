@@ -31,6 +31,7 @@ spec:
       enabled: true
     defaultRules:
       enabled: true
+      create: true
       rules:
         alertmanager: true
         etcd: true
@@ -258,7 +259,17 @@ spec:
           cpu: 250m
         limits:
           memory: 2048Mi
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
       prometheusSpec:
+        thanos:
+          image: quay.io/thanos/thanos:v0.33.0
+          objectStorageConfig:
+            existingSecret:
+              name: thanos-objstore-secret
+              key: objstore.yml
         resources:
           requests:
             cpu: 250m
@@ -274,6 +285,10 @@ spec:
         retentionSize: 50GB
         enableAdminAPI: true
         walCompression: true
+        enableFeatures:
+          - auto-gomaxprocs
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -530,10 +545,6 @@ spec:
               - source_labels:
                   - __meta_kubernetes_service_name
                 target_label: kubernetes_name
-      thanosService:
-        enabled: false
-      thanosServiceMonitor:
-        enabled: false
       thanosIngress:
         enabled: false
     cleanPrometheusOperatorObjectNames: true
