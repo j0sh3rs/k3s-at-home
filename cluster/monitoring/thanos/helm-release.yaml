@@ -10,22 +10,19 @@ spec:
   suspend: true
   chart:
     spec:
+    # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: thanos
       version: 12.21.1
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
         namespace: flux-system
-  maxHistory: 2
   install:
     remediation:
       retries: 3
   upgrade:
-    cleanupOnFail: true
     remediation:
       retries: 3
-  uninstall:
-    keepHistory: false
   values:
     image:
       registry: quay.io
