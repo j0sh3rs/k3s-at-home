@@ -14,7 +14,7 @@ spec:
       version: 12.21.1
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: bitnami-charts
         namespace: flux-system
   maxHistory: 2
   install:
@@ -37,7 +37,6 @@ spec:
         bucket: thanos
         endpoint: "s3.68cc.io"
         region: us-east-1
-        insecure: true
     queryFrontend:
       enabled: true
       replicaCount: 2
