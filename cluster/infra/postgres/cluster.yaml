@@ -9,7 +9,7 @@ spec:
   primaryUpdateStrategy: unsupervised
   imageName: ghcr.io/cloudnative-pg/postgresql:16
   storage:
-    size: 20Gi
+    size: 50Gi
     storageClass: local-path
   enableSuperuserAccess: true
   superuserSecret:
