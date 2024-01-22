@@ -54,7 +54,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: auditors
+  name: actions-runner-system
 ---
 apiVersion: v1
 kind: Namespace
