@@ -29,3 +29,4 @@ resources:
   - oauth2-proxy.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
+  - weaveworks.yaml
