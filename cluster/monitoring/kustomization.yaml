@@ -7,5 +7,6 @@ resources:
    - cadvisor
    - kube-prometheus-stack
    - node-problem-detector
+   - thanos
    - unifi-poller
    - uptime-kuma
