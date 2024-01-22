@@ -10,7 +10,6 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:16
   storage:
     size: 50Gi
-    storageClass: local-path
   enableSuperuserAccess: true
   superuserSecret:
     name: postgres-superuser
