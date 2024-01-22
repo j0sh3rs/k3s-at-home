@@ -83,7 +83,7 @@ spec:
         datasources:
           - name: Prometheus
             type: prometheus
-            url: http://prometheus-prometheus.monitoring:9090
+            url: http://thanos-query.monitoring:9090
             isDefault: true
           # - name: Loki
           #   type: Loki
@@ -150,10 +150,6 @@ spec:
         postgres_database:
           gnetId: 9628
           revision: 7
-        blocky:
-          gnetId: 13768
-          datasource: Prometheus
-          revision: 3
         cloudnative-pg:
           url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
           datasource: Prometheus
