@@ -11,3 +11,4 @@ resources:
    - thanos
    - unifi-poller
    - uptime-kuma
+   - vector

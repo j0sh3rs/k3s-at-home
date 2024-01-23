@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - amd-gpu.yaml
   - bitnami-charts.yaml
+  - bjw-s.yaml
   - botkube.yaml
   - cilium.yaml
   - cloudnative-pg.yaml
@@ -22,7 +23,6 @@ resources:
   - longhorn.yaml
   - metallb.yaml
   - minecraft-charts.yaml
-  - minio.yaml
   - n8n-charts.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
