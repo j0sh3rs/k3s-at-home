@@ -116,15 +116,15 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/loki
-          - name: "system"
+          - name: "nginx"
             orgId: 1
-            folder: "System"
+            folder: "nginx"
             type: file
             disableDeletion: false
             editable: true
             allowUiUpdates: true
             options:
-              path: /var/lib/grafana/dashboards/system
+              path: /var/lib/grafana/dashboards/nginx
           - name: "unifi"
             orgId: 1
             folder: "Unifi"
