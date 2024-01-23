@@ -61,54 +61,148 @@ spec:
       - grafana-worldmap-panel
       - grafana-clock-panel
       - camptocamp-prometheus-alertmanager-datasource
+      - https://github.com/panodata/panodata-map-panel/releases/download/0.16.0/panodata-map-panel-0.16.0.zip;grafana-worldmap-panel-ng
       - redis-datasource
       - redis-app
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-          - name: 'default'
+          - name: "default"
+            disableDeletion: false
+            editable: true
+            folder: ""
+            options:
+              path: /var/lib/grafana/dashboards/default
             orgId: 1
-            folder: ''
+            type: file
+          - name: "cilium"
+            orgId: 1
+            folder: "Cilium"
             type: file
             disableDeletion: false
             editable: true
             options:
-              path: /var/lib/grafana/dashboards/default
+              path: /var/lib/grafana/dashboards/cilium
+          - name: "infra"
+            orgId: 1
+            folder: "Infra"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/infra
+          - name: "flux"
+            orgId: 1
+            folder: "Flux"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/flux
+          - name: "kubernetes"
+            orgId: 1
+            folder: "Kubernetes"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/kubernetes
+          - name: "loki"
+            orgId: 1
+            folder: "Loki"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/loki
+          - name: "system"
+            orgId: 1
+            folder: "System"
+            type: file
+            disableDeletion: false
+            editable: true
+            allowUiUpdates: true
+            options:
+              path: /var/lib/grafana/dashboards/system
+          - name: "unifi"
+            orgId: 1
+            folder: "Unifi"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/unifi
     datasources:
       datasources.yaml:
         apiVersion: 1
+        # list of datasources that should be deleted from the database
+        deleteDatasources:
+          - name: Loki
+            orgId: 1
+          - name: Alertmanager
+            orgId: 1
         datasources:
           - name: Prometheus
             type: prometheus
-            url: http://thanos-query.monitoring:9090
+            access: proxy
+            url: http://thanos-query.monitoring.svc.cluster.local:9090/
+            isDefault: false
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://loki-gateway.monitoring.svc.cluster.local
+            version: 1
             isDefault: true
-          # - name: Loki
-          #   type: Loki
-          #   url: http://loki-stack:3100
-          # - name: Redis
-          #   type: Redis
-          #   url: redis://redis-master:6379
-          # - name: Jaeger
-          #   type: Jaeger
-          #   url: http://jaeger-query:16686
+            jsonData:
+              maxLines: 100
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://prometheus-alertmanager.monitoring.svc.cluster.local:9093
+            jsonData:
+              implementation: prometheus
+          - name: Redis
+            type: redis-datasource
+            access: proxy
+            url: redis://redis-master.infra.svc.cluster.local:6379
+            jsonData:
+              client: sentinel
+              sentinelName: redis-master
+              poolSize: 5
+              timeout: 10
+              pingInterval: 0
+              pipelineWindow: 0
+            editable: true
     dashboards:
-      default:
+      cilium:
+        cilium-dashboard:
+          url: https://raw.githubusercontent.com/cilium/cilium/v1.14.5/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/cilium-dashboard.json
+          datasource: Prometheus
+        cilium-operator-dashboard:
+          url: https://raw.githubusercontent.com/cilium/cilium/v1.14.5/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/cilium-operator-dashboard.json
+          datasource: Prometheus
+        hubble-dashboard:
+          url: https://raw.githubusercontent.com/cilium/cilium/v1.14.5/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/hubble-dashboard.json
+          datasource: Prometheus
+      flux:
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/cluster.json
           datasource: Prometheus
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
-        # flux-logs:
-        #   url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
-        #   datasource: Loki
+        flux-logs:
+          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
+          datasource: Loki
+      nginx:
         nginx-ingress:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
           datasource: Prometheus
         nginx-ingress-request-handling-performance:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
           datasource: Prometheus
+      unifi:
         unifi-poller-uap-insights:
           gnetId: 11314
           datasource: Prometheus
@@ -133,26 +227,54 @@ spec:
           gnetId: 11310
           datasource: Prometheus
           revision: 4
-        # synology-nas-details:
-        #   url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-details.json
-        #   datasource: Prometheus
-        # synology-nas-overview:
-        #   url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-overview.json
-        #   datasource: Prometheus
-        # loki-stack-monitoring:
-        #   gnetId: 14055
-        #   revision: 5
-        # minio:
-        #   url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/minio/minio.json
-        #   datasource: Prometheus
-        # postgres_database:
-        #   gnetId: 9628
-        #   revision: 7
+      infra:
         cloudnative-pg:
           url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
           datasource: Prometheus
         redis:
-          gnetId: 11835
+          gnetId: 14091
+          revision: 1
+          datasource: Prometheus
+      kubernetes:
+        api-server:
+          # renovate: depName="Kubernetes / System / API Server"
+          gnetId: 15761
+          revision: 14
+          datasource: Prometheus
+        coredns:
+          # renovate: depName="Kubernetes / System / CoreDNS"
+          gnetId: 15762
+          revision: 13
+          datasource: Prometheus
+        global:
+          # renovate: depName="Kubernetes / Views / Global"
+          gnetId: 15757
+          revision: 31
+          datasource: Prometheus
+        namespaces:
+          # renovate: depName="Kubernetes / Views / Namespaces"
+          gnetId: 15758
+          revision: 27
+          datasource: Prometheus
+        nodes:
+          # renovate: depName="Kubernetes / Views / Nodes"
+          gnetId: 15759
+          revision: 19
+          datasource: Prometheus
+        pods:
+          # renovate: depName="Kubernetes / Views / Pods"
+          gNetId: 15760
+          revision: 21
+          datasource: Prometheus
+        volumes:
+          # renovate: depName="K8s / Storage / Volumes / Cluster"
+          gnetId: 11454
+          revision: 14
+          datasource: Prometheus
+      loki:
+        loki-metrics:
+          gnetId: 13407
+          revision: 1
           datasource: Prometheus
     sidecar:
       resources:
@@ -161,6 +283,8 @@ spec:
           memory: 94M
       datasources:
         enabled: true
+        searchNamespace: ALL
+        initDatasources: true
         defaultDatasourceEnabled: true
         labelValue: '1'
       dashboards:
