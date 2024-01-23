@@ -4,8 +4,6 @@ kind: HelmRelease
 metadata:
   name: grafana
   namespace: infra
-  labels:
-    reloader.stakater.com/auto: 'true'
 spec:
   interval: 5m
   chart:
@@ -102,9 +100,9 @@ spec:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
-        flux-logs:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
-          datasource: Loki
+        # flux-logs:
+        #   url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
+        #   datasource: Loki
         nginx-ingress:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
           datasource: Prometheus
@@ -135,21 +133,21 @@ spec:
           gnetId: 11310
           datasource: Prometheus
           revision: 4
-        synology-nas-details:
-          url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-details.json
-          datasource: Prometheus
-        synology-nas-overview:
-          url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-overview.json
-          datasource: Prometheus
-        loki-stack-monitoring:
-          gnetId: 14055
-          revision: 5
-        minio:
-          url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/minio/minio.json
-          datasource: Prometheus
-        postgres_database:
-          gnetId: 9628
-          revision: 7
+        # synology-nas-details:
+        #   url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-details.json
+        #   datasource: Prometheus
+        # synology-nas-overview:
+        #   url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/synology/synology-nas-overview.json
+        #   datasource: Prometheus
+        # loki-stack-monitoring:
+        #   gnetId: 14055
+        #   revision: 5
+        # minio:
+        #   url: https://raw.githubusercontent.com/j0sh3rs/grafana-dashboards/main/minio/minio.json
+        #   datasource: Prometheus
+        # postgres_database:
+        #   gnetId: 9628
+        #   revision: 7
         cloudnative-pg:
           url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
           datasource: Prometheus
