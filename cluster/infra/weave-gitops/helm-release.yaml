@@ -24,6 +24,11 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  valuesFrom:
+    - targetPath: adminUser.passwordHash
+      kind: Secret
+      name: weave-secrets
+      valuesKey: passwordHash
   values:
     adminUser:
       create: true
