@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - cluster.yaml
-  - backups.yaml
+  # - backups.yaml
