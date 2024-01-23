@@ -6,6 +6,7 @@ resources:
    - blackbox-exporter
    - cadvisor
    - kube-prometheus-stack
+   - loki
    - node-problem-detector
    - thanos
    - unifi-poller
