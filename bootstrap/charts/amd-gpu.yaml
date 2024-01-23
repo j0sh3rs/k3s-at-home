@@ -5,4 +5,4 @@ metadata:
   namespace: kube-system
 spec:
   interval: 10m0s
-  url: https://radeonopencompute.github.io/k8s-device-plugin
+  url: https://rocm.github.io/k8s-device-plugin
