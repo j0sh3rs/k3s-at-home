@@ -25,12 +25,12 @@ spec:
       persistence:
         enabled: true
         size: 20G
-      service:
-        type: LoadBalancer
-        loadBalancerIP: 192.168.35.11
-        annotations:
-          metallb.universe.tf/address-pool: default
-          metallb.universe.tf/loadBalancerIps: 192.168.35.11
+      # service:
+      #   type: LoadBalancer
+      #   loadBalancerIP: &lbip 192.168.35.14
+      #   annotations:
+      #     metallb.universe.tf/address-pool: default
+      #     metallb.universe.tf/loadBalancerIps: *lbip
       resources:
         limits:
           cpu: 150m
