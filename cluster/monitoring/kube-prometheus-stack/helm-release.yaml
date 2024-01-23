@@ -19,12 +19,16 @@ spec:
   maxHistory: 2
   install:
     createNamespace: true
+    crds: CreateReplace
     remediation:
       retries: 3
   upgrade:
     cleanupOnFail: true
+    crds: CreateReplace
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     fullnameOverride: prometheus
     crds:
@@ -63,33 +67,36 @@ spec:
         global:
           resolve_timeout: 5m
         route:
-          group_by: ['alertname']
-          group_wait: 20s
+          group_by: ["alertname", "job"]
+          group_wait: 30s
           group_interval: 5m
-          repeat_interval: 3h
-          receiver: 'discord_webhook'
+          repeat_interval: 6h
+          receiver: "discord"
           routes:
-            - receiver: 'null'
+            - receiver: "null"
               matchers:
-                - alertname =~ "InfoInhibitor|Watchdog|RebootScheduled"
-            - receiver: 'discord_webhook'
-              matchers:
-                - severity = "critical"
-              continue: true
+                - alertname =~ "InfoInhibitor|Watchdog|CPUThrottlingHigh"
+              continue: false
+            - receiver: "discord"
         receivers:
-          - name: 'null'
-          - name: 'discord_webhook'
+          - name: "null"
+          - name: "discord"
             webhook_configs:
-              - url: 'http://alertmanager-discord:9094'
+              - url: "http://alertmanager-discord:9094"
         inhibit_rules:
-          - source_matchers:
-              - severity = "critical"
-            target_matchers:
-              - severity = "warning"
-            equal:
-              - alertname
-              - namespace
+          - source_matchers: ["severity = 'critical'"]
+            target_matchers: ["severity = 'warning'"]
+            equal: ["alertname", "namespace"]
+        templates:
+          - /etc/alertmanager/config/*.tmpl
       alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-client
+              resources:
+                requests:
+                  storage: 1Gi
         replicas: 1
         resources:
           requests:
@@ -156,39 +163,11 @@ spec:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
     kube-state-metrics:
-      collectors:
-        - certificatesigningrequests
-        - configmaps
-        - cronjobs
-        - daemonsets
-        - deployments
-        - endpoints
-        - horizontalpodautoscalers
-        - ingresses
-        - jobs
-        - leases
-        - limitranges
-        - mutatingwebhookconfigurations
-        - namespaces
-        - networkpolicies
-        - nodes
-        - persistentvolumeclaims
-        - persistentvolumes
-        - poddisruptionbudgets
-        - pods
-        - replicasets
-        - replicationcontrollers
-        - resourcequotas
-        - secrets
-        - services
-        - statefulsets
-        - storageclasses
-        - validatingwebhookconfigurations
-        - volumeattachments
-      selfMonitor:
-        enabled: true
-      verticalPodAutoscaler:
-        enabled: true
+      fullnameOverride: kube-state-metrics
+      metricLabelsAllowlist:
+        - pods=[*]
+        - deployments=[*]
+        - persistentvolumeclaims=[*]
       prometheus:
         monitor:
           enabled: true
@@ -202,20 +181,18 @@ spec:
     kubeControllerManager:
       # https://github.com/k3s-io/k3s/issues/3619#issuecomment-973188304
       enabled: true
-      endpoints:
+      endpoints: &endpoints
         - 192.168.35.3
         - 192.168.35.6
         - 192.168.35.10
     kubeScheduler:
       enabled: true
-      endpoints:
-        - 192.168.35.3
-        - 192.168.35.6
-        - 192.168.35.10
+      endpoints: *endpoints
     kubeProxy:
       enabled: false
     kubeApiServer:
       enabled: true
+      endpoints: *endpoints
     kubeEtcd:
       enabled: true
     grafana:
@@ -276,6 +253,7 @@ spec:
             memory: 2384M
         replicas: 1
         replicaExternalLabelName: replica
+        scrapeInterval: 1m
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
@@ -285,10 +263,6 @@ spec:
         retentionSize: 50GB
         enableAdminAPI: true
         walCompression: true
-        enableFeatures:
-          - auto-gomaxprocs
-          - memory-snapshot-on-shutdown
-          - new-service-discovery-manager
         storageSpec:
           volumeClaimTemplate:
             spec:
