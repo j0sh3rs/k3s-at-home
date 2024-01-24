@@ -133,6 +133,12 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/unifi
+          - name: "Prometheus"
+            disableDeletion: false
+            editable: true
+            folder: ""
+            options:
+              path: /var/lib/grafana/dashboards/prometheus
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -147,13 +153,13 @@ spec:
             type: prometheus
             access: proxy
             url: http://thanos-query.monitoring.svc.cluster.local:9090/
-            isDefault: false
+            isDefault: true
           - name: Loki
             type: loki
             access: proxy
             url: http://loki-gateway.monitoring.svc.cluster.local
             version: 1
-            isDefault: true
+            isDefault: false
             jsonData:
               maxLines: 100
           - name: Alertmanager
@@ -166,13 +172,6 @@ spec:
             type: redis-datasource
             access: proxy
             url: redis://redis-master.infra.svc.cluster.local:6379
-            jsonData:
-              client: sentinel
-              sentinelName: redis-master
-              poolSize: 5
-              timeout: 10
-              pingInterval: 0
-              pipelineWindow: 0
             editable: true
     dashboards:
       cilium:
@@ -187,13 +186,13 @@ spec:
           datasource: Prometheus
       flux:
         flux-cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/cluster.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
           datasource: Prometheus
         flux-control-plane:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
           datasource: Prometheus
         flux-logs:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
           datasource: Loki
       nginx:
         nginx-ingress:
@@ -273,8 +272,7 @@ spec:
           datasource: Prometheus
       loki:
         loki-metrics:
-          gnetId: 13407
-          revision: 1
+          gnetId: 14055
           datasource: Prometheus
     sidecar:
       resources:
