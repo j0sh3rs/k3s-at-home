@@ -189,7 +189,7 @@ spec:
       serviceMonitor:
         enabled: true
       selfMonitoring:
-        enabled: true
+        enabled: false
         grafanaAgent:
           installOperator: false
       lokiCanary:
