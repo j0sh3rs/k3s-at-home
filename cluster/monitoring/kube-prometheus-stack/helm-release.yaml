@@ -203,8 +203,9 @@ spec:
       defaultDashboardsTimezone: America/New_York
       sidecar:
         dashboards:
-          annotations:
-            grafana_folder: Prometheus
+          multicluster:
+            global:
+              enabled: true
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       resources:
