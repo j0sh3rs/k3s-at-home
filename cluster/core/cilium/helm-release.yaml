@@ -56,7 +56,7 @@ spec:
     ipv4NativeRoutingCidr: 10.42.1.0/24
     localRedirectPolicy: true
     l2announcements:
-      enabled: true
+      enabled: false
       # https://github.com/cilium/cilium/issues/26586
       leaseDuration: 120s
       leaseRenewDeadline: 60s
