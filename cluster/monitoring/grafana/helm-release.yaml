@@ -172,106 +172,92 @@ spec:
             url: redis://redis-master.infra.svc.cluster.local:6379
             editable: true
     dashboards:
-      cilium:
-        cilium-dashboard:
-          url: https://raw.githubusercontent.com/cilium/cilium/v1.14.6/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/cilium-dashboard.json
-          datasource: Prometheus
-        cilium-operator-dashboard:
-          url: https://raw.githubusercontent.com/cilium/cilium/v1.14.6/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/cilium-operator-dashboard.json
-          datasource: Prometheus
-        hubble-dashboard:
-          url: https://raw.githubusercontent.com/cilium/cilium/v1.14.6/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/hubble-dashboard.json
-          datasource: Prometheus
-      flux:
-        flux-cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
-          datasource: Prometheus
-        flux-control-plane:
-          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
-          datasource: Prometheus
-        flux-logs:
-          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
-          datasource: Loki
-      nginx:
-        nginx-ingress:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
-          datasource: Prometheus
-        nginx-ingress-request-handling-performance:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
-          datasource: Prometheus
-      unifi:
-        unifi-poller-uap-insights:
-          gnetId: 11314
-          datasource: Prometheus
-          revision: 9
-        unifi-poller-client-insights:
-          gnetId: 11315
-          datasource: Prometheus
-          revision: 8
-        unifi-poller-network-sites:
-          gnetId: 11311
-          datasource: Prometheus
-          revision: 4
-        unifi-poller-usw-insights:
-          gnetId: 11312
-          datasource: Prometheus
-          revision: 8
-        unifi-poller-usg-insights:
-          gnetId: 11313
-          datasource: Prometheus
-          revision: 8
-        unifi-poller-client-dpi:
-          gnetId: 11310
-          datasource: Prometheus
-          revision: 4
-      infra:
-        cloudnative-pg:
-          url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
-          datasource: Prometheus
-        redis:
-          gnetId: 14091
-          revision: 1
-          datasource: Prometheus
-      kubernetes:
-        api-server:
-          # renovate: depName="Kubernetes / System / API Server"
-          gnetId: 15761
-          revision: 14
-          datasource: Prometheus
-        coredns:
-          # renovate: depName="Kubernetes / System / CoreDNS"
-          gnetId: 15762
-          revision: 13
-          datasource: Prometheus
-        global:
-          # renovate: depName="Kubernetes / Views / Global"
-          gnetId: 15757
-          revision: 31
-          datasource: Prometheus
-        namespaces:
-          # renovate: depName="Kubernetes / Views / Namespaces"
-          gnetId: 15758
-          revision: 27
-          datasource: Prometheus
-        nodes:
-          # renovate: depName="Kubernetes / Views / Nodes"
-          gnetId: 15759
-          revision: 19
-          datasource: Prometheus
-        pods:
-          # renovate: depName="Kubernetes / Views / Pods"
-          gNetId: 15760
-          revision: 21
-          datasource: Prometheus
-        volumes:
-          # renovate: depName="K8s / Storage / Volumes / Cluster"
-          gnetId: 11454
-          revision: 14
-          datasource: Prometheus
-      loki:
-        loki-metrics:
-          gnetId: 14055
-          datasource: Prometheus
+      cilium-dashboard:
+        url: https://raw.githubusercontent.com/cilium/cilium/v1.14.6/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/cilium-dashboard.json
+        datasource: Prometheus
+      cilium-operator-dashboard:
+        url: https://raw.githubusercontent.com/cilium/cilium/v1.14.6/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/cilium-operator-dashboard.json
+        datasource: Prometheus
+      hubble-dashboard:
+        url: https://raw.githubusercontent.com/cilium/cilium/v1.14.6/examples/kubernetes/main/addons/prometheus/files/grafana-dashboards/hubble-dashboard.json
+        datasource: Prometheus
+      flux-cluster:
+        url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
+        datasource: Prometheus
+      flux-control-plane:
+        url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
+        datasource: Prometheus
+      flux-logs:
+        url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
+        datasource: Loki
+      nginx-ingress:
+        url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
+        datasource: Prometheus
+      nginx-ingress-request-handling-performance:
+        url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
+        datasource: Prometheus
+      unifi-poller-uap-insights:
+        gnetId: 11314
+        datasource: Prometheus
+        revision: 9
+      unifi-poller-client-insights:
+        gnetId: 11315
+        datasource: Prometheus
+        revision: 8
+      unifi-poller-network-sites:
+        gnetId: 11311
+        datasource: Prometheus
+        revision: 4
+      unifi-poller-usw-insights:
+        gnetId: 11312
+        datasource: Prometheus
+        revision: 8
+      unifi-poller-usg-insights:
+        gnetId: 11313
+        datasource: Prometheus
+        revision: 8
+      unifi-poller-client-dpi:
+        gnetId: 11310
+        datasource: Prometheus
+        revision: 4
+      cloudnative-pg:
+        url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
+        datasource: Prometheus
+      redis:
+        gnetId: 14091
+        revision: 1
+        datasource: Prometheus
+      api-server:
+        gnetId: 15761
+        revision: 14
+        datasource: Prometheus
+      coredns:
+        gnetId: 15762
+        revision: 13
+        datasource: Prometheus
+      global:
+        gnetId: 15757
+        revision: 31
+        datasource: Prometheus
+      namespaces:
+        gnetId: 15758
+        revision: 27
+        datasource: Prometheus
+      nodes:
+        gnetId: 15759
+        revision: 19
+        datasource: Prometheus
+      pods:
+        gNetId: 15760
+        revision: 21
+        datasource: Prometheus
+      volumes:
+        gnetId: 11454
+        revision: 14
+        datasource: Prometheus
+      loki-metrics:
+        gnetId: 14055
+        datasource: Prometheus
     sidecar:
       resources:
         requests:
