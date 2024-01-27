@@ -20,6 +20,10 @@ spec:
     nameOverride: redis
     fullnameOverride: redis
     master:
+      automountServiceAccountToken: true
+      serviceAccount:
+        create: true
+        automountServiceAccountToken: true
       startupProbe:
         enabled: true
       persistence:
