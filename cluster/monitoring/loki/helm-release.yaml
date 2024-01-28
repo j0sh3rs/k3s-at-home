@@ -179,10 +179,9 @@ spec:
       dashboards:
         enabled: true
         annotations:
-          kustomize.toolkit.fluxcd.io/substitute: disabled
           grafana_folder: Loki
         labels:
-          grafana_dashboard: "true"
+          grafana_dashboard: "1"
       rules:
         enabled: true
         alerting: true
