@@ -5,7 +5,7 @@ resources:
    - alertmanager-discord
    - blackbox-exporter
    - cadvisor
-   - grafana
+   # - grafana
    # - loki
    - node-problem-detector
    - unifi-poller
