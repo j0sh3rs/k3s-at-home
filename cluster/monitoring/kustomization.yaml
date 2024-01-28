@@ -6,7 +6,7 @@ resources:
    - blackbox-exporter
    - cadvisor
    - grafana
-   - loki
+   # - loki
    - node-problem-detector
    - unifi-poller
    - uptime-kuma
