@@ -11,13 +11,7 @@
     "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge",
     "github>j0sh3rs/k3s-at-home//.github/renovate/labels"
   ],
-  "platform": "github",
   "semanticCommits": "enabled",
-  "username": "Barrybot[bot]",
-  "repositories": [
-    "j0sh3rs/k3s-at-home"
-  ],
-  "onboarding": false,
   "gitAuthor": "Barrybot <barry-bot[bot]@users.noreply.github.com>",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": [
