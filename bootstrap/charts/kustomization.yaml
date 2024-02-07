@@ -23,7 +23,6 @@ resources:
   - longhorn.yaml
   - metallb.yaml
   - minecraft-charts.yaml
-  - n8n-charts.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
   - oauth2-proxy.yaml
