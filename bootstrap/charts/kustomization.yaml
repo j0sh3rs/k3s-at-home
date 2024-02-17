@@ -10,6 +10,7 @@ resources:
   - cloudnative-pg.yaml
   - coredns.yaml
   - deliveryhero.yaml
+  - external-secrets.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
   - hashicorp.yaml
