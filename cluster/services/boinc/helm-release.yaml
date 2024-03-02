@@ -5,17 +5,26 @@ metadata:
   name: boinc
   namespace: services
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.truecharts.org
-      chart: boinc
-      version: 9.2.0
+      chart: app-template
+      version: 2.6.0
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: bjw-s-charts
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     image:
       repository: docker.io/boinc/client
