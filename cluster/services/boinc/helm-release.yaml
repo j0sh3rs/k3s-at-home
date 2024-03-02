@@ -36,9 +36,9 @@ spec:
         containers:
           main:
             image:
-              repository: docker.io/linuxserver/boinc
+              repository: docker.io/boinc/client
               tag: latest
-              pullPolicy: Always
+              pullPolicy: IfNotPresent
             env:
               - name: TZ
                 value: America/New_York
