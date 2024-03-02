@@ -40,15 +40,15 @@ spec:
           ports:
             http:
               port: 8000
-      ingress:
-        main:
-          enabled: true
-          ingressClassName: nginx
-          hosts:
-            - host: &host "cyberchef.bth.wtf"
-              paths:
-                - path: /
-                  pathType: Prefix
-          tls:
-            - hosts:
-                - *host
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: &host "cyberchef.bth.wtf"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
