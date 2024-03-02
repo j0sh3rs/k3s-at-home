@@ -61,6 +61,7 @@ spec:
         ports:
           http:
             targetPort: 8080
+            port: 10142
     persistence:
       config:
         enabled: true
