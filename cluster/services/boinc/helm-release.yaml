@@ -62,14 +62,20 @@ spec:
       main:
         ports:
           http:
-            targetPort: 8080
-            port: 10142
+            port: 31416
     persistence:
       config:
         enabled: true
         size: 20Gi
         globalMounts:
           - path: /config
+      nfs:
+        enabled: true
+        size: 20Gi
+        storageClass: nfs-client
+        accessMode: ReadWriteMany
+        globalMounts:
+          - path: /var/lib/boinc
     ingress:
       main:
         enabled: true
