@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: boinc
+  namespace: services
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.truecharts.org
+      chart: boinc
+      version: 9.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: docker.io/boinc/client
+      tag: amd
+    global:
+      annotations:
+        reloader.stakater.com/auto: 'true'
+    resources:
+      requests:
+        cpu: 300m
+        memory: 1Gi
+      limits:
+        cpu: 2
+        memory: 2Gi
