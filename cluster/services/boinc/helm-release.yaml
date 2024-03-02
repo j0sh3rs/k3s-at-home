@@ -68,3 +68,17 @@ spec:
         size: 20Gi
         globalMounts:
           - path: /config
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: &host "boinc.bth.wtf"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: main
+        tls:
+          - hosts:
+              - *host
