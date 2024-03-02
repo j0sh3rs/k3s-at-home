@@ -26,25 +26,29 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: docker.io/mpepping/cyberchef
-      tag: v10.8.2
-    env:
-      TZ: "America/New_York"
-    service:
+    controllers:
       main:
-        ports:
-          http:
-            port: 8000
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: nginx
-        hosts:
-          - host: &host "cyberchef.bth.wtf"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
+        containers:
+          main:
+            image:
+              repository: docker.io/mpepping/cyberchef
+              tag: v10.8.2
+            env:
+              TZ: "America/New_York"
+      service:
+        main:
+          ports:
+            http:
+              port: 8000
+      ingress:
+        main:
+          enabled: true
+          ingressClassName: nginx
+          hosts:
+            - host: &host "cyberchef.bth.wtf"
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - *host
