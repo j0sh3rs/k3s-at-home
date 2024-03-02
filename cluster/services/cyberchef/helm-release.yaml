@@ -26,6 +26,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    global:
+      annotations:
+        reloader.stakater.com/auto: 'true'
     controllers:
       main:
         containers:
@@ -33,14 +36,29 @@ spec:
             image:
               repository: docker.io/mpepping/cyberchef
               tag: v10.8.2
+              pullPolicy: IfNotPresent
             env:
-              TZ: "America/New_York"
-      service:
-        main:
-          enabled: true
-          ports:
-            http:
-              port: 8000
+              - name: TZ
+                value: America/New_York
+            resources:
+              requests:
+                cpu: 300m
+                memory: 1Gi
+              limits:
+                cpu: 2
+                memory: 2Gi
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+    service:
+      main:
+        ports:
+          http:
+            port: 8000
     ingress:
       main:
         enabled: true
