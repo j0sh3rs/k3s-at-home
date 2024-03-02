@@ -26,8 +26,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    defaultPodOptions:
-      hostPID: true
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
@@ -42,6 +40,8 @@ spec:
             env:
               - name: TZ
                 value: America/New_York
+              - name: BOINC_REMOTE_HOST
+                value: 0.0.0.0
             resources:
               requests:
                 cpu: 300m
@@ -79,6 +79,7 @@ spec:
                 pathType: Prefix
                 service:
                   name: main
+                  port:
         tls:
           - hosts:
               - *host
