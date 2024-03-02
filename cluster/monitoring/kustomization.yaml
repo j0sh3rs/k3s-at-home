@@ -7,7 +7,9 @@ resources:
    # - botkube
    - cadvisor
    # - grafana
+   - kube-prometheus-stack
    # - loki
    - node-problem-detector
+   - thanos
    - unifi-poller
-   - uptime-kuma
+   # - uptime-kuma
