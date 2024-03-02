@@ -7,10 +7,10 @@ resources:
   - bjw-s.yaml
   - botkube.yaml
   - cilium.yaml
-  - cloudnative-pg.yaml
+  # - cloudnative-pg.yaml
   - coredns.yaml
   - deliveryhero.yaml
-  - external-secrets.yaml
+  # - external-secrets.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
   - hashicorp.yaml
@@ -29,5 +29,5 @@ resources:
   - oauth2-proxy.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
-  - truecharts.yaml
+  # - truecharts.yaml
   - weaveworks.yaml
