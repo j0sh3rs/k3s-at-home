@@ -26,16 +26,44 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: docker.io/boinc/client
-      tag: amd
+    defaultPodOptions:
+      hostPID: true
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
-    resources:
-      requests:
-        cpu: 300m
-        memory: 1Gi
-      limits:
-        cpu: 2
-        memory: 2Gi
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: docker.io/boinc/client
+              tag: amd
+              pullPolicy: IfNotPresent
+            env:
+              - name: TZ
+                value: America/New_York
+            resources:
+              requests:
+                cpu: 300m
+                memory: 1Gi
+              limits:
+                cpu: 2
+                memory: 2Gi
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+    service:
+      main:
+        ports:
+          http:
+            targetPort: 8080
+    persistence:
+      config:
+        enabled: true
+        size: 20Gi
+        globalMounts:
+          - path: /config
