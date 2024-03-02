@@ -42,6 +42,8 @@ spec:
                 value: America/New_York
               - name: BOINC_REMOTE_HOST
                 value: 0.0.0.0
+              - name: BOINC_CMD_LINE_OPTIONS
+                value: "--allow_remote_gui_rpc"
             resources:
               requests:
                 cpu: 300m
