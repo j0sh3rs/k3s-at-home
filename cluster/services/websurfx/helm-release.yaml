@@ -1,0 +1,81 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: websurfx
+  namespace: services
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    global:
+      annotations:
+        reloader.stakater.com/auto: 'true'
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: neonmmd/websurfx
+              tag: latest
+              pullPolicy: Always
+            env:
+              - name: TZ
+                value: America/New_York
+            resources:
+              requests:
+                cpu: 300m
+                memory: 1Gi
+              limits:
+                cpu: 2
+                memory: 2Gi
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+    persistence:
+      config:
+        enabled: true
+        size: 20Gi
+        globalMounts:
+          - path: /etc/xdg/websurfx
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: &host "search.bth.wtf"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: main
+        tls:
+          - hosts:
+              - *host
