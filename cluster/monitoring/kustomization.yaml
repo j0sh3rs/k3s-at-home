@@ -10,6 +10,6 @@ resources:
    - kube-prometheus-stack
    # - loki
    - node-problem-detector
-   - thanos
+   # - thanos
    - unifi-poller
    # - uptime-kuma
