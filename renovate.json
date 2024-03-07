@@ -56,12 +56,6 @@
       "bootstrap/.+/*.yaml$"
     ]
   },
-  "github-releases": {
-    "fileMatch": [
-      "cluster/.*/*.yaml$",
-      "bootstrap/.+/*.yaml$"
-    ]
-  },
   "regexManagers": [
     {
       "datasourceTemplate": "{{datasource}}",
