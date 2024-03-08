@@ -47,7 +47,7 @@ spec:
       enabled: true
       replicaLabel: ["__replica__"]
       dnsDiscovery:
-        sidecarsService: kube-prometheus-stack-thanos-discovery
+        sidecarsService: "prometheus-operated"
         sidecarsNamespace: monitoring
     bucketweb:
       enabled: true
