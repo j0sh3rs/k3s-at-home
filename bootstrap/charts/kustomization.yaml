@@ -7,13 +7,12 @@ resources:
   - bjw-s.yaml
   - botkube.yaml
   - cilium.yaml
-  # - cloudnative-pg.yaml
   - coredns.yaml
   - deliveryhero.yaml
+  - dragonflydb.yaml
   # - external-secrets.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
-  - hashicorp.yaml
   - ingress-nginx.yaml
   - irsigler.yaml
   - j0sh3rs.yaml
@@ -26,8 +25,6 @@ resources:
   - minecraft-charts.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
-  - oauth2-proxy.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
-  # - truecharts.yaml
   - weaveworks.yaml
