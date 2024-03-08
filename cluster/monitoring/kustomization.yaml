@@ -6,10 +6,10 @@ resources:
    - blackbox-exporter
    # - botkube
    - cadvisor
-   # - grafana
+   - grafana
    - kube-prometheus-stack
-   # - loki
+   - loki
    - node-problem-detector
-   # - thanos
+   - thanos
    - unifi-poller
    # - uptime-kuma

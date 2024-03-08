@@ -160,11 +160,6 @@ spec:
             url: http://prometheus-alertmanager.monitoring.svc.cluster.local:9093
             jsonData:
               implementation: prometheus
-          - name: Redis
-            type: redis-datasource
-            access: proxy
-            url: redis://redis-master.infra.svc.cluster.local:6379
-            editable: true
     dashboards:
       flux-cluster:
         url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
@@ -208,13 +203,6 @@ spec:
         gnetId: 11310
         datasource: Prometheus
         revision: 4
-      # cloudnative-pg:
-      #   url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
-      #   datasource: Prometheus
-      # redis:
-      #   gnetId: 14091
-      #   revision: 1
-      #   datasource: Prometheus
       api-server:
         gnetId: 15761
         revision: 14
