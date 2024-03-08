@@ -24,16 +24,16 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  # valuesFrom:
-  #   - targetPath: adminUser.passwordHash
-  #     kind: Secret
-  #     name: weave-secrets
-  #     valuesKey: passwordHash
+  valuesFrom:
+    - targetPath: adminUser.passwordHash
+      kind: Secret
+      name: weave-secrets
+      valuesKey: passwordHash
   values:
     adminUser:
-      create: false
-      createSecret: false
-      # username: admin
+      create: true
+      createSecret: true
+      username: admin
     ingress:
       enabled: true
       className: nginx
@@ -52,4 +52,4 @@ spec:
       enabled: true
     rbac:
       create: true
-      # impersonationResourceNames: ["admin"]
+      impersonationResourceNames: ["admin"]
