@@ -24,3 +24,28 @@ spec:
     - --logtostderr
     - --memcached_port=11211
     - --default_lua_flags=allow-undeclared-keys
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dragonflydb
+    app.kubernetes.io/component: Dragonfly
+    app.kubernetes.io/instance: dragonflydb
+    app.kubernetes.io/part-of: dragonfly-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: dragonfly-memcached
+  name: dragonflydb-memcached
+  namespace: infra
+spec:
+  ports:
+  - name: memcached
+    port: 11211
+    protocol: TCP
+    targetPort: 11211
+  selector:
+    app: dragonflydb
+    app.kubernetes.io/name: dragonfly
+    role: master
+  sessionAffinity: None
+  type: ClusterIP

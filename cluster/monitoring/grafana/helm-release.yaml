@@ -181,6 +181,9 @@ spec:
       nginx-ingress-request-handling-performance:
         url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
         datasource: Prometheus
+      dragonflydb:
+        url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
+        datasource: Prometheus
       unifi-poller-uap-insights:
         gnetId: 11314
         datasource: Prometheus
