@@ -10,4 +10,4 @@ resources:
   - longhorn
   - metallb
   - nfs-subdir-external-provisioner
-    #  - system-upgrade
+  - system-upgrade
