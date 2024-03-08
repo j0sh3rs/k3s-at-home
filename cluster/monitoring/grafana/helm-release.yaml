@@ -161,79 +161,87 @@ spec:
             jsonData:
               implementation: prometheus
     dashboards:
-      flux-cluster:
-        url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
-        datasource: Prometheus
-      flux-control-plane:
-        url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
-        datasource: Prometheus
-      flux-logs:
-        url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
-        datasource: Loki
-      nginx-ingress:
-        url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
-        datasource: Prometheus
-      nginx-ingress-request-handling-performance:
-        url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
-        datasource: Prometheus
+      flux:
+        flux-cluster:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
+          datasource: Prometheus
+        flux-control-plane:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
+          datasource: Prometheus
+        flux-logs:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
+          datasource: Loki
+      nginx:
+        nginx-ingress:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/nginx.json
+          datasource: Prometheus
+        nginx-ingress-request-handling-performance:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
+          datasource: Prometheus
       dragonflydb:
         url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
         datasource: Prometheus
-      unifi-poller-uap-insights:
-        gnetId: 11314
-        datasource: Prometheus
-        revision: 9
-      unifi-poller-client-insights:
-        gnetId: 11315
-        datasource: Prometheus
-        revision: 8
-      unifi-poller-network-sites:
-        gnetId: 11311
-        datasource: Prometheus
-        revision: 4
-      unifi-poller-usw-insights:
-        gnetId: 11312
-        datasource: Prometheus
-        revision: 8
-      unifi-poller-usg-insights:
-        gnetId: 11313
-        datasource: Prometheus
-        revision: 8
-      unifi-poller-client-dpi:
-        gnetId: 11310
-        datasource: Prometheus
-        revision: 4
-      api-server:
-        gnetId: 15761
-        revision: 14
-        datasource: Prometheus
-      coredns:
-        gnetId: 15762
-        revision: 13
-        datasource: Prometheus
-      global:
-        gnetId: 15757
-        revision: 31
-        datasource: Prometheus
-      namespaces:
-        gnetId: 15758
-        revision: 27
-        datasource: Prometheus
-      nodes:
-        gnetId: 15759
-        revision: 19
-        datasource: Prometheus
-      pods:
-        gNetId: 15760
-        revision: 21
-        datasource: Prometheus
-      volumes:
-        gnetId: 11454
-        revision: 14
-        datasource: Prometheus
-      loki-metrics:
-        gnetId: 14055
-        datasource: Prometheus
+      unifi:
+        unifi-poller-uap-insights:
+          gnetId: 11314
+          datasource: Prometheus
+          revision: 10
+        unifi-poller-client-insights:
+          gnetId: 11315
+          datasource: Prometheus
+          revision: 9
+        unifi-poller-network-sites:
+          gnetId: 11311
+          datasource: Prometheus
+          revision: 5
+        unifi-poller-usw-insights:
+          gnetId: 11312
+          datasource: Prometheus
+          revision: 9
+        unifi-poller-usg-insights:
+          gnetId: 11313
+          datasource: Prometheus
+          revision: 9
+        unifi-poller-client-dpi:
+          gnetId: 11310
+          datasource: Prometheus
+          revision: 5
+      default:
+        dragonflydb:
+          url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
+          datasource: Prometheus
+        api-server:
+          gnetId: 15761
+          revision: 16
+          datasource: Prometheus
+        coredns:
+          gnetId: 15762
+          revision: 17
+          datasource: Prometheus
+        global:
+          gnetId: 15757
+          revision: 37
+          datasource: Prometheus
+        namespaces:
+          gnetId: 15758
+          revision: 34
+          datasource: Prometheus
+        nodes:
+          gnetId: 15759
+          revision: 29
+          datasource: Prometheus
+        pods:
+          gNetId: 15760
+          revision: 26
+          datasource: Prometheus
+        volumes:
+          gnetId: 11454
+          revision: 14
+          datasource: Prometheus
+      loki:
+        loki-metrics:
+          gnetId: 14055
+          datasource: Prometheus
     sidecar:
       resources:
         requests:
