@@ -9,7 +9,6 @@ resources:
   - cilium.yaml
   - coredns.yaml
   - deliveryhero.yaml
-  # - dragonflydb.yaml
   # - external-secrets.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
