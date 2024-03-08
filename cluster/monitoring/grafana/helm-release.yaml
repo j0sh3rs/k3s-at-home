@@ -66,77 +66,77 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-          - name: "default"
-            disableDeletion: false
-            editable: true
-            folder: ""
-            options:
-              path: /var/lib/grafana/dashboards/default
-            orgId: 1
-            type: file
-          - name: "cilium"
-            orgId: 1
-            folder: "Cilium"
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/cilium
-          - name: "infra"
-            orgId: 1
-            folder: "Infra"
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/infra
-          - name: "flux"
-            orgId: 1
-            folder: "Flux"
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/flux
-          - name: "kubernetes"
-            orgId: 1
-            folder: "Kubernetes"
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/kubernetes
-          - name: "loki"
-            orgId: 1
-            folder: "Loki"
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/loki
-          - name: "nginx"
-            orgId: 1
-            folder: "nginx"
-            type: file
-            disableDeletion: false
-            editable: true
-            allowUiUpdates: true
-            options:
-              path: /var/lib/grafana/dashboards/nginx
-          - name: "unifi"
-            orgId: 1
-            folder: "Unifi"
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/unifi
-          - name: "Prometheus"
-            disableDeletion: false
-            editable: true
-            folder: ""
-            options:
-              path: /var/lib/grafana/dashboards/prometheus
+        - name: "default"
+          disableDeletion: false
+          editable: true
+          folder: ""
+          options:
+            path: /var/lib/grafana/dashboards/default
+          orgId: 1
+          type: file
+        - name: "cilium"
+          orgId: 1
+          folder: "Cilium"
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/cilium
+        - name: "infra"
+          orgId: 1
+          folder: "Infra"
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/infra
+        - name: "flux"
+          orgId: 1
+          folder: "Flux"
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/flux
+        - name: "kubernetes"
+          orgId: 1
+          folder: "Kubernetes"
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/kubernetes
+        - name: "loki"
+          orgId: 1
+          folder: "Loki"
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/loki
+        - name: "nginx"
+          orgId: 1
+          folder: "nginx"
+          type: file
+          disableDeletion: false
+          editable: true
+          allowUiUpdates: true
+          options:
+            path: /var/lib/grafana/dashboards/nginx
+        - name: "unifi"
+          orgId: 1
+          folder: "Unifi"
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/unifi
+        - name: "Prometheus"
+          disableDeletion: false
+          editable: true
+          folder: ""
+          options:
+            path: /var/lib/grafana/dashboards/prometheus
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -178,9 +178,6 @@ spec:
         nginx-ingress-request-handling-performance:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
           datasource: Prometheus
-      dragonflydb:
-        url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
-        datasource: Prometheus
       unifi:
         unifi-poller-uap-insights:
           gnetId: 11314
