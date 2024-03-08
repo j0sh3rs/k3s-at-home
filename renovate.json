@@ -6,10 +6,13 @@
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":separatePatchReleases",
+    ":semanticCommits",
     "docker:enableMajor",
     ":enablePreCommit",
-    "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge",
-    "github>j0sh3rs/k3s-at-home//.github/renovate/labels"
+    "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge.json",
+    "github>j0sh3rs/k3s-at-home//.github/renovate/labels.json",
+    "github>j0sh3rs/k3s-at-home//.github/renovate/semanticCommits.json",
+    ":automergeBranchPush"
   ],
   "semanticCommits": "enabled",
   "gitAuthor": "Barrybot <barry-bot[bot]@users.noreply.github.com>",
@@ -58,47 +61,34 @@
   },
   "regexManagers": [
     {
-      "datasourceTemplate": "{{datasource}}",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}{{#if (containsString datasource 'pypi')}}pep440{{else}}semver{{/if}}{{/if}}",
+      "description": "Process CRD dependencies",
+      "fileMatch": ["cluster/crds/.+\\.ya?ml$"],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
+        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
+    },
+    {
+      "description": "Process various dependencies",
       "fileMatch": [
-        "^(cluster|bootstrap)/.*\\.yaml$"
+        "ansible/.+\\.ya?ml$",
+        "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*?)\n",
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*?)\n",
-        "datasource=(?<datasource>github-releases) repos=(?<depName>\\S+)\n.*?\"?(?<currentValue>[^-\\s]*?)\"?\n",
-        "datasource=(?<datasource>docker) image=(?<depName>\\S+)\n.*?\"?(?<currentValue>[^-\\s]*?)\"?\n",
-        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-z-]+)-(?<currentValue>.*?)\n",
-        "datasource=(?<datasource>helm) registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?\"?(?<currentValue>[^-\\s]*?)\"?\n"
-      ]
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
       "description": "Process raw GitHub URLs",
-      "fileMatch": ["(cluster|bootstrap)/.+\\.ya?ml$"],
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
       "matchStrings": [
         "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
       ],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver"
-    },
-    {
-      "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    {
-      "description": "Process k3s and similar dependencies",
-      "fileMatch": [
-        "cluster/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( registryUrl=(?<registryUrl>\\S+))?\n *version: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
     }
   ],
   "packageRules": [
