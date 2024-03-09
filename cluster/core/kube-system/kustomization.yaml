@@ -5,6 +5,7 @@ resources:
   - amd-gpu
   - coredns
   - descheduler
+  - kured
   - metrics-server
   - reloader
-  - kured
+  - tetragon
