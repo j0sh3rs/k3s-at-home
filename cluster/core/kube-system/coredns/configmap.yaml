@@ -14,6 +14,11 @@ data:
           ttl 60
           reload 15s
           fallthrough
+        }
+        hosts 68cc.io {
+          192.168.35.5 s3.68cc.io
+          fallthrough
+        }
         prometheus :9153
         forward . 192.168.35.1
         cache 30
