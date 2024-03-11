@@ -16,7 +16,7 @@ data:
           fallthrough
         }
         hosts 68cc.io {
-          192.168.35.5 s3.68cc.io
+          192.168.35.5 s3.68cc.io nas.68cc.io pg.68cc.io
           fallthrough
         }
         prometheus :9153
