@@ -76,7 +76,8 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
+                  port: http
         tls:
           - hosts:
               - *host
