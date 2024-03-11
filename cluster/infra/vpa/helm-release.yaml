@@ -34,21 +34,21 @@ spec:
         pod-recommendation-min-cpu-millicores: 100
         pod-recommendation-min-memory-mb: 128
         prometheus-address: |
-          http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+          http://thanos-query.monitoring.svc.cluster.local:9090
         storage: prometheus
       image:
-        # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-recommender
-        tag: 0.13.0
+        # renovate: dockerUrl=https://registry.k8s.io/autoscaling/vpa-recommender
+        tag: 1.0.0
     admissionController:
       enabled: true
       image:
-        # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-updater
-        tag: 0.13.0
+        # renovate: dockerUrl=https://registry.k8s.io/autoscaling/vpa-admission-controller
+        tag: 1.0.0
     updater:
       enabled: true
       image:
-        # renovate: dockerUrl=https://k8s.gcr.io/autoscaling/vpa-updater
-        tag: 0.13.0
+        # renovate: dockerUrl=https://registry.k8s.io/autoscaling/vpa-updater
+        tag: 1.0.0
       podAnnotations:
         reloader.stakater.com/auto: 'true'
       resources:
