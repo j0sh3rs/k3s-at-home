@@ -25,3 +25,6 @@ spec:
         ingressClassName: nginx
         hosts:
           - host: goldilocks.bth.wtf
+            paths:
+              - path: /
+                type: ImplementationSpecific
