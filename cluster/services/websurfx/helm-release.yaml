@@ -63,6 +63,7 @@ spec:
           - path: /etc/xdg/websurfx
     service:
       app:
+        controller: websurfx
         ports:
           http:
             port: 8080
