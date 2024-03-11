@@ -30,9 +30,9 @@ spec:
       annotations:
         reloader.stakater.com/auto: 'true'
     controllers:
-      main:
+      websurfx:
         containers:
-          main:
+          app:
             image:
               repository: neonmmd/websurfx
               tag: latest
@@ -55,19 +55,19 @@ spec:
               startup:
                 enabled: false
     persistence:
-      config:
+      websurfx:
         enabled: true
         type: secret
         name: websearchx-secrets
         globalMounts:
           - path: /etc/xdg/websurfx
     service:
-      main:
+      app:
         ports:
           http:
             port: 8080
     ingress:
-      main:
+      websurfx:
         enabled: true
         className: nginx
         hosts:

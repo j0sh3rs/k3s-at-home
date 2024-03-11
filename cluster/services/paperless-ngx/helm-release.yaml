@@ -30,9 +30,9 @@ spec:
       annotations:
         reloader.stakater.com/auto: 'true'
     controllers:
-      main:
+      paperless:
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
               tag: 2.6.2
@@ -58,12 +58,12 @@ spec:
               startup:
                 enabled: false
     service:
-      main:
+      app:
         ports:
           http:
             port: 8000
     ingress:
-      main:
+      paperless:
         enabled: true
         className: nginx
         hosts:

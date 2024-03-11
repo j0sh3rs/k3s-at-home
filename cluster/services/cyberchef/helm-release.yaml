@@ -30,9 +30,9 @@ spec:
       annotations:
         reloader.stakater.com/auto: 'true'
     controllers:
-      main:
+      cyberchef:
         containers:
-          main:
+          app:
             image:
               repository: docker.io/mpepping/cyberchef
               tag: v10.8.2
@@ -55,12 +55,12 @@ spec:
               startup:
                 enabled: false
     service:
-      main:
+      app:
         ports:
           http:
             port: 8000
     ingress:
-      main:
+      cyberchef:
         enabled: true
         className: nginx
         hosts:
