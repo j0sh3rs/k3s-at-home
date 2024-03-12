@@ -9,5 +9,6 @@ resources:
   - kube-system
   - longhorn
   - metallb
+  - namespaces.yaml
   - nfs-subdir-external-provisioner
   - system-upgrade
