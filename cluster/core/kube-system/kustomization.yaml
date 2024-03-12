@@ -8,4 +8,4 @@ resources:
   - kured
   - metrics-server
   - reloader
-  - tetragon
+  # - tetragon
