@@ -19,24 +19,3 @@ spec:
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: wildcard-68cc-io
-  namespace: ingress-nginx
-spec:
-  # Secret names are always required.
-  secretName: wildcard-68cc-io-tls
-  duration: 2160h # 90d
-  renewBefore: 360h # 15d
-  privateKey:
-    algorithm: ECDSA
-    size: 384
-    rotationPolicy: Always
-  dnsNames:
-    - '*.68cc.io'
-    - 68cc.io
-  issuerRef:
-    name: letsencrypt
-    kind: ClusterIssuer
