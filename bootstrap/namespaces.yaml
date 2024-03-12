@@ -4,7 +4,7 @@ kind: Namespace
 metadata:
  name: services
  labels:
-   goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: true
 ---
 apiVersion: v1
 kind: Namespace
