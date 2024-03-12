@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - charts
   - crds
+  - namespaces.yaml
