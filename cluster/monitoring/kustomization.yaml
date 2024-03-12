@@ -8,7 +8,7 @@ resources:
    - cadvisor
    - grafana
    - kube-prometheus-stack
-   - loki
+   # - loki
    - node-problem-detector
    - thanos
    - unifi-poller
