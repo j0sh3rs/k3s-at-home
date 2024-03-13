@@ -29,14 +29,6 @@ spec:
       name: botkube-secrets
       valuesKey: apiKey
       targetPath: config.provider.apiKey
-    - kind: Secret
-      name: botkube-secrets
-      valuesKey: DISCORD_BOT_ID
-      targetPath: communications.default.discord.botID
-    - kind: Secret
-      name: botkube-secrets
-      valuesKey: DISCORD_TOKEN
-      targetPath: communications.default.discord.token
   values:
     image:
       pullPolicy: Always
@@ -53,23 +45,23 @@ spec:
       requests:
         cpu: 100m
         memory: 68Mi
-    communications:
-      default:
-        discord:
-          enabled: true
-          channels:
-            default:
-              id: 902733530193338448
+    # communications:
+    #   default:
+    #     discord:
+    #       enabled: true
+    #       channels:
+    #         default:
+    #           id: 902733530193338448
     # actions:
     #   'describe-created-resource':
     #     enabled: true
     #   'show-logs-on-error':
     #     enabled: true
-    executors:
-      k8s-default-tools:
-        botkube/kubectl:
-          enabled: true
-        defaultNamespace: "services"
+    # executors:
+    #   k8s-default-tools:
+    #     botkube/kubectl:
+    #       enabled: true
+    #     defaultNamespace: "services"
     aliases:
       kgp:
         command: kubectl get pods
