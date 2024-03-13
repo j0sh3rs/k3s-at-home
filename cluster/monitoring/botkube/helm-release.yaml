@@ -32,11 +32,11 @@ spec:
     - kind: Secret
       name: botkube-secrets
       valuesKey: DISCORD_BOT_ID
-      targetPath: communications.'default-group'.discord.botID
+      targetPath: communications.default.discord.botID
     - kind: Secret
       name: botkube-secrets
       valuesKey: DISCORD_TOKEN
-      targetPath: communications.'default-group'.discord.token
+      targetPath: communications.default.discord.token
   values:
     image:
       pullPolicy: Always
@@ -54,16 +54,16 @@ spec:
         cpu: 100m
         memory: 68Mi
     communications:
-      default-group:
+      default:
         discord:
           enabled: true
           channels:
-            'default':
+            default:
               id: 902733530193338448
     actions:
-      'describe-created-resource':
+      describe-created-resource:
         enabled: true
-      'show-logs-on-error':
+      show-logs-on-error:
         enabled: true
     executors:
       k8s-default-tools:
