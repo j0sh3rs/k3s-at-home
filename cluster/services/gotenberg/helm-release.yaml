@@ -38,6 +38,7 @@ spec:
               tag: 8.2.1
               pullPolicy: IfNotPresent
             command:
+              - gotenberg
               - --chromium-disable-javascript=true
               - --chromium-allow-list=file:///tmp/.*
             env:
