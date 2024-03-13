@@ -61,9 +61,9 @@ spec:
             default:
               id: 902733530193338448
     actions:
-      describe-created-resource:
+      'describe-created-resource':
         enabled: true
-      show-logs-on-error:
+      'show-logs-on-error':
         enabled: true
     executors:
       k8s-default-tools:
