@@ -29,18 +29,26 @@ spec:
       name: botkube-secrets
       valuesKey: apiKey
       targetPath: config.provider.apiKey
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: DISCORD_BOT_ID
+      targetPath: communications.'default-group'.discord.botID
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: DISCORD_TOKEN
+      targetPath: communications.'default-group'.discord.token
   values:
+    image:
+      pullPolicy: Always
     settings:
       clusterName: Homelab
+      upgradeNotifier: false
     serviceMonitor:
       enabled: true
     rbac:
       groups:
         flux-read-patch:
           create: true
-    deployment:
-      annotations:
-        reloader.stakater.com/auto: 'true'
     resources:
       requests:
         cpu: 100m
@@ -49,3 +57,25 @@ spec:
       default-group:
         discord:
           enabled: true
+          channels:
+            'default':
+              id: 902733530193338448
+    actions:
+      'describe-created-resource':
+        enabled: true
+      'show-logs-on-error':
+        enabled: true
+    executors:
+      k8s-default-tools:
+        botkube/kubectl:
+          enabled: true
+        defaultNamespace: "services"
+    aliases:
+      kgp:
+        command: kubectl get pods
+        displayName: "Get pods"
+      klf:
+        command: kubectl logs -f
+        displayName: "Tail logs"
+    analytics:
+      disable: true
