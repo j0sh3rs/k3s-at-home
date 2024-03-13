@@ -4,75 +4,66 @@ kind: Namespace
 metadata:
  name: services
  labels:
-    goldilocks.fairwinds.com/enabled: true
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: longhorn-system
-  labels:
-    pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/enforce-version: latest
-    pod-security.kubernetes.io/audit: privileged
-    pod-security.kubernetes.io/audit-version: latest
-    pod-security.kubernetes.io/warn: privileged
-    pod-security.kubernetes.io/warn-version: latest
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: metallb-system
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: infra
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: monitoring
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: kube-system
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: cert-manager
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ingress-nginx
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: gaming
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: actions-runner-system
   labels:
-    goldilocks.fairwinds.com/enabled: true
+    goldilocks.fairwinds.com/enabled: "true"
+    kubernetes.io/metadata.name: actions-runner-system
+    kustomize.toolkit.fluxcd.io/name: flux-system
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
 ---
 apiVersion: v1
 kind: Namespace
@@ -93,3 +84,15 @@ metadata:
   annotations:
     meta.helm.sh/release-name: system-upgrade
     meta.helm.sh/release-namespace: system-upgrade
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: longhorn-system
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/audit-version: latest
+    pod-security.kubernetes.io/warn: privileged
+    pod-security.kubernetes.io/warn-version: latest
