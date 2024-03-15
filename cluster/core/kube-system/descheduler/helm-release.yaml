@@ -5,7 +5,7 @@ metadata:
   name: descheduler
   namespace: kube-system
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
       # renovate: registryUrl=https://kubernetes-sigs.github.io/descheduler/
@@ -16,10 +16,80 @@ spec:
         name: kubernetes-sigs-descheduler-charts
         namespace: flux-system
       interval: 5m
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    leaderElection:
-      enabled: false
-    schedule: '*/15 * * * *' # Every 15 minutes
     timeZone: "America/New_York"
+    replicas: 2
+    kind: Deployment
+    deschedulerPolicyAPIVersion: descheduler/v1alpha2
     deschedulerPolicy:
-      ignorePvcPods: true
+      profiles:
+        - name: Default
+          pluginConfig:
+            - name: DefaultEvictor
+              args:
+                evictFailedBarePods: true
+                evictLocalStoragePods: true
+                evictSystemCriticalPods: true
+                nodeFit: true
+            - name: RemovePodsViolatingInterPodAntiAffinity
+            - name: RemovePodsViolatingNodeAffinity
+              args:
+                nodeAffinityType:
+                  - requiredDuringSchedulingIgnoredDuringExecution
+            - name: RemovePodsViolatingNodeTaints
+            - name: RemovePodsViolatingTopologySpreadConstraint
+              args:
+                constraints:
+                  - DoNotSchedule
+                  - ScheduleAnyway
+            - name: RemovePodsHavingTooManyRestarts
+              args:
+                podRestartThreshold: 3
+                includingInitContainers: true
+                states:
+                - CrashLoopBackOff
+            - name: LowNodeUtilization
+              args:
+                thresholds:
+                  memory: 40
+                  cpu: 40
+                targetThresholds:
+                  memory: 70
+                  cpu: 70
+            - name: "RemoveFailedPods"
+              args:
+                reasons:
+                - "OutOfcpu"
+                - "CreateContainerConfigError"
+                includingInitContainers: true
+                excludeOwnerKinds:
+                - "Job"
+                minPodLifetimeSeconds: 3600
+          plugins:
+            balance:
+              enabled:
+                - RemovePodsViolatingTopologySpreadConstraint
+                - LowNodeUtilization
+            deschedule:
+              enabled:
+                - RemovePodsViolatingInterPodAntiAffinity
+                - RemovePodsViolatingNodeAffinity
+                - RemovePodsViolatingNodeTaints
+                - RemovePodsHavingTooManyRestarts
+                - RemoveFailedPods
+    service:
+      enabled: true
+    serviceMonitor:
+      enabled: true
+    leaderElection:
+      enabled: true
