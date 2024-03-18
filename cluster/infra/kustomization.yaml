@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - dragonflydb
   - goldilocks
-  # - n8n
   - vpa
