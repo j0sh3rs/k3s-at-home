@@ -44,7 +44,7 @@ spec:
               ATUIN_TLS__ENABLE: "false"
             envFrom:
               - secretRef:
-                  name: atuin-secret
+                  name: atuin-secrets
             args: ["server", "start"]
             securityContext:
               allowPrivilegeEscalation: false
