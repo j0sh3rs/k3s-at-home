@@ -81,7 +81,7 @@ spec:
             scrapeTimeout: 10s
     ingress:
       app:
-        className: internal
+        className: nginx
         hosts:
           - host: &host sh.bth.wtf
             paths:
