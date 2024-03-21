@@ -283,56 +283,6 @@ spec:
         additionalScrapeConfigs:
           # https://stackoverflow.com/questions/69406120/changing-prometheus-job-label-in-scraper-for-cadvisor-breaks-grafana-dashboards
           # https://stackoverflow.com/questions/65409886/changing-promethus-job-label-from-kubelet-to-kubernetes-cadvisor/65421764#65421764
-          - job_name: monitoring/kube-prometheus-exporter-node/0
-            scrape_interval: 15s
-            scrape_timeout: 10s
-            metrics_path: /metrics
-            scheme: http
-            kubernetes_sd_configs:
-            - role: endpoints
-              namespaces:
-                names:
-                - monitoring
-            relabel_configs:
-            - source_labels: [__meta_kubernetes_service_label_app]
-              separator: ;
-              regex: exporter-node
-              replacement: $1
-              action: keep
-            - source_labels: [__meta_kubernetes_endpoint_port_name]
-              separator: ;
-              regex: metrics
-              replacement: $1
-              action: keep
-            - source_labels: [__meta_kubernetes_namespace]
-              separator: ;
-              regex: (.*)
-              target_label: namespace
-              replacement: $1
-              action: replace
-            - source_labels: [__meta_kubernetes_pod_name]
-              separator: ;
-              regex: (.*)
-              target_label: pod
-              replacement: $1
-              action: replace
-            - source_labels: [__meta_kubernetes_service_name]
-              separator: ;
-              regex: (.*)
-              target_label: service
-              replacement: $1
-              action: replace
-            - source_labels: [__meta_kubernetes_service_name]
-              separator: ;
-              regex: (.*)
-              target_label: job
-              replacement: ${1}
-              action: replace
-            - separator: ;
-              regex: (.*)
-              target_label: endpoint
-              replacement: metrics
-              action: replace
           - job_name: 'kubernetes-cadvisor'
             honor_labels: true
             honor_timestamps: true
