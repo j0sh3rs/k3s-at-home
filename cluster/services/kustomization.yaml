@@ -7,5 +7,6 @@ resources:
   - codeserver
   - cyberchef
   - gotenberg
+  - linkwarden
   - paperless-ngx
   - tika
