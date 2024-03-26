@@ -30,6 +30,7 @@ spec:
     env:
       DISCORD_USERNAME: 'Alertmanager'
       DISCORD_AVATAR_URL: 'https://avatars3.githubusercontent.com/u/3380462'
+      TZ: 'America/New_York'
       VERBOSE: 'ON'
       DISCORD_WEBHOOK:
         valueFrom:
