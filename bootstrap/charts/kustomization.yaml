@@ -9,7 +9,6 @@ resources:
   - cilium.yaml
   - coredns.yaml
   - deliveryhero.yaml
-  # - external-secrets.yaml
   - fairwinds.yaml
   - grafana-charts.yaml
   - ingress-nginx.yaml
@@ -22,6 +21,7 @@ resources:
   - longhorn.yaml
   - metallb.yaml
   - minecraft-charts.yaml
+  - netdata.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
   - prometheus-community-charts.yaml
