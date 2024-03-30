@@ -7,7 +7,7 @@ resources:
    - cadvisor
    - grafana
    - kube-prometheus-stack
-   # - netdata
+   - netdata
    - node-problem-detector
    - thanos
    - unifi-poller

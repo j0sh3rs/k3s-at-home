@@ -27,6 +27,23 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  valuesFrom:
+    - kind: Secret
+      name: netdata-secrets
+      valuesKey: CLOUD_TOKEN
+      targetPath: parent.claiming.token
+    - kind: Secret
+      name: netdata-secrets
+      valuesKey: CLOUD_ROOMS
+      targetPath: parent.claiming.rooms
+    - kind: Secret
+      name: netdata-secrets
+      valuesKey: CLOUD_TOKEN
+      targetPath: child.claiming.token
+    - kind: Secret
+      name: netdata-secrets
+      valuesKey: CLOUD_ROOMS
+      targetPath: child.claiming.rooms
   values:
     ingress:
       hosts:
@@ -35,6 +52,8 @@ spec:
         - hosts:
           - *host
     parent:
+      claiming:
+        enabled: true
       env:
         DO_NOT_TRACK: 1
       database:
@@ -44,6 +63,8 @@ spec:
         storageclass: longhorn
         volumesize: 50Gi
     child:
+      claiming:
+        enabled: true
       updateStrategy:
         type: RollingUpdate
         rollingUpdate:
