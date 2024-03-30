@@ -28,8 +28,11 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    restarter:
-      enabled: true
+    ingress:
+      hosts: &host netdata.bth.wtf
+      tls:
+        - hosts:
+          - *host
     parent:
       env:
         DO_NOT_TRACK: 1
