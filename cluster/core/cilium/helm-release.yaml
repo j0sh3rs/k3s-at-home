@@ -68,7 +68,7 @@ spec:
         rollOutPods: true
         ingress:
           enabled: true
-          className: internal
+          className: nginx
           hosts:
             - &host "hubble.bth.wtf"
           tls:
