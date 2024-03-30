@@ -29,7 +29,8 @@ spec:
     keepHistory: false
   values:
     ingress:
-      hosts: &host netdata.bth.wtf
+      hosts:
+        - &host netdata.bth.wtf
       tls:
         - hosts:
           - *host
