@@ -2,8 +2,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    k8s-app: kube-dns
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
     kustomize.toolkit.fluxcd.io/ssa: merge
