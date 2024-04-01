@@ -5,13 +5,15 @@ metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
     kustomize.toolkit.fluxcd.io/ssa: merge
+  labels:
+    k8s-app: kube-dns
+    kubernetes.io/name: CoreDNS
   name: coredns
   namespace: kube-system
 spec:
   replicas: 3
   selector:
     matchLabels:
-      kubernetes.io/name: CoreDNS
       k8s-app: kube-dns
   template:
     metadata:
