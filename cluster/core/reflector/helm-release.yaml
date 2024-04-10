@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: reflector
-  namespace: reflector
+  namespace: kube-system
 spec:
   interval: 1h
   driftDetection:
@@ -27,3 +27,7 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  values:
+    extraEnv:
+      - name: TZ
+        value: America/New_York
