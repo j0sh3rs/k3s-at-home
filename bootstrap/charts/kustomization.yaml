@@ -23,7 +23,7 @@ resources:
   - metallb.yaml
   - minecraft-charts.yaml
   - netdata.yaml
-  - nfs-subdir-external-provisioner.yaml`
+  - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
   - puppetserver.yaml
   - prometheus-community-charts.yaml
