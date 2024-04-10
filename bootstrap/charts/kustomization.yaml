@@ -24,6 +24,7 @@ resources:
   - netdata.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
+  - puppetserver.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
   - weaveworks.yaml
