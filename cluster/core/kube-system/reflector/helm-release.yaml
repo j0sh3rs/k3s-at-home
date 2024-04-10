@@ -5,8 +5,6 @@ metadata:
   namespace: kube-system
 spec:
   interval: 1h
-  driftDetection:
-    mode: enabled
   chart:
     spec:
       chart: reflector
@@ -18,7 +16,6 @@ spec:
       interval: 1h
   maxHistory: 2
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:

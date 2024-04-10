@@ -7,5 +7,5 @@ resources:
   - descheduler
   - kured
   - metrics-server
-  - reflector
+  # - reflector
   - reloader
