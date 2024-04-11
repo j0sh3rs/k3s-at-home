@@ -1,0 +1,100 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: puppetserver
+  namespace: infra
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: puppetserver
+      # renovate: registryUrl=https://puppetlabs.github.io/puppetserver-helm-chart
+      version: 9.3.4
+      sourceRef:
+        kind: HelmRepository
+        name: puppetservers-charts
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  valuesFrom:
+    - kind: Secret
+      name: puppetserver-secrets
+      valuesKey: POSTGRES_AUTH_USERNAME
+      targetPath: postgresql.auth.username
+    - kind: Secret
+      name: puppetserver-secrets
+      valuesKey: POSTGRES_AUTH_PASSWORD #gitleaks:allow
+      targetPath: postgresql.auth.password
+    - kind: Secret
+      name: puppetserver-secrets
+      valuesKey: POSTGRES_USER_PASSWORD #gitleaks:allow
+      targetPath: postgresql.auth.postgresqlPassword
+  values:
+    global:
+      extraEnv:
+        - name: TZ
+          value: America/New_York
+    puppetserver:
+    # renovate: datasource=docker
+      tag: 8.5.0-latest
+      persistence:
+        ca:
+          storageClass: longhorn
+          size: 10Gi
+        code:
+          storageClass: longhorn
+          size: 20Gi
+        data:
+          storageClass: longhorn
+          size: 20Gi
+        confd:
+          storageClass: longhorn
+          size: 20Gi
+        puppet:
+          storageClass: longhorn
+          size: 30Gi
+        server:
+          storageClass: longhorn
+          size: 30Gi
+      masters:
+        fqdns:
+          alternateServerNames: &pe-captain-host pe-captain.bth.wtf
+        ingress:
+          enabled: true
+          hosts:
+            - *pe-captain-host
+          tls:
+          - hosts:
+            - *pe-captain-host
+    puppetdb:
+      tag: 8.4.1-latest
+      metrics:
+        enabled: true
+      persistence:
+        size: 50Gi
+        storageClass: longhorn
+    puppetboard:
+      enabled: true
+      tag: latest
+      ingress:
+        enabled: true
+        hosts:
+          - &pdb-host pdb.bth.wtf
+        tls:
+        - hosts:
+          - *pdb-host
+    metrics:
+      puppetdb:
+        enabled: true
+      jmx:
+        enabled: true
