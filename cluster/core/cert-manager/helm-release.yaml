@@ -45,7 +45,7 @@ spec:
       pullPolicy: Always
     prometheus:
       servicemonitor:
-        enabled: true
+        enabled: false
     webhook:
       resources:
         requests:

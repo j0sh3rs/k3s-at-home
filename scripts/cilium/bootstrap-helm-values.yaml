@@ -1,34 +1,42 @@
 debug:
-    enabled: true
+  enabled: true
 rollOutCiliumPods: true
 ipam:
-    mode: kubernetes
-    operator:
-        clusterPoolIPv4PodCIDRList: 10.42.0.0/16
+  mode: kubernetes
+  operator:
+    clusterPoolIPv4PodCIDRList: 10.42.0.0/16
 annotateK8sNode: true
 bpf:
-    clockProbe: true
-    preallocateMaps: true
-    masquerade: true
+  clockProbe: true
+  preallocateMaps: true
+  masquerade: true
+  tproxy: true
+bandwidthManager:
+  bbr: true
+  enabled: true
 bgp:
   enabled: false
+  announce:
+    loadbalancerIP: true
+    podCIDR: false
 endpointRoutes:
   enabled: true
 cluster:
-    name: home
-    id: 1
+  name: home
+  id: 1
 cni:
-    uninstall: false
-    install: true
-    logFile: /var/log/cilium-cni.log
+  uninstall: false
+  install: true
+  logFile: /var/log/cilium-cni.log
 containerRuntime:
-    integration: containerd
-    socketPath: /var/run/k3s/containerd/containerd.sock
+  integration: containerd
+  socketPath: /var/run/k3s/containerd/containerd.sock
 kubeConfigPath: /etc/rancher/k3s/k3s.yaml
 kubeProxyReplacement: true
 k8sServiceHost: 127.0.0.1
 k8sServicePort: "6443"
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+enableRuntimeDeviceDetection: true
 localRedirectPolicy: true
 loadBalancer:
   algorithm: maglev
@@ -39,36 +47,53 @@ l2announcements:
   leaseRenewDeadline: 60s
   leaseRetryPeriod: 1s
 encryption:
-    enabled: false
+  enabled: false
 operator:
-    rollOutPods: true
-    replicas: 1
+  rollOutPods: true
+  replicas: 1
 hubble:
-    enabled: false
-    metrics:
-        enabled:
-            - dns:query
-            - drop
-            - tcp
-            - flow
-            - port-distribution
-            - icmp
-            - http
-        serviceMonitor:
-            enabled: false
-            namespace: kube-system
-        dashboards:
-            enabled: true
-    relay:
-        enabled: false
-        rollOutPods: true
-        prometheus:
-            enabled: false
-    ui:
-        enabled: false
-securityContext:
-    privileged: true
-prometheus:
-    enabled: false
+  enabled: false
+  metrics:
+    enabled:
+      - dns:query;ignoreAAAA
+      - drop
+      - tcp
+      - flow
+      - port-distribution
+      - icmp
+      - http
     serviceMonitor:
-        enabled: false
+      enabled: false
+      namespace: kube-system
+    dashboards:
+      enabled: true
+  relay:
+    enabled: false
+    rollOutPods: true
+    prometheus:
+      enabled: false
+  ui:
+    enabled: false
+securityContext:
+  privileged: true
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+prometheus:
+  enabled: false
+  serviceMonitor:
+    enabled: false
