@@ -20,7 +20,16 @@ spec:
       labels:
         k8s-app: kube-dns
     spec:
-      containers: []
+      containers:
+        - name: coredns
+          image: rancher/mirrored-coredns-coredns:1.11.1
+          resources:
+            limits:
+              memory: 170Mi
+              cpu: "500m"
+          requests:
+            cpu: 100m
+            memory: 70Mi
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
