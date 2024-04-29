@@ -21,5 +21,5 @@ spec:
     fullnameOverride: reloader
     reloader:
       podMonitor:
-        enabled: true
+        enabled: false
         namespace: kube-system

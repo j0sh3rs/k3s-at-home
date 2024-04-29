@@ -41,7 +41,7 @@ spec:
       metrics:
         enabled: true
         serviceMonitor:
-          enabled: true
+          enabled: false
         service:
           annotations:
             prometheus.io/scrape: 'true'

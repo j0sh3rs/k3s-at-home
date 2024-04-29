@@ -28,7 +28,7 @@ spec:
     keepHistory: false
   values:
     timeZone: "America/New_York"
-    replicas: 2
+    replicas: 1
     kind: Deployment
     deschedulerPolicyAPIVersion: descheduler/v1alpha2
     deschedulerPolicy:
@@ -90,6 +90,6 @@ spec:
     service:
       enabled: true
     serviceMonitor:
-      enabled: true
+      enabled: false
     leaderElection:
       enabled: true
