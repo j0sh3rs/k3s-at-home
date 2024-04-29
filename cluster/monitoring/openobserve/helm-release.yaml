@@ -18,23 +18,23 @@ spec:
       interval: 5m
   valuesFrom:
     - kind: Secret
-      name: opensobserve-secrets
+      name: openobserve-secrets
       valuesKey: ZO_ROOT_USER_EMAIL
       targetPath: auth.ZO_ROOT_USER_EMAIL
     - kind: Secret
-      name: opensobserve-secrets
+      name: openobserve-secrets
       valuesKey: ZO_ROOT_USER_PASSWORD
       targetPath: auth.ZO_ROOT_USER_PASSWORD
     - kind: Secret
-      name: opensobserve-secrets
+      name: openobserve-secrets
       valuesKey: ZO_S3_ACCESS_KEY
       targetPath: auth.ZO_S3_ACCESS_KEY
     - kind: Secret
-      name: opensobserve-secrets
+      name: openobserve-secrets
       valuesKey: ZO_S3_SECRET_KEY
       targetPath: auth.ZO_S3_SECRET_KEY
     - kind: Secret
-      name: opensobserve-secrets
+      name: openobserve-secrets
       valuesKey: ZO_META_POSTGRES_DSN
       targetPath: config.ZO_META_POSTGRES_DSN
   values:
