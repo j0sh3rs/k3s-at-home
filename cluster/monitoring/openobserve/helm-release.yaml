@@ -40,6 +40,9 @@ spec:
   values:
     nameOverride: openobserve
     fullnameOverride: openobserve
+    image:
+      # renovate: dockerUrl=public.ecr.aws/zinclabs/openobserve
+      tag: "v0.10.5"
     persistence:
       size: 50Gi
       storageClass: "longhorn"
