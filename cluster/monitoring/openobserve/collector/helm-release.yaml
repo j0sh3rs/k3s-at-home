@@ -20,19 +20,19 @@ spec:
     - kind: Secret
       name: openobserve-secrets
       valuesKey: OTLP_ENDPOINT
-      targetPath: exporters.otlp.http.openobserve.endpoint
+      targetPath: exporters."otlphttp/openobserve".endpoint
     - kind: Secret
       name: openobserve-secrets
       valuesKey: OTLP_AUTH
-      targetPath: exporters.otlp.http.openobserve.headers.Authorization
+      targetPath: exporters."otlphttp/openobserve".headers.Authorization
     - kind: Secret
       name: openobserve-secrets
       valuesKey: OTLP_ENDPOINT
-      targetPath: exporters.otlp.http.openobserve_k8s_events.endpoint
+      targetPath: exporters."otlphttp/openobserve_k8s_events".endpoint
     - kind: Secret
       name: openobserve-secrets
       valuesKey: OTLP_AUTH
-      targetPath: exporters.otlp.http.openobserve_k8s_events.headers.Authorization
+      targetPath: exporters."otlphttp/openobserve_k8s_events".headers.Authorization
   values:
     nameOverride: o2-collector
     fullnameOverride: o2-collector
