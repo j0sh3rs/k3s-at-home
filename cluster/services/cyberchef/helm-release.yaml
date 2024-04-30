@@ -29,6 +29,7 @@ spec:
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
+        instrumentation.opentelemetry.io/inject-nodejs: "openobserve-collector/openobserve-nodejs"
     controllers:
       cyberchef:
         containers:

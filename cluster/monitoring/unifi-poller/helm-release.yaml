@@ -24,6 +24,8 @@ spec:
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
+        instrumentation.opentelemetry.io/inject-go: "openobserve-collector/openobserve-go"
+        instrumentation.opentelemetry.io/otel-go-auto-target-exe: "/usr/bin/unpoller"
     envFrom:
       - secretRef:
           name: unifi-poller-secrets

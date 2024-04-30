@@ -38,6 +38,8 @@ spec:
         reloader.stakater.com/auto: 'true'
         prometheus.io/scrape: 'true'
         prometheus.io/port: '10245'
+        instrumentation.opentelemetry.io/inject-go: "openobserve-collector/openobserve-go"
+        instrumentation.opentelemetry.io/otel-go-auto-target-exe: "/nginx-ingress-controller"
       metrics:
         enabled: true
         serviceMonitor:
