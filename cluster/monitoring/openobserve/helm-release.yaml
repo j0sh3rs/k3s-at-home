@@ -48,7 +48,7 @@ spec:
       storageClass: "longhorn"
     ingress:
       enabled: true
-      host:
+      hosts:
         - host: o2.bth.wtf
           paths:
             - path: /
