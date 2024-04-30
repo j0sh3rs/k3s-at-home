@@ -1,5 +1,5 @@
 creation_rules:
-  - encrypted_regex: ^(data|stringData|k8sServiceHost)$
+  - encrypted_regex: ^(data|stringData|Authorization)$
     age: >-
       age1qwwzsz6z2mmu6hpmjt2he7nepmnhutmhehvkva7l5zy5xzf08d5s5n4d6n
   - path_regex: ^scripts\/.*$
