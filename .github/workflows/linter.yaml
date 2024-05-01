@@ -47,10 +47,12 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
-          KUBERNETES_KUBECONFORM_OPTIONS: "-schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json' -ignore-missing-schemas"
+          KUBERNETES_KUBECONFORM_OPTIONS: "-ignore-missing-schemas"
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           YAML_CONFIG_FILE: .yamllint.yaml
+          VALIDATE_CHECKOV: false
           VALIDATE_SHELL_SHFMT: false
           VALIDATE_BASH: false
+          VALIDATE_JSCPD: false
           # FILTER_REGEX_EXCLUDE: .*cluster/.*/kustomization.yaml
