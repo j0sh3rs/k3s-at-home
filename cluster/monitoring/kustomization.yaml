@@ -2,14 +2,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-   # - alertmanager-discord
-   # - blackbox-exporter
+   - alertmanager-discord
+   - blackbox-exporter
    - cadvisor
-   # - grafana
-   # - kube-prometheus-stack
+   - grafana
+   - kube-prometheus-stack
    # - netdata
    - node-problem-detector
-   # - thanos
+   - thanos
    - unifi-poller
-   - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
-   - openobserve
+   # - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
+   # - openobserve
