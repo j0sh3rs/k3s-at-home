@@ -38,9 +38,9 @@ spec:
               ATUIN_HOST: 0.0.0.0
               ATUIN_PORT: &port 80
               ATUIN_OPEN_REGISTRATION: "true"
-              ATUIN_METRICS_ENABLE: "true"
-              ATUIN_METRICS_HOST: 0.0.0.0
-              ATUIN_METRICS_PORT: &metricsPort 8080
+              ATUIN_METRICS__ENABLE: "true"
+              ATUIN_METRICS__HOST: 0.0.0.0
+              ATUIN_METRICS__PORT: &metricsPort 8080
               ATUIN_TLS_ENABLE: "false"
             envFrom:
               - secretRef:
@@ -67,6 +67,7 @@ spec:
         controller: *app
         ports:
           http:
+            primary: true
             port: *port
           metrics:
             port: *metricsPort
