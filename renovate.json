@@ -72,7 +72,6 @@
     {
       "description": "Process various dependencies",
       "fileMatch": [
-        "ansible/.+\\.ya?ml$",
         "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
@@ -82,13 +81,14 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
-      "description": "Process raw GitHub URLs",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "fileMatch": ["(^|/)kustomization\\.ya?ml$"],
+      "matchStringsStrategy": "any",
       "matchStrings": [
-        "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
+        "https://github.com/(?<depName>[\\w-]+/[\\w-]+)/raw/(?<currentValue>[\\w\\.-]+)//",
+        "https://raw.githubusercontent.com/(?<depName>[\\w-]+/[\\w-]+)/(?<currentValue>[\\w\\.-]+)/",
+        "https://github.com/(?<depName>[\\w-]+/[\\w-]+)/releases/download/(?<currentValue>[\\w\\.-]+)/"
       ],
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "semver"
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
