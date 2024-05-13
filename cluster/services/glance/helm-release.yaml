@@ -106,7 +106,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: config
+        name: glance-config
       localtime:
         enabled: true
         type: hostPath
