@@ -1,0 +1,117 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &app glance
+  namespace: services
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    configMaps:
+      config:
+        enabled: true
+        data:
+          glance.yml: |
+            theme:
+              background-color: 225 14 15
+              primary-color: 157 47 65
+              contrast-multiplier: 1.1
+            pages:
+              - name: Home
+                columns:
+                  - size: small
+                    widgets:
+                      - type: calendar
+
+                  - size: full
+                    widgets:
+                      - type: hacker-news
+                      - type: reddit
+                        subreddit: selfhosted
+                      - type: releases
+                        repositories:
+                          - k3s-io/k3s
+                          - Control-D-Inc/ctrld
+                          - netdata/netdata
+
+                  - size: small
+                    widgets:
+                      - type: weather
+                        location: Stoneham, Massachusetts, United States
+    controllers:
+      glance:
+        replicas: 1
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: glanceapp/glance
+              tag: v0.4.0
+            args: ["--config", "/config/glance.yml"]
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 256Mi
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            runAsNonRoot: true
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            primary: true
+            port: 8080
+    ingress:
+      app:
+        className: nginx
+        hosts:
+          - host: &host dash.bth.wtf
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: config
+      localtime:
+        enabled: true
+        type: hostPath
+        hostPath: /etc/localtime
+      timezone:
+        enabled: true
+        type: hostPath
+        hostPath: /etc/timezone

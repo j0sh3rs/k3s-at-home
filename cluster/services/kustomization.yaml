@@ -6,6 +6,7 @@ resources:
   - atuin
   - codeserver
   - cyberchef
+  - glance
   - gotenberg
   - linkwarden
   - paperless-ngx
