@@ -22,6 +22,9 @@ spec:
       valuesKey: LONGHORN_INGRESS_HOST
       targetPath: ingress.host
   values:
+    longhornManager:
+      serviceAnnotations:
+        k8s.grafana.com/scrape: 'true'
     longhornUI:
       replicas: 1
     ingress:
@@ -29,8 +32,13 @@ spec:
       ingressClassName: nginx
       annotations:
         prometheus.io/scrape: 'true'
+        k8s.grafana.com/scrape: 'true'
     annotations:
       reloader.stakater.com/auto: 'true'
+      k8s.grafana.com/scrape: 'true'
+    metrics:
+      serviceMonitor:
+        enabled: true
     persistence:
       defaultClassReplicaCount: 2
       defaultDataLocality: best-effort
