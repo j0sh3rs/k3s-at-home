@@ -24,8 +24,8 @@ spec:
     global:
       annotations:
         reloader.stakater.com/auto: 'true'
-        instrumentation.opentelemetry.io/inject-go: "openobserve-collector/openobserve-go"
-        instrumentation.opentelemetry.io/otel-go-auto-target-exe: "/usr/bin/unpoller"
+        k8s.grafana.com/scrape: 'true'
+
     envFrom:
       - secretRef:
           name: unifi-poller-secrets
@@ -52,6 +52,6 @@ spec:
     service:
       main:
         annotations:
-          prometheus.io/scrape: 'true'
           prometheus.io/probe: 'true'
-          prometheus.io/port: '9130'
+          k8s.grafana.com/scrape: 'true'
+          k8s.grafana.com/metrics.portNumber: '9130'

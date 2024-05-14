@@ -110,20 +110,20 @@ spec:
       replicas: 1
       rollOutPods: true
       prometheus:
-        enabled: false
+        enabled: true
         serviceMonitor:
-          enabled: false
+          enabled: true
       dashboards:
         enabled: true
         annotations:
           grafana_folder: Cilium
     prometheus:
-      enabled: false
+      enabled: true
       serviceMonitor:
-        enabled: false
+        enabled: true
         trustCRDsExist: true
     dashboards:
-      enabled: true
+      enabled: false
       annotations:
         grafana_folder: Cilium
     rollOutCiliumPods: true
