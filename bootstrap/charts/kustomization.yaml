@@ -8,6 +8,7 @@ resources:
   - botkube.yaml
   - cilium.yaml
   - coredns.yaml
+  - datadog.yaml
   - deliveryhero.yaml
   - emberstack.yaml
   - fairwinds.yaml
