@@ -91,6 +91,8 @@ spec:
       enabled: true
     kubeScheduler:
       enabled: true
-    alloy: {}
+    alloy:
+      serviceMonitor:
+        enabled: true
     alloy-events: {}
     alloy-logs: {}
