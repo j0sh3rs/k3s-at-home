@@ -81,8 +81,8 @@ spec:
       enabled: false
     opencost:
       enabled: false
-    profiles:
-      enabled: true
+    # profiles:
+    #   enabled: true
     kube-state-metrics:
       enabled: true
     prometheus-node-exporter:
