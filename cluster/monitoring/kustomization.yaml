@@ -5,6 +5,7 @@ resources:
    - alertmanager-discord
    - blackbox-exporter
    - cadvisor
+   - datadog
    - grafana
    - kube-prometheus-stack
    # - netdata
