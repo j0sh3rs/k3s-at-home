@@ -27,6 +27,8 @@ spec:
       retries: 3
   values:
     installCRDs: false
+    serviceAnnotations:
+      k8s.grafana.com/scrape: 'true'
     resources:
       requests:
         cpu: 100m
@@ -45,7 +47,7 @@ spec:
       pullPolicy: Always
     prometheus:
       servicemonitor:
-        enabled: false
+        enabled: true
     webhook:
       resources:
         requests:
