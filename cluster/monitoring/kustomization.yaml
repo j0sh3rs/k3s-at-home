@@ -8,10 +8,10 @@ resources:
    # - datadog
    # - grafana
    - grafana-agent
-   # - kube-prometheus-stack
+   - kube-prometheus-stack
    # - netdata
    - node-problem-detector
-   # - thanos
+   - thanos
    - unifi-poller
    # - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
    # - openobserve

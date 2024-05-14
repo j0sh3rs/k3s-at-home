@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts
       chart: k8s-monitoring
-      version: 1.0.8
+      version: 1.0.9
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -63,9 +63,9 @@ spec:
       node-exporter:
         enabled: true
     logs:
-      enabled: true
+      enabled: false
       pod_logs:
-        enabled: true
+        enabled: false
       cluster_events:
         enabled: true
     traces:
@@ -86,7 +86,7 @@ spec:
     kube-state-metrics:
       enabled: true
     prometheus-node-exporter:
-      enabled: true
+      enabled: false
     prometheus-operator-crds:
       enabled: true
     kubeScheduler:
