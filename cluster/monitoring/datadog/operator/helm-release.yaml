@@ -29,3 +29,16 @@ spec:
   values:
     image:
       tag: 1.6.0
+    features:
+      ebpfCheck:
+        enabled: true
+      helmCheck:
+        enabled: true
+      oomKill:
+        enabled: true
+      prometheusScrape:
+        enabled: true
+      tcpQueueLength:
+        enabled: true
+    global:
+      criSocketPath: /var/run/k3s/containerd/containerd.sock
