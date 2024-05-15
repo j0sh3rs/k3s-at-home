@@ -86,13 +86,13 @@ spec:
     kube-state-metrics:
       enabled: true
     prometheus-node-exporter:
-      enabled: false
+      enabled: true
     prometheus-operator-crds:
       enabled: true
     kubeScheduler:
       enabled: true
     alloy:
       serviceMonitor:
-        enabled: true
+        enabled: false
     alloy-events: {}
     alloy-logs: {}
