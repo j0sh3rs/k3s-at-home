@@ -63,9 +63,9 @@ spec:
       node-exporter:
         enabled: true
     logs:
-      enabled: false
+      enabled: true
       pod_logs:
-        enabled: false
+        enabled: true
       cluster_events:
         enabled: true
     traces:
