@@ -8,6 +8,7 @@ resources:
   - cyberchef
   - glance
   - gotenberg
+  - lgtm-stack
   - linkwarden
   - paperless-ngx
   - tika
