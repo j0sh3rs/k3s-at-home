@@ -9,7 +9,7 @@ resources:
    # - grafana
    # - grafana-agent
    # - kube-prometheus-stack
-   - lgtm-stack
+   # - lgtm-stack
    # - netdata
    - node-problem-detector
    # - thanos
