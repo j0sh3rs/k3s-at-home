@@ -47,6 +47,15 @@ spec:
       valuesKey: grafana_cloud_token
       targetPath: externalServices.tempo.basicAuth.password
   values:
+    agent:
+      clustering:
+        enabled: true
+      configMap:
+        create: false
+        name: grafana-agent-configmap
+        key: config
+    serviceMonitor:
+      enabled: true
     cluster:
       name: k3s
     externalServices:
@@ -88,7 +97,7 @@ spec:
     prometheus-node-exporter:
       enabled: true
     prometheus-operator-crds:
-      enabled: false
+      enabled: true
     kubeScheduler:
       enabled: true
     alloy:
