@@ -97,7 +97,7 @@ spec:
     prometheus-node-exporter:
       enabled: true
     prometheus-operator-crds:
-      enabled: true
+      enabled: false
     kubeScheduler:
       enabled: true
     alloy:
