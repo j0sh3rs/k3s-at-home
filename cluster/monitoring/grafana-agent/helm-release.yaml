@@ -1,0 +1,98 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana-agent
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: k8s-monitoring
+      version: 1.0.9
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+    force: true
+  valuesFrom:
+    - kind: Secret
+      name: grafana-cloud-secrets
+      valuesKey: prometheus_username
+      targetPath: externalServices.prometheus.basicAuth.username
+    - kind: Secret
+      name: grafana-cloud-secrets
+      valuesKey: grafana_cloud_token
+      targetPath: externalServices.prometheus.basicAuth.password
+    - kind: Secret
+      name: grafana-cloud-secrets
+      valuesKey: loki_username
+      targetPath: externalServices.loki.basicAuth.username
+    - kind: Secret
+      name: grafana-cloud-secrets
+      valuesKey: grafana_cloud_token
+      targetPath: externalServices.loki.basicAuth.password
+    - kind: Secret
+      name: grafana-cloud-secrets
+      valuesKey: tempo_username
+      targetPath: externalServices.tempo.basicAuth.username
+    - kind: Secret
+      name: grafana-cloud-secrets
+      valuesKey: grafana_cloud_token
+      targetPath: externalServices.tempo.basicAuth.password
+  values:
+    cluster:
+      name: k3s
+    externalServices:
+      prometheus:
+        host: https://prometheus-prod-10-prod-us-central-0.grafana.net
+      loki:
+        host: https://logs-prod3.grafana.net
+      tempo:
+        host: https://tempo-us-central1.grafana.net:443
+    metrics:
+      enabled: true
+      cost:
+        enabled: false
+      node-exporter:
+        enabled: true
+    logs:
+      enabled: true
+      pod_logs:
+        enabled: true
+      cluster_events:
+        enabled: true
+    traces:
+      enabled: true
+    receivers:
+      grpc:
+        enabled: true
+      http:
+        enabled: true
+      zipkin:
+        enabled: true
+    cost:
+      enabled: false
+    opencost:
+      enabled: false
+    # profiles:
+    #   enabled: true
+    kube-state-metrics:
+      enabled: true
+    prometheus-node-exporter:
+      enabled: true
+    prometheus-operator-crds:
+      enabled: false
+    kubeScheduler:
+      enabled: true
+    alloy:
+      serviceMonitor:
+        enabled: false
+    alloy-events: {}
+    alloy-logs: {}

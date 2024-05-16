@@ -47,7 +47,7 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
-          KUBERNETES_KUBECONFORM_OPTIONS: "-ignore-missing-schemas"
+          KUBERNETES_KUBECONFORM_OPTIONS: "-ignore-missing-schemas -ignore-filename-pattern secrets\/*"
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           YAML_CONFIG_FILE: .yamllint.yaml
