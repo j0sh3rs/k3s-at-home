@@ -70,7 +70,7 @@ spec:
         storageClass: longhorn
         size: 20Gi
     ruler:
-      enabled: true
+      enabled: false
       replicaLabel: __replica__
       alertmanagers:
         - "http://alertmanager-operated.monitoring.svc.cluster.local:9093"
