@@ -79,7 +79,7 @@ spec:
       cluster_events:
         enabled: false
     traces:
-      enabled: true
+      enabled: false
     receivers:
       grpc:
         enabled: true

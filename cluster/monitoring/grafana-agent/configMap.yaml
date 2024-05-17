@@ -670,53 +670,53 @@ data:
     #   forward_to = [prometheus.relabel.metrics_service.receiver]
     # }
 
-    # // Prometheus Operator PodMonitor objects
-    # prometheus.operator.podmonitors "pod_monitors" {
-    #   clustering {
-    #     enabled = true
-    #   }
-    #   scrape {
-    #     default_scrape_interval = "60s"
-    #   }
-    #   forward_to = [prometheus.relabel.podmonitors.receiver]
-    # }
+    // Prometheus Operator PodMonitor objects
+    prometheus.operator.podmonitors "pod_monitors" {
+      clustering {
+        enabled = true
+      }
+      scrape {
+        default_scrape_interval = "60s"
+      }
+      forward_to = [prometheus.relabel.podmonitors.receiver]
+    }
 
-    # prometheus.relabel "podmonitors" {
-    #   max_cache_size = 100000
-    #   forward_to = [prometheus.relabel.metrics_service.receiver]
-    # }
+    prometheus.relabel "podmonitors" {
+      max_cache_size = 100000
+      forward_to = [prometheus.relabel.metrics_service.receiver]
+    }
 
-    # // Prometheus Operator Probe objects
-    # prometheus.operator.probes "probes" {
-    #   clustering {
-    #     enabled = true
-    #   }
-    #   scrape {
-    #     default_scrape_interval = "60s"
-    #   }
-    #   forward_to = [prometheus.relabel.probes.receiver]
-    # }
+    // Prometheus Operator Probe objects
+    prometheus.operator.probes "probes" {
+      clustering {
+        enabled = true
+      }
+      scrape {
+        default_scrape_interval = "60s"
+      }
+      forward_to = [prometheus.relabel.probes.receiver]
+    }
 
-    # prometheus.relabel "probes" {
-    #   max_cache_size = 100000
-    #   forward_to = [prometheus.relabel.metrics_service.receiver]
-    # }
+    prometheus.relabel "probes" {
+      max_cache_size = 100000
+      forward_to = [prometheus.relabel.metrics_service.receiver]
+    }
 
-    # // Prometheus Operator ServiceMonitor objects
-    # prometheus.operator.servicemonitors "service_monitors" {
-    #   clustering {
-    #     enabled = true
-    #   }
-    #   scrape {
-    #     default_scrape_interval = "60s"
-    #   }
-    #   forward_to = [prometheus.relabel.servicemonitors.receiver]
-    # }
+    // Prometheus Operator ServiceMonitor objects
+    prometheus.operator.servicemonitors "service_monitors" {
+      clustering {
+        enabled = true
+      }
+      scrape {
+        default_scrape_interval = "60s"
+      }
+      forward_to = [prometheus.relabel.servicemonitors.receiver]
+    }
 
-    # prometheus.relabel "servicemonitors" {
-    #   max_cache_size = 100000
-    #   forward_to = [prometheus.relabel.metrics_service.receiver]
-    # }
+    prometheus.relabel "servicemonitors" {
+      max_cache_size = 100000
+      forward_to = [prometheus.relabel.metrics_service.receiver]
+    }
 
     // Metrics Service
     remote.kubernetes.secret "metrics_service" {
