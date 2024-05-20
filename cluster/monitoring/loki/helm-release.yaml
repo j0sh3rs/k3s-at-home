@@ -1,0 +1,114 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: loki-distributed
+      version: 0.79.0
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+    force: true
+  valuesFrom:
+    - kind: Secret
+      name: loki-secrets
+      valuesKey: s3_access_key_id
+      targetPath: loki.storageConfig.s3.access_key_id
+    - kind: Secret
+      name: loki-secrets
+      valuesKey: s3_secret_access_key
+      targetPath: loki.storageConfig.s3.secret_access_key
+  values:
+    nameOverride: loki
+    fullnameOverride: loki
+    loki:
+      pullPolicy: Always
+      storageConfig:
+        tsdb_shipper:
+          active_index_directory: /data/tsdb-index
+          cache_location: /data/tsdb-cache
+          cache_ttl: 24h
+        s3:
+          bucketnames: loki
+          s3forcepathstyle: true
+          endpoint: s3.68cc.io
+      schemaConfig:
+        configs:
+        - from: "2023-01-05"
+          index:
+            period: 24h
+            prefix: index_
+          object_store: s3
+          schema: v13
+          store: tsdb
+    serviceMonitor:
+      enabled: true
+    prometheusRule:
+      enabled: true
+      groups:
+        - name: loki_rules
+          rules:
+            - expr: histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket[1m]))
+                by (le, cluster, job))
+              record: cluster_job:loki_request_duration_seconds:99quantile
+            - expr: histogram_quantile(0.50, sum(rate(loki_request_duration_seconds_bucket[1m]))
+                by (le, cluster, job))
+              record: cluster_job:loki_request_duration_seconds:50quantile
+            - expr: sum(rate(loki_request_duration_seconds_sum[1m])) by (cluster, job) / sum(rate(loki_request_duration_seconds_count[1m]))
+                by (cluster, job)
+              record: cluster_job:loki_request_duration_seconds:avg
+            - expr: sum(rate(loki_request_duration_seconds_bucket[1m])) by (le, cluster, job)
+              record: cluster_job:loki_request_duration_seconds_bucket:sum_rate
+            - expr: sum(rate(loki_request_duration_seconds_sum[1m])) by (cluster, job)
+              record: cluster_job:loki_request_duration_seconds_sum:sum_rate
+            - expr: sum(rate(loki_request_duration_seconds_count[1m])) by (cluster, job)
+              record: cluster_job:loki_request_duration_seconds_count:sum_rate
+            - expr: histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket[1m]))
+                by (le, cluster, job, route))
+              record: cluster_job_route:loki_request_duration_seconds:99quantile
+            - expr: histogram_quantile(0.50, sum(rate(loki_request_duration_seconds_bucket[1m]))
+                by (le, cluster, job, route))
+              record: cluster_job_route:loki_request_duration_seconds:50quantile
+            - expr: sum(rate(loki_request_duration_seconds_sum[1m])) by (cluster, job, route)
+                / sum(rate(loki_request_duration_seconds_count[1m])) by (cluster, job, route)
+              record: cluster_job_route:loki_request_duration_seconds:avg
+            - expr: sum(rate(loki_request_duration_seconds_bucket[1m])) by (le, cluster, job,
+                route)
+              record: cluster_job_route:loki_request_duration_seconds_bucket:sum_rate
+            - expr: sum(rate(loki_request_duration_seconds_sum[1m])) by (cluster, job, route)
+              record: cluster_job_route:loki_request_duration_seconds_sum:sum_rate
+            - expr: sum(rate(loki_request_duration_seconds_count[1m])) by (cluster, job, route)
+              record: cluster_job_route:loki_request_duration_seconds_count:sum_rate
+            - expr: histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket[1m]))
+                by (le, cluster, namespace, job, route))
+              record: cluster_namespace_job_route:loki_request_duration_seconds:99quantile
+            - expr: histogram_quantile(0.50, sum(rate(loki_request_duration_seconds_bucket[1m]))
+                by (le, cluster, namespace, job, route))
+              record: cluster_namespace_job_route:loki_request_duration_seconds:50quantile
+            - expr: sum(rate(loki_request_duration_seconds_sum[1m])) by (cluster, namespace,
+                job, route) / sum(rate(loki_request_duration_seconds_count[1m])) by (cluster,
+                namespace, job, route)
+              record: cluster_namespace_job_route:loki_request_duration_seconds:avg
+            - expr: sum(rate(loki_request_duration_seconds_bucket[1m])) by (le, cluster, namespace,
+                job, route)
+              record: cluster_namespace_job_route:loki_request_duration_seconds_bucket:sum_rate
+            - expr: sum(rate(loki_request_duration_seconds_sum[1m])) by (cluster, namespace,
+                job, route)
+              record: cluster_namespace_job_route:loki_request_duration_seconds_sum:sum_rate
+            - expr: sum(rate(loki_request_duration_seconds_count[1m])) by (cluster, namespace,
+                job, route)
+              record: cluster_namespace_job_route:loki_request_duration_seconds_count:sum_rate
+    memcachedExporter:
+      enabled: true
