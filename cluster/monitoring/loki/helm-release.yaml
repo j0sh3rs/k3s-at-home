@@ -38,99 +38,99 @@ spec:
     nameOverride: loki
     fullnameOverride: loki
     loki:
-      # structuredConfig:
-      #   auth_enabled: false
-      #   analytics:
-      #     reporting_enabled: false
-      #   chunk_store_config:
-      #     max_look_back_period: 0s
-      #   compactor:
-      #     working_directory: /var/loki/compactor
-      #     shared_store: tsdb
-      #   common:
-      #     compactor_address: http://loki-compactor:3100
-      #     storage:
-      #       s3:
-      #         endpoint: s3.68cc.io
-      #         s3forcepathstyle: true
-      #         region: us-east-1
-      #         bucketnames: loki-data
-      #   distributor:
-      #     ring:
-      #       kvstore:
-      #         store: memberlist
-      #   frontend:
-      #     compress_responses: true
-      #     log_queries_longer_than: 5s
-      #     tail_proxy_url: http://loki-querier:3100
-      #   frontend_worker:
-      #     frontend_address: loki-query-frontend-headless:9095
-      #   ingester:
-      #     chunk_block_size: 262144
-      #     chunk_encoding: snappy
-      #     chunk_idle_period: 30m
-      #     chunk_retain_period: 1m
-      #     lifecycler:
-      #       ring:
-      #         kvstore:
-      #           store: memberlist
-      #         replication_factor: 1
-      #     max_transfer_retries: 0
-      #     wal:
-      #       dir: /var/loki/wal
-      #   ingester_client:
-      #     grpc_client_config:
-      #       grpc_compression: gzip
-      #   limits_config:
-      #     enforce_metric_name: false
-      #     max_cache_freshness_per_query: 10m
-      #     reject_old_samples: true
-      #     reject_old_samples_max_age: 168h
-      #     split_queries_by_interval: 15m
-      #   memberlist:
-      #     join_members:
-      #     - loki-memberlist
-      #   query_range:
-      #     align_queries_with_step: true
-      #     cache_results: true
-      #     max_retries: 5
-      #     results_cache:
-      #       cache:
-      #         embedded_cache:
-      #           enabled: true
-      #           ttl: 24h
-      #   ruler:
-      #     ring:
-      #       kvstore:
-      #         store: memberlist
-      #     rule_path: /tmp/loki/scratch
-      #     storage:
-      #       s3:
-      #         bucketnames: loki-ruler
-      #   runtime_config:
-      #     file: /var/loki-runtime/runtime.yaml
-      #   schema_config:
-      #     configs:
-      #     - from: "2023-01-05"
-      #       index:
-      #         period: 24h
-      #         prefix: index_
-      #       object_store: s3
-      #       schema: v13
-      #       store: tsdb
-      #   server:
-      #     http_listen_port: 3100
-      #     http_listen_address: 0.0.0.0
-      #   storage_config:
-      #     aws:
-      #       s3forcepathstyle: true
-      #     tsdb_shipper:
-      #       active_index_directory: /data/tsdb-index
-      #       cache_location: /data/tsdb-cache
-      #       cache_ttl: 24h
-      #   table_manager:
-      #     retention_deletes_enabled: false
-      #     retention_period: 0s
+      structuredConfig:
+        auth_enabled: false
+        analytics:
+          reporting_enabled: false
+        chunk_store_config:
+          max_look_back_period: 0s
+        compactor:
+          working_directory: /var/loki/compactor
+          shared_store: tsdb
+        common:
+          compactor_address: http://loki-compactor:3100
+          storage:
+            s3:
+              endpoint: s3.68cc.io
+              s3forcepathstyle: true
+              region: us-east-1
+              bucketnames: loki-data
+        distributor:
+          ring:
+            kvstore:
+              store: memberlist
+        frontend:
+          compress_responses: true
+          log_queries_longer_than: 5s
+          tail_proxy_url: http://loki-querier:3100
+        frontend_worker:
+          frontend_address: loki-query-frontend-headless:9095
+        ingester:
+          chunk_block_size: 262144
+          chunk_encoding: snappy
+          chunk_idle_period: 30m
+          chunk_retain_period: 1m
+          lifecycler:
+            ring:
+              kvstore:
+                store: memberlist
+              replication_factor: 1
+          max_transfer_retries: 0
+          wal:
+            dir: /var/loki/wal
+        ingester_client:
+          grpc_client_config:
+            grpc_compression: gzip
+        limits_config:
+          enforce_metric_name: false
+          max_cache_freshness_per_query: 10m
+          reject_old_samples: true
+          reject_old_samples_max_age: 168h
+          split_queries_by_interval: 15m
+        memberlist:
+          join_members:
+          - loki-memberlist
+        query_range:
+          align_queries_with_step: true
+          cache_results: true
+          max_retries: 5
+          results_cache:
+            cache:
+              embedded_cache:
+                enabled: true
+                ttl: 24h
+        ruler:
+          ring:
+            kvstore:
+              store: memberlist
+          rule_path: /tmp/loki/scratch
+          storage:
+            s3:
+              bucketnames: loki-ruler
+        runtime_config:
+          file: /var/loki-runtime/runtime.yaml
+        schema_config:
+          configs:
+          - from: "2023-01-05"
+            index:
+              period: 24h
+              prefix: index_
+            object_store: s3
+            schema: v13
+            store: tsdb
+        server:
+          http_listen_port: 3100
+          http_listen_address: 0.0.0.0
+        storage_config:
+          aws:
+            s3forcepathstyle: true
+          tsdb_shipper:
+            active_index_directory: /data/tsdb-index
+            cache_location: /data/tsdb-cache
+            cache_ttl: 24h
+        table_manager:
+          retention_deletes_enabled: false
+          retention_period: 0s
       image:
         pullPolicy: Always
         tag: 3.0.0
