@@ -254,8 +254,6 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
-        additionalArgs:
-          - "--web.enable-remote-write-receiver"
         thanos:
           image: quay.io/thanos/thanos:v0.35.0
           objectStorageConfig:
@@ -277,6 +275,9 @@ spec:
         retention: 14d
         retentionSize: 50GB
         remoteWriteDashboards: true
+        enableRemoteWriteReceiver: true
+        enabledFeatures:
+          - remote-write-receiver
         enableAdminAPI: true
         walCompression: true
         storageSpec:
