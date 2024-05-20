@@ -255,7 +255,7 @@ spec:
         enabled: true
       prometheusSpec:
         additionalArgs:
-          - --web.enable-remote-write-receiver
+          - "--web.enable-remote-write-receiver"
         thanos:
           image: quay.io/thanos/thanos:v0.35.0
           objectStorageConfig:

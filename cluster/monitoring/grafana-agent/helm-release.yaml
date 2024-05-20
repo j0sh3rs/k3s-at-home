@@ -47,9 +47,10 @@ spec:
   #     valuesKey: grafana_cloud_token
   #     targetPath: externalServices.tempo.basicAuth.password
   values:
-    agent:
+    alloy:
       clustering:
         enabled: true
+      enableReporting: false
       configMap:
         create: false
         name: grafana-agent-configmap
@@ -99,9 +100,5 @@ spec:
       enabled: false
     kubeScheduler:
       enabled: true
-    alloy:
-      enabled: false
-      serviceMonitor:
-        enabled: false
     alloy-events: {}
     alloy-logs: {}
