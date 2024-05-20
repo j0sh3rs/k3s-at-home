@@ -737,7 +737,7 @@ data:
 
     prometheus.remote_write "metrics_service" {
       endpoint {
-        url = nonsensitive(remote.kubernetes.secret.metrics_service.data["host"]) + "/api/prom/push"
+        url = nonsensitive(remote.kubernetes.secret.metrics_service.data["host"]) + "/api/v1/write"
         headers = { "X-Scope-OrgID" = nonsensitive(remote.kubernetes.secret.metrics_service.data["tenantId"]) }
 
         basic_auth {

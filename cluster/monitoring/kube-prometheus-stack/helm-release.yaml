@@ -158,6 +158,8 @@ spec:
             targetLabel: instance
     kubeStateMetrics:
       enabled: true
+      selfMonitor:
+        enabled: true
       prometheus:
         monitor:
           enabled: true
@@ -252,6 +254,8 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
+        additionalArgs:
+          - --web.enable-remote-write-receiver
         thanos:
           image: quay.io/thanos/thanos:v0.35.0
           objectStorageConfig:
@@ -272,6 +276,7 @@ spec:
         probeSelectorNilUsesHelmValues: false
         retention: 14d
         retentionSize: 50GB
+        remoteWriteDashboards: true
         enableAdminAPI: true
         walCompression: true
         storageSpec:
