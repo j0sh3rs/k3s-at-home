@@ -34,25 +34,9 @@ spec:
     nameOverride: loki
     fullnameOverride: loki
     loki:
-      pullPolicy: Always
-      storageConfig:
-        tsdb_shipper:
-          active_index_directory: /data/tsdb-index
-          cache_location: /data/tsdb-cache
-          cache_ttl: 24h
-        s3:
-          bucketnames: loki
-          s3forcepathstyle: true
-          endpoint: s3.68cc.io
-      schemaConfig:
-        configs:
-        - from: "2023-01-05"
-          index:
-            period: 24h
-            prefix: index_
-          object_store: s3
-          schema: v13
-          store: tsdb
+      image:
+        pullPolicy: Always
+      existingSecretForConfig: loki-secrets
     serviceMonitor:
       enabled: true
     prometheusRule:
