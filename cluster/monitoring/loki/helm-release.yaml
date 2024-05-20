@@ -38,6 +38,7 @@ spec:
     nameOverride: loki
     fullnameOverride: loki
     loki:
+      command: "-print-config-stderr=true"
       structuredConfig:
         auth_enabled: false
         analytics:
@@ -46,6 +47,7 @@ spec:
           max_look_back_period: 0s
         compactor:
           working_directory: /var/loki/compactor
+          shared_store: tsdb
         common:
           compactor_address: http://loki-compactor:3100
           storage:
@@ -190,8 +192,6 @@ spec:
             - expr: sum(rate(loki_request_duration_seconds_count[1m])) by (cluster, namespace,
                 job, route)
               record: cluster_namespace_job_route:loki_request_duration_seconds_count:sum_rate
-    memcachedExporter:
-      enabled: true
     ingester:
       kind: Deployment
       replicas: 1
