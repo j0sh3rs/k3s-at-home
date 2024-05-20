@@ -38,7 +38,6 @@ spec:
     nameOverride: loki
     fullnameOverride: loki
     loki:
-      command: "-print-config-stderr=true"
       structuredConfig:
         auth_enabled: false
         analytics:
