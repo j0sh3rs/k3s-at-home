@@ -73,6 +73,10 @@ spec:
         enabled: false
       node-exporter:
         enabled: false
+      kube-state-metrics:
+        enabled: false
+      kubelet:
+        enabled: false
     logs:
       enabled: false
       pod_logs:
