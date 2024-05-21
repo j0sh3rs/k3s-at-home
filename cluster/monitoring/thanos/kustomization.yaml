@@ -6,4 +6,3 @@ namespace: monitoring
 resources:
   - helm-release.yaml
   - dashboards
-  - pdc.yaml

@@ -60,7 +60,7 @@ spec:
       name: k3s
     externalServices:
       prometheus:
-        host: http://mimir-distributor:8080
+        host: http://prometheus-prometheus:9090
         authMode: none
       # loki:
       #   host: https://logs-prod3.grafana.net
