@@ -126,25 +126,8 @@ spec:
           cpu: 500m
           memory: 4Gi
       topologySpreadConstraints: {}
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: target # support for enterprise.legacyLabels
-                    operator: In
-                    values:
-                      - ingester
-              topologyKey: 'kubernetes.io/hostname'
-            - labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/component
-                    operator: In
-                    values:
-                      - ingester
-              topologyKey: 'kubernetes.io/hostname'
       zoneAwareReplication:
-        topologyKey: 'kubernetes.io/hostname'
+        enabled: false
       # admin-cache:
       #   enabled: true
       #   replicas: 1
@@ -202,26 +185,8 @@ spec:
           cpu: 500m
           memory: 1.5Gi
       topologySpreadConstraints: {}
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: target # support for enterprise.legacyLabels
-                    operator: In
-                    values:
-                      - store-gateway
-              topologyKey: 'kubernetes.io/hostname'
-
-            - labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/component
-                    operator: In
-                    values:
-                      - store-gateway
-              topologyKey: 'kubernetes.io/hostname'
       zoneAwareReplication:
-        topologyKey: 'kubernetes.io/hostname'
+        enabled: false
     nginx:
       enabled: false
       # Grafana Enterprise Metrics feature related
