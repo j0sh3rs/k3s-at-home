@@ -89,8 +89,6 @@ spec:
           cpu: 500m
           memory: 4Gi
     ingester:
-      statefulSet:
-        enabled: false
       persistentVolume:
         size: 50Gi
       replicas: 2
