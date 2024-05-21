@@ -50,10 +50,6 @@ spec:
   values:
     alloy:
       enableReporting: false
-      configMap:
-        create: false
-        name: grafana-agent-configmap
-        key: config
     serviceMonitor:
       enabled: true
     cluster:

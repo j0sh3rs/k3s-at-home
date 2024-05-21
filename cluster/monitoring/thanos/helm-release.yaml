@@ -63,6 +63,7 @@ spec:
         enabled: true
         storageClass: longhorn
         size: 30Gi
+      resourcesPreset: "medium"
     storegateway:
       enabled: true
       persistence:
