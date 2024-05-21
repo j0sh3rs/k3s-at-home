@@ -3,11 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
    - cadvisor
-   - grafana-agent
+   # - grafana-agent
    # - kube-prometheus-stack
    # - lgtm-stack
    # - loki
-   - mimir
+   # - mimir
    - node-problem-detector
    # - thanos
    - unifi-poller
