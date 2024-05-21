@@ -51,8 +51,14 @@ spec:
         mimirAlerts: true
         mimirRules: true
     grafanaAgent:
+      enabled: true
+      installOperator: true
       logs:
-        enabled: false
+        enabled: true
+      metrics:
+        scrapeK8s:
+          kubeStateMetrics:
+            namespace: monitoring
     mimir:
       structuredConfig:
         common:
@@ -100,6 +106,14 @@ spec:
         requests:
           cpu: 500m
           memory: 4Gi
+    overrides_exporter:
+      replicas: 1
+      resources:
+        limits:
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
     ingester:
       persistentVolume:
         size: 50Gi
@@ -131,51 +145,43 @@ spec:
               topologyKey: 'kubernetes.io/hostname'
       zoneAwareReplication:
         topologyKey: 'kubernetes.io/hostname'
-      admin-cache:
-        enabled: true
-        replicas: 1
-      chunks-cache:
-        enabled: true
-        replicas: 1
-      index-cache:
-        enabled: true
-        replicas: 1
-      metadata-cache:
-        enabled: true
-      results-cache:
-        enabled: true
-        replicas: 1
-      minio:
-        enabled: false
-      overrides_exporter:
-        replicas: 1
-        resources:
-          limits:
-            memory: 128Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
-      querier:
-        replicas: 1
-        resources:
-          limits:
-            memory: 5.6Gi
-          requests:
-            cpu: 1
-            memory: 4Gi
-      query_frontend:
-        replicas: 1
-        resources:
-          limits:
-            memory: 2.8Gi
-            cpu: 1.5
-          requests:
-            cpu: 500m
-            memory: 2Gi
-      ruler:
-        enabled: false
-      query_scheduler:
-        replicas: 1
+      # admin-cache:
+      #   enabled: true
+      #   replicas: 1
+      # chunks-cache:
+      #   enabled: true
+      #   replicas: 1
+      # index-cache:
+      #   enabled: true
+      #   replicas: 1
+      # metadata-cache:
+      #   enabled: true
+      # results-cache:
+      #   enabled: true
+      #   replicas: 1
+    minio:
+      enabled: false
+    querier:
+      replicas: 1
+      resources:
+        limits:
+          memory: 5.6Gi
+        requests:
+          cpu: 1
+          memory: 4Gi
+    query_frontend:
+      replicas: 1
+      resources:
+        limits:
+          memory: 2.8Gi
+          cpu: 1.5
+        requests:
+          cpu: 500m
+          memory: 2Gi
+    ruler:
+      enabled: false
+    query_scheduler:
+      replicas: 1
         # replicas: 1
         # resources:
         #   limits:
@@ -184,54 +190,54 @@ spec:
         #   requests:
         #     cpu: 500m
         #     memory: 2Gi
-      store_gateway:
-        persistentVolume:
-          size: 50Gi
-        replicas: 1
-        resources:
-          limits:
-            memory: 2.1Gi
-            cpu: 1.5
-          requests:
-            cpu: 500m
-            memory: 1.5Gi
-        topologySpreadConstraints: {}
-        affinity:
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                    - key: target # support for enterprise.legacyLabels
-                      operator: In
-                      values:
-                        - store-gateway
-                topologyKey: 'kubernetes.io/hostname'
+    store_gateway:
+      persistentVolume:
+        size: 50Gi
+      replicas: 1
+      resources:
+        limits:
+          memory: 2.1Gi
+          cpu: 1.5
+        requests:
+          cpu: 500m
+          memory: 1.5Gi
+      topologySpreadConstraints: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: target # support for enterprise.legacyLabels
+                    operator: In
+                    values:
+                      - store-gateway
+              topologyKey: 'kubernetes.io/hostname'
 
-              - labelSelector:
-                  matchExpressions:
-                    - key: app.kubernetes.io/component
-                      operator: In
-                      values:
-                        - store-gateway
-                topologyKey: 'kubernetes.io/hostname'
-        zoneAwareReplication:
-          topologyKey: 'kubernetes.io/hostname'
-      nginx:
-        enabled: false
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - store-gateway
+              topologyKey: 'kubernetes.io/hostname'
+      zoneAwareReplication:
+        topologyKey: 'kubernetes.io/hostname'
+    nginx:
+      enabled: false
       # Grafana Enterprise Metrics feature related
-      admin_api:
-        replicas: 1
-        resources:
-          limits:
-            memory: 128Mi
-          requests:
-            cpu: 100m
-            memory: 64Mi
-      gateway:
-        replicas: 1
-        resources:
-          limits:
-            memory: 731Mi
-          requests:
-            cpu: 1
-            memory: 512Mi
+    admin_api:
+      replicas: 1
+      resources:
+        limits:
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 64Mi
+    gateway:
+      replicas: 1
+      resources:
+        limits:
+          memory: 731Mi
+        requests:
+          cpu: 1
+          memory: 512Mi
