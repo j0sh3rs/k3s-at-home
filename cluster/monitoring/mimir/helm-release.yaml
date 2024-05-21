@@ -51,10 +51,10 @@ spec:
         mimirAlerts: true
         mimirRules: true
       grafanaAgent:
-        enabled: true
-        installOperator: true
+        enabled: false
+        installOperator: false
         logs:
-          enabled: true
+          enabled: false
         metrics:
           scrapeK8s:
             kubeStateMetrics:
