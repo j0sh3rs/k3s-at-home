@@ -2,15 +2,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: lgtm-stack
+  name: mimir
   namespace: monitoring
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts
-      chart: lgtm-distributed
-      version: 1.0.1
+      chart: mimir-distributed
+      version: 5.4.0-weekly.290
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -30,14 +30,14 @@ spec:
       name: mimir-secrets
       valuesKey: s3SecretKey
       targetPath: mimir.structuredConfig.common.storage.s3.secret_access_key
-    - kind: Secret
-      name: mimir-secrets
-      valuesKey: s3AccessKey
-      targetPath: tempo.storage.trace.s3.access_key
-    - kind: Secret
-      name: mimir-secrets
-      valuesKey: s3SecretKey
-      targetPath: tempo.storage.trace.s3.secret_key
+    # - kind: Secret
+    #   name: mimir-secrets
+    #   valuesKey: s3AccessKey
+    #   targetPath: tempo.storage.trace.s3.access_key
+    # - kind: Secret
+    #   name: mimir-secrets
+    #   valuesKey: s3SecretKey
+    #   targetPath: tempo.storage.trace.s3.secret_key
   values:
     grafana:
       enabled: false

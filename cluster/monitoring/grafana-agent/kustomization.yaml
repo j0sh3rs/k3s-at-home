@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - configMap.yaml
   - helm-release.yaml
+  - pdc.yaml
