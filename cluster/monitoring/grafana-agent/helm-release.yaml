@@ -60,9 +60,8 @@ spec:
       name: k3s
     externalServices:
       prometheus:
-        host: http://prometheus-prometheus:9090
+        host: http://lgtm-stack-mimir-ingester:9095
         authMode: none
-        writeEndpoint: /api/v1/write
       # loki:
       #   host: https://logs-prod3.grafana.net
       # tempo:
@@ -72,11 +71,11 @@ spec:
       cost:
         enabled: false
       node-exporter:
-        enabled: false
+        enabled: true
       kube-state-metrics:
-        enabled: false
+        enabled: true
       kubelet:
-        enabled: false
+        enabled: true
     logs:
       enabled: false
       pod_logs:
@@ -97,9 +96,9 @@ spec:
     opencost:
       enabled: false
     kube-state-metrics:
-      enabled: false
+      enabled: true
     prometheus-node-exporter:
-      enabled: false
+      enabled: true
     prometheus-operator-crds:
       enabled: false
     kubeScheduler:

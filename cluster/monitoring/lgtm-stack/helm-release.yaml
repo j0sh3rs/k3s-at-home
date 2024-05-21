@@ -65,6 +65,7 @@ spec:
       image:
         pullPolicy: Always
       alertmanager:
+        enabled: false
         persistentVolume:
           enabled: true
         replicas: 1
@@ -96,9 +97,11 @@ spec:
             cpu: 500m
             memory: 4Gi
       ingester:
+        statefulSet:
+          enabled: false
         persistentVolume:
           size: 50Gi
-        replicas: 2
+        replicas: 1
         resources:
           limits:
             memory: 12Gi
