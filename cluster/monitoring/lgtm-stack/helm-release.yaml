@@ -391,17 +391,19 @@ spec:
           enabled: true
           minReplicas: 1
           maxReplicas: 3
-        persistence:
-          enabled: true
-          claims:
-            - name: data
-              size: 20Gi
-              sotrageClass: longhorn
+        # persistence:
+        #   enabled: true
+        #   claims:
+        #     - name: data
+        #       size: 20Gi
+        #       sotrageClass: longhorn
       querier:
-        persistence:
+        autoscaling:
           enabled: true
-          size: 20Gi
-          storageClass: longhorn
+        # persistence:
+        #   enabled: true
+        #   size: 20Gi
+        #   storageClass: longhorn
     tempo:
       nameOverride: tempo
       tempo:
