@@ -1,0 +1,520 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      version: 58.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    fullnameOverride: prometheus
+    crds:
+      enabled: true
+    defaultRules:
+      enabled: true
+      create: true
+      rules:
+        alertmanager: true
+        etcd: true
+        configReloaders: true
+        general: true
+        k8s: true
+        kubeApiserver: true
+        kubeApiserverAvailability: true
+        kubeApiserverSlos: true
+        kubelet: true
+        kubeProxy: false
+        kubePrometheusGeneral: true
+        kubePrometheusNodeRecording: true
+        kubernetesApps: true
+        kubernetesResources: true
+        kubernetesStorage: true
+        kubernetesSystem: true
+        kubeScheduler: false
+        kubeStateMetrics: true
+        network: true
+        node: true
+        nodeExporterAlerting: true
+        nodeExporterRecording: true
+        prometheus: true
+        prometheusOperator: true
+    alertmanager:
+      # ingress:
+      #   enabled: true
+      #   annotations:
+      #     kubernetes.io/ingress.class: nginx
+      #   hosts:
+      #     - "alerts.bth.wtf"
+      #   path: /
+      #   pathType: Prefix
+      enabled: false
+      # config:
+      #   global:
+      #     resolve_timeout: 5m
+      #   route:
+      #     group_by: ["alertname", "job"]
+      #     group_wait: 30s
+      #     group_interval: 5m
+      #     repeat_interval: 6h
+      #     receiver: "discord"
+      #     routes:
+      #       - receiver: "null"
+      #         matchers:
+      #           - alertname =~ "InfoInhibitor|Watchdog|CPUThrottlingHigh"
+      #         continue: false
+      #       - receiver: "discord"
+      #   receivers:
+      #     - name: "null"
+      #     - name: "discord"
+      #       webhook_configs:
+      #         - url: "http://alertmanager-discord:9094"
+      #   inhibit_rules:
+      #     - source_matchers: ["severity = 'critical'"]
+      #       target_matchers: ["severity = 'warning'"]
+      #       equal: ["alertname", "namespace"]
+      #   templates:
+      #     - /etc/alertmanager/config/*.tmpl
+      # alertmanagerSpec:
+      #   storage:
+      #     volumeClaimTemplate:
+      #       spec:
+      #         storageClassName: nfs-client
+      #         resources:
+      #           requests:
+      #             storage: 1Gi
+      #   replicas: 1
+      #   resources:
+      #     requests:
+      #       cpu: 50m
+      #       memory: 64Mi
+      #     limits:
+      #       cpu: 150m
+      #       memory: 128Mi
+      # prometheus:
+      #   monitor:
+      #     enabled: true
+      #     relabelings:
+      #       - action: replace
+      #         regex: (.*)
+      #         replacement: $1
+      #         sourceLabels:
+      #           - __meta_kubernetes_pod_node_name
+      #         targetLabel: kubernetes_node
+    prometheusOperator:
+      createCustomResource: true
+      resources:
+        requests:
+          cpu: 100m
+          memory: 384Mi
+      prometheusConfigReloader:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+      podAnnotations:
+        reloader.stakater.com/auto: 'true'
+      verticalPodAutoscaler:
+        enabled: false
+    nodeExporter:
+      enabled: true
+      serviceMonitor:
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
+    kubeStateMetrics:
+      enabled: true
+      selfMonitor:
+        enabled: true
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
+    kube-state-metrics:
+      fullnameOverride: kube-state-metrics
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
+    kubeControllerManager:
+      # https://github.com/k3s-io/k3s/issues/3619#issuecomment-973188304
+      enabled: true
+      endpoints: &endpoints
+        - 192.168.35.3
+        - 192.168.35.6
+        - 192.168.35.10
+    kubeScheduler:
+      enabled: true
+      endpoints: *endpoints
+    kubeProxy:
+      enabled: false
+    kubeApiServer:
+      enabled: true
+      endpoints: *endpoints
+    kubeEtcd:
+      enabled: true
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+      defaultDashboardsTimezone: America/New_York
+      sidecar:
+        dashboards:
+          multicluster:
+            global:
+              enabled: true
+    prometheus-node-exporter:
+      fullnameOverride: node-exporter
+      resources:
+        requests:
+          cpu: 23m
+          memory: 64M
+        limits:
+          memory: 64M
+      serviceMonitor:
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        hosts:
+          - "prometheus.bth.wtf"
+        path: /
+        pathType: Prefix
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 250m
+        limits:
+          memory: 2048Mi
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
+      prometheusSpec:
+        thanos:
+          image: quay.io/thanos/thanos:v0.35.0
+          objectStorageConfig:
+            existingSecret:
+              name: thanos-objstore-secret
+              key: objstore.yml
+        resources:
+          requests:
+            cpu: 250m
+            memory: 2384M
+        replicas: 1
+        replicaExternalLabelName: replica
+        scrapeInterval: 1m
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        podAntiAffinity: hard
+        probeSelectorNilUsesHelmValues: false
+        retention: 14d
+        retentionSize: 50GB
+        remoteWriteDashboards: true
+        enableRemoteWriteReceiver: true
+        enabledFeatures:
+          - remote-write-receiver
+        enableAdminAPI: true
+        walCompression: true
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              resources:
+                requests:
+                  storage: 55Gi
+        additionalScrapeConfigs:
+          # https://stackoverflow.com/questions/69406120/changing-prometheus-job-label-in-scraper-for-cadvisor-breaks-grafana-dashboards
+          # https://stackoverflow.com/questions/65409886/changing-promethus-job-label-from-kubelet-to-kubernetes-cadvisor/65421764#65421764
+          - job_name: 'kubernetes-cadvisor'
+            honor_labels: true
+            honor_timestamps: true
+            scrape_interval: 30s
+            scrape_timeout: 10s
+            metrics_path: /metrics/cadvisor
+            scheme: https
+            authorization:
+              type: Bearer
+              credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+            tls_config:
+              ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              insecure_skip_verify: true
+            follow_redirects: true
+            relabel_configs:
+              - source_labels: [job]
+                separator: ;
+                regex: (.*)
+                target_label: __tmp_prometheus_job_name
+                replacement: $1
+                action: replace
+              - source_labels:
+                  [__meta_kubernetes_service_label_app_kubernetes_io_name]
+                separator: ;
+                regex: kubelet
+                replacement: $1
+                action: keep
+              - source_labels: [__meta_kubernetes_service_label_k8s_app]
+                separator: ;
+                regex: kubelet
+                replacement: $1
+                action: keep
+              - source_labels: [__meta_kubernetes_endpoint_port_name]
+                separator: ;
+                regex: https-metrics
+                replacement: $1
+                action: keep
+              - source_labels:
+                  [
+                    __meta_kubernetes_endpoint_address_target_kind,
+                    __meta_kubernetes_endpoint_address_target_name,
+                  ]
+                separator: ;
+                regex: Node;(.*)
+                target_label: node
+                replacement: ${1}
+                action: replace
+              - source_labels:
+                  [
+                    __meta_kubernetes_endpoint_address_target_kind,
+                    __meta_kubernetes_endpoint_address_target_name,
+                  ]
+                separator: ;
+                regex: Pod;(.*)
+                target_label: pod
+                replacement: ${1}
+                action: replace
+              - source_labels: [__meta_kubernetes_namespace]
+                separator: ;k get
+                regex: (.*)
+                target_label: namespace
+                replacement: $1
+                action: replace
+              - source_labels: [__meta_kubernetes_service_name]
+                separator: ;
+                regex: (.*)
+                target_label: service
+                replacement: $1
+                action: replace
+              - source_labels: [__meta_kubernetes_pod_name]
+                separator: ;
+                regex: (.*)
+                target_label: pod
+                replacement: $1
+                action: replace
+              - source_labels: [__meta_kubernetes_pod_container_name]
+                separator: ;
+                regex: (.*)
+                target_label: container
+                replacement: $1
+                action: replace
+              - separator: ;
+                regex: (.*)
+                target_label: endpoint
+                replacement: https-metrics
+                action: replace
+              - source_labels: [__metrics_path__]
+                separator: ;
+                regex: (.*)
+                target_label: metrics_path
+                replacement: $1
+                action: replace
+              - source_labels: [__address__]
+                separator: ;
+                regex: (.*)
+                modulus: 1
+                target_label: __tmp_hash
+                replacement: $1
+                action: hashmod
+              - source_labels: [__tmp_hash]
+                separator: ;
+                regex: '0'
+                replacement: $1
+                action: keep
+            kubernetes_sd_configs:
+              - role: endpoints
+                kubeconfig_file: ''
+                follow_redirects: true
+                namespaces:
+                  names:
+                    - kube-system
+          - job_name: nas_postgres_exporter
+            static_configs:
+              - targets: ['pg.68cc.io']
+            scrape_interval: 60s
+            metrics_path: '/metrics'
+            scheme: https
+          - job_name: nas_minio
+            static_configs:
+             - targets: ['s3.68cc.io']
+            scrape_interval: 60s
+            metrics_path: '/minio/v2/metrics/cluster'
+            scheme: https
+          - job_name: nas_node_exporter
+            static_configs:
+            - targets: ['nas-metrics.68cc.io']
+            scrape_interval: 60s
+            metrics_path: '/metrics'
+            scheme: https
+          - job_name: 'kubernetes-ingresses'
+            metrics_path: /probe
+            scrape_interval: 60s
+            params:
+              module: [http_2xx]
+            kubernetes_sd_configs:
+              - role: ingress
+            relabel_configs:
+              - source_labels:
+                  [__meta_kubernetes_ingress_annotation_prometheus_io_probe]
+                action: keep
+                regex: true
+              - source_labels:
+                  [
+                    __meta_kubernetes_ingress_scheme,
+                    __address__,
+                    __meta_kubernetes_ingress_path,
+                  ]
+                regex: (.+);(.+);(.+)
+                replacement: ${1}://${2}${3}
+                target_label: __param_target
+              - target_label: __address__
+                replacement: blackbox-exporter-prometheus-blackbox-exporter:9115
+              - source_labels: [__param_target]
+                target_label: instance
+              - action: labelmap
+                regex: __meta_kubernetes_ingress_label_(.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                target_label: kubernetes_namespace
+              - source_labels: [__meta_kubernetes_ingress_name]
+                target_label: kubernetes_name
+          - job_name: kubernetes-services-http
+            metrics_path: /probe
+            scrape_interval: 60s
+            params:
+              module:
+                - http_2xx
+            kubernetes_sd_configs:
+              - role: service
+            relabel_configs:
+              - source_labels:
+                  - __meta_kubernetes_service_annotation_prometheus_io_probe
+                action: keep
+                regex: true
+              - source_labels:
+                  - __meta_kubernetes_service_annotation_prometheus_io_protocol
+                action: keep
+                regex: http
+              - source_labels:
+                  - __address__
+                target_label: __param_target
+              - target_label: __address__
+                replacement: 'blackbox-exporter-prometheus-blackbox-exporter:9115'
+              - source_labels:
+                  - __param_target
+                target_label: instance
+              - action: labelmap
+                regex: __meta_kubernetes_service_label_(.+)
+              - source_labels:
+                  - __meta_kubernetes_namespace
+                target_label: kubernetes_namespace
+              - source_labels:
+                  - __meta_kubernetes_service_name
+                target_label: kubernetes_name
+          - job_name: kubernetes-services-tcp
+            metrics_path: /probe
+            scrape_interval: 60s
+            params:
+              module:
+                - tcp_connect
+            kubernetes_sd_configs:
+              - role: service
+            relabel_configs:
+              - source_labels:
+                  - __meta_kubernetes_service_annotation_prometheus_io_probe
+                action: keep
+                regex: true
+              - source_labels:
+                  - __meta_kubernetes_service_annotation_prometheus_io_protocol
+                action: keep
+                regex: tcp
+              - source_labels:
+                  - __address__
+                target_label: __param_target
+              - target_label: __address__
+                replacement: 'blackbox-exporter-prometheus-blackbox-exporter:9115'
+              - source_labels:
+                  - __param_target
+                target_label: instance
+              - action: labelmap
+                regex: __meta_kubernetes_service_label_(.+)
+              - source_labels:
+                  - __meta_kubernetes_namespace
+                target_label: kubernetes_namespace
+              - source_labels:
+                  - __meta_kubernetes_service_name
+                target_label: kubernetes_name
+      thanosIngress:
+        enabled: false
+    cleanPrometheusOperatorObjectNames: true
