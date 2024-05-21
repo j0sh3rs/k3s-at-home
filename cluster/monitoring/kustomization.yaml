@@ -5,7 +5,7 @@ resources:
    - cadvisor
    - grafana-agent
    # - kube-prometheus-stack
-   # - lgtm-stack
+   - lgtm-stack
    # - loki
    - node-problem-detector
    # - thanos
