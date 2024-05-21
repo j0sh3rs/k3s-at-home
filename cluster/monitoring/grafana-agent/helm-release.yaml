@@ -50,6 +50,12 @@ spec:
   values:
     alloy:
       enableReporting: false
+      clustering:
+        enabled: true
+      controller:
+        type: daemonset
+      serviceMonitor:
+        enabled: true
     serviceMonitor:
       enabled: true
     cluster:
