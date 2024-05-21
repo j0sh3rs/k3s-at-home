@@ -50,15 +50,15 @@ spec:
         enabled: true
         mimirAlerts: true
         mimirRules: true
-    grafanaAgent:
-      enabled: true
-      installOperator: true
-      logs:
+      grafanaAgent:
         enabled: true
-      metrics:
-        scrapeK8s:
-          kubeStateMetrics:
-            namespace: monitoring
+        installOperator: true
+        logs:
+          enabled: true
+        metrics:
+          scrapeK8s:
+            kubeStateMetrics:
+              namespace: monitoring
     mimir:
       structuredConfig:
         common:
