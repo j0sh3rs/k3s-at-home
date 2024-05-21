@@ -62,6 +62,7 @@ spec:
       prometheus:
         host: http://prometheus-prometheus:9090
         authMode: none
+        writeEndpoint: /api/v1/write
       # loki:
       #   host: https://logs-prod3.grafana.net
       # tempo:
