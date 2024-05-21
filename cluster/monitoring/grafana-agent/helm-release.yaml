@@ -71,11 +71,11 @@ spec:
       cost:
         enabled: false
       node-exporter:
-        enabled: true
+        enabled: false
       kube-state-metrics:
-        enabled: true
+        enabled: false
       kubelet:
-        enabled: true
+        enabled: false
     logs:
       enabled: false
       pod_logs:
@@ -96,9 +96,9 @@ spec:
     opencost:
       enabled: false
     kube-state-metrics:
-      enabled: true
+      enabled: false
     prometheus-node-exporter:
-      enabled: true
+      enabled: false
     prometheus-operator-crds:
       enabled: false
     kubeScheduler:
