@@ -52,7 +52,7 @@ jobs:
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           YAML_CONFIG_FILE: .yamllint.yaml
           VALIDATE_CHECKOV: false
-          VALIDATE_KUBERNETES_KUBECONFIRM: false
+          VALIDATE_KUBERNETES_KUBECONFORM: false
           VALIDATE_SHELL_SHFMT: false
           VALIDATE_BASH: false
           VALIDATE_JSCPD: false
