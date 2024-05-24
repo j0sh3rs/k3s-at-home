@@ -43,6 +43,7 @@ data:
   enable-real-ip: 'false'
   force-ssl-redirect: 'true'
   global-rate-limit-memcached-host: dragonflydb-memcached.infra
+  geoip2-autoreload-in-minutes: '300'
   hsts: 'true'
   hsts-include-subdomains: 'true'
   hsts-max-age: '63072000'
