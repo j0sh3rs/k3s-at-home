@@ -39,6 +39,7 @@ data:
   enable-brotli: 'true'
   enable-modsecurity: 'false'
   enable-ocsp: 'true'
+  enable-opentelemetry: 'true'
   enable-real-ip: 'false'
   force-ssl-redirect: 'true'
   global-rate-limit-memcached-host: dragonflydb-memcached.infra
