@@ -36,59 +36,20 @@ spec:
     metricsGenerator:
       enabled: true
       remoteWriteUrl: http://prometheus-prometheus:9090/api/v1/write
+    tempo:
+      reportingEnabled: false
+      # global_overrides:
+      #   cache:
+      #     caches:
+      #       redis:
+      #         endpoint: dragonflydb.infra:6379
+      #         db: 4
+      storage:
+        trace:
+          backend: s3
+          s3:
+            bucket: tempo-traces
+            endpoint: s3.68cc.io
+            forcepathstyle: true
     tempoQuery:
       enabled: true
-    config: |
-        multitenancy_enabled: false
-        usage_report:
-          reporting_enabled: false
-        compactor:
-          compaction:
-            block_retention: 24h
-        cache:
-          caches:
-            redis:
-              endpoint: dragonflydb.infra:6379
-              db: 4
-        distributor:
-          receivers:
-                jaeger:
-                  protocols:
-                    grpc:
-                      endpoint: 0.0.0.0:14250
-                    thrift_binary:
-                      endpoint: 0.0.0.0:6832
-                    thrift_compact:
-                      endpoint: 0.0.0.0:6831
-                    thrift_http:
-                      endpoint: 0.0.0.0:14268
-                opencensus: null
-                otlp:
-                  protocols:
-                    grpc:
-                      endpoint: 0.0.0.0:4317
-                    http:
-                      endpoint: 0.0.0.0:4318
-        ingester:
-              {}
-        server:
-              http_listen_port: 3100
-        storage:
-              trace:
-                backend: s3
-                local:
-                  path: /var/tempo/traces
-                s3:
-                  access_key: {{ .Values.tempo.storage.trace.s3.access_key }}
-                  bucket: tempo-traces
-                  endpoint: s3.68cc.io
-                  forcepathstyle: true
-                  secret_key: {{ .Values.tempo.storage.trace.s3.secret_key }}
-                wal:
-                  path: /var/tempo/wal
-        querier:
-              {}
-        query_frontend:
-              {}
-        overrides:
-              per_tenant_override_config: /conf/overrides.yaml
