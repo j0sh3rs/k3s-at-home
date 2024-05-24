@@ -24,11 +24,11 @@ spec:
   valuesFrom:
     - kind: Secret
       name: tempo-secrets
-      valuesKey: s3Accesskey
+      valuesKey: s3AccessKey
       targetPath: tempo.storage.trace.s3.access_key
     - kind: Secret
       name: tempo-secrets
-      valuesKey: s3Secretkey
+      valuesKey: s3SecretKey
       targetPath: tempo.storage.trace.s3.secret_key
   values:
     fullnameOverride: tempo
