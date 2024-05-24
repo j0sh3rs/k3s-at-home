@@ -6,3 +6,4 @@ Redis database usage by service:
 1. Grafana
 2. paperless-ngx
 3. ActivePieces
+4. Tempo

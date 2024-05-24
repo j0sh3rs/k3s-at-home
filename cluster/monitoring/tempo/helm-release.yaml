@@ -38,9 +38,19 @@ spec:
       remoteWriteUrl: http://prometheus-prometheus:9090/api/v1/write
     tempo:
       reportingEnabled: false
+      global_overrides:
+        cache:
+          caches:
+            redis:
+              endpoint: dragonflydb.infra:6379
+              db: 4
       storage:
         trace:
+          backend: s3
           s3:
             bucket: tempo-traces
             endpoint: s3.68cc.io
-        backend: s3
+            forcepathstyle: true
+          cache: redis
+    tempoQuery:
+      enabled: true
