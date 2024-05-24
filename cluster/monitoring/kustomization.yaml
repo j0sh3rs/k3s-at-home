@@ -6,6 +6,6 @@ resources:
    - grafana-agent
    - kube-prometheus-stack
    - node-problem-detector
-   - tempo
+   # - tempo
    - thanos
    - unifi-poller
