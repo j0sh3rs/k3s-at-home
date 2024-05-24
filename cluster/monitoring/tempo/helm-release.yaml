@@ -28,7 +28,7 @@ spec:
       targetPath: tempo.storage.trace.s3.access_key
     - kind: Secret
       name: tempo-secrets
-      valuesKey: s3secretykey
+      valuesKey: s3secretkey
       targetPath: tempo.storage.trace.s3.secret_key
   values:
     fullnameOverride: tempo
