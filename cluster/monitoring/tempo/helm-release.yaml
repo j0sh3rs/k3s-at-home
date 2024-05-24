@@ -79,11 +79,11 @@ spec:
                 local:
                   path: /var/tempo/traces
                 s3:
-                  access_key: {{ toYaml .values.tempo.storage.trace.s3.access_key }}
+                  access_key: {{ .Values.tempo.storage.trace.s3.access_key }}
                   bucket: tempo-traces
                   endpoint: s3.68cc.io
                   forcepathstyle: true
-                  secret_key: {{ toYaml .values.tempo.storage.trace.s3.secret_key }}
+                  secret_key: {{ .Values.tempo.storage.trace.s3.secret_key }}
                 wal:
                   path: /var/tempo/wal
         querier:
