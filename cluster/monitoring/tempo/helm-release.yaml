@@ -51,6 +51,5 @@ spec:
             bucket: tempo-traces
             endpoint: s3.68cc.io
             forcepathstyle: true
-          cache: redis
     tempoQuery:
       enabled: true
