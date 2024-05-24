@@ -68,8 +68,9 @@ spec:
         queryEndpoint: /api/v1/query
       # loki:
       #   host: https://logs-prod3.grafana.net
-      # tempo:
-      #   host: https://tempo-us-central1.grafana.net:443
+      tempo:
+        host: http://tempo:9095
+        authMode: none
     metrics:
       enabled: true
       cost:
