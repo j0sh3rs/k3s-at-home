@@ -66,8 +66,8 @@ spec:
         authMode: none
         writeEndpoint: /api/v1/write
         queryEndpoint: /api/v1/query
-      # loki:
-      #   host: https://logs-prod3.grafana.net
+      loki:
+        host: http://loki-write:3100
       tempo:
         host: http://tempo:9095
         authMode: none
@@ -82,11 +82,11 @@ spec:
       kubelet:
         enabled: false
     logs:
-      enabled: false
+      enabled: true
       pod_logs:
-        enabled: false
+        enabled: true
       cluster_events:
-        enabled: false
+        enabled: true
     traces:
       enabled: true
     receivers:
