@@ -7,7 +7,4 @@ Redis database usage by service:
 2. paperless-ngx
 3. ActivePieces
 4. Tempo
-5. Loki Frontend
-6. Loki Store (Chunks Cache)
-7. Loki Store (Index Cache Read)
-8. Loki Store (Index Cache Write)
+5. Loki
