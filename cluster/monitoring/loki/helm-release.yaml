@@ -51,6 +51,15 @@ spec:
           chunks: loki-chunks
           ruler: loki-ruler
           admin: loki-admin
+      schemaConfig:
+        configs:
+        - from: 2020-05-15
+          store: tsdb
+          object_store: filesystem
+          schema: v13
+          index:
+            prefix: index_
+            period: 24h
       resultsCache:
         enabled: false
     monitoring:
