@@ -16,11 +16,11 @@ spec:
         name: grafana-charts
         namespace: flux-system
       interval: 5m
-  install:
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace
-    force: true
+  # install:
+  #   crds: CreateReplace
+  # upgrade:
+  #   crds: CreateReplace
+  #   force: true
   valuesFrom:
     - kind: Secret
       name: loki-secrets
