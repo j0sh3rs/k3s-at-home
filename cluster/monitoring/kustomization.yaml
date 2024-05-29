@@ -5,6 +5,7 @@ resources:
    - cadvisor
    - grafana-agent
    - kube-prometheus-stack
+   - loki
    - node-problem-detector
    - tempo
    - thanos

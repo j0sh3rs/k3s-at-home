@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: loki
+      version: 6.6.2
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+    force: true
+  valuesFrom:
+    - kind: Secret
+      name: loki-secrets
+      valuesKey: s3_access_key_id
+      targetPath: loki.storage.s3.accessKeyId
+    - kind: Secret
+      name: loki-secrets
+      valuesKey: s3_secret_access_key
+      targetPath: loki.storage.s3.secretAccessKey
+  values:
+    nameOverride: loki
+    fullnameOverride: loki
+    deploymentMode: SimpleScalable
+    loki:
+      image:
+        pullPolicy: Always
+      annotations:
+        reloader.stakater.com/auto: 'true'
+      podAnnotations:
+        reloader.stakater.com/auto: 'true'
+      auth_enabled: false
+      storage:
+        s3:
+          endpoint: s3.68cc.io
+          s3ForcePathStyle: true
+          region: us-east-1
+      resultsCache:
+        enabled: false
+    monitoring:
+      dashboards:
+        enabled: true
+      rules:
+        enabled: true
+      serviceMonitor:
+        enabled: true
+      selfMonitoring:
+        enabled: true
