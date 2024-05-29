@@ -71,3 +71,5 @@ spec:
         enabled: true
       selfMonitoring:
         enabled: true
+        podLogs:
+          apiVersion: monitoring.grafana.com/v1alpha2
