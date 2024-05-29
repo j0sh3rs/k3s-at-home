@@ -47,6 +47,10 @@ spec:
           endpoint: s3.68cc.io
           s3ForcePathStyle: true
           region: us-east-1
+        bucketNames:
+          chunks: loki-chunks
+          ruler: loki-ruler
+          admin: loki-admin
       resultsCache:
         enabled: false
     monitoring:
