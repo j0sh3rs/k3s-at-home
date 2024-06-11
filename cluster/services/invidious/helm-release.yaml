@@ -38,7 +38,6 @@ spec:
             image:
               repository: quay.io/invidious/invidious
               tag: latest@sha256:a91a307a3ece8468aa88d6b91a601a0453cf76589f434ffdce643f968d3825cc
-            env:
             envFrom:
               - secretRef:
                   name: invidious-secrets
