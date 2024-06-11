@@ -4,10 +4,12 @@ kind: Kustomization
 resources:
   - activepieces
   - atuin
+  - changedetector
   - codeserver
   - cyberchef
   - glance
   - gotenberg
+  - invidious
   - linkwarden
   - paperless-ngx
   - tika
