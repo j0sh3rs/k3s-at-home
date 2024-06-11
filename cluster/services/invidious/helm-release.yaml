@@ -38,6 +38,9 @@ spec:
             image:
               repository: quay.io/invidious/invidious
               tag: latest@sha256:a91a307a3ece8468aa88d6b91a601a0453cf76589f434ffdce643f968d3825cc
+            env:
+              - name: TZ
+                value: America/New_York
             envFrom:
               - secretRef:
                   name: invidious-secrets
@@ -62,3 +65,12 @@ spec:
                 service:
                   identifier: main
                   port: http
+    persistence:
+      localtime:
+        enabled: true
+        type: hostPath
+        hostPath: /etc/localtime
+      timezone:
+        enabled: true
+        type: hostPath
+        hostPath: /etc/timezone
