@@ -1,0 +1,80 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/common-3.0.1/charts/library/common/values.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: redlib
+  namespace: services
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            image:
+              repository: quay.io/redlib/redlib
+              tag: latest
+            env:
+              - name: TZ
+                value: America/New_York
+            envFrom:
+              - secretRef:
+                  name: redlib-secrets
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256Mi
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: "nginx"
+        hosts:
+          - host: &host reddit.bth.wtf
+            paths:
+              - path: /
+                service:
+                  identifier: main
+                  port: http
+    persistence:
+      localtime:
+        enabled: true
+        type: hostPath
+        hostPath: /etc/localtime
+      timezone:
+        enabled: true
+        type: hostPath
+        hostPath: /etc/timezone
