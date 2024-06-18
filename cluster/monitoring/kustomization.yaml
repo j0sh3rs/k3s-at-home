@@ -4,9 +4,10 @@ kind: Kustomization
 resources:
    - cadvisor
    - grafana-agent
-   - kube-prometheus-stack
+   # - kube-prometheus-stack
    - loki
+   - mimir
    - node-problem-detector
    - tempo
-   - thanos
+   # - thanos
    - unifi-poller
