@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts
       chart: mimir-distributed
-      version: 5.4.0-weekly.290
+      version: 5.4.0-weekly.294
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
