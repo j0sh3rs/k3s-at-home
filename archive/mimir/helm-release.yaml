@@ -98,7 +98,7 @@ spec:
           cpu: 1
           memory: 1.5Gi
     distributor:
-      replicas:
+      replicas: 1
       resources:
         limits:
           memory: 5.7Gi
