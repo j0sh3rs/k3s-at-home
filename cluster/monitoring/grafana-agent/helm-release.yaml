@@ -66,8 +66,8 @@ spec:
         authMode: none
         writeEndpoint: /api/v1/write
         queryEndpoint: /api/v1/query
-      loki:
-        host: http://loki-write:3100
+      # loki:
+      #   host: http://loki-write:3100
       tempo:
         host: http://tempo:9095
         authMode: none
@@ -82,7 +82,7 @@ spec:
       kubelet:
         enabled: false
     logs:
-      enabled: true
+      enabled: false
       pod_logs:
         enabled: true
       cluster_events:

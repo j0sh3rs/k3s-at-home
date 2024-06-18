@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts
       chart: grafana
-      version: 7.3.11
+      version: 8.0.2
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -146,13 +146,13 @@ spec:
             type: prometheus
             url: http://thanos-query.monitoring.svc.cluster.local:9090/
             isDefault: true
-          - name: Loki
-            type: loki
-            url: http://loki-gateway.monitoring.svc.cluster.local
-            version: 1
-            isDefault: false
-            jsonData:
-              maxLines: 100
+          # - name: Loki
+          #   type: loki
+          #   url: http://loki-gateway.monitoring.svc.cluster.local
+          #   version: 1
+          #   isDefault: false
+          #   jsonData:
+          #     maxLines: 100
           - name: Alertmanager
             type: alertmanager
             url: http://prometheus-alertmanager.monitoring.svc.cluster.local:9093
@@ -180,7 +180,6 @@ spec:
         unifi-poller-uap-insights:
           gnetId: 11314
           datasource: Prometheus
-          revision: 10
         unifi-poller-client-insights:
           gnetId: 11315
           datasource: Prometheus
@@ -188,50 +187,39 @@ spec:
         unifi-poller-network-sites:
           gnetId: 11311
           datasource: Prometheus
-          revision: 5
         unifi-poller-usw-insights:
           gnetId: 11312
           datasource: Prometheus
-          revision: 9
         unifi-poller-usg-insights:
           gnetId: 11313
           datasource: Prometheus
-          revision: 9
         unifi-poller-client-dpi:
           gnetId: 11310
           datasource: Prometheus
-          revision: 5
       default:
         dragonflydb:
           url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
           datasource: Prometheus
         api-server:
           gnetId: 15761
-          revision: 16
           datasource: Prometheus
         coredns:
           gnetId: 15762
-          revision: 17
           datasource: Prometheus
         global:
           gnetId: 15757
-          revision: 37
           datasource: Prometheus
         namespaces:
           gnetId: 15758
-          revision: 34
           datasource: Prometheus
         nodes:
           gnetId: 15759
-          revision: 29
           datasource: Prometheus
         pods:
           gNetId: 15760
-          revision: 26
           datasource: Prometheus
         volumes:
           gnetId: 11454
-          revision: 14
           datasource: Prometheus
       loki:
         loki-metrics:

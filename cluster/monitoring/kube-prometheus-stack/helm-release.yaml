@@ -29,11 +29,6 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  valuesFrom:
-    - kind: Secret
-      name: discord-secrets
-      valuesKey: DISCORD_WEBHOOK
-      targetPath: alertmanager.config.receivers[1].webhook_configs.url
   values:
     fullnameOverride: prometheus
     crds:
@@ -94,8 +89,8 @@ spec:
         receivers:
           - name: "null"
           - name: "discord"
-            # webhook_configs:
-            #   - url: "http://alertmanager-discord:9094"
+            webhook_configs:
+              - url: "http://alertmanager-discord:9094"
         inhibit_rules:
           - source_matchers: ["severity = 'critical'"]
             target_matchers: ["severity = 'warning'"]
