@@ -29,6 +29,11 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  valuesFrom:
+    - kind: Secret
+      name: discord-secrets
+      valuesKey: DISCORD_WEBHOOK
+      targetPath: alertmanager.config.receivers[1].webhook_configs.url
   values:
     fullnameOverride: prometheus
     crds:
@@ -62,67 +67,67 @@ spec:
         prometheus: true
         prometheusOperator: true
     alertmanager:
-      # ingress:
-      #   enabled: true
-      #   annotations:
-      #     kubernetes.io/ingress.class: nginx
-      #   hosts:
-      #     - "alerts.bth.wtf"
-      #   path: /
-      #   pathType: Prefix
-      enabled: false
-      # config:
-      #   global:
-      #     resolve_timeout: 5m
-      #   route:
-      #     group_by: ["alertname", "job"]
-      #     group_wait: 30s
-      #     group_interval: 5m
-      #     repeat_interval: 6h
-      #     receiver: "discord"
-      #     routes:
-      #       - receiver: "null"
-      #         matchers:
-      #           - alertname =~ "InfoInhibitor|Watchdog|CPUThrottlingHigh"
-      #         continue: false
-      #       - receiver: "discord"
-      #   receivers:
-      #     - name: "null"
-      #     - name: "discord"
-      #       webhook_configs:
-      #         - url: "http://alertmanager-discord:9094"
-      #   inhibit_rules:
-      #     - source_matchers: ["severity = 'critical'"]
-      #       target_matchers: ["severity = 'warning'"]
-      #       equal: ["alertname", "namespace"]
-      #   templates:
-      #     - /etc/alertmanager/config/*.tmpl
-      # alertmanagerSpec:
-      #   storage:
-      #     volumeClaimTemplate:
-      #       spec:
-      #         storageClassName: nfs-client
-      #         resources:
-      #           requests:
-      #             storage: 1Gi
-      #   replicas: 1
-      #   resources:
-      #     requests:
-      #       cpu: 50m
-      #       memory: 64Mi
-      #     limits:
-      #       cpu: 150m
-      #       memory: 128Mi
-      # prometheus:
-      #   monitor:
-      #     enabled: true
-      #     relabelings:
-      #       - action: replace
-      #         regex: (.*)
-      #         replacement: $1
-      #         sourceLabels:
-      #           - __meta_kubernetes_pod_node_name
-      #         targetLabel: kubernetes_node
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        hosts:
+          - "alerts.bth.wtf"
+        path: /
+        pathType: Prefix
+      enabled: true
+      config:
+        global:
+          resolve_timeout: 5m
+        route:
+          group_by: ["alertname", "job"]
+          group_wait: 30s
+          group_interval: 5m
+          repeat_interval: 6h
+          receiver: "discord"
+          routes:
+            - receiver: "null"
+              matchers:
+                - alertname =~ "InfoInhibitor|Watchdog|CPUThrottlingHigh"
+              continue: false
+            - receiver: "discord"
+        receivers:
+          - name: "null"
+          - name: "discord"
+            # webhook_configs:
+            #   - url: "http://alertmanager-discord:9094"
+        inhibit_rules:
+          - source_matchers: ["severity = 'critical'"]
+            target_matchers: ["severity = 'warning'"]
+            equal: ["alertname", "namespace"]
+        templates:
+          - /etc/alertmanager/config/*.tmpl
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-client
+              resources:
+                requests:
+                  storage: 1Gi
+        replicas: 1
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 150m
+            memory: 128Mi
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
     prometheusOperator:
       createCustomResource: true
       resources:
