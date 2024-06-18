@@ -1,0 +1,73 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: botkube
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.botkube.io
+      chart: botkube
+      version: v1.9.1
+      sourceRef:
+        kind: HelmRepository
+        name: botkube-charts
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: endpoint
+      targetPath: config.provider.endpoint
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: identifier
+      targetPath: config.provider.identifier
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: apiKey
+      targetPath: config.provider.apiKey
+  values:
+    image:
+      pullPolicy: Always
+    settings:
+      clusterName: Homelab
+      upgradeNotifier: false
+    serviceMonitor:
+      enabled: true
+    rbac:
+      groups:
+        flux-read-patch:
+          create: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 68Mi
+    # communications:
+    #   default:
+    #     discord:
+    #       enabled: true
+    #       channels:
+    #         default:
+    #           id: 902733530193338448
+    # actions:
+    #   'describe-created-resource':
+    #     enabled: true
+    #   'show-logs-on-error':
+    #     enabled: true
+    # executors:
+    #   k8s-default-tools:
+    #     botkube/kubectl:
+    #       enabled: true
+    #     defaultNamespace: "services"
+    aliases:
+      kgp:
+        command: kubectl get pods
+        displayName: "Get pods"
+      klf:
+        command: kubectl logs -f
+        displayName: "Tail logs"
+    analytics:
+      disable: true

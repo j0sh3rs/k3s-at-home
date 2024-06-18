@@ -1,0 +1,68 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: blackbox-exporter
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: prometheus-blackbox-exporter
+      version: 8.17.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    pspEnabled: false
+    securityContext:
+      capabilities:
+        drop: ['ALL']
+        add: ['NET_RAW']
+    resources:
+      requests:
+        cpu: 100m
+        memory: 135Mi
+    config:
+      modules:
+        icmp:
+          prober: icmp
+          timeout: 30s
+          icmp:
+            preferred_ip_protocol: 'ip4'
+        http_2xx:
+          prober: http
+          timeout: 30s
+          http:
+            valid_http_versions: ['HTTP/1.1', 'HTTP/2.0']
+            no_follow_redirects: false
+            preferred_ip_protocol: 'ip4'
+        tcp_connect:
+          prober: tcp
+          timeout: 30s
+    serviceMonitor:
+      selfMonitor:
+        enabled: true
+      enabled: true
+      defaults:
+        labels:
+          release: prometheus
+        interval: 2m
+        scrapeTimeout: 30s
+      targets:
+        - name: b3
+          url: '192.168.35.10'
+          module: icmp
+        - name: b1
+          url: '192.168.35.3'
+          module: icmp
+        - name: b2
+          url: '192.168.35.6'
+          module: icmp
+    service:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9130'
