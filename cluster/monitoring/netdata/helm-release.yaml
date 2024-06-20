@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://netdata.github.io/helmchart/
       chart: netdata
-      version: 3.7.88
+      version: 3.7.93
       sourceRef:
         kind: HelmRepository
         name: netdata-charts
@@ -46,7 +46,12 @@ spec:
       targetPath: child.claiming.rooms
   values:
     ingress:
-      enabled: false
+      enabled: true
+      hosts:
+        - &host netdata.bth.wtf
+      tls:
+        - hosts:
+            - *host
     parent:
       claiming:
         enabled: true
@@ -54,11 +59,11 @@ spec:
         DO_NOT_TRACK: 1
         TZ: "America/New_York"
       database:
-        volumesize: 50Gi
         storageclass: longhorn
+        volumesize: 15Gi
       alarms:
         storageclass: longhorn
-        volumesize: 50Gi
+        volumesize: 15Gi
     child:
       env:
         TZ: "America/New_York"
@@ -115,16 +120,9 @@ spec:
                 tls_skip_verify: yes
         netdata:
           enabled: true
-          path: /etc/netdata/netdata.conf
-          data: |
-            [db]
-              mode = ram
-            [health]
-              enabled = no
-            [ml]
-              enabled = no
-            [plugins]
-              ebpf = yes
+    k8sState:
+      persistence:
+        volumesize: 15Gi
       updateStrategy:
         type: RollingUpdate
         rollingUpdate:

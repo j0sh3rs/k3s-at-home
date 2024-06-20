@@ -4,9 +4,9 @@ kind: Kustomization
 resources:
    - alertmanager-discord
    - cadvisor
-   - grafana
-   # - grafana-agent
+   # - grafana
    - kube-prometheus-stack
+   - netdata
    - node-problem-detector
    - tempo
    - thanos
