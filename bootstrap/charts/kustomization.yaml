@@ -25,7 +25,6 @@ resources:
   - netdata.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
-  - openobserve.yaml
   - planka.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
