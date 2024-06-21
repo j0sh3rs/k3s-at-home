@@ -8,7 +8,6 @@ resources:
   - botkube.yaml
   - cilium.yaml
   - coredns.yaml
-  - datadog.yaml
   - deliveryhero.yaml
   - emberstack.yaml
   - fairwinds.yaml
@@ -22,12 +21,12 @@ resources:
   - kured-charts.yaml
   - longhorn.yaml
   - metallb.yaml
-  - minecraft-charts.yaml
+  # - minecraft-charts.yaml
   - netdata.yaml
   - nfs-subdir-external-provisioner.yaml
   - node-feature-discovery.yaml
   - openobserve.yaml
-  - puppetserver.yaml
+  - planka.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
   - weaveworks.yaml

@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: puppetserver-charts
+  name: planka-charts
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://puppetlabs.github.io/puppetserver-helm-chart
+  url: https://plankanban.github.io/planka/
   timeout: 3m
