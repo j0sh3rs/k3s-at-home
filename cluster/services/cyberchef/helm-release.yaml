@@ -36,7 +36,7 @@ spec:
           app:
             image:
               repository: docker.io/mpepping/cyberchef
-              tag: v10.18.8
+              tag: v10.18.9
               pullPolicy: IfNotPresent
             env:
               - name: TZ
