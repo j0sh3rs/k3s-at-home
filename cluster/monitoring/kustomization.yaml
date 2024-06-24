@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-   - alertmanager-discord
+   # - alertmanager-discord
    - cadvisor
    # - grafana
-   - kube-prometheus-stack
+   # - kube-prometheus-stack
    - netdata
    - node-problem-detector
    # - tempo
