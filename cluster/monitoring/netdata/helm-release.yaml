@@ -100,6 +100,14 @@ spec:
             jobs:
               - name: cilium-agent
                 url: http://localhost:9962/metrics
+              - name: coredns
+                url: http://localhost:9153/metrics
+              - name: unifi-poller
+                url: http://unifi-poller.monitoring:9130/metrics
+              - name: cadvisor
+                url: http://cadvisor.monitoring:8080/metrics
+              - name: certmanager
+                url: http://cert-manager.cert-manager:9402/metrics
         ebpf:
           enabled: true
           path: /etc/netdata/ebpf.d.conf
