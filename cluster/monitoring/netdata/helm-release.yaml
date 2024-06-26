@@ -106,6 +106,7 @@ spec:
                 url: http://unifi-poller.monitoring:9130/metrics
               - name: cadvisor
                 url: http://cadvisor.monitoring:8080/metrics
+                max_time_series: 35000
               - name: certmanager
                 url: http://cert-manager.cert-manager:9402/metrics
         ebpf:
