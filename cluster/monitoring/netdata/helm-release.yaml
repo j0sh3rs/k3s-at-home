@@ -104,6 +104,7 @@ spec:
                 url: http://kube-dns.kube-system:9153/metrics
               - name: unifi-poller
                 url: http://unifi-poller.monitoring:9130/metrics
+                max_time_series: 35000
               - name: cadvisor
                 url: http://cadvisor.monitoring:8080/metrics
                 max_time_series: 35000
