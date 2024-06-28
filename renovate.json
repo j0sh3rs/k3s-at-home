@@ -23,7 +23,8 @@
   "rebaseWhen": "auto",
   "timezone": "America/New_York",
   "ignorePaths": [
-    "cluster/base/"
+    "cluster/base/",
+    "bootstrap/flux-system/"
   ],
   "github-actions": {
     "fileMatch": [
