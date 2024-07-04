@@ -27,6 +27,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
     timeZone: "America/New_York"
     replicas: 1
     kind: Deployment
@@ -58,6 +60,7 @@ spec:
                 includingInitContainers: true
                 states:
                 - CrashLoopBackOff
+                - Running
             - name: LowNodeUtilization
               args:
                 thresholds:
