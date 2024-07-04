@@ -83,7 +83,6 @@ spec:
               - *host
     persistence:
       data:
-        existingClaim: ferdium
         advancedMounts:
           ferdium:
             app:
