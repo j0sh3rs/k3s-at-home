@@ -41,14 +41,14 @@ spec:
               APP_UR: https://ferdium.bth.wtf
               CONNECT_WITH_FRANZ: false
               DATA_DIR: "/data"
-              IS_CREATION_ENABLED: true
-              IS_REGISTRATION_ENABLED: true
-              IS_DASHBOARD_ENABLED: true
+              IS_CREATION_ENABLED: "true"
+              IS_REGISTRATION_ENABLED: "true"
+              IS_DASHBOARD_ENABLED: "true"
               JWT_USE_PEM: true
-            # DB_CONNECTION: pg
-            # envFrom:
-            #   - secretRef:
-            #       name: ferdium-secrets
+              DB_CONNECTION: pg
+            envFrom:
+              - secretRef:
+                  name: ferdium-secrets
             resources:
               requests:
                 cpu: 5m
