@@ -39,7 +39,7 @@ data:
   enable-brotli: 'true'
   enable-modsecurity: 'false'
   enable-ocsp: 'true'
-  enable-opentelemetry: 'true'
+  # enable-opentelemetry: 'true'
   enable-real-ip: 'false'
   force-ssl-redirect: 'true'
   global-rate-limit-memcached-host: dragonflydb-memcached.infra
@@ -48,6 +48,7 @@ data:
   hsts-include-subdomains: 'true'
   hsts-max-age: '63072000'
   hsts-preload: 'true'
+  # otlp-collector-host: somefutureendpoint
   ssl-chipers: 'EECDH+AESGCM:EDH+AESGCM'
   ssl-dh-param: 'ingress-nginx/ingress-nginx-secrets'
   ssl-protocols: 'TLSv1.3'
