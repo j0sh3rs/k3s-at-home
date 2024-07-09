@@ -11,7 +11,7 @@ metadata:
   name: dragonflydb
   namespace: infra
 spec:
-  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.19.2
+  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.20.0
   replicas: 1
   resources:
     requests:
