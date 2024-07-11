@@ -13,5 +13,6 @@ resources:
   - invidious
   - linkwarden
   - paperless-ngx
+  - sonarqube
   - redlib
   - tika

@@ -1,0 +1,60 @@
+---
+# yaml-language-server: $schema=https://github.com/SonarSource/helm-chart-sonarqube/blob/master/charts/sonarqube/values.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app sonarqube
+  namespace: services
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: sonarqube
+      version: 10.7.0
+      sourceRef:
+        kind: HelmRepository
+        name: sonarqube-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: sonarqube-secrets
+      valuesKey: jdbcUrl
+      targetPath: jdbcOverwrite.jdbcUrl
+    - kind: Secret
+      name: sonarqube-secrets
+      valuesKey: jdbcUsername
+      targetPath: jdbcOverwrite.jdbcUsername
+    - kind: Secret
+      name: sonarqube-secrets
+      valuesKey: jdbcPassword
+      targetPath: jdbcOverwrite.jdbcPassword
+  values:
+    ingress:
+      hosts:
+        - name: &host sonarqube.bth.wtf
+          tls:
+          - hosts:
+              - *host
+    prometheusExporter:
+      enabled: true
+      prometheusMonitoring:
+        podMonitor:
+          enabled: true
+    plugins:
+      install:
+        - https://github.com/vaulttec/sonar-auth-oidc/releases/download/v2.1.1/sonar-auth-oidc-plugin-2.1.1.jar
+        - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.5.0/sonar-shellcheck-plugin-2.5.0.jar
+        - https://github.com/cnescatlab/sonar-hadolint-plugin/releases/download/1.1.0/sonar-hadolint-plugin-1.1.0.jar
+    monitoringPasscodeSecretName: "sonarqube-secrets"
+    monitoringPasscodeSecretKey: "monitoringPasscode"
+    jdbcOverwrite:
+      enable: true
+    postgresql:
+      enabled: false

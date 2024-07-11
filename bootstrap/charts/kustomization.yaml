@@ -27,5 +27,6 @@ resources:
   - node-feature-discovery.yaml
   - planka.yaml
   - prometheus-community-charts.yaml
+  - sonarqube.yaml
   - stakater-charts.yaml
   - weaveworks.yaml
