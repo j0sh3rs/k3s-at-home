@@ -37,6 +37,7 @@ spec:
       targetPath: jdbcOverwrite.jdbcPassword
   values:
     ingress:
+      enabled: true
       ingressClassName: nginx
       hosts:
         - name: &host sonarqube.bth.wtf
