@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://github.com/SonarSource/helm-chart-sonarqube/blob/master/charts/sonarqube/values.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SonarSource/helm-chart-sonarqube/master/charts/sonarqube/values.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -37,11 +37,14 @@ spec:
       targetPath: jdbcOverwrite.jdbcPassword
   values:
     ingress:
+      ingressClassName: nginx
       hosts:
         - name: &host sonarqube.bth.wtf
-          tls:
-          - hosts:
-              - *host
+          path: /
+          pathType: ImplementationSpecific
+      tls:
+      - hosts:
+          - *host
     prometheusExporter:
       enabled: true
       prometheusMonitoring:
