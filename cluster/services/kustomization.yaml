@@ -9,6 +9,7 @@ resources:
   - cyberchef
   - ferdium
   - glance
+  - gptportal
   - gotenberg
   - invidious
   - linkwarden
