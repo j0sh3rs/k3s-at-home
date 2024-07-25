@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app authentik
+  namespace: infra
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.goauthentik.io
+      chart: *app
+      version: 2024.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: fairwinds-charts
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: authentik-secrets
+      valuesKey: SECRET_KEY
+      targetPath: authentik.secret_key
+    - kind: Secret
+      name: authentik-secrets
+      valuesKey: SECRET_KEY
+      targetPath: authentik.secret_key
+  values:
+    nameOverride: authentik
+    fullnameOverride: authentik
+    global:
+      env:
+        - name: AUTHENTIK_REDIS__DB
+          value: 4
+    authentik:
+      error_reporting:
+        enabled: true
+      postgresql:
+        host: 192.168.35.5
+        port: 35432
+        user: authentik
+        name: authentik
+      redis:
+        host: dragonflydb
+    postgresql:
+      enabled: false
+    redis:
+      enabled: false
+    server:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - &domain auth.bth.wtf
+        tls:
+          - hosts:
+              - *domain
+    prometheus:
+      rules:
+        enabled: true
