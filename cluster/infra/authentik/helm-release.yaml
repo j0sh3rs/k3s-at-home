@@ -31,7 +31,7 @@ spec:
     global:
       env:
         - name: AUTHENTIK_REDIS__DB
-          value: 4
+          value: "4"
     authentik:
       error_reporting:
         enabled: true
