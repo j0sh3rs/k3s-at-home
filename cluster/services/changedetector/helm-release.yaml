@@ -120,8 +120,12 @@ spec:
         enabled: true
         size: 20Gi
         accessMode: ReadWriteOnce
-      /dev/shm:
+      dshm:
         enabled: true
         type: emptyDir
         sizeLimit: 4Gi
         medium: Memory
+        advancedMounts:
+          changedetector:
+            browser-chrome:
+              - path: /dev/shm
