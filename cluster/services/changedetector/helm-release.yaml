@@ -69,12 +69,7 @@ spec:
               repository: selenium/standalone-chrome
               tag: "127.0"
             securityContext:
-              allowPrivilegeEscalation: false
-              capabilities: { drop: ["ALL"] }
-              runAsUser: 568
-              runAsGroup: 568
-              fsGroup: 568
-              fsGroupChangePolicy: OnRootMismatch
+              privileged: true
             env:
               - name: VNC_NO_PASSWD
                 value: 1
