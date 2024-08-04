@@ -42,7 +42,7 @@ spec:
               requests:
                 cpu: 10m
               limits:
-                memory: 256Mi
+                memory: 2Gi
           playwright-chrome:
             image:
               repository: dgtlmoon/sockpuppetbrowser
@@ -63,7 +63,7 @@ spec:
               requests:
                 cpu: 10m
               limits:
-                memory: 512Gi
+                memory: 2Gi
           browser-chrome:
             image:
               repository: selenium/standalone-chrome
