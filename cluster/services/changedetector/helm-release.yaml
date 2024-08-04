@@ -67,7 +67,7 @@ spec:
           browser-chrome:
             image:
               repository: selenium/standalone-chrome
-              tag: 127.0
+              tag: "127.0"
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { drop: ["ALL"] }
