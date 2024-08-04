@@ -43,6 +43,43 @@ spec:
                 cpu: 10m
               limits:
                 memory: 256Mi
+          playwright-chrome:
+            image:
+              repository: dgtlmoon/sockpuppetbrowser
+              tag: latest
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities: { add: ["SYS_ADMIN"] }
+            env:
+              - name: SCREEN_WIDTH
+                value: 1920
+              - name: SCREEN_HEIGHT
+                value: 1024
+              - name: SCREEN_DEPTH
+                value: 16
+              - name: MAX_CONCURRENT_CHROME_PROCESSES
+                value: 10
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 512Gi
+          browser-chrome:
+            image:
+              repository: selenium/standalone-chrome
+              tag: 127.0
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities: { drop: ["ALL"] }
+            env:
+              - name: VNC_NO_PASSWD
+                value: 1
+              - name: SCREEN_HEIGHT
+                value: 1920
+              - name: SCREEN_HEIGHT
+                value: 1080
+              - name: SCREEN_DEPTH
+                value: 24
         pod:
           securityContext:
             runAsUser: 568
@@ -83,3 +120,8 @@ spec:
         enabled: true
         size: 20Gi
         accessMode: ReadWriteOnce
+      /dev/shm:
+        enabled: true
+        type: emptyDir
+        sizeLimit: 4Gi
+        medium: Memory
