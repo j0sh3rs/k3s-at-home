@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - activepieces
   - atuin
-  - changedetector
+  # - changedetector
   - codeserver
   - cyberchef
   # - dmarc-report
