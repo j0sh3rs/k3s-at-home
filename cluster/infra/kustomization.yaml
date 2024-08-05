@@ -5,5 +5,4 @@ resources:
   - authentik
   - dragonflydb
   - goldilocks
-  # - proton-relay
   - vpa
