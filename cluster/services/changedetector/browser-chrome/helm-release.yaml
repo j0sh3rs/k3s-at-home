@@ -62,20 +62,13 @@ spec:
           backend:
             port: 7900
     persistence:
-      localtime:
+      data:
         enabled: true
-        type: hostPath
-        hostPath: /etc/localtime
-      timezone:
-        enabled: true
-        type: hostPath
-        hostPath: /etc/timezone
+        existingClaim: changedetector-datastore
+        globalMounts:
+          - path: /datastore
+        type: persistentVolumeClaim
       dshm:
         enabled: true
-        type: emptyDir
-        sizeLimit: 4Gi
-        medium: Memory
-        advancedMounts:
-          browser-chrome:
-            app:
-              - path: /dev/shm
+        type: hostPath
+        hostPath: /dev/shm
