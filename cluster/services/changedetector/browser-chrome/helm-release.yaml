@@ -76,6 +76,6 @@ spec:
         sizeLimit: 4Gi
         medium: Memory
         advancedMounts:
-          app:
-            browser-chrome:
+          browser-chrome:
+            app:
               - path: /dev/shm
