@@ -6,4 +6,4 @@ resources:
   - dragonflydb
   # - goldilocks
   - tetragon
-  - vpa
+  # - vpa
