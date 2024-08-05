@@ -24,7 +24,7 @@ spec:
       retries: 3
   values:
     controllers:
-      app:
+      browser-chrome:
         replicas: 1
         strategy: RollingUpdate
         annotations:
