@@ -30,7 +30,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          browser-chrome:
+          app:
             image:
               repository: selenium/standalone-chrome
               tag: "127.0"
