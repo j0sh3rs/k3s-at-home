@@ -43,6 +43,9 @@ spec:
                 cpu: 10m
               limits:
                 memory: 2Gi
+            env:
+              - name: WEBDRIVER_URL
+                value: http://localhost:4444/wd/hub
           browser-chrome:
             image:
               repository: selenium/standalone-chrome
