@@ -23,6 +23,13 @@ spec:
       targetPath: controller.extraArgs.maxmind-license-key
   values:
     controller:
+      resources:
+        limits:
+          cpu: 1.5
+          memory: 2Gi
+        requests:
+          cpu: 300m
+          memory: 1Gi
       containerName: nginx
       kind: DaemonSet
       image:
