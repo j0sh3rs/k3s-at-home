@@ -8,6 +8,7 @@ resources:
   - codeserver
   - cyberchef
   # - dmarc-report
+  - foxtrot
   - ferdium
   - glance
   - gotenberg
