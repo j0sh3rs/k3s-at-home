@@ -25,13 +25,18 @@ spec:
   values:
     controllers:
       foxtrot:
-        replicas: 1
+        replicas: 5
         strategy: Recreate
         containers:
           app:
             image:
               repository: ghcr.io/j0sh3rs/foxtrot
               tag: 0.0.8
+            args:
+              - --concurrency
+              - '20'
+              - --delay
+              - '20'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
