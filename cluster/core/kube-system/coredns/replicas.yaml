@@ -23,7 +23,7 @@ spec:
       containers:
         - name: coredns
         # renovate: datasource=docker
-          image: rancher/mirrored-coredns-coredns:1.11.1
+          image: rancher/mirrored-coredns-coredns:1.11.3
           resources:
             limits:
               memory: 170Mi
