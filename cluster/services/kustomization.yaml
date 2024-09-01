@@ -9,12 +9,12 @@ resources:
   - cyberchef
   # - dmarc-report
   - foxtrot
-  - ferdium
-  - glance
+  # - ferdium
+  # - glance
   - gotenberg
-  - invidious
+  # - invidious
   - linkwarden
   - paperless-ngx
   # - sonarqube
-  - redlib
+  # - redlib
   - tika
