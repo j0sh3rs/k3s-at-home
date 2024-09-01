@@ -9,5 +9,5 @@ resources:
    - kube-prometheus-stack
    - netdata
    - node-problem-detector
-   - thanos
+   # - thanos
    - unifi-poller

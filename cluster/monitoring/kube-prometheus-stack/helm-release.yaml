@@ -250,9 +250,9 @@ spec:
         limits:
           memory: 2048Mi
       thanosService:
-        enabled: true
+        enabled: false
       thanosServiceMonitor:
-        enabled: true
+        enabled: flase
       prometheusSpec:
         thanos:
           image: quay.io/thanos/thanos:v0.36.1
