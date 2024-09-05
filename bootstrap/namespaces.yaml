@@ -71,6 +71,7 @@ metadata:
   name: cilium-system
   labels:
     app.kubernetes.io/managed-by: Helm
+    goldilocks.fairwinds.com/enabled: "true"
   annotations:
     meta.helm.sh/release-name: cilium
     meta.helm.sh/release-namespace: cilium-system
@@ -81,6 +82,7 @@ metadata:
   name: system-upgrade
   labels:
     app.kubernetes.io/managed-by: Helm
+    goldilocks.fairwinds.com/enabled: "true"
   annotations:
     meta.helm.sh/release-name: system-upgrade
     meta.helm.sh/release-namespace: system-upgrade
@@ -96,3 +98,4 @@ metadata:
     pod-security.kubernetes.io/audit-version: latest
     pod-security.kubernetes.io/warn: privileged
     pod-security.kubernetes.io/warn-version: latest
+    goldilocks.fairwinds.com/enabled: "true"
