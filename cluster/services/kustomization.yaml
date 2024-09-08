@@ -6,12 +6,13 @@ resources:
   - atuin
   - changedetector
   - codeserver
-  - cyberchef
+  # - cyberchef
   # - dmarc-report
   - foxtrot
   # - ferdium
   # - glance
   - gotenberg
+  - it-tools
   # - invidious
   - linkwarden
   - paperless-ngx
