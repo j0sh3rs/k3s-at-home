@@ -28,18 +28,18 @@ spec:
             limits:
               memory: 170Mi
               cpu: "500m"
-          requests:
-            cpu: 100m
-            memory: 70Mi
-    affinity:
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: k8s-app
-                operator: In
-                values:
-                - kube-dns
-            topologyKey: "kubernetes.io/hostname"
+            requests:
+              cpu: 100m
+              memory: 70Mi
+        # affinity:
+        #   podAntiAffinity:
+        #     requiredDuringSchedulingIgnoredDuringExecution:
+        #     - weight: 100
+        #       podAffinityTerm:
+        #         labelSelector:
+        #           matchExpressions:
+        #           - key: k8s-app
+        #             operator: In
+        #             values:
+        #             - kube-dns
+        #         topologyKey: "kubernetes.io/hostname"
