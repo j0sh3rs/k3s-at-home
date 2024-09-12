@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://helm.irsigler.cloud
+      # renovate: registryUrl=https://dirsigler.github.io/uptime-kuma-helm
       chart: uptime-kuma
       version: 2.19.4
       sourceRef:
