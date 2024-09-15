@@ -9,7 +9,7 @@ spec:
         spec:
             # renovate: registryUrl=https://charts.openobserve.ai
             chart: openobserve-collector
-            version: 0.3.6
+            version: 0.3.11
             sourceRef:
                 kind: HelmRepository
                 name: openobserve-charts
@@ -20,7 +20,7 @@ spec:
         fullnameOverride: o2-collector
         image:
             # renovate: dockerUrl=ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
-            tag: 0.99.0
+            tag: 0.109.0
         exporters:
             otlphttp/openobserve:
                 endpoint: https://o2.bth.wtf/api/default/
