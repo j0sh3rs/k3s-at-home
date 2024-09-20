@@ -6,5 +6,5 @@ resources:
   # - botkube
   - dragonflydb
   - goldilocks
-  - rustdesk
+  # - rustdesk
   - vpa
