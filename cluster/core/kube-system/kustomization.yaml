@@ -9,4 +9,3 @@ resources:
   - metrics-server
   - reflector
   - reloader
-    #  - tetragon
