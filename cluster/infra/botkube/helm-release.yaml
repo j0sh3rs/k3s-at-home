@@ -23,6 +23,14 @@ spec:
       name: botkube-secrets
       valuesKey: PROVIDER_IDENTIFIER
       targetPath: config.provider.identifier
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: DISCORD_TOKEN
+      targetPath: communications.discord.token
+    - kind: Secret
+      name: botkube-secrets
+      valuesKey: DISCORD_BOT_ID
+      targetPath: communications.discord.botID
   values:
     analytics:
       disable: true
@@ -38,6 +46,10 @@ spec:
          enabled: true
       'show-logs-on-error':
          enabled: true
+    executors:
+      k8s-default-tools:
+        botkube/kubectl:
+          enabled: true
     communications:
       discord:
        enabled: true
