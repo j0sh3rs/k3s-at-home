@@ -32,6 +32,9 @@ spec:
       valuesKey: DISCORD_BOT_ID
       targetPath: communications.discord.botID
   values:
+    deployment:
+      annotations:
+        reloader.stakater.com/auto: 'true'
     analytics:
       disable: true
     config:
