@@ -6,6 +6,7 @@ resources:
   - authentik.yaml
   - bitnami-charts.yaml
   - bjw-s.yaml
+  - botkube.yaml
   - cilium.yaml
   - coredns.yaml
   - deliveryhero.yaml
