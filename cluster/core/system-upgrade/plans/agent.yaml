@@ -1,0 +1,28 @@
+---
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: k3s-agent
+  namespace: system-upgrade
+spec:
+  serviceAccountName: system-upgrade
+  concurrency: 1
+  # renovate: datasource=github-releases depName=k3s-io/k3s
+  version: "v1.31.1+k3s1"
+  cordon: true
+  nodeSelector:
+    matchExpressions:
+      - {key: k3s-upgrade, operator: Exists}
+      - {key: k3s-upgrade, operator: NotIn, values: ["disabled", "false"]}
+      - {key: k3s.io/hostname, operator: Exists}
+      - {key: k3os.io/mode, operator: DoesNotExist}
+      - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
+  prepare:
+    # Defaults to the same "resolved" tag that is used for the `upgrade` container, NOT `latest`
+    image: rancher/k3s-upgrade
+    args: ["prepare", "k3s-server"]
+  drain:
+    force: true
+    skipWaitForDeleteTimeout: 60 # 1.18+ (honor pod disruption budgets up to 60 seconds per pod then moves on)
+  upgrade:
+    image: rancher/k3s-upgrade
