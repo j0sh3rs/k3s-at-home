@@ -12,7 +12,7 @@ spec:
   cordon: true
   nodeSelector:
     matchExpressions:
-      - { key: node-role.kubernetes.io/control-plane, operator: DoesNotExists }
+      - { key: node-role.kubernetes.io/control-plane, operator: DoesNotExist }
   drain:
     force: true
     skipWaitForDeleteTimeout: 60
