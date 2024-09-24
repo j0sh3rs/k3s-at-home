@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://dirsigler.github.io/uptime-kuma-helm
       chart: uptime-kuma
-      version: 2.19.4
+      version: 2.20.0
       sourceRef:
         kind: HelmRepository
         name: irsigler-charts
