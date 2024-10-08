@@ -27,7 +27,7 @@ spec:
       retries: 3
   values:
     crds:
-      install: true
+      enabled: true
       keep: true
     resources:
       requests:
