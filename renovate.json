@@ -12,7 +12,7 @@
     "github>j0sh3rs/k3s-at-home//.github/renovate/autoMerge.json",
     "github>j0sh3rs/k3s-at-home//.github/renovate/labels.json",
     "github>j0sh3rs/k3s-at-home//.github/renovate/semanticCommits.json",
-    ":automergeBranchPush"
+    ":automergeBranch"
   ],
   "semanticCommits": "enabled",
   "gitAuthor": "Barrybot <barry-bot[bot]@users.noreply.github.com>",
@@ -60,17 +60,21 @@
       "bootstrap/.+/*.yaml$"
     ]
   },
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Process CRD dependencies",
-      "fileMatch": ["cluster/crds/.+\\.ya?ml$"],
+      "fileMatch": [
+        "cluster/crds/.+\\.ya?ml$"
+      ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
-        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
+        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)/(?<currentValue>[^/]+)/[^/]+\n"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
     },
     {
+      "customType": "regex",
       "description": "Process various dependencies",
       "fileMatch": [
         "cluster/.+\\.ya?ml$"
@@ -82,7 +86,10 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
-      "fileMatch": ["(^|/)kustomization\\.ya?ml$"],
+      "customType": "regex",
+      "fileMatch": [
+        "(^|/)kustomization\\.ya?ml$"
+      ],
       "matchStringsStrategy": "any",
       "matchStrings": [
         "https://github.com/(?<depName>[\\w-]+/[\\w-]+)/raw/(?<currentValue>[\\w\\.-]+)//",
