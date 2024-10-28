@@ -17,15 +17,10 @@
   "semanticCommits": "enabled",
   "gitAuthor": "Barrybot <barry-bot[bot]@users.noreply.github.com>",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": [
-    "prIgnoreNotification"
-  ],
+  "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "auto",
   "timezone": "America/New_York",
-  "ignorePaths": [
-    "cluster/base/",
-    "bootstrap/flux-system/"
-  ],
+  "ignorePaths": ["cluster/base/", "bootstrap/flux-system/"],
   "github-actions": {
     "fileMatch": [
       "^(workflow-templates|\\.github\\/workflows)\\/[^/]+\\.ya?ml$",
@@ -33,9 +28,7 @@
     ]
   },
   "helm-values": {
-    "fileMatch": [
-      "(cluster|bootstrap)/.+/helm-release\\.yaml$"
-    ]
+    "fileMatch": ["(cluster|bootstrap)/.+/helm-release\\.yaml$"]
   },
   "helmv3": {
     "fileMatch": [
@@ -44,29 +37,20 @@
     ]
   },
   "kubernetes": {
-    "fileMatch": [
-      "(cluster|bootstrap)/.+\\.yaml$"
-    ]
+    "fileMatch": ["(cluster|bootstrap)/.+\\.yaml$"]
   },
   "kustomize": {
-    "fileMatch": [
-      "(cluster|bootstrap)/.+/(^|/)kustomization\\.ya?ml$"
-    ],
+    "fileMatch": ["(cluster|bootstrap)/.+/(^|/)kustomization\\.ya?ml$"],
     "pinDigests": false
   },
   "flux": {
-    "fileMatch": [
-      "cluster/.+/*.yaml$",
-      "bootstrap/.+/*.yaml$"
-    ]
+    "fileMatch": ["cluster/.+/*.yaml$", "bootstrap/.+/*.yaml$"]
   },
   "customManagers": [
     {
       "customType": "regex",
       "description": "Process CRD dependencies",
-      "fileMatch": [
-        "cluster/crds/.+\\.ya?ml$"
-      ],
+      "fileMatch": ["cluster/crds/.+\\.ya?ml$"],
       "matchStrings": [
         "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
         "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)/(?<currentValue>[^/]+)/[^/]+\n"
@@ -76,9 +60,7 @@
     {
       "customType": "regex",
       "description": "Process various dependencies",
-      "fileMatch": [
-        "cluster/.+\\.ya?ml$"
-      ],
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
       "matchStrings": [
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
       ],
@@ -87,9 +69,7 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "(^|/)kustomization\\.ya?ml$"
-      ],
+      "fileMatch": ["(^|/)kustomization\\.ya?ml$"],
       "matchStringsStrategy": "any",
       "matchStrings": [
         "https://github.com/(?<depName>[\\w-]+/[\\w-]+)/raw/(?<currentValue>[\\w\\.-]+)//",
@@ -101,12 +81,7 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     }
   ]
