@@ -30,9 +30,7 @@ spec:
     podAnnotations:
       reloader.stakater.com/auto: "true"
     timeZone: "America/New_York"
-    replicas: 1
-    kind: Deployment
-    deschedulerPolicyAPIVersion: descheduler/v1alpha2
+    kind: CronJob
     deschedulerPolicy:
       profiles:
         - name: Default
@@ -43,6 +41,7 @@ spec:
                 evictLocalStoragePods: true
                 evictSystemCriticalPods: true
                 nodeFit: true
+                ignorePvcPods: true
             - name: RemovePodsViolatingInterPodAntiAffinity
             - name: RemovePodsViolatingNodeAffinity
               args:
@@ -59,8 +58,8 @@ spec:
                 podRestartThreshold: 3
                 includingInitContainers: true
                 states:
-                - CrashLoopBackOff
-                - Running
+                  - CrashLoopBackOff
+                  - Running
             - name: LowNodeUtilization
               args:
                 thresholds:
@@ -76,13 +75,14 @@ spec:
                 - "CreateContainerConfigError"
                 includingInitContainers: true
                 excludeOwnerKinds:
-                - "Job"
+                  - "Job"
                 minPodLifetimeSeconds: 3600
           plugins:
             balance:
               enabled:
                 - RemovePodsViolatingTopologySpreadConstraint
                 - LowNodeUtilization
+                - RemoveDuplicates
             deschedule:
               enabled:
                 - RemovePodsViolatingInterPodAntiAffinity
@@ -91,8 +91,8 @@ spec:
                 - RemovePodsHavingTooManyRestarts
                 - RemoveFailedPods
     service:
-      enabled: true
+      enabled: false
     serviceMonitor:
       enabled: false
     leaderElection:
-      enabled: true
+      enabled: false

@@ -5,8 +5,6 @@ resources:
   - activepieces
   - atuin
   - changedetector
-    # - codeserver
-    #   - foxtrot
   - gotenberg
   - it-tools
   - linkwarden
