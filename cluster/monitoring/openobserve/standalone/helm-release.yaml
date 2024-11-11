@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.openobserve.ai
       chart: openobserve-standalone
-      version: 0.13.3
+      version: 0.13.1
       sourceRef:
         kind: HelmRepository
         name: openobserve-charts
