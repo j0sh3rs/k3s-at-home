@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.openobserve.ai
       chart: openobserve-standalone
-      version: 0.11.1
+      version: 0.13.3
       sourceRef:
         kind: HelmRepository
         name: openobserve-charts
@@ -40,9 +40,11 @@ spec:
   values:
     nameOverride: openobserve
     fullnameOverride: openobserve
+    minio:
+      enabled: false
     image:
       # renovate: dockerUrl=public.ecr.aws/zinclabs/openobserve
-      tag: "v0.10.5"
+      tag: "v0.13.3"
     persistence:
       size: 50Gi
       storageClass: "longhorn"
@@ -135,7 +137,7 @@ spec:
       ZO_FILE_MOVE_THREAD_NUM: "0"
       ZO_MEM_TABLE_MAX_SIZE: "0"
       ZO_MEM_PERSIST_INTERVAL: "5"
-      ZO_ENRICHMENT_TABLE_LIMIT: "10" # size in mb
+      ZO_ENRICHMENT_TABLE_LIMIT: "100" # size in mb
       ZO_QUERY_THREAD_NUM: "0"
       ZO_QUERY_TIMEOUT: "600"
       ZO_ROUTE_TIMEOUT: "600"

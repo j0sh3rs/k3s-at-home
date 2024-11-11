@@ -9,5 +9,6 @@ resources:
   - kube-prometheus-stack
   - netdata
   - node-problem-detector
+  - openobserve
   - unifi-poller
     # - uptime-kuma
