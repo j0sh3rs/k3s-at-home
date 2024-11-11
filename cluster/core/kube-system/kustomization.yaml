@@ -5,7 +5,7 @@ resources:
   - amd-gpu
   - coredns
   - descheduler
-  - fstrim
+    # - fstrim
   - kured
   - metrics-server
   - reflector
