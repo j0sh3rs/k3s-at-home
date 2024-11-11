@@ -42,23 +42,20 @@ spec:
     fullnameOverride: openobserve
     minio:
       enabled: false
-    image:
-      # renovate: dockerUrl=public.ecr.aws/zinclabs/openobserve
-      tag: "v0.13.1"
     persistence:
       size: 50Gi
       storageClass: "longhorn"
     ingress:
       enabled: true
       hosts:
-        - host: o2.bth.wtf
+        - host: &host o2.bth.wtf
           paths:
             - path: /
               pathType: ImplementationSpecific
       tls:
-        - secretName: o2.bth.wtf
+        - secretName: *host
           hosts:
-            - o2.bth.wtf
+            - *host
     config:
       ZO_APP_NAME: "openobserve"
       ZO_CLUSTER_NAME: "homelab"
