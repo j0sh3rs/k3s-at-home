@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.openobserve.ai
       chart: openobserve-standalone
-      version: 0.13.1
+      version: 0.13.3
       sourceRef:
         kind: HelmRepository
         name: openobserve-charts
@@ -44,7 +44,7 @@ spec:
       enabled: false
     image:
       # renovate: dockerUrl=public.ecr.aws/zinclabs/openobserve
-      tag: "v0.13.3"
+      tag: "v0.13.1"
     persistence:
       size: 50Gi
       storageClass: "longhorn"
